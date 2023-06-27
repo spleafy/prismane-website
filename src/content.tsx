@@ -151,7 +151,6 @@ const content: any = [
       { slug: "use-outside-click", title: "useOutsideClick" },
       { slug: "use-previous", title: "usePrevious" },
       { slug: "use-styling", title: "useStyling" },
-      { slug: "use-theme", title: "useTheme" },
       { slug: "use-toggle", title: "useToggle" },
     ],
   },

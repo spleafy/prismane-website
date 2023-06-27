@@ -83,6 +83,7 @@ import {
   Tooltip,
   Transition,
   fr,
+  usePrismaneTheme,
 } from "@prismane/core";
 import {
   useAnimation,
@@ -103,7 +104,6 @@ import {
   useOutsideClick,
   usePrevious,
   useStyling,
-  useTheme,
   useToggle,
 } from "@prismane/core/hooks";
 // Content
@@ -265,7 +265,7 @@ export default function Page(params: any) {
                         useOutsideClick,
                         usePrevious,
                         useStyling,
-                        useTheme,
+                        usePrismaneTheme,
                         useToggle,
                         Heart,
                         Fire,
