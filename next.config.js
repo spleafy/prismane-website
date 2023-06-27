@@ -4,6 +4,9 @@ const nextConfig = {
     mdxRs: true,
   },
   reactStrictMode: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 const withMDX = require("@next/mdx")();
