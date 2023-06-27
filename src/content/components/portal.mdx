@@ -1,0 +1,36 @@
+# Portal
+
+Portal displays a container that is displayed outside of the current DOM tree.
+
+## Import
+
+```js
+import { Portal } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Box bg="orange" cl="white">
+  This will be rendered inside the box
+  <Portal>This will be rendered inside the document.body</Portal>
+</Box>
+```
+
+### Portal With Custom container
+
+```jsx
+function Demo() {
+  const ref = useRef(null);
+
+  return (
+    <Box bg="orange" cl="white">
+      This will be rendered inside the box
+      <Portal target={ref}>
+        This will be rendered inside the inner container
+      </Portal>
+      <Box ref={ref}>This is the inner container:</Box>
+    </Box>
+  );
+}
+```

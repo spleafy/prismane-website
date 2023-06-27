@@ -1,0 +1,33 @@
+# Hide
+
+Hide displays a container that hides under a breakpoint.
+
+## Import
+
+```js
+import { Hide } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Hide breakpoint="2000px">Hidden over 2000px breakpoint!</Hide>
+```
+
+### Custom breakpoint
+
+```jsx
+<Hide breakpoint="1440px">Hidden over 1440px!</Hide>
+```
+
+### Hide Sizes
+
+```jsx
+<Stack direction="column" gap={fr(2)}>
+  <Hide breakpoint="xs">Hidden over xs breakpoint!</Hide>
+  <Hide breakpoint="sm">Hidden over sm breakpoint!</Hide>
+  <Hide breakpoint="base">Hidden over base breakpoint!</Hide>
+  <Hide breakpoint="md">Hidden over md breakpoint!</Hide>
+  <Hide breakpoint="lg">Hidden over lg breakpoint!</Hide>
+</Stack>
+```

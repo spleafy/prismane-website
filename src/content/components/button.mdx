@@ -1,0 +1,90 @@
+<Versatile>Button</Versatile>
+
+Button displays a styled button.
+
+## Import
+
+```js
+import { Button } from "@prismane/core";
+```
+
+## Usage
+
+By default, `Button` uses the `primary` variant.
+
+```jsx
+<Button>Hello World</Button>
+```
+
+### Button Variants
+
+```jsx
+<>
+  <Button variant="primary">Hello World</Button>
+  <Button variant="secondary">Hello World</Button>
+  <Button variant="tertiary">Hello World</Button>
+  <Button variant="text">Hello World</Button>
+</>
+```
+
+### Button Sizes
+
+```jsx
+<>
+  <Button size="xs">Hello World</Button>
+  <Button size="sm">Hello World</Button>
+  <Button size="base">Hello World</Button>
+  <Button size="md">Hello World</Button>
+  <Button size="lg">Hello World</Button>
+</>
+```
+
+### Button With Icon
+
+```jsx
+<Button icon={<Heart />}>Much Love</Button>
+```
+
+### Button Loading
+
+```jsx
+<>
+  <Button variant="primary" loading>
+    Hello World
+  </Button>
+  <Button variant="secondary" loading>
+    Hello World
+  </Button>
+  <Button variant="tertiary" loading>
+    Hello World
+  </Button>
+  <Button variant="text" loading>
+    Hello World
+  </Button>
+</>
+```
+
+### Button Color
+
+```jsx
+<>
+  <Button color="base">Hello World</Button>
+  <Button color="lime">Hello World</Button>
+  <Button color="diamond">Hello World</Button>
+  <Button color="ruby">Hello World</Button>
+</>
+```
+
+### Customized Button
+
+```jsx
+<Button icon={<Heart />} variant="secondary" color="teal" br="full">
+  Much Love
+</Button>
+```
+
+### Versatile Component
+
+```jsx
+<Button as="strong">Hello World</Button>
+```

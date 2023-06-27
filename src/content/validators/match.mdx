@@ -1,0 +1,60 @@
+# match Validator
+
+The `match` validator matches two values, if they are the same, it returns `null`, if not it returns an error message.
+
+## Basic Usage
+
+```tsx
+import { match } from "@prismane/core/validators";
+
+console.log(match("password", "password")); // Will return null
+console.log(match("password", "password1234"));
+// Will return `Fields must match!`
+console.log(match("password", "password1234", "Passwords"));
+// Will return `Passwords must match!`
+```
+
+## useForm Hook Usage
+
+```tsx
+import { Form, TextField, Button } from "@prismane/core";
+import { useForm } from "@prismane/core/hooks";
+
+const Complex = () => {
+  const { handleSubmit, handleReset, register, getValue } = useForm({
+    fields: {
+      password: {
+        value: "",
+        validators: {
+          match: (v: string) => match(v, getValue("repassword")),
+        },
+      },
+      repassword: {
+        value: "",
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter password: "
+        label="Password:"
+        {...register("password")}
+      />
+      <TextField
+        placeholder="Retype password: "
+        label="Retype Password:"
+        {...register("repassword")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
+```

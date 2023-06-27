@@ -1,0 +1,50 @@
+# required Validator
+
+The `required` validator checks if a value is not undefined, if it is, it returns an error message, if not it returns `null`.
+
+## Basic Usage
+
+```tsx
+import { required } from "@prismane/core/validators";
+
+console.log(required("Ivan is very cool")); // Will return null
+console.log(required(""));
+// Will return `This field is required!`
+```
+
+## useForm Hook Usage
+
+```tsx
+import { Form, TextField, Button } from "@prismane/core";
+import { useForm } from "@prismane/core/hooks";
+
+const Complex = () => {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          required: (v: string) => required(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
+```

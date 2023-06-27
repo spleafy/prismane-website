@@ -1,0 +1,46 @@
+# Chip
+
+Chip displays a container that is used to highlight some important short information.
+
+## Import
+
+```js
+import { Chip } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Chip>Default</Chip>
+```
+
+### Badge With Icon
+
+```jsx
+<Chip icon={<Fire />}>New Release</Chip>
+```
+
+### Badge Colors
+
+By default, `Badge` uses the `primary` color.
+
+```jsx
+<>
+  <Chip>Primary</Chip>
+  <Chip color="ruby">Ruby</Chip>
+  <Chip color="lime">Lime</Chip>
+  <Chip color="teal">Teal</Chip>
+</>
+```
+
+### Badge Sizes
+
+```jsx
+<>
+  <Chip size="xs">Primary</Chip>
+  <Chip size="sm">Primary</Chip>
+  <Chip size="base">Primary</Chip>
+  <Chip size="md">Primary</Chip>
+  <Chip size="lg">Primary</Chip>
+</>
+```

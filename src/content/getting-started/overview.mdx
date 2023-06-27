@@ -1,0 +1,107 @@
+# Overview
+
+Prismane is built with simplicity and performance in mind. In this guide we will explore how Prismaneis built, what core features it offers, what makes it better and much more.
+
+Our key features consist of:
+
+- **Style memoization:** Per key memoization of styles, which offers greatly improved performance, whilst still keeping the dynamic styling that is required in some edge cases.
+- **Hooks:** Prebuilt React hooks, giving you the ease of use and peace of mind, that is required in building great software.
+- **Form building:** We have built a custom `useForm` hook, which allows you to easily build controlled forms with no third party software needed.
+- **Form validation:** We have build a set of useful form validator functions, which would give you the ability to validate your forms faster than ever.
+- **Styling system:** We have created a styling system that is easily customizable, overwritable, having built in support for dark mode, as well as simple and easy to use.
+- **Themable:** We have made our library easily themable out of the box. You can choose primary and base colors out of our prebuilt color palette or you could provide your own.
+
+# Package Structure
+
+Our package has multiple entries for it's different tools. Here we are going to list them and explain what every one of them provides:
+
+- `@prismane/core` This entry exports all of the components, their prop types and constants.
+- `@prismane/core/validators` This entry exports all of the prebuilt form validators.
+- `@prismane/core/hooks` This entry exports all of the prebuilt React hooks.
+- `@prismane/core/themes` This entry exports all of the prebuilt theming tools.
+
+# Constants
+
+Our package exports a set of constants that can be useful during development. They are exported from the `@prismane/core` entry and consist of:
+
+- `PRISMANE_COLORS` This constant contains all of Prismane's pre-baked colors.
+- `PRISMANE_DEFAULT_COLORS_MAP` This constant is a map of Prismane's color names, meaning that **it does not include _primary_ or _base_ colors**.
+- `PRISMANE_COLORS_MAP` This constant extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **_primary_** and **_base_**.
+- `PRISMANE_SHADES_MAP` This constant is a map of all of Prismane's color shades.
+
+```tsx
+import {
+  PRISMANE_COLORS,
+  PRISMANE_DEFAULT_COLORS_MAP,
+  PRISMANE_COLORS_MAP,
+  PRISMANE_SHADES_MAP,
+} from "@prismane/core";
+```
+
+# Prop Types
+
+Our package exports prop types for each of our components. They can be found useful by some developers. To access them just add `Props` to the component's name. They are exported at `@prismane/core`.
+
+For example, the `<Button/>` component's prop types can be imported by doing the following:
+
+```tsx
+import { ButtonProps } from "@prismane/core";
+```
+
+# Component Prop Inheritance
+
+Our components are built in a way that they extend their child's props. For example, the `<Flex/>` component extends it's child props, in this case the `<Box/>` component's props.
+
+```tsx
+// import { Flex } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <Flex
+      w={20} // Box component's prop
+      align="center" // Flex component's prop
+    >
+      Hello, world
+    </Flex>
+  );
+};
+
+export default Page;
+```
+
+# Versatile Components
+
+Some of our components are versatile, meaning that they have the ability to change their root element for an element that you have passed. They have an additional `as` prop. By default versatile components render as a `<div/>` element.
+
+```tsx
+import { Flex } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <Flex as="a" href="#">
+      Hello, world
+    </Flex>
+  );
+};
+
+export default Page;
+```
+
+This code snippet will render an anchor tag that has display property of flex.
+
+# Passing refs
+
+All of our components use the `forwardRef` function, so that you can easily pass a ref to the component by using the `ref` prop.
+
+```tsx
+import { useRef } from "react";
+import { Flex } from "@prismane/core";
+
+const Page = () => {
+  const ref = useRef(null);
+
+  return <Flex ref={ref}>Hello, world</Flex>;
+};
+
+export default Page;
+```

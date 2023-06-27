@@ -1,0 +1,50 @@
+# username Validator
+
+The `username` validator checks if a value is a username, the value must be between 4 and 255 characters, if it is not true, it returns an error message, if not it returns `null`.
+
+## Basic Usage
+
+```tsx
+import { username } from "@prismane/core/validators";
+
+console.log(username("spleafy")); // Will return null
+console.log(username("xd"));
+// Will return `This is not a valid username!`
+```
+
+## useForm Hook Usage
+
+```tsx
+import { Form, TextField, Button } from "@prismane/core";
+import { useForm } from "@prismane/core/hooks";
+
+const Complex = () => {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          username: (v: string) => username(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
+```

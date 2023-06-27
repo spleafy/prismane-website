@@ -1,0 +1,80 @@
+# Advanced Customization
+
+Prismane offers a set of tools that can help you customize your app even more. Dynamic theme mode toggling, dynamic theme changing, theme hooks and more.
+
+## useTheme Hook
+
+Prismane exports a `useTheme` hook from the hooks entry of the package, meaning `@prismane/core/hooks`. The hook exports a set of helper functions that can manipulate the context's value as well as direct access to the context's value
+
+## Access The Theme Object:
+
+```tsx
+import { Box } from "@prismane/core";
+// Hooks
+import { useTheme } from "@prismane/core/hooks";
+
+const Page = () => {
+  const { theme } = useTheme();
+
+  console.log(theme); // Will output the latest theme value in the first <PrismaneProvider/>.
+
+  return <Box>Hello, world</Box>;
+};
+
+export default Page;
+```
+
+## Toggle The Theme Mode:
+
+```tsx
+import { Button } from "@prismane/core";
+// Hooks
+import { useTheme } from "@prismane/core/hooks";
+
+const Page = () => {
+  const { toggleThemeMode } = useTheme();
+
+  return (
+    <Button
+      onClick={() => {
+        toggleThemeMode();
+      }}
+    >
+      Hello, world
+    </Button>
+  );
+};
+
+export default Page;
+```
+
+## Update The Theme Value:
+
+```tsx
+import { Button, PRISMANE_COLORS } from "@prismane/core";
+// Hooks
+import { useTheme } from "@prismane/core/hooks";
+
+const Page = () => {
+  const { setTheme } = useTheme();
+
+  const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.red },
+      base: { ...PRISMANE_COLORS.sepia },
+    },
+  };
+
+  return (
+    <Button
+      onClick={() => {
+        setTheme(theme);
+      }}
+    >
+      Hello, world
+    </Button>
+  );
+};
+
+export default Page;
+```

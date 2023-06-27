@@ -1,0 +1,109 @@
+<Versatile>Card</Versatile>
+
+Card displays a container that groups and displays content.
+
+## Import
+
+```js
+import { Card } from "@prismane/core";
+```
+
+`Card` component has the following inner components:
+
+- `Card.Header` - The header container for the card.
+- `Card.Footer` - The footer container for the card.
+
+## Usage
+
+```jsx
+<Card>This is the information that you wanted to show.</Card>
+```
+
+### Complex Card
+
+```jsx
+<Card w={fr(75)} p={fr(5)}>
+  <Card.Header>
+    <Text as="h1">Payment</Text>
+  </Card.Header>
+  <Text dp="block" cl={["base", 300]}>
+    Would you like to accept this incoming payment from{" "}
+    <Text as="strong" dp="inline-block">
+      John Doe
+    </Text>{" "}
+    sending the sum of{" "}
+    <Text as="strong" dp="inline-block">
+      $405.30
+    </Text>
+  </Text>
+  <Card.Footer>
+    <Button variant="primary">Accept</Button>
+  </Card.Footer>
+</Card>
+```
+
+### Complex Card With Image
+
+```jsx
+<Card w={fr(120)} p={fr(5)}>
+  <Card.Header>
+    <Image
+      src="https://app.vevolution.com/public/migrated/first-tiny-forest-planted-england-1.jpg"
+      alt="Forest"
+      w="100%"
+    />
+  </Card.Header>
+  <Flex direction="column" gap={fr(2)}>
+    <Text as="h1">Forest</Text>
+    <Text>
+      Forests can occur wherever the temperatures rise above 10 °C in the
+      warmest months and the annual precipitation is more than 200 mm.
+    </Text>
+  </Flex>
+  <Card.Footer gap={fr(3)}>
+    <Button variant="primary">Read More</Button>
+    <ActionButton variant="tertiary" icon={<Heart />} />
+  </Card.Footer>
+</Card>
+```
+
+### Versatile Component
+
+```jsx
+<Card
+  as="a"
+  href="https://www.google.com"
+  target="_blank"
+  w={fr(120)}
+  h={fr(120)}
+  p={0}
+  pos="relative"
+  of="hidden"
+>
+  <Transition
+    as={Image}
+    src="https://app.vevolution.com/public/migrated/first-tiny-forest-planted-england-1.jpg"
+    alt="Forest"
+    w="100%"
+    h="100%"
+    pos="absolute"
+    ft={["none", { hover: "sepia(100%) blur(4px)" }]}
+  />
+  <Flex
+    direction="column"
+    self="center"
+    items="center"
+    justify="center"
+    mt="auto"
+    mb={fr(5)}
+    z={10}
+  >
+    <Text fs="3xl" fw="bold">
+      Forests
+    </Text>
+    <Text fs="sm" cl={["base", 300]}>
+      The lungs of the Earth.
+    </Text>
+  </Flex>
+</Card>
+```

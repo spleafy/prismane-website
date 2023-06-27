@@ -1,0 +1,58 @@
+# Vite Setup
+
+To use Prismane inside your website or app, you should install it first, by running one of the following commands:
+
+_npm_
+`npm install @prismane/core`
+
+_yarn_
+`yarn add @prismane/core`
+
+After installing the `@prismane/core` package, you have to wrap your application with our custom `PrismaneProvider` component. This can be either in your `index.jsx/tsx` or your `App.jsx/tsx`.
+
+```tsx
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { PrismaneProvider } from "@prismane/core";
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <PrismaneProvider>
+      <App />
+    </PrismaneProvider>
+  </React.StrictMode>
+);
+```
+
+## Additional Setup
+
+## Custom Theme
+
+If you want to use a custom theme, with custom colors, spacing and more, you can achieve that by providing a `theme` prop to the `PrismaneProvider` component.
+
+You can achieve that functionality by importing the `extendTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
+
+```tsx
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { PrismaneProvider } from "@prismane/core";
+import { extendTheme } from "@prismane/core/themes";
+
+const theme = extendTheme({
+  colors: {
+    primary: {
+      100: "#ffffff",
+    },
+  },
+});
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <PrismaneProvider theme={theme}>
+      <App />
+    </PrismaneProvider>
+  </React.StrictMode>
+);
+```

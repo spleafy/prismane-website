@@ -1,0 +1,68 @@
+# Checkbox
+
+Checkbox displays a field that has a set of options, which can be filtered.
+
+## Import
+
+```js
+import { Checkbox } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Checkbox
+      label="Default Field:"
+      value={value}
+      onChange={(e) => setValue(e.target.checked)}
+    />
+  );
+}
+```
+
+### Checkbox Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Checkbox
+        size="xs"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="sm"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="base"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="md"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="lg"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+    </Flex>
+  );
+}
+```

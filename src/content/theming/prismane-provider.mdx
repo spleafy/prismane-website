@@ -1,0 +1,50 @@
+# The PrismaneProvider Component
+
+The `<PrismaneProvider/>` component exported at `@prismane/core/themes` is a theme provider used for Prismane's theming functionality.
+
+## Basic Usage:
+
+Just wrapping your app in `<PrismaneProvider/>` component will use the `base` theme.
+
+```tsx
+import * as React from "react";
+import Application from "../somewhere";
+import { PrismaneProvider } from "@prismane/core";
+
+const App = () => {
+  return (
+    <PrismaneProvider>
+      <Application />
+    </PrismaneProvider>
+  );
+};
+
+export default App;
+```
+
+## Full Theming Usage:
+
+```tsx
+import * as React from "react";
+import Application from "../somewhere";
+import { PRISMANE_COLORS, PrismaneProvider } from "@prismane/core";
+
+const App = () => {
+  const theme = {
+    mode: "dark",
+    colors: {
+      primary: { ...PRISMANE_COLORS.ruby },
+      base: { ...PRISMANE_COLORS.slate },
+    },
+    spacing: "5px",
+  };
+
+  return (
+    <PrismaneProvider theme={theme}>
+      <Application />
+    </PrismaneProvider>
+  );
+};
+
+export default App;
+```

@@ -1,0 +1,29 @@
+# Global Style Overwriting
+
+Prismane's global styles can be easily overwritten. Each layer of a component has a dedicated `className` selector, by which you can change the style of a given layer globally by overwriting it in a stylesheet. The selector for each individual component will be listed on their respective page.
+
+For example, when we want to overwrite the `<Button/>` component's styles, we could do the following:
+
+```css
+// index.css
+
+.PrismaneButton-root {
+  padding-left: 20px !important;
+  padding-right: 40px !important;
+  background-color: #ffffff !important;
+}
+
+.PrismaneButton-root:hover {
+  opacity: 0.5 !important;
+}
+```
+
+This will now globally overwrite the styles for the `<Button/>` component.
+
+<Alert variant="warning">
+  <Alert.Title>IMPORTANT</Alert.Title>
+  <Alert.Description>
+    You have to use the `!important` keyword when you are overwriting the
+    styles!
+  </Alert.Description>
+</Alert>

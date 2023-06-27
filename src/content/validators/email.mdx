@@ -1,0 +1,50 @@
+# email Validator
+
+The `email` validator checks if a value is an email, if it is not true, it returns an error message, if not it returns `null`.
+
+## Basic Usage
+
+```tsx
+import { email } from "@prismane/core/validators";
+
+console.log(email("martinpetrov404@gmail.com")); // Will return null
+console.log(email("Ivan is cool"));
+// Will return `This is not a valid email!`
+```
+
+## useForm Hook Usage
+
+```tsx
+import { Form, TextField, Button } from "@prismane/core";
+import { useForm } from "@prismane/core/hooks";
+
+const Complex = () => {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      email: {
+        value: "",
+        validators: {
+          email: (v: string) => email(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter email: "
+        label="Username:"
+        {...register("email")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
+```

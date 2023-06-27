@@ -1,0 +1,41 @@
+<Versatile>Flex</Versatile>
+
+Flex displays a container that has a display of flex.
+
+## Import
+
+```js
+import { Flex } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Flex gap={fr(2)}>
+  <Box bg="primary">Hello</Box>
+  <Box bg="teal">World</Box>
+</Flex>
+```
+
+```jsx
+<Flex direction="column" gap={fr(2)}>
+  <Box bg="primary">Hello</Box>
+  <Box bg="teal">World</Box>
+</Flex>
+```
+
+```jsx
+<Flex justify="between" grow>
+  <Box bg="primary">Hello</Box>
+  <Box bg="teal">World</Box>
+</Flex>
+```
+
+### Versatile Component
+
+```jsx
+<Flex as="strong" gap={fr(5)}>
+  <Box>Hello</Box>
+  <Box>World</Box>
+</Flex>
+```

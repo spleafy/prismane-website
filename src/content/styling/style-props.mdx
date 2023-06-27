@@ -1,0 +1,216 @@
+# Style Props
+
+All of Prismane's components have a set of props that help with faster development speeds and ease of use.
+
+```tsx
+import { Box, fr } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <Box
+      w={fr(5)}
+      h={40}
+      bg={[["primary", 600], { hover: "base", active: ["primary", 700] }]}
+      op={(theme) => (theme.mode === "dark" ? 0.2 : 0.5)}
+      cs="pointer"
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Style Prop Structure
+
+Our style props are able to be provided pseudo class support or just a single value. All of our props have access to the current theme object, by providing them as a function:
+
+**Single Value:**
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return <Box w={20}>Hello, world</Box>;
+};
+
+export default Page;
+```
+
+**Pseudo Class:**
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return <Box w={[20, { hover: 40 }]}>Hello, world</Box>;
+};
+
+export default Page;
+```
+
+<Alert variant="warning">
+  <Alert.Title>IMPORTANT</Alert.Title>
+  <Alert.Description>
+    When wanting to provide pseudo classes to the given property, you have to
+    wrap the property value inside an array. The first cell in the array is the
+    base value and the second one is an object. The object's key is the name of
+    the pseudo class.
+  </Alert.Description>
+</Alert>
+
+**With Theme Object:**
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <Box w={(theme) => (theme.mode === "dark" ? 20 : 40)}>Hello, world</Box>
+  );
+};
+
+export default Page;
+```
+
+## Supported Props
+
+This is a list of all of Prismane's supported style props and their custom values, provided they have any:
+
+| Prop   | CSS Property Name                      | Additional Values                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `w`    | width                                  | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `h`    | height                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `m`    | margin                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `my`   | margin-top + margin-bottom             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `mx`   | margin-left + margin-right             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `mt`   | margin-top                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `mr`   | margin-right                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `mb`   | margin-bottom                          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `ml`   | margin-left                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `p`    | padding                                | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `py`   | padding-top + padding-bottom           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `px`   | padding-left + padding-right           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `pt`   | padding-top                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `pr`   | padding-right                          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `pb`   | padding-bottom                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `pl`   | padding-left                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `cl`   | color                                  | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bg`   | background-color                       | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `br`   | border-radius                          | - xs: 2px <br/> - sm: 4px <br/> - base: 6px <br/> - md: 8px <br/> - lg: 12px <br/> - xl: 16px <br/> - 2xl: 24px <br/> - full: 9999px                                                                                                                                                                                                                                                                                                                           |
+| `mih`  | min-height                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `mah`  | max-height                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `miw`  | min-width                              | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `maw`  | max-width                              | - xs: 320px <br/> - sm: 384px <br/> - base: 448px <br/> - md: 512px <br/> - lg: 576px <br/> - xl: 672px <br/> - 2xl: 768px <br/> - 3xl: 896px <br/> - 4xl: 1024px <br/> - 5xl: 1152px <br/> - 6xl: 1280px                                                                                                                                                                                                                                                      |
+| `op`   | opacity                                | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `pos`  | position                               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `t`    | top                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `r`    | right                                  | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `b`    | bottom                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `l`    | left                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `dp`   | display                                | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `z`    | z-index                                | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `of`   | overflow                               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `ff`   | font-family                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `fs`   | font-size                              | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `fw`   | font-weight                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `ls`   | letter-spacing                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `ta`   | text-align                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `lh`   | line-height                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `tt`   | text-transform                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `td`   | text-decoration                        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bd`   | border                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdw`  | border-width                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bds`  | border-style                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdc`  | border-color                           | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdt`  | border-top                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdtw` | border-top-width                       | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdts` | border-top-style                       | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdtc` | border-top-color                       | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdr`  | border-right                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdrw` | border-right-width                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdrs` | border-right-style                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdrc` | border-right-color                     | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdb`  | border-bottom                          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdbw` | border-bottom-width                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdbs` | border-bottom-style                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdbc` | border-bottom-color                    | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdl`  | border-left                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdlw` | border-left-width                      | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdls` | border-left-style                      | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdlc` | border-left-color                      | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdx`  | border-left + border-right             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdxw` | border-left-width + border-right-width | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdxs` | border-left-style + border-right-style | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdxc` | border-left-color + border-right-color | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `bdy`  | border-top + border-bottom             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdyw` | border-top-width + border-bottom-width | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdys` | border-top-style + border-bottom-style | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bdyc` | border-top-color + border-bottom-color | Prismane Colors And Shades                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `ft`   | filter                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bft`  | backdrop-filter                        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `tsh`  | text-shadow                            | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bsh`  | box-shadow                             | - xs: 0 1px 2px 0 rgb(0 0 0 / 0.05) <br/> - sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) <br/> - base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) <br/> - md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) <br/> - lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) <br/> - xl: 0 25px 50px -12px rgb(0 0 0 / 0.25) <br/> - inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05) |
+| `pe`   | pointer-events                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `cs`   | cursor                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `bs`   | box-sizing                             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+## Prismane Colors and Shades
+
+Every style prop that supports the Prismane Colors and Shades has the ability to use Prismane's colors as well as theme colors and their respective shades:
+
+**Single Value:**
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <>
+      <Box bg="diamond">Hello, world</Box> // Prismane Color
+      <Box bg="primary">Hello, world</Box> // Theme Color
+      <Box bg={(theme) => (theme.mode === "dark" ? "primary" : "base")}>
+        Hello, world
+      </Box>
+      <Box bg={["primary", { hover: "base" }]}>Hello, world</Box> // Pseudo Class
+      <Box bg="#ffffff">Hello, world</Box> // Custom Color
+    </>
+  );
+};
+
+export default Page;
+```
+
+<Alert variant="warning">
+  <Alert.Title>IMPORTANT</Alert.Title>
+  <Alert.Description>
+    When providing only the name of the color, without a specific shade, by
+    default we get the `500` shade, unless it is a custom color!
+  </Alert.Description>
+</Alert>
+
+**With Shade:**
+
+When providing a color with a specific shade, we provide an array. The first cell of the array is the color name and the second is the shade.
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <>
+      <Box bg={["diamond", 300]}>Hello, world</Box> // Prismane Color
+      <Box bg={["primary", 300]}>Hello, world</Box> // Theme Color
+      <Box
+        bg={(theme) => (theme.mode === "dark" ? ["red", 300] : ["red", 600])} // With Theme Object
+      >
+        Hello, world
+      </Box>
+      <Box bg={[["primary", 600], { hover: ["base", 700] }]}>Hello, world</Box>
+    </>
+  );
+};
+
+export default Page;
+```
