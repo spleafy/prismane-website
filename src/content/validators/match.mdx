@@ -16,11 +16,8 @@ console.log(match("password", "password1234", "Passwords"));
 
 ## useForm Hook Usage
 
-```tsx
-import { Form, TextField, Button } from "@prismane/core";
-import { useForm } from "@prismane/core/hooks";
-
-const Complex = () => {
+```jsx
+function Demo() {
   const { handleSubmit, handleReset, register, getValue } = useForm({
     fields: {
       password: {
@@ -56,5 +53,5 @@ const Complex = () => {
       <Button type="submit">Submit</Button>
     </Form>
   );
-};
+}
 ```

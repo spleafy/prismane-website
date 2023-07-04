@@ -1,0 +1,49 @@
+# useDebounce
+
+useDebounce hook provides a simple way to manage a stateful counter.
+
+## Import
+
+```js
+import { useDebounce } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  const debounced = useDebounce(value, 1000);
+
+  return (
+    <Flex direction="column" gap={fr(5)}>
+      <Field
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Debounce Field"
+      />
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        {debounced}
+      </Text>
+    </Flex>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name    | Type     | Description                         | Default Value |
+| ------- | -------- | ----------------------------------- | ------------- |
+| `value` | `any`    | The value that should be debounced. | -             |
+| `delay` | `number` | The debounce delay.                 | `500`         |
+
+### Return Value
+
+| Name        | Type  | Description          |
+| ----------- | ----- | -------------------- |
+| `debounced` | `any` | The debounced value. |

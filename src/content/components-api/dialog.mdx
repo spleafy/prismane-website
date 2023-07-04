@@ -1,0 +1,101 @@
+# Dialog
+
+Dialog displays a container that displays a notification.
+
+## Import
+
+```js
+import { Dialog } from "@prismane/core";
+```
+
+`Dialog` component has the following inner components:
+
+- `Dialog.Header` - The header container for the dialog.
+- `Dialog.Footer` - The footer container for the dialog.
+
+## Usage
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog open={open} onClose={() => setOpen(false)} closable>
+        <Text>This is a simple dialog</Text>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        Toggle Dialog
+      </Button>
+    </>
+  );
+}
+```
+
+### Complex Dialog
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog w={fr(64)} open={open} onClose={() => setOpen(false)} closable>
+        <Dialog.Header>
+          <Text fw="bold">Account warning</Text>
+        </Dialog.Header>
+        <Text fs="sm">Your account has not been completed yet.</Text>
+        <Dialog.Footer>
+          <Button>Complete</Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        Toggle Dialog
+      </Button>
+    </>
+  );
+}
+```
+
+### Custom Animation
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog
+        animation="slide-right"
+        w={fr(64)}
+        open={open}
+        onClose={() => setOpen(false)}
+        closable
+      >
+        <Dialog.Header>
+          <Text fw="bold">Account warning</Text>
+        </Dialog.Header>
+        <Text fs="sm">Your account has not been completed yet.</Text>
+        <Dialog.Footer>
+          <Button>Complete</Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        Toggle Dialog
+      </Button>
+    </>
+  );
+}
+```

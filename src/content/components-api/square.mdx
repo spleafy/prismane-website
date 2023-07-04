@@ -1,0 +1,37 @@
+<Versatile>Square</Versatile>
+
+Square displays a square container.
+
+## Import
+
+```js
+import { Square } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Square size={120} bg="primary" />
+```
+
+### As A Frame
+
+`Square` component can be used to frame different items and automatically center them.
+
+```jsx
+<Square size={64} bg="primary">
+  <Heart size={24} />
+</Square>
+```
+
+### Versatile Component
+
+```jsx
+<Square
+  as="a"
+  href="https://www.google.com"
+  target="_blank"
+  size={120}
+  bg="base"
+/>
+```

@@ -1,0 +1,33 @@
+# Show
+
+Show displays a container that hides under a breakpoint.
+
+## Import
+
+```js
+import { Show } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Show>Shown over base breakpoint!</Show>
+```
+
+### Custom breakpoint
+
+```jsx
+<Show breakpoint="1440px">Shown over 1440px!</Show>
+```
+
+### Show Sizes
+
+```jsx
+<Stack direction="column" gap={fr(2)}>
+  <Show breakpoint="xs">Shown over xs breakpoint!</Show>
+  <Show breakpoint="sm">Shown over sm breakpoint!</Show>
+  <Show breakpoint="base">Shown over base breakpoint!</Show>
+  <Show breakpoint="md">Shown over md breakpoint!</Show>
+  <Show breakpoint="lg">Shown over lg breakpoint!</Show>
+</Stack>
+```

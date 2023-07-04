@@ -1,0 +1,72 @@
+# useKeyboardShortcut
+
+useKeyboardShortcut hook provides a simple way to handle key combinations.
+
+## Import
+
+```js
+import { useKeyboardShortcut } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [registered, setRegistered] = useState(false);
+
+  useKeyboardShortcut(["shift", "k"], () => {
+    setRegistered(true);
+  });
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+    >
+      Registered: {registered.toString()}
+    </Text>
+  );
+}
+```
+
+### Conditional Registering
+
+By providing a third parameter to `useKeyboardShortcut`, you can conditionally register and unregister the event listeners.
+
+```jsx
+function Demo() {
+  const [enabled, setEnabled] = useState(false);
+
+  const [registered, setRegistered] = useState(false);
+
+  useKeyboardShortcut(
+    ["shift", "k"],
+    () => {
+      setRegistered(true);
+    },
+    enabled
+  );
+
+  return (
+    <Stack>
+      <Button onClick={() => setEnabled(true)}>
+        {enabled ? "Enabled" : "Enable Register"}
+      </Button>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Registered: {registered.toString()}
+      </Text>
+    </Stack>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name             | Type       | Description                                                                   | Default Value |
+| ---------------- | ---------- | ----------------------------------------------------------------------------- | ------------- |
+| `keys`           | `string[]` | The key combination that will trigger the callback.                           | -             |
+| `callback`       | `number`   | The callback that will be executed on a successful key combination.           | -             |
+| `shouldRegister` | `boolean`  | A boolean to handle dynamic registering and unregistering the eventListeners. | `true`        |

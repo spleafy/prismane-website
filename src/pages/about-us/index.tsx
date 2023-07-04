@@ -1,6 +1,8 @@
 import Head from "next/head";
 // Containers
 import Hero from "@/containers/about-us/Hero";
+import History from "@/containers/about-us/History";
+import Future from "@/containers/about-us/Future";
 import Values from "@/containers/about-us/Values";
 import Contribute from "@/containers/about-us/Contribute";
 import Start from "@/containers/Start";
@@ -15,6 +17,8 @@ export default function About_Us() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <History />
+      <Future />
       <Values />
       <Contribute />
       <Start />

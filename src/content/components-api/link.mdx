@@ -1,0 +1,61 @@
+<Versatile>Link</Versatile>
+
+Link displays an anchor providing additional styling and features.
+
+## Import
+
+```js
+import { Link } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Link href="#">Click Me</Link>
+```
+
+### Link Underline Styles
+
+```jsx
+<>
+  <Link href="#" underline="none">
+    Click Me
+  </Link>
+  <Link href="#" underline="hover">
+    Click Me
+  </Link>
+  <Link href="#" underline="always">
+    Click Me
+  </Link>
+</>
+```
+
+### Foreign Link
+
+```jsx
+<Link href="https://www.google.com" foreign>
+  Click Me
+</Link>
+```
+
+### Before Function
+
+```jsx
+<Link
+  before={async () => {
+    console.log("Redirecting...");
+  }}
+  href="https://www.google.com"
+  foreign
+>
+  Click Me
+</Link>
+```
+
+### Versatile Component
+
+```jsx
+<Link as="strong" href="https://www.google.com" foreign>
+  Click Me
+</Link>
+```

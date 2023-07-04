@@ -1,0 +1,81 @@
+# Modal
+
+Modal displays a container that displays a notification.
+
+## Import
+
+```js
+import { Modal } from "@prismane/core";
+```
+
+`Modal` component has the following inner components:
+
+- `Modal.Header` - The header container for the modal.
+- `Modal.Footer` - The footer container for the modal.
+
+## Usage
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Modal open={open} onClose={() => setOpen(false)} closable>
+        This is a simple modal
+      </Modal>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        Toggle Modal
+      </Button>
+    </>
+  );
+}
+```
+
+### Complex Modal
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Modal w={fr(144)} open={open} onClose={() => setOpen(false)} closable>
+        <Modal.Header>
+          <Text
+            fw="bold"
+            fs="3xl"
+            cl={(theme) =>
+              theme.mode === "dark" ? ["base", 300] : ["base", 900]
+            }
+          >
+            Account warning
+          </Text>
+        </Modal.Header>
+        <Text
+          fs="sm"
+          cl={(theme) =>
+            theme.mode === "dark" ? ["base", 300] : ["base", 900]
+          }
+        >
+          Your account has not been completed yet.
+        </Text>
+        <Modal.Footer>
+          <Button>Complete</Button>
+        </Modal.Footer>
+      </Modal>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        Toggle Modal
+      </Button>
+    </>
+  );
+}
+```

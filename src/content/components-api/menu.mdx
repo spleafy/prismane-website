@@ -1,0 +1,71 @@
+# Menu
+
+Menu displays a menu container that displays different actions the user can perform.
+
+## Import
+
+```js
+import { Menu } from "@prismane/core";
+```
+
+`Menu` component has the following inner components:
+
+- `Menu.Item` - The item container for the menu.
+- `Menu.Label` - The label container for the menu.
+- `Menu.Icon` - The icon container for the menu item.
+
+## Usage
+
+```jsx
+<Menu w={fr(64)} open>
+  <Menu.Label>Menu</Menu.Label>
+  <Menu.Item>
+    <Menu.Icon>
+      <User />
+    </Menu.Icon>
+    Account
+  </Menu.Item>
+  <Menu.Item>
+    <Menu.Icon>
+      <GearSix />
+    </Menu.Icon>
+    Settings
+  </Menu.Item>
+</Menu>
+```
+
+### Complex Menu
+
+```jsx
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Flex direction="column" gap={fr(2)} w={fr(64)}>
+      <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
+      <Menu w={fr(64)} open={open}>
+        <Menu.Label>Menu</Menu.Label>
+        <Menu.Item>
+          <Menu.Icon>
+            <User />
+          </Menu.Icon>
+          Account
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <GearSix />
+          </Menu.Icon>
+          Settings
+        </Menu.Item>
+        <Divider />
+        <Menu.Item color="red">
+          <Menu.Icon>
+            <SignOut />
+          </Menu.Icon>
+          Sign Out
+        </Menu.Item>
+      </Menu>
+    </Flex>
+  );
+}
+```

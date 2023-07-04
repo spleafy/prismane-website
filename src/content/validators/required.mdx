@@ -14,11 +14,8 @@ console.log(required(""));
 
 ## useForm Hook Usage
 
-```tsx
-import { Form, TextField, Button } from "@prismane/core";
-import { useForm } from "@prismane/core/hooks";
-
-const Complex = () => {
+```jsx
+function Demo() {
   const { handleSubmit, handleReset, register } = useForm({
     fields: {
       username: {
@@ -46,5 +43,5 @@ const Complex = () => {
       <Button type="submit">Submit</Button>
     </Form>
   );
-};
+}
 ```

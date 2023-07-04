@@ -26,21 +26,23 @@ const Values = () => {
       <span className="section-heading">
         Our core <span className="text-gradient">values</span>
       </span>
-      <div className="flex items-center gap-10 mt-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 sm:mt-16">
         {values.map((value, index) => (
           <div
-            className="flex flex-col gap-8 py-10 px-12 w-96 bg-base-700/10 rounded-lg border h-96"
+            className="flex flex-col gap-8 p-6 sm:p-8 w-full dark:bg-base-700/10 rounded-lg border"
             key={index}
           >
             <div className="flex items-center gap-4">
               <div className="flex justify-center items-center text-white text-2xl w-12 h-12 aspect-square gradient rounded-md">
                 {value.icon}
               </div>
-              <span className="text-xl text-white font-semibold">
+              <span className="text-xl dark:text-white text-base-900 font-semibold">
                 {value.heading}
               </span>
             </div>
-            <span className="text-base-200">{value.text}</span>
+            <span className="dark:text-base-300 text-base-700">
+              {value.text}
+            </span>
           </div>
         ))}
       </div>

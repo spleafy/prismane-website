@@ -1,0 +1,35 @@
+<Versatile>Box</Versatile>
+
+Box displays a container, by default a div.
+
+## Import
+
+```js
+import { Box } from "@prismane/core";
+```
+
+## Usage
+
+The `Box` is the root component from which every other component comes from. It has numerous use cases.
+
+```jsx
+<Box
+  w={144}
+  h={40}
+  px={10}
+  py={8}
+  br={5}
+  cs="pointer"
+  bg={["primary", { hover: "diamond" }]}
+>
+  Hello, World!
+</Box>
+```
+
+### Versatile Component
+
+```jsx
+<Box as="a" href="https://www.google.com" target="_blank">
+  Click Me!
+</Box>
+```

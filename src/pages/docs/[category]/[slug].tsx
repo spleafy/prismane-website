@@ -84,9 +84,11 @@ import {
   Transition,
   fr,
   usePrismaneTheme,
+  useToast,
 } from "@prismane/core";
 import {
   useAnimation,
+  useColor,
   useCounter,
   useDebounce,
   useDimensions,
@@ -106,6 +108,15 @@ import {
   useStyling,
   useToggle,
 } from "@prismane/core/hooks";
+import {
+  min,
+  max,
+  required,
+  match,
+  url,
+  email,
+  username,
+} from "@prismane/core/validators";
 // Content
 import content from "@/content";
 // Containers
@@ -175,7 +186,7 @@ export default function Page(params: any) {
                 const code = (children?.props.children?.trim() as string) || "";
 
                 return (
-                  <div className="flex flex-col gap-5 relative">
+                  <div className="flex flex-col gap-5">
                     <LiveProvider
                       disabled
                       code={code}
@@ -248,6 +259,7 @@ export default function Page(params: any) {
                         Transition,
                         fr,
                         useAnimation,
+                        useColor,
                         useCounter,
                         useDebounce,
                         useDimensions,
@@ -265,8 +277,16 @@ export default function Page(params: any) {
                         useOutsideClick,
                         usePrevious,
                         useStyling,
-                        usePrismaneTheme,
                         useToggle,
+                        usePrismaneTheme,
+                        useToast,
+                        min,
+                        max,
+                        required,
+                        match,
+                        url,
+                        email,
+                        username,
                         Heart,
                         Fire,
                         User,
@@ -281,8 +301,6 @@ export default function Page(params: any) {
                       theme={{
                         plain: {
                           color: "#f472b6",
-                          backgroundColor: "#0f0f0f",
-                          borderRadius: "5px",
                         },
                         styles: [
                           {
@@ -362,24 +380,26 @@ export default function Page(params: any) {
                       }}
                     >
                       {language === "jsx" && (
-                        <div className="flex p-5 border border-[#0F0F0F] rounded-md text-white">
+                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto">
                           <LivePreview className="flex w-full grow gap-5" />
                         </div>
                       )}
-                      <div className="relative">
+                      <div className="relative w-full">
                         <LiveEditor
                           style={{
                             fontFamily: "monospace",
                             fontSize: "1rem",
                           }}
+                          className="overflow-x-auto w-full bg-[#0f0f0f] rounded-md"
                         />
                         <ActionButton
-                          variant="text"
+                          variant="primary"
                           color="pink"
                           icon={<Copy />}
                           pos="absolute"
-                          t={4}
-                          r={4}
+                          t={fr(1.5)}
+                          r={fr(1.5)}
+                          size="sm"
                           onClick={() => {
                             navigator.clipboard.writeText(
                               children?.props.children
@@ -405,7 +425,7 @@ export default function Page(params: any) {
               },
               h1: ({ children, ...props }) => (
                 <h1
-                  className="text-base-900 dark:text-white text-4xl font-bold"
+                  className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold"
                   {...props}
                 >
                   {children}
@@ -413,7 +433,7 @@ export default function Page(params: any) {
               ),
               h2: ({ children, ...props }) => (
                 <h2
-                  className="text-base-800 dark:text-base-100 text-3xl font-bold"
+                  className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold"
                   {...props}
                 >
                   {children}
@@ -421,7 +441,7 @@ export default function Page(params: any) {
               ),
               h3: ({ children, ...props }) => (
                 <h3
-                  className="text-base-800 dark:text-base-100 text-xl font-bold"
+                  className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold"
                   {...props}
                 >
                   {children}
@@ -444,7 +464,7 @@ export default function Page(params: any) {
                 </code>
               ),
               li: ({ children, ...props }) => (
-                <li className="text-white" {...props}>
+                <li className="dark:text-white text-base-800" {...props}>
                   - {children}
                 </li>
               ),
@@ -457,17 +477,23 @@ export default function Page(params: any) {
                 </hr>
               ),
               table: ({ children, ...props }) => (
-                <table className="text-white" {...props}>
+                <table className="dark:text-white text-base-800" {...props}>
                   {children}
                 </table>
               ),
               thead: ({ children, ...props }) => (
-                <thead className="bg-base-700/10" {...props}>
+                <thead
+                  className="dark:!bg-base-700/10 !bg-base-500/20"
+                  {...props}
+                >
                   {children}
                 </thead>
               ),
               tr: ({ children, ...props }) => (
-                <tr className="w-full border-b border-base-700" {...props}>
+                <tr
+                  className="w-full border-b dark:border-base-700 border-base-300"
+                  {...props}
+                >
                   {children}
                 </tr>
               ),
@@ -483,7 +509,7 @@ export default function Page(params: any) {
               ),
               Versatile: ({ children, ...props }) => (
                 <div className="flex items-center gap-5">
-                  <h1 className="text-base-900 dark:text-white text-4xl font-bold">
+                  <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
                     {children}
                   </h1>
                   <Chip>Versatile Component</Chip>

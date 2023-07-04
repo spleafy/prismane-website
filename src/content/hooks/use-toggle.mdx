@@ -1,0 +1,43 @@
+# useToggle
+
+useToggle hook provides a simple way to handle toggling between a set of values.
+
+## Import
+
+```js
+import { useToggle } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [status, toggle] = useToggle(["Active", "Inactive", "Sleep"]);
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Status: {status}
+      </Text>
+      <Button onClick={() => toggle()}>Toggle Status</Button>
+    </Flex>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name     | Type    | Description                                                  | Default Value |
+| -------- | ------- | ------------------------------------------------------------ | ------------- |
+| `values` | `any[]` | The array of properties, which the hook will toggle between. | -             |
+
+### Return Value
+
+| Name           | Type         | Description                                     |
+| -------------- | ------------ | ----------------------------------------------- |
+| `currentValue` | `any`        | The current active value.                       |
+| `toggle`       | `() => void` | The toggle function to toggle the next element. |

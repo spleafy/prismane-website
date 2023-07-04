@@ -1,0 +1,41 @@
+# useIdle
+
+useIdle hook provides a simple way to handle when a client is active and idle.
+
+## Import
+
+```js
+import { useIdle } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const isIdle = useIdle();
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+    >
+      Idle: {isIdle.toString()}
+    </Text>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name      | Type       | Description                                                                    | Default Value                           |
+| --------- | ---------- | ------------------------------------------------------------------------------ | --------------------------------------- |
+| `timeout` | `number`   | The timeout from the last user event, after which, the state will become idle. | `3000`                                  |
+| `events`  | `string[]` | The set of events which will count as a user action and remove the idle state. | `mousemove`, `keyup`, `click`, `scroll` |
+| `initial` | `boolean`  | The initial idle state of the user.                                            | `false`                                 |
+
+### Return Value
+
+| Name     | Type      | Description            |
+| -------- | --------- | ---------------------- |
+| `isIdle` | `boolean` | The state of the user. |

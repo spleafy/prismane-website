@@ -48,8 +48,8 @@ const Features = () => {
     <Section
       background={
         <>
-          <div className="absolute left-1/2 -top-20 w-[1200px] h-[1200px] bg-radial-pink z-0 opacity-5"></div>
-          <div className="absolute right-1/3 -top-20 w-[1600px] h-[1600px] bg-radial-violet z-0 opacity-5"></div>
+          <div className="absolute left-1/2 -top-20 w-[1200px] h-[1200px] bg-radial-pink z-0 dark:opacity-5 opacity-30"></div>
+          <div className="absolute right-1/3 -top-20 w-[1600px] h-[1600px] bg-radial-rose z-0 dark:opacity-5 opacity-30"></div>
         </>
       }
     >
@@ -57,19 +57,19 @@ const Features = () => {
         Unleash the <span className="section-heading text-gradient">power</span>
       </span>
       <span className="section-subheading">Explore what we offer</span>
-      <div className="flex flex-wrap justify-center items-center gap-10 mt-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
         {features.map((feature, index: number) => (
           <Card
-            className="!bg-base-700/10 border !p-6 items-center !gap-0 relative !overflow-visible !h-48 group mt-4"
+            className="dark:!bg-base-700/10 !bg-base-500/10 border !p-6 items-center !gap-0 relative !overflow-visible group mt-4"
             key={index}
           >
             <div className="flex justify-center items-center text-white w-12 h-12 gradient rounded-md absolute top-0 -translate-y-1/2 group-hover:-translate-y-2/3 transition-all">
               {feature.icon}
             </div>
-            <span className="text-white text-2xl font-bold mt-6">
+            <span className="dark:text-white text-base-900 text-2xl font-bold mt-6">
               {feature.heading}
             </span>
-            <p className="mt-4 max-w-[300px] text-base-300 text-center">
+            <p className="mt-4 max-w-[300px] dark:text-base-300 text-base-700 text-center">
               {feature.text}
             </p>
           </Card>

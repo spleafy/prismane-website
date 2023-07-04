@@ -1,0 +1,55 @@
+# useLocalization
+
+useLocalization hook provides a simple way to handle localization and dynamic translation.
+
+## Import
+
+```js
+import { useLocalization } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [registered, setRegistered] = useState(false);
+
+  const { locale, text, changeLocale } = useLocalization("en", {
+    en: "Hello from Bulgaria!",
+    de: "Hallo aus Bulgarien!",
+  });
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Locale: {locale}
+      </Text>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        {text}
+      </Text>
+      <Button onClick={() => changeLocale("de")}>Change Locale</Button>
+    </Flex>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name            | Type     | Description                                               | Default Value |
+| --------------- | -------- | --------------------------------------------------------- | ------------- |
+| `defaultLocale` | `string` | The default locale.                                       | -             |
+| `translations`  | `any`    | The translations object with all of the translated texts. | -             |
+
+### Return Value
+
+| Name           | Type         | Description                                          |
+| -------------- | ------------ | ---------------------------------------------------- |
+| `locale`       | `string`     | The current locale.                                  |
+| `text`         | `any`        | The translated text or texts.                        |
+| `changeLocale` | `() => void` | Function that changes the locale to a different one. |

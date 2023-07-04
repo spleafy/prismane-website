@@ -1,0 +1,46 @@
+# Stack
+
+Stack displays a container that groups elements together and puts space around them.
+
+## Import
+
+```js
+import { Stack } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<Stack>
+  <Box w={fr(24)} h={fr(5)} bg="ruby" />
+  <Box w={fr(24)} h={fr(5)} bg="lime" />
+  <Box w={fr(24)} h={fr(5)} bg="teal" />
+</Stack>
+```
+
+### Stack Directions
+
+```jsx
+<Flex direction="column" gap={fr(5)}>
+  <Stack>
+    <Box w={fr(24)} h={fr(5)} bg="ruby" />
+    <Box w={fr(24)} h={fr(5)} bg="lime" />
+    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  </Stack>
+  <Stack direction="row-reverse">
+    <Box w={fr(24)} h={fr(5)} bg="ruby" />
+    <Box w={fr(24)} h={fr(5)} bg="lime" />
+    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  </Stack>
+  <Stack direction="column">
+    <Box w={fr(24)} h={fr(5)} bg="ruby" />
+    <Box w={fr(24)} h={fr(5)} bg="lime" />
+    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  </Stack>
+  <Stack direction="column-reverse">
+    <Box w={fr(24)} h={fr(5)} bg="ruby" />
+    <Box w={fr(24)} h={fr(5)} bg="lime" />
+    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  </Stack>
+</Flex>
+```

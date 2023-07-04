@@ -1,0 +1,73 @@
+# List
+
+List displays a container that groups elements in a list.
+
+## Import
+
+```js
+import { List } from "@prismane/core";
+```
+
+`List` component has the following inner components:
+
+- `List.Unordered` - The unordered list component.
+- `List.Ordered` - The ordered list component.
+- `List.Item` - The list item component.
+- `List.Icon` - The list icon component.
+
+## Usage
+
+By default, `List` component renders a list with no styling.
+
+```jsx
+<List>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+### Unordered List
+
+```jsx
+<List.Unordered>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List.Unordered>
+```
+
+### Ordered List
+
+```jsx
+<List.Ordered>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List.Ordered>
+```
+
+### List With Icon
+
+```jsx
+<List>
+  <List.Item>
+    <List.Icon>
+      <Fire />
+    </List.Icon>
+    First
+  </List.Item>
+  <List.Item>
+    <List.Icon>
+      <Fire />
+    </List.Icon>
+    Second
+  </List.Item>
+  <List.Item>
+    <List.Icon>
+      <Fire />
+    </List.Icon>
+    Third
+  </List.Item>
+</List>
+```

@@ -4,11 +4,11 @@
 
 @layer base {
   * {
-    @apply m-0 p-0 border-base-700;
+    @apply m-0 p-0 dark:border-base-700 border-base-700/20;
   }
 
   body {
-    @apply !font-["Inter"] bg-[#080808] overflow-x-hidden;
+    @apply !font-["Inter"] dark:bg-[#080808] bg-white overflow-x-hidden;
   }
 
   h1 {
@@ -43,43 +43,38 @@
   h6 {
     @apply font-bold;
   }
-
-  p,
-  span {
-    @apply text-base;
-  }
 }
 
 @layer components {
   .gradient {
-    @apply bg-gradient-to-tr from-secondary-500 to-primary-500;
+    @apply bg-gradient-to-tr from-secondary-500  to-primary-500;
   }
 
   .section-hero {
-    @apply !py-40 !justify-start !items-center h-[85vh] flex flex-col !gap-10;
+    @apply !py-12 sm:!py-24 md:!py-32 lg:!py-40 !justify-start !items-center sm:h-[85vh] flex flex-col !gap-10;
   }
 
   .hero-heading {
-    @apply text-white text-center text-8xl font-black max-w-[60%];
+    @apply dark:text-white text-base-900 text-center text-5xl sm:text-6xl lg:text-8xl font-black sm:max-w-[80%];
   }
 
   .hero-subheading {
-    @apply text-white text-center text-2xl font-medium max-w-[50%];
+    @apply dark:text-white text-base-700 text-center text-lg sm:text-xl lg:text-2xl font-medium sm:max-w-[50%];
   }
 
   .section-heading {
-    @apply text-5xl font-extrabold text-white;
+    @apply text-center text-4xl lg:text-5xl font-extrabold dark:text-white text-base-900;
   }
 
   .section-subheading {
-    @apply text-xl leading-6 text-base-400;
+    @apply text-center text-xl leading-6 dark:text-base-400 text-base-700;
   }
 
   .text-gradient {
-    @apply gradient bg-clip-text text-transparent;
+    @apply gradient !bg-clip-text !text-transparent;
   }
 
   .button-gradient {
-    @apply z-10 overflow-hidden relative before:content-[""] before:absolute before:w-[160%] before:h-[160%] before:aspect-square before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:gradient before:-translate-x-1/3 hover:before:-translate-x-2/3 before:transition-all before:-z-[1];
+    @apply z-10 !h-16 !rounded-lg !bg-transparent overflow-hidden relative before:content-[""] before:absolute before:w-[160%] before:h-[160%] before:aspect-square before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:gradient before:-translate-x-1/3 hover:before:-translate-x-2/3 before:transition-all before:-z-[1];
   }
 }

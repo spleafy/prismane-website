@@ -28,7 +28,7 @@ export const Docs: FC<T> = ({ children }) => {
 
   return (
     <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
-      <nav className="flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-5 left-0 max-h-[84vh] overflow-y-auto">
+      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-24 left-0 max-h-[84vh] overflow-y-auto">
         {content.map((nav: any, index: number) => (
           <Link
             key={index}
@@ -42,8 +42,8 @@ export const Docs: FC<T> = ({ children }) => {
               <span
                 className={`font-medium text-sm transition-colors ${
                   routes[0] === nav.slug
-                    ? "text-primary-500"
-                    : "text-white group-hover:text-base-300"
+                    ? "dark:text-primary-500 text-primary-700"
+                    : "dark:text-white text-base-900 dark:group-hover:text-base-300 group-hover:text-base-700"
                 }`}
               >
                 {nav.title}
@@ -60,8 +60,8 @@ export const Docs: FC<T> = ({ children }) => {
               }/${item.slug}`}
               className={`text-sm px-3 py-1 rounded-md font-medium ${
                 path.includes("/" + item.slug)
-                  ? "text-primary-500 bg-primary-700/20"
-                  : "text-white"
+                  ? "dark:text-primary-500 text-primary-700 bg-primary-700/20"
+                  : "dark:text-white text-base-900"
               }`}
             >
               {item.title}
@@ -69,21 +69,23 @@ export const Docs: FC<T> = ({ children }) => {
           ))}
         </div>
       </nav>
-      <div className="flex flex-col grow gap-5 pb-10">
+      <div className="flex flex-col grow gap-5 p-5 w-full">
         {children}
         <div className="flex gap-5 mt-5">
           <div className="flex grow">
             {currentIndex > 0 && (
               <Link
-                className="flex grow justify-between items-center p-4 pr-6 rounded-md border border-primary-500 text-primary-500 hover:bg-primary-500/5 transition-colors"
+                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
                 href={`/docs/${routes[0]}/${
                   current.items[currentIndex - 1].slug
                 }`}
               >
                 <ArrowLeft size={24} weight="bold" />
                 <div className="flex flex-col gap-2">
-                  <span className="font-medium text-2xl self-end">Go Back</span>
-                  <span className="text-white self-end">
+                  <span className="font-medium text-lg sm:text-2xl self-end">
+                    Go Back
+                  </span>
+                  <span className="dark:text-white text-base-900 self-end text-sm sm:text-base">
                     {current.items[currentIndex - 1].title}
                   </span>
                 </div>
@@ -93,14 +95,16 @@ export const Docs: FC<T> = ({ children }) => {
           <div className="flex grow">
             {currentIndex < current.items.length - 1 && (
               <Link
-                className="flex grow justify-between items-center p-4 pr-6 rounded-md border border-primary-500 text-primary-500 hover:bg-primary-500/5 transition-colors"
+                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
                 href={`/docs/${routes[0]}/${
                   current.items[currentIndex + 1].slug
                 }`}
               >
                 <div className="flex flex-col gap-2">
-                  <span className="font-medium text-2xl">Up Next</span>
-                  <span className="text-white">
+                  <span className="font-medium text-lg sm:text-2xl ">
+                    Up Next
+                  </span>
+                  <span className="dark:text-white text-base-900 text-sm sm:text-base">
                     {current.items[currentIndex + 1].title}
                   </span>
                 </div>

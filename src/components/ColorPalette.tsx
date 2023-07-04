@@ -23,8 +23,10 @@ const ColorPalette = () => {
                   className="flex h-16 grow rounded-md mb-2"
                   style={{ backgroundColor: colors[name][shade] }}
                 ></div>
-                <span className="font-bold text-white">{shade}</span>
-                <span className="text-sm text-base-400">
+                <span className="font-bold dark:text-white text-base-900">
+                  {shade}
+                </span>
+                <span className="text-sm dark:text-base-300 text-base-700">
                   {colors[name][shade]}
                 </span>
               </div>

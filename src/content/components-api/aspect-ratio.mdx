@@ -1,0 +1,44 @@
+# AspectRatio
+
+AspectRatio renders a responsive container.
+
+## Import
+
+```js
+import { AspectRatio } from "@prismane/core";
+```
+
+## Usage
+
+By default, `AspectRatio` uses the `ratio` of `1/1`.
+
+```jsx
+<AspectRatio ratio="16/9" w={560} bg="primary" />
+```
+
+### Embed Video
+
+```jsx
+<AspectRatio ratio="1/1">
+  <iframe
+    width="560"
+    height="100%"
+    src="https://www.youtube.com/embed/w0AOGeqOnFY"
+    title="YouTube video player"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  />
+</AspectRatio>
+```
+
+### Embed Image
+
+```jsx
+<AspectRatio w={560} ratio="1/1">
+  <img
+    src="https://memes.co.in/memes/update/uploads/2021/04/65efc04-1536x1536.jpg"
+    alt="meme"
+    objectFit="cover"
+  />
+</AspectRatio>
+```
