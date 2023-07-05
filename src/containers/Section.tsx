@@ -19,7 +19,10 @@ const Section: FC<T> = ({ children, background, viewOptions, className }) => {
   const isInView = useInView(ref, { once: true, amount: 0.3, ...viewOptions });
 
   return (
-    <section className="flex items-center justify-center relative" ref={ref}>
+    <section
+      className="flex items-center justify-center relative overflow-x-clip"
+      ref={ref}
+    >
       <div
         className={`flex items-center justify-center max-w-[1200px] w-full py-10 sm:py-20 px-6 sm:px-12 z-10 flex-col gap-6 ${
           className ? className : ""

@@ -7,12 +7,8 @@
     @apply m-0 p-0 dark:border-base-700 border-base-700/20;
   }
 
-  #__next {
-    @apply overflow-x-hidden;
-  }
-
   body {
-    @apply !font-["Inter"] dark:bg-[#080808] bg-white overflow-x-hidden;
+    @apply !font-["Inter"] dark:bg-[#080808] bg-white;
   }
 
   h1 {
