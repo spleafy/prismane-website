@@ -82,7 +82,7 @@ const Header = () => {
           <div className="w-full md:w-fit flex items-center justify-center gap-4 md:gap-8">
             <Link
               href="/docs"
-              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
+              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
               <>
@@ -94,11 +94,11 @@ const Header = () => {
             </Link>
             <Link
               href="/about-us"
-              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
+              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
               <>
-                {router.pathname === "/about-us" && (
+                {router.pathname.includes("/about-us") && (
                   <div className="w-2 h-2 aspect-square rounded-full bg-primary-500"></div>
                 )}
                 About Us
@@ -106,10 +106,10 @@ const Header = () => {
             </Link>
             <Link
               href="/sponsor"
-              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
+              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
-              {router.pathname === "/sponsor" && (
+              {router.pathname.includes("/sponsor") && (
                 <div className="w-2 h-2 aspect-square rounded-full bg-primary-500"></div>
               )}
               Sponsor
