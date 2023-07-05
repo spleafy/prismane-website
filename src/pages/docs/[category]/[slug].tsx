@@ -457,7 +457,7 @@ export default function Page(params: any) {
               ),
               code: ({ children, ...props }) => (
                 <code
-                  className="text-primary-500 bg-primary-500/20 dark:bg-primary-700/20 px-2 py-0.5 rounded-md"
+                  className="text-primary-500 bg-primary-500/20 dark:bg-primary-700/20 px-1 sm:px-2 py-0.5 rounded-md text-xs sm:text-base"
                   {...props}
                 >
                   {children}
@@ -477,13 +477,16 @@ export default function Page(params: any) {
                 </hr>
               ),
               table: ({ children, ...props }) => (
-                <table className="dark:text-white text-base-800" {...props}>
+                <table
+                  className="dark:text-white text-base-800 text-sm sm:text-base overflow-x-auto w-full"
+                  {...props}
+                >
                   {children}
                 </table>
               ),
               thead: ({ children, ...props }) => (
                 <thead
-                  className="dark:!bg-base-700/10 !bg-base-500/20"
+                  className="dark:!bg-base-700/10 !bg-base-500/20 text-sm sm:text-base"
                   {...props}
                 >
                   {children}
@@ -498,12 +501,15 @@ export default function Page(params: any) {
                 </tr>
               ),
               td: ({ children, ...props }) => (
-                <td className="px-8 py-2.5 " {...props}>
+                <td className="px-2 sm:px-6 md:px-8 py-2.5" {...props}>
                   {children}
                 </td>
               ),
               th: ({ children, ...props }) => (
-                <th className="px-8 py-2.5 text-left" {...props}>
+                <th
+                  className="px-2 sm:px-6 md:px-8 py-2.5 text-left"
+                  {...props}
+                >
                   {children}
                 </th>
               ),
