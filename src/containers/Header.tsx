@@ -11,7 +11,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 // Components
-import { ActionButton, Chip, Divider, usePrismaneTheme } from "@prismane/core";
+import { ActionButton, Divider, usePrismaneTheme } from "@prismane/core";
 // Content
 import content from "@/content";
 
@@ -67,7 +67,7 @@ const Header = () => {
         >
           <>
             <Image src="/logo.svg" alt="Logo" width={48} height={48} />
-            <span className="text-3xl whitespace-nowrap dark:text-white text-base-900 font-bold">
+            <span className="hidden sm:inline-block text-3xl whitespace-nowrap dark:text-white text-base-900 font-bold">
               Prismane
             </span>
           </>
@@ -82,7 +82,7 @@ const Header = () => {
           <div className="w-full md:w-fit flex items-center justify-center gap-4 md:gap-8">
             <Link
               href="/docs"
-              className="whitespace-nowrap dark:text-white text-base-900 dark:hover:text-base-300 hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-full w-full md:w-fit py-1.5 sm:py-2 md:p-0 dark:hover:bg-base-700/20 hover:bg-base-500/20 md:hover:!bg-transparent"
+              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
               <>
@@ -94,7 +94,7 @@ const Header = () => {
             </Link>
             <Link
               href="/about-us"
-              className="whitespace-nowrap dark:text-white text-base-900 dark:hover:text-base-300 hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-full w-full md:w-fit py-1.5 sm:py-2 md:p-0 dark:hover:bg-base-700/20 hover:bg-base-500/20 md:hover:!bg-transparent"
+              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
               <>
@@ -106,7 +106,7 @@ const Header = () => {
             </Link>
             <Link
               href="/sponsor"
-              className="whitespace-nowrap dark:text-white text-base-900 dark:hover:text-base-300 hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-full w-full md:w-fit py-1.5 sm:py-2 md:p-0 dark:hover:bg-base-700/20 hover:bg-base-500/20 md:hover:!bg-transparent"
+              className="whitespace-nowrap dark:text-base-300 text-base-900 dark:hover:text-white hover:text-base-700 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
               onClick={() => setExpanded(false)}
             >
               {router.pathname === "/sponsor" && (
@@ -115,7 +115,7 @@ const Header = () => {
               Sponsor
             </Link>
           </div>
-          <Divider className="!h-px !w-full md:!h-5 md:!w-px" grow={false} />
+          <Divider className="!h-px !w-full md:!hidden" grow={false} />
           <div className="flex md:hidden flex-col w-full gap-5">
             <div className="grid grid-cols-2 gap-5">
               {content.length > 0 &&
@@ -143,7 +143,7 @@ const Header = () => {
                   </Link>
                 ))}
             </div>
-            <div className="mt-5 flex flex-col gap-2 h-[32vh] overflow-y-auto">
+            <div className="mt-5 flex flex-col gap-2 h-[24vh] overflow-y-auto">
               {content.length > 0 &&
                 current &&
                 current.items.map((item: any, index: number) => (
@@ -172,40 +172,40 @@ const Header = () => {
                 ))}
             </div>
           </div>
-          <div className="flex items-center gap-5 mt-auto">
-            <ActionButton
-              color="pink"
-              variant="secondary"
-              icon={<GithubLogo />}
-            />
-            <ActionButton
-              color="pink"
-              variant="secondary"
-              icon={<TwitterLogo />}
-            />
-            <ActionButton
-              color="pink"
-              variant="secondary"
-              icon={theme.mode === "dark" ? <Sun /> : <Moon />}
-              onClick={() => {
-                document.documentElement.classList.remove(
-                  theme.mode === "dark" ? "dark" : "light"
-                );
-                document.documentElement.classList.add(
-                  theme.mode === "dark" ? "light" : "dark"
-                );
-                toggleThemeMode();
-              }}
-            />
-          </div>
         </div>
-        <ActionButton
-          color="pink"
-          variant="secondary"
-          icon={expanded ? <X /> : <Equals />}
-          onClick={() => setExpanded(!expanded)}
-          className="!flex md:!hidden z-10"
-        />
+        <div className="flex items-center gap-5 z-10">
+          <ActionButton
+            color="pink"
+            variant="secondary"
+            icon={<GithubLogo />}
+          />
+          <ActionButton
+            color="pink"
+            variant="secondary"
+            icon={<TwitterLogo />}
+          />
+          <ActionButton
+            color="pink"
+            variant="secondary"
+            icon={theme.mode === "dark" ? <Sun /> : <Moon />}
+            onClick={() => {
+              document.documentElement.classList.remove(
+                theme.mode === "dark" ? "dark" : "light"
+              );
+              document.documentElement.classList.add(
+                theme.mode === "dark" ? "light" : "dark"
+              );
+              toggleThemeMode();
+            }}
+          />
+          <ActionButton
+            color="pink"
+            variant="secondary"
+            icon={expanded ? <X /> : <Equals />}
+            onClick={() => setExpanded(!expanded)}
+            className="!flex md:!hidden"
+          />
+        </div>
       </div>
     </header>
   );
