@@ -12,6 +12,8 @@ import "@fontsource/inter/900.css";
 import "@fontsource/inter/variable.css";
 import "@prismane/core/style";
 import type { AppProps } from "next/app";
+// Analytics
+import GoogleAnalytics from "./GoogleAnalytics";
 // Components
 import Layout from "@/containers/Layout";
 // Theme
@@ -27,10 +29,13 @@ export default function App({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <PrismaneProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </PrismaneProvider>
+    <>
+      <GoogleAnalytics />
+      <PrismaneProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </PrismaneProvider>
+    </>
   );
 }
