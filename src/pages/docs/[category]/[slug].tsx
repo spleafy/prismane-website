@@ -186,8 +186,6 @@ export default function Page(params: any) {
             {...params.source}
             components={{
               pre: ({ children, ...props }: any): any => {
-                const [copy, setCopy] = React.useState(false);
-
                 const language =
                   children.props.className?.replace("language-", "") || "jsx";
 
@@ -405,7 +403,7 @@ export default function Page(params: any) {
                         <ActionButton
                           variant="primary"
                           color="pink"
-                          icon={copy ? <Check /> : <Copy />}
+                          icon={<Copy />}
                           pos="absolute"
                           t={fr(1.5)}
                           r={fr(1.5)}
@@ -414,25 +412,9 @@ export default function Page(params: any) {
                             navigator.clipboard.writeText(
                               children?.props.children
                             );
-                            setCopy(true);
-                            setTimeout(() => {
-                              setCopy(false);
-                            }, 1000);
                           }}
                         />
                       </div>
-
-                      {/* <LiveError
-                        style={{
-                          fontFamily: "SF Mono, Menlo, monospace",
-                          fontSize: 14,
-                          padding: "1em",
-                          overflowX: "auto",
-                          color: "white",
-                          backgroundColor: "#ef4444",
-                          borderRadius: "5px",
-                        }}
-                      /> */}
                     </LiveProvider>
                   </div>
                 );
