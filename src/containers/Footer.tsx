@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Url } from "next/dist/shared/lib/router/router";
 import { ArrowSquareOut } from "@phosphor-icons/react";
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
     <footer className="flex flex-col items-center justify-center relative overflow-hidden">
       <div className="flex flex-col lg:flex-row max-w-[1440px] justify-center md:justify-between w-full py-16 px-5 sm:px-10 gap-10 sm:gap-32 lg:gap-40 z-10">
         <div className="flex flex-col gap-8">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="//" className="flex items-center gap-3">
             <>
               <Image src="/logo.svg" alt="Logo" width={42} height={42} />
               <span className="text-2xl dark:text-white text-base-900 font-bold">
@@ -24,30 +25,67 @@ const Footer = () => {
             <span className="text-xl font-semibold dark:text-white text-base-900">
               Product
             </span>
-            <div className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500">
+            <Link
+              href="/docs"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
               <span className="text-inherit">Docs</span>
               <ArrowSquareOut />
-            </div>
+            </Link>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-xl font-semibold dark:text-white text-base-900">
               Community
             </span>
-            <div className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500">
+            <Link
+              href={
+                process.env.GITHUB_URL ? (process.env.TWITTER_URL as Url) : ""
+              }
+              target="_blank"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
               <span className="text-inherit">Twitter</span>
               <ArrowSquareOut />
-            </div>
-            <div className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500">
+            </Link>
+            <Link
+              href={
+                process.env.REDDIT_URL ? (process.env.REDDIT_URL as Url) : ""
+              }
+              target="_blank"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
+              <span className="text-inherit">Reddit</span>
+              <ArrowSquareOut />
+            </Link>
+            <Link
+              href={
+                process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""
+              }
+              target="_blank"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
               <span className="text-inherit">Github</span>
               <ArrowSquareOut />
-            </div>
+            </Link>
+            <Link
+              href={
+                process.env.OPENCOLLECTIVE_URL
+                  ? (process.env.OPENCOLLECTIVE_URL as Url)
+                  : ""
+              }
+              target="_blank"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
+              <span className="text-inherit">Open Collective</span>
+              <ArrowSquareOut />
+            </Link>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-xl font-semibold dark:text-white text-base-900">
               Company
             </span>
             <Link
-              href="about"
+              href="/about-us"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >
               <>
@@ -56,7 +94,7 @@ const Footer = () => {
               </>
             </Link>
             <Link
-              href="sponsor"
+              href="/sponsor"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >
               <>
@@ -64,10 +102,13 @@ const Footer = () => {
                 <ArrowSquareOut />
               </>
             </Link>
-            <div className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500">
+            <Link
+              href="mailto:contact@prismane.io"
+              className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
+            >
               <span className="text-inherit">Contact</span>
               <ArrowSquareOut />
-            </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -78,7 +119,7 @@ const Footer = () => {
         <span className="text-sm dark:text-base-500 text-base-700">
           Made in <span className="mx-1">&#127463;&#127468;</span> by{" "}
           <Link
-            href="https://github.com/spleafy/"
+            href="https://www.github.com/spleafy"
             target="_blank"
             className="bold hover:underline hover:!text-primary-500"
           >

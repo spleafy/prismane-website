@@ -1,0 +1,60 @@
+# Dialog API
+
+Learn about the Dialog component's props and CSS classes.
+
+## Import
+
+```js
+import {
+  DialogProps,
+  DialogHeaderProps,
+  DialogFooterProps,
+} from "@prismane/core";
+```
+
+## Props
+
+### Dialog
+
+`Dialog` extends [Paper](/docs/components-api/paper-api) and [Animation](/docs/components-api/animation-api) components' props.
+
+| Name       | Type         | Description                                           | Default  |
+| ---------- | ------------ | ----------------------------------------------------- | -------- |
+| `open`     | `boolean`    | Triggers the open state of the dialog.                | false    |
+| `closable` | `boolean`    | Triggers the closable state of the dialog.            | -        |
+| `onClose`  | `() => void` | Callback that will be executed on closing the dialog. | () => {} |
+
+### Dialog.Header
+
+`Dialog.Header` extends [Flex](/docs/components-api/flex-api) component's props.
+
+### Dialog.Footer
+
+`Dialog.Footer` extends [Flex](/docs/components-api/flex-api) component's props.
+
+## CSS
+
+### Dialog
+
+`Dialog` extends [Paper](/docs/components-api/paper-api) and [Animation](/docs/components-api/animation-api) components' CSS classes.
+
+| Rule   | Global Class                | Description                                            |
+| ------ | --------------------------- | ------------------------------------------------------ |
+| `root` | `.PrismaneDialog-root`      | The wrapper box of the dialog.                         |
+| `root` | `.PrismaneDialog-root-open` | The wrapper box of the dialog based on the open state. |
+
+### Dialog.Header
+
+`Dialog.Header` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                 | Description                                       |
+| ------ | ---------------------------- | ------------------------------------------------- |
+| `root` | `.PrismaneDialogHeader-root` | The wrapper box of the dialog's header component. |
+
+### Dialog.Footer
+
+`Dialog.Footer` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                 | Description                                       |
+| ------ | ---------------------------- | ------------------------------------------------- |
+| `root` | `.PrismaneDialogFooter-root` | The wrapper box of the dialog's footer component. |

@@ -1,0 +1,64 @@
+# Switch
+
+Switch displays a field that handles toggling between true or false.
+
+## Import
+
+```js
+import { Switch } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState(false);
+
+  const handleChange = (e) => setValue(e.target.value);
+
+  return <Switch value={value} onChange={handleChange} />;
+}
+```
+
+### Switch Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Switch
+        size="xs"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Switch
+        size="sm"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Switch
+        size="base"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Switch
+        size="md"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Switch
+        size="lg"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </Flex>
+  );
+}
+```

@@ -12,10 +12,10 @@ import { Toaster } from "@prismane/core";
 
 ```jsx
 function Demo() {
-  const toast = useToast();
+  const Inner = () => {
+    const toast = useToast();
 
-  return (
-    <Toaster>
+    return (
       <Button
         onClick={() => {
           toast({
@@ -25,7 +25,15 @@ function Demo() {
       >
         Click to show toast
       </Button>
+    );
+  };
+
+  return (
+    <Toaster>
+      <Inner />
     </Toaster>
   );
 }
 ```
+
+<Important>Always wrap the application with the `Toaster` component!</Important>

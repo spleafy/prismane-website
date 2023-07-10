@@ -29,3 +29,76 @@ function Demo() {
   );
 }
 ```
+
+### SegmentedField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <SegmentedField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
+        ]}
+      />
+      <SegmentedField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
+        ]}
+      />
+      <SegmentedField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
+        ]}
+      />
+      <SegmentedField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
+        ]}
+      />
+      <SegmentedField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
+        ]}
+      />
+    </Flex>
+  );
+}
+```

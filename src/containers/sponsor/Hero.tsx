@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Url } from "next/dist/shared/lib/router/router";
 import { HandCoins } from "@phosphor-icons/react";
 import { Button } from "@prismane/core";
 // Containers
@@ -21,14 +23,23 @@ const Hero = () => {
         Your donation can help us enhance our product quality, expand our teams,
         accelerate our work, and release updates more frequently.
       </h2>
-      <Button
-        variant="primary"
-        icon={<HandCoins size={24} />}
-        className="h-16 text-xl !sm:!px-12 !w-full sm:!w-fit button-gradient"
-        size="lg"
+      <Link
+        href={
+          process.env.OPENCOLLECTIVE_URL
+            ? (process.env.OPENCOLLECTIVE_URL as Url)
+            : ""
+        }
+        target="_blank"
       >
-        Support Our Journey
-      </Button>
+        <Button
+          variant="primary"
+          icon={<HandCoins size={24} />}
+          className="h-16 text-xl !sm:!px-12 !w-full sm:!w-fit button-gradient"
+          size="lg"
+        >
+          Support Our Journey
+        </Button>
+      </Link>
     </Section>
   );
 };

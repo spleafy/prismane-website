@@ -7,11 +7,17 @@ import { MDXRemote } from "next-mdx-remote";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import {
   Copy,
+  Check,
+  Hash,
   Heart,
   Fire,
   User,
   GearSix,
   SignOut,
+  WarningOctagon,
+  ArrowSquareIn,
+  X,
+  Plus,
 } from "@phosphor-icons/react";
 import fs from "fs";
 import remarkGfm from "remark-gfm";
@@ -84,11 +90,11 @@ import {
   Transition,
   fr,
   usePrismaneTheme,
+  usePrismaneColor,
   useToast,
 } from "@prismane/core";
 import {
   useAnimation,
-  useColor,
   useCounter,
   useDebounce,
   useDimensions,
@@ -179,7 +185,9 @@ export default function Page(params: any) {
           <MDXRemote
             {...params.source}
             components={{
-              pre: ({ children, ...props }: any) => {
+              pre: ({ children, ...props }: any): any => {
+                const [copy, setCopy] = React.useState(false);
+
                 const language =
                   children.props.className?.replace("language-", "") || "jsx";
 
@@ -259,7 +267,6 @@ export default function Page(params: any) {
                         Transition,
                         fr,
                         useAnimation,
-                        useColor,
                         useCounter,
                         useDebounce,
                         useDimensions,
@@ -279,6 +286,7 @@ export default function Page(params: any) {
                         useStyling,
                         useToggle,
                         usePrismaneTheme,
+                        usePrismaneColor,
                         useToast,
                         min,
                         max,
@@ -292,6 +300,8 @@ export default function Page(params: any) {
                         User,
                         GearSix,
                         SignOut,
+                        X,
+                        Plus,
                         useState: React.useState,
                         useEffect: React.useEffect,
                         useRef: React.useRef,
@@ -380,7 +390,7 @@ export default function Page(params: any) {
                       }}
                     >
                       {language === "jsx" && (
-                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto">
+                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto relative !overflow-y-visible">
                           <LivePreview className="flex w-full grow gap-5" />
                         </div>
                       )}
@@ -395,7 +405,7 @@ export default function Page(params: any) {
                         <ActionButton
                           variant="primary"
                           color="pink"
-                          icon={<Copy />}
+                          icon={copy ? <Check /> : <Copy />}
                           pos="absolute"
                           t={fr(1.5)}
                           r={fr(1.5)}
@@ -404,6 +414,10 @@ export default function Page(params: any) {
                             navigator.clipboard.writeText(
                               children?.props.children
                             );
+                            setCopy(true);
+                            setTimeout(() => {
+                              setCopy(false);
+                            }, 1000);
                           }}
                         />
                       </div>
@@ -431,13 +445,22 @@ export default function Page(params: any) {
                   {children}
                 </h1>
               ),
-              h2: ({ children, ...props }) => (
-                <h2
-                  className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold"
-                  {...props}
+              h2: ({ children, ...props }: any) => (
+                <div
+                  className="flex items-center gap-4"
+                  id={children
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-z0-9-]/g, "")}
                 >
-                  {children}
-                </h2>
+                  <h2
+                    className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold"
+                    {...props}
+                  >
+                    {children}
+                  </h2>
+                  <Hash size={32} className="text-primary-500" />
+                </div>
               ),
               h3: ({ children, ...props }) => (
                 <h3
@@ -447,9 +470,17 @@ export default function Page(params: any) {
                   {children}
                 </h3>
               ),
+              h4: ({ children, ...props }) => (
+                <h4
+                  className="text-base-800 dark:text-base-100 text-base sm:text-lg font-bold"
+                  {...props}
+                >
+                  {children}
+                </h4>
+              ),
               p: ({ children, ...props }) => (
                 <p
-                  className="text-base-800 dark:text-base-100 leading-7"
+                  className="text-base-800 dark:text-base-100 leading-7 w-full"
                   {...props}
                 >
                   {children}
@@ -457,7 +488,7 @@ export default function Page(params: any) {
               ),
               code: ({ children, ...props }) => (
                 <code
-                  className="text-primary-500 bg-primary-500/20 dark:bg-primary-700/20 px-1 sm:px-2 py-0.5 rounded-md text-xs sm:text-base"
+                  className="text-primary-500 bg-primary-500/20 dark:bg-primary-700/20 px-1 sm:px-2 py-0.5 rounded-md text-sm sm:text-base"
                   {...props}
                 >
                   {children}
@@ -477,12 +508,14 @@ export default function Page(params: any) {
                 </hr>
               ),
               table: ({ children, ...props }) => (
-                <table
-                  className="dark:text-white text-base-800 text-sm sm:text-base overflow-x-auto w-full"
-                  {...props}
-                >
-                  {children}
-                </table>
+                <div className="w-full overflow-x-auto">
+                  <table
+                    className="dark:text-white text-base-800 text-sm sm:text-base w-full"
+                    {...props}
+                  >
+                    {children}
+                  </table>
+                </div>
               ),
               thead: ({ children, ...props }) => (
                 <thead
@@ -513,16 +546,32 @@ export default function Page(params: any) {
                   {children}
                 </th>
               ),
+              a: ({ children, ...props }) => (
+                <NextLink
+                  {...props}
+                  className="inline-flex items-center text-primary-500 gap-1 underline"
+                >
+                  {children} <ArrowSquareIn />
+                </NextLink>
+              ),
               Versatile: ({ children, ...props }) => (
-                <div className="flex items-center gap-5">
+                <NextLink
+                  href="/docs/getting-started/overview#versatile-components"
+                  className="flex items-center gap-5"
+                >
                   <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
                     {children}
                   </h1>
                   <Chip>Versatile Component</Chip>
-                </div>
+                </NextLink>
               ),
               ColorPalette,
-              Alert,
+              Important: ({ children, ...props }) => (
+                <Alert variant="warning" {...props}>
+                  <Alert.Title>Important</Alert.Title>
+                  <Alert.Description>{children}</Alert.Description>
+                </Alert>
+              ),
               Chip,
             }}
           />

@@ -1,0 +1,30 @@
+# Animation API
+
+Learn about the Animation component's props and CSS classes.
+
+## Import
+
+```js
+import { AnimationProps } from "@prismane/core";
+```
+
+## Props
+
+`Animation` extends [Transition](/docs/components-api/transition-api) component's props.
+
+| Name         | Type                                                                            | Description                                                          | Default     |
+| ------------ | ------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------- |
+| `animation`  | [PrismaneAnimations](/docs/getting-started/overview#global-types) / `Animation` | The animation of the container. Could be a prebuilt or a custom one. | fade        |
+| `transition` | [PrismaneTransitions](/docs/getting-started/overview#global-types) / `string`   | The transition property of the container.                            | all         |
+| `duration`   | `number`                                                                        | The duration of the animation.                                       | 150         |
+| `delay`      | `number`                                                                        | The delay of the animation.                                          | 0           |
+| `timing`     | `string`                                                                        | The timing of the animation.                                         | ease-in-out |
+| `animated`   | `boolean`                                                                       | The state of the animation.                                          | true        |
+
+## CSS
+
+`Animation` extends [Transition](/docs/components-api/transition-api) component's CSS classes.
+
+| Rule   | Global Class            | Description                       |
+| ------ | ----------------------- | --------------------------------- |
+| `root` | `.PrismaneAnimate-root` | The wrapper box of the animation. |

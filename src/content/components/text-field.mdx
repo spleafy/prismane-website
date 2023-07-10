@@ -21,3 +21,109 @@ function Demo() {
   );
 }
 ```
+
+### With Icon
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <TextField
+      placeholder="Enter Text"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      icon={<GearSix />}
+    />
+  );
+}
+```
+
+### TextField Variants
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
+      <TextField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </>
+  );
+}
+```
+
+### TextField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <TextField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </Flex>
+  );
+}
+```

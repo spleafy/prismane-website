@@ -1,0 +1,32 @@
+# Radio
+
+Radio displays a group of fields that handles toggling between multiple values.
+
+## Import
+
+```js
+import { Radio } from "@prismane/core";
+```
+
+`Radio` component has the following inner components:
+
+- `Radio.Group` - The container that groups the radio inputs.
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("yes");
+
+  return (
+    <Radio.Group
+      name="answer"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    >
+      <Radio value="yes" label="Yes" />
+      <Radio value="no" label="No" />
+    </Radio.Group>
+  );
+}
+```

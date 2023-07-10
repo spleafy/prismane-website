@@ -1,0 +1,73 @@
+# usePrismaneColor
+
+usePrismaneColor hook provides a simple way to handle colors and custom color styles.
+
+## Import
+
+```js
+import { usePrismaneColor } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const { getColor } = usePrismaneColor();
+
+  return (
+    <>
+      <Box w={fr(20)} h={fr(20)} bg={getColor("primary")} />
+      <Box w={fr(20)} h={fr(20)} bg={getColor("primary", 200)} />
+    </>
+  );
+}
+```
+
+### Parsing Custom Color Styles
+
+```jsx
+function Demo() {
+  const { getColorStyle } = usePrismaneColor();
+
+  return (
+    <Box
+      w={fr(20)}
+      h={fr(20)}
+      bdw={1}
+      sx={{
+        borderColor: getColorStyle(["base", { hover: "primary" }]),
+      }}
+    />
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name       | Type      | Description                                    | Default |
+| ---------- | --------- | ---------------------------------------------- | ------- |
+| `initial`  | `boolean` | The initial state of the animation.            | `false` |
+| `duration` | `number`  | The duration of the animation in milliseconds. | `150`   |
+| `timing`   | `string`  | The timing function for the animation.         | `ease`  |
+
+### Return Value
+
+| Name            | Type           | Description                                         |
+| --------------- | -------------- | --------------------------------------------------- |
+| `getColor`      | `() => string` | A function that parses the color into a hex code.   |
+| `getColorStyle` | `() => string` | A function that parses the color for the `sx` prop. |
+
+### getColor's Parameters
+
+| Name    | Type     | Description                                  | Default |
+| ------- | -------- | -------------------------------------------- | ------- |
+| `color` | `string` | The color that is wanted.                    | -       |
+| `shade` | `number` | The shade of the given color that is wanted. | `500`   |
+
+### getColor's Return Value
+
+| Name    | Type     | Description       |
+| ------- | -------- | ----------------- |
+| `color` | `string` | The parsed color. |

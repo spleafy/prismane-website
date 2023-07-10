@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Url } from "next/dist/shared/lib/router/router";
 import { useRouter } from "next/router";
 import {
   GithubLogo,
@@ -174,16 +175,28 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-5 z-10">
-          <ActionButton
-            color="pink"
-            variant="secondary"
-            icon={<GithubLogo />}
-          />
-          <ActionButton
-            color="pink"
-            variant="secondary"
-            icon={<TwitterLogo />}
-          />
+          <Link
+            href={process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""}
+            target="_blank"
+          >
+            <ActionButton
+              color="pink"
+              variant="secondary"
+              icon={<GithubLogo />}
+            />
+          </Link>
+          <Link
+            href={
+              process.env.TWITTER_URL ? (process.env.TWITTER_URL as Url) : ""
+            }
+            target="_blank"
+          >
+            <ActionButton
+              color="pink"
+              variant="secondary"
+              icon={<TwitterLogo />}
+            />
+          </Link>
           <ActionButton
             color="pink"
             variant="secondary"

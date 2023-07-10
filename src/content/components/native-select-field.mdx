@@ -69,3 +69,137 @@ function Demo() {
   ]}
 />
 ```
+
+### NativeSelectField Variants
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
+      <NativeSelectField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+    </>
+  );
+}
+```
+
+### NativeSelectField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <NativeSelectField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+    </Flex>
+  );
+}
+```

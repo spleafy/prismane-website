@@ -44,3 +44,110 @@ function Demo() {
   );
 }
 ```
+
+### With Icon
+
+```jsx
+function Demo() {
+  const [color, setColor] = useState("");
+
+  return (
+    <ColorField
+      placeholder="Default Field"
+      label="Default Field:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+      icon={<GearSix />}
+    />
+  );
+}
+```
+
+### ColorField Variants
+
+```jsx
+function Demo() {
+  const [color, setColor] = useState("");
+
+  return (
+    <>
+      <ColorField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+    </>
+  );
+}
+```
+
+### ColorField Sizes
+
+```jsx
+function Demo() {
+  const [color, setColor] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <ColorField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <ColorField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+    </Flex>
+  );
+}
+```

@@ -28,7 +28,7 @@ export const Docs: FC<T> = ({ children }) => {
 
   return (
     <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
-      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-24 left-0 max-h-[84vh] overflow-y-auto">
+      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-24 left-0 max-h-[84vh]">
         {content.map((nav: any, index: number) => (
           <Link
             key={index}
@@ -51,7 +51,7 @@ export const Docs: FC<T> = ({ children }) => {
             </div>
           </Link>
         ))}
-        <div className="mt-5 flex flex-col gap-2">
+        <div className="mt-5 flex flex-col gap-2 overflow-y-auto h-full">
           {current.items.map((item: any, index: number) => (
             <Link
               key={index}
@@ -69,7 +69,7 @@ export const Docs: FC<T> = ({ children }) => {
           ))}
         </div>
       </nav>
-      <div className="flex flex-col grow gap-5 p-5 w-full">
+      <div className="flex flex-col grow gap-5 p-5 w-full self-start">
         {children}
         <div className="flex gap-5 mt-5">
           <div className="flex grow">

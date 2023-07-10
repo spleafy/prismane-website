@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Url } from "next/dist/shared/lib/router/router";
 import { GithubLogo } from "@phosphor-icons/react";
 import { Button } from "@prismane/core";
 // Containers
@@ -22,7 +24,10 @@ const Hero = () => {
         At Prismane, we firmly believe that software should be within reach of
         all.
       </h2>
-      <div className="flex items-center gap-5">
+      <Link
+        href={process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""}
+        target="_blank"
+      >
         <Button
           variant="primary"
           icon={<GithubLogo size={24} />}
@@ -31,7 +36,7 @@ const Hero = () => {
         >
           Join Our Mission
         </Button>
-      </div>
+      </Link>
     </Section>
   );
 };

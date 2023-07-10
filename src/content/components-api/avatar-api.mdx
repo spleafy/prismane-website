@@ -1,0 +1,30 @@
+# Avatar API
+
+Learn about the Avatar component's props and CSS classes.
+
+## Import
+
+```js
+import { AvatarProps } from "@prismane/core";
+```
+
+## Props
+
+`Avatar` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name     | Type                                                          | Description                                | Default |
+| -------- | ------------------------------------------------------------- | ------------------------------------------ | ------- |
+| `src`    | `string`                                                      | The source of the avatar's image.          | -       |
+| `srcSet` | `string`                                                      | The srcSet property of the avatar's image. | -       |
+| `alt`    | `string`                                                      | The alt text of the avatar's image.        | -       |
+| `sizes`  | `string`                                                      | The sizes property of the avatar's image.  | -       |
+| `color`  | [PrismaneColors](/docs/getting-started/overview#global-types) | The color of the avatar's container.       | -       |
+
+## CSS
+
+`Avatar` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class                | Description                                          |
+| ------ | --------------------------- | ---------------------------------------------------- |
+| `root` | `.PrismaneAvatar-root`      | The wrapper box of the container.                    |
+| `root` | `.PrismaneAvatar-root-size` | The wrapper box of the container based on it's size. |

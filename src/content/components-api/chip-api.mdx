@@ -1,0 +1,29 @@
+# Chip API
+
+Learn about the Chip component's props and CSS classes.
+
+## Import
+
+```js
+import { ChipProps } from "@prismane/core";
+```
+
+## Props
+
+`Chip` extends [Flex](/docs/components-api/flex-api) and [Transition](/docs/components-api/transition-api) components' props.
+
+| Name    | Type                                                               | Description                    | Default |
+| ------- | ------------------------------------------------------------------ | ------------------------------ | ------- |
+| `icon`  | `ReactNode`                                                        | The icon of the chip.          | -       |
+| `color` | [PrismaneColors](/docs/getting-started/overview#global-types)      | Changes the color of the chip. | primary |
+| `size`  | [PrismaneBreakpoints](/docs/getting-started/overview#global-types) | Changes the size of the chip.  | base    |
+
+## CSS
+
+`Chip` extends [Flex](/docs/components-api/flex-api) and [Transition](/docs/components-api/transition-api) components' CSS classes.
+
+| Rule   | Global Class                 | Description                                     |
+| ------ | ---------------------------- | ----------------------------------------------- |
+| `root` | `.PrismaneChip-root`         | The wrapper box of the chip.                    |
+| `root` | `.PrismaneChip-root-{color}` | The wrapper box of the chip based on the color. |
+| `root` | `.PrismaneChip-root-{size}`  | The wrapper box of the chip based on the size.  |
