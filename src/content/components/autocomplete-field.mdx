@@ -21,9 +21,9 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "ivan", label: "Ivan" },
-        { value: "gosho", label: "Gosho" },
-        { value: "petkan", label: "Petkan" },
+        { value: "ivan", element: "Ivan" },
+        { value: "gosho", element: "Gosho" },
+        { value: "petkan", element: "Petkan" },
       ]}
     />
   );
@@ -44,10 +44,33 @@ function Demo() {
       onChange={(e) => setValue(e.target.value)}
       icon={<GearSix />}
       options={[
-        { value: "ivan", label: "Ivan" },
-        { value: "gosho", label: "Gosho" },
-        { value: "petkan", label: "Petkan" },
+        { value: "ivan", element: "Ivan" },
+        { value: "gosho", element: "Gosho" },
+        { value: "petkan", element: "Petkan" },
       ]}
+    />
+  );
+}
+```
+
+### Custom Filter Function
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <AutocompleteField
+      placeholder="Default Field"
+      label="Default Field:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "ivan", element: "Ivan" },
+        { value: "gosho", element: "Gosho" },
+        { value: "petkan", element: "Petkan" },
+      ]}
+      filter={(value, item) => item.value.includes(value)}
     />
   );
 }
@@ -68,9 +91,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -80,9 +103,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -92,9 +115,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -104,9 +127,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
     </>
@@ -129,9 +152,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -141,9 +164,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -153,9 +176,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -165,9 +188,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
       <AutocompleteField
@@ -177,12 +200,18 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { value: "ivan", label: "Ivan" },
-          { value: "gosho", label: "Gosho" },
-          { value: "petkan", label: "Petkan" },
+          { value: "ivan", element: "Ivan" },
+          { value: "gosho", element: "Gosho" },
+          { value: "petkan", element: "Petkan" },
         ]}
       />
     </Flex>
   );
 }
 ```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`AutocompleteField`](/docs/components-api/autocomplete-field-api)

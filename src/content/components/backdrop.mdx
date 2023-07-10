@@ -9,3 +9,32 @@ import { Backdrop } from "@prismane/core";
 ```
 
 ## Usage
+
+```jsx
+function Demo() {
+  const [shown, setShown] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShown(true)}>Show Backdrop</Button>
+      {shown && (
+        <Backdrop onClick={() => setShown(false)}>
+          <Text
+            cl={(theme) =>
+              theme.mode === "dark" ? ["base", 200] : ["base", 700]
+            }
+          >
+            Hello, Backdrop!
+          </Text>
+        </Backdrop>
+      )}
+    </>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Backdrop`](/docs/components-api/backdrop-api)

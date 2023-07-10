@@ -22,9 +22,9 @@ function Demo() {
       onChange={handleChange}
       placeholder="Choose A Shape"
       options={[
-        { label: "Star", value: "star" },
-        { label: "Circle", value: "circle" },
-        { label: "Square", value: "square" },
+        { element: "Star", value: "star" },
+        { element: "Circle", value: "circle" },
+        { element: "Square", value: "square" },
       ]}
     />
   );
@@ -46,9 +46,9 @@ function Demo() {
       placeholder="Choose A Shape"
       icon={<GearSix />}
       options={[
-        { label: "Star", value: "star" },
-        { label: "Circle", value: "circle" },
-        { label: "Square", value: "square" },
+        { element: "Star", value: "star" },
+        { element: "Circle", value: "circle" },
+        { element: "Square", value: "square" },
       ]}
     />
   );
@@ -70,9 +70,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { label: "Star", value: "star" },
-          { label: "Circle", value: "circle" },
-          { label: "Square", value: "square" },
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
         ]}
       />
       <SelectField
@@ -82,9 +82,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { label: "Star", value: "star" },
-          { label: "Circle", value: "circle" },
-          { label: "Square", value: "square" },
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
         ]}
       />
       <SelectField
@@ -94,9 +94,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { label: "Star", value: "star" },
-          { label: "Circle", value: "circle" },
-          { label: "Square", value: "square" },
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
         ]}
       />
       <SelectField
@@ -106,9 +106,9 @@ function Demo() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         options={[
-          { label: "Star", value: "star" },
-          { label: "Circle", value: "circle" },
-          { label: "Square", value: "square" },
+          { element: "Star", value: "star" },
+          { element: "Circle", value: "circle" },
+          { element: "Square", value: "square" },
         ]}
       />
     </>
@@ -188,3 +188,9 @@ function Demo() {
   );
 }
 ```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`SelectField`](/docs/components-api/select-field-api)
