@@ -13,7 +13,9 @@ import { Portal } from "@prismane/core";
 ```jsx
 <Box bg="orange" cl="white">
   This will be rendered inside the box
-  <Portal>This will be rendered inside the document.body</Portal>
+  <Portal bg="ruby" cl="white">
+    This will be rendered inside the document.body
+  </Portal>
 </Box>
 ```
 
@@ -29,7 +31,9 @@ function Demo() {
       <Portal target={ref}>
         This will be rendered inside the inner container
       </Portal>
-      <Box ref={ref}>This is the inner container:</Box>
+      <Box ref={ref} bg="ruby">
+        This is the inner container:
+      </Box>
     </Box>
   );
 }

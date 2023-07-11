@@ -20,12 +20,17 @@ function Demo() {
     },
   });
 
+  const [values, setValues] = useState("");
+
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => setValues(JSON.stringify(v)));
       }}
-      onReset={() => handleReset()}
+      onReset={() => {
+        setValues("");
+        handleReset();
+      }}
     >
       <TextField
         placeholder="Enter username: "
@@ -40,6 +45,7 @@ function Demo() {
           Reset
         </Button>
       </Flex>
+      Values: {values}
     </Form>
   );
 }

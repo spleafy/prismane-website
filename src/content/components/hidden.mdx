@@ -21,27 +21,40 @@ import { Hidden } from "@prismane/core";
 The `Hidden` component is usually used to hide inputs in custom made input components
 
 ```jsx
-<Box
-  as="label"
-  htmlFor="checkbox"
-  px={fr(2)}
-  py={fr(0.5)}
-  bg="primary"
-  br={2}
-  cs="pointer"
->
-  Click to check
-  <Hidden>
-    <input
-      name="checkbox"
-      id="checkbox"
-      type="checkbox"
-      onChange={(e) => {
-        console.log("Checkbox is checked: ", e.target.checked);
-      }}
-    />
-  </Hidden>
-</Box>
+function Demo() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Stack>
+      <Box
+        as="label"
+        htmlFor="checkbox"
+        px={fr(2)}
+        py={fr(0.5)}
+        bg="primary"
+        br={2}
+        cs="pointer"
+      >
+        Click to check
+        <Hidden>
+          <input
+            name="checkbox"
+            id="checkbox"
+            type="checkbox"
+            onChange={(e) => {
+              setChecked(e.target.checked);
+            }}
+          />
+        </Hidden>
+      </Box>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Checked: {checked.toString()}
+      </Text>
+    </Stack>
+  );
+}
 ```
 
 ## API

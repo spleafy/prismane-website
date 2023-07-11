@@ -11,36 +11,78 @@ import { Stack } from "@prismane/core";
 ## Usage
 
 ```jsx
-<Stack>
-  <Box w={fr(24)} h={fr(5)} bg="ruby" />
-  <Box w={fr(24)} h={fr(5)} bg="lime" />
-  <Box w={fr(24)} h={fr(5)} bg="teal" />
+<Stack w="100%">
+  <Flex h={fr(10)} w="100%" bg="ruby">
+    1
+  </Flex>
+  <Flex h={fr(10)} w="100%" bg="lime">
+    2
+  </Flex>
+  <Flex h={fr(10)} w="100%" bg="teal">
+    3
+  </Flex>
 </Stack>
 ```
 
 ### Stack Directions
 
 ```jsx
-<Flex direction="column" gap={fr(5)}>
-  <Stack>
-    <Box w={fr(24)} h={fr(5)} bg="ruby" />
-    <Box w={fr(24)} h={fr(5)} bg="lime" />
-    <Box w={fr(24)} h={fr(5)} bg="teal" />
+<Flex direction="column" gap={fr(5)} w="100%">
+  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
+    Column:
+  </Text>
+  <Stack w="100%" mb={fr(5)}>
+    <Flex w="100%" h={fr(10)} bg="ruby">
+      1
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="lime">
+      2
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="teal">
+      3
+    </Flex>
   </Stack>
-  <Stack direction="row-reverse">
-    <Box w={fr(24)} h={fr(5)} bg="ruby" />
-    <Box w={fr(24)} h={fr(5)} bg="lime" />
-    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
+    Row:
+  </Text>
+  <Stack w="100%" mb={fr(5)} direction="row">
+    <Flex w="100%" h={fr(10)} bg="ruby">
+      1
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="lime">
+      2
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="teal">
+      3
+    </Flex>
   </Stack>
-  <Stack direction="column">
-    <Box w={fr(24)} h={fr(5)} bg="ruby" />
-    <Box w={fr(24)} h={fr(5)} bg="lime" />
-    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
+    Row Reverse:
+  </Text>
+  <Stack w="100%" mb={fr(5)} direction="row-reverse">
+    <Flex w="100%" h={fr(10)} bg="ruby">
+      1
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="lime">
+      2
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="teal">
+      3
+    </Flex>
   </Stack>
-  <Stack direction="column-reverse">
-    <Box w={fr(24)} h={fr(5)} bg="ruby" />
-    <Box w={fr(24)} h={fr(5)} bg="lime" />
-    <Box w={fr(24)} h={fr(5)} bg="teal" />
+  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
+    Column Reverse:
+  </Text>
+  <Stack w="100%" mb={fr(5)} direction="column-reverse">
+    <Flex w="100%" h={fr(10)} bg="ruby">
+      1
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="lime">
+      2
+    </Flex>
+    <Flex w="100%" h={fr(10)} bg="teal">
+      3
+    </Flex>
   </Stack>
 </Flex>
 ```

@@ -14,22 +14,34 @@ The `Box` is the root component from which every other component comes from. It 
 
 ```jsx
 <Box
-  w={144}
-  h={40}
-  px={10}
-  py={8}
-  br={5}
+  w="100%"
+  px={fr(10)}
+  py={fr(6)}
+  br="base"
   cs="pointer"
-  bg={["primary", { hover: "diamond" }]}
+  bg={(theme) => (theme.mode === "dark" ? ["base", 700] : "primary")}
 >
-  Hello, World!
+  The Box component is a versatile container that provides a flexible and
+  customizable layout for building UI components.
 </Box>
 ```
 
 ### Versatile Component
 
 ```jsx
-<Box as="a" href="https://www.google.com" target="_blank">
+<Box
+  as="a"
+  href="https://www.google.com"
+  target="_blank"
+  w="100%"
+  px={fr(10)}
+  py={fr(6)}
+  br="base"
+  cs="pointer"
+  bg={[["base", 600], { hover: ["base", 700] }]}
+  ta="center"
+  td="underline"
+>
   Click Me!
 </Box>
 ```

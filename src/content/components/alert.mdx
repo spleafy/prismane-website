@@ -13,20 +13,24 @@ import { Alert } from "@prismane/core";
 `Alert` component can display an alert for four kinds of messages: `info`, `success`, `warning` and `error`
 
 ```jsx
-<Alert>Some demo alert!</Alert>
+<Alert>
+  This is an info alert. It provides important information or updates.
+</Alert>
 ```
 
 ### Closable Alert
 
 ```jsx
-<Alert closable>Some demo alert!</Alert>
+<Alert closable>
+  This is a closable alert. Click the close button to dismiss it.
+</Alert>
 ```
 
 ### Custom Alert Icon
 
 ```jsx
-<Alert icon={<Heart size={24} />} closable>
-  Some demo alert!
+<Alert icon={<WarningDiamond size={24} />} variant="warning" closable>
+  This is an alert with a custom icon.
 </Alert>
 ```
 

@@ -16,33 +16,18 @@ import { Card } from "@prismane/core";
 ## Usage
 
 ```jsx
-<Card>This is the information that you wanted to show.</Card>
-```
-
-### Complex Card
-
-```jsx
-<Card w={fr(75)} p={fr(5)}>
-  <Card.Header>
-    <Text as="h1">Payment</Text>
-  </Card.Header>
-  <Text dp="block" cl={["base", 300]}>
+<Card w={fr(75)} p={fr(5)} gap={fr(4)}>
+  <Text as="h1">Payment</Text>
+  <Text cl={["base", 300]}>
     Would you like to accept this incoming payment from{" "}
-    <Text as="strong" dp="inline-block">
-      John Doe
-    </Text>{" "}
-    sending the sum of{" "}
-    <Text as="strong" dp="inline-block">
-      $405.30
-    </Text>
+    <Text as="strong">John Doe</Text> sending the sum of{" "}
+    <Text as="strong">$405.30</Text>
   </Text>
-  <Card.Footer>
-    <Button variant="primary">Accept</Button>
-  </Card.Footer>
+  <Button variant="primary">Accept</Button>
 </Card>
 ```
 
-### Complex Card With Image
+### Complex Card
 
 ```jsx
 <Card w={fr(120)} p={fr(5)}>
@@ -51,6 +36,7 @@ import { Card } from "@prismane/core";
       src="https://app.vevolution.com/public/migrated/first-tiny-forest-planted-england-1.jpg"
       alt="Forest"
       w="100%"
+      br="base"
     />
   </Card.Header>
   <Flex direction="column" gap={fr(2)}>

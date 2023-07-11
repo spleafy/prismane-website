@@ -18,6 +18,8 @@ import {
   ArrowSquareIn,
   X,
   Plus,
+  EnvelopeSimple,
+  WarningDiamond,
 } from "@phosphor-icons/react";
 import fs from "fs";
 import remarkGfm from "remark-gfm";
@@ -192,7 +194,7 @@ export default function Page(params: any) {
                 const code = (children?.props.children?.trim() as string) || "";
 
                 return (
-                  <div className="flex flex-col gap-5">
+                  <div className="flex flex-col gap-5 w-full">
                     <LiveProvider
                       disabled
                       code={code}
@@ -300,6 +302,8 @@ export default function Page(params: any) {
                         SignOut,
                         X,
                         Plus,
+                        EnvelopeSimple,
+                        WarningDiamond,
                         useState: React.useState,
                         useEffect: React.useEffect,
                         useRef: React.useRef,
@@ -388,7 +392,7 @@ export default function Page(params: any) {
                       }}
                     >
                       {language === "jsx" && (
-                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto relative !overflow-y-visible">
+                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto">
                           <LivePreview className="flex w-full grow gap-5" />
                         </div>
                       )}
@@ -429,7 +433,7 @@ export default function Page(params: any) {
               ),
               h2: ({ children, ...props }: any) => (
                 <div
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 mt-10"
                   id={children
                     .toLowerCase()
                     .replace(/\s+/g, "-")
@@ -446,7 +450,7 @@ export default function Page(params: any) {
               ),
               h3: ({ children, ...props }) => (
                 <h3
-                  className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold"
+                  className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold mt-6"
                   {...props}
                 >
                   {children}
@@ -555,6 +559,7 @@ export default function Page(params: any) {
                 </Alert>
               ),
               Chip,
+              Tabs,
             }}
           />
         }

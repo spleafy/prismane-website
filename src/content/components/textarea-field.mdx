@@ -20,6 +20,7 @@ function Demo() {
     <TextareaField
       value={value}
       onChange={handleChange}
+      label="Text:"
       placeholder="Enter Text"
     />
   );
@@ -34,10 +35,11 @@ function Demo() {
 
   return (
     <TextareaField
-      placeholder="Enter Text"
+      label="Email:"
+      placeholder="Enter Email"
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      icon={<GearSix />}
+      icon={<EnvelopeSimple />}
     />
   );
 }

@@ -15,6 +15,10 @@ const content: any = [
     icon: <Sparkle />,
     items: [
       {
+        slug: "overview",
+        title: "Overview",
+      },
+      {
         slug: "installation",
         title: "Installation",
       },
@@ -25,10 +29,6 @@ const content: any = [
       {
         slug: "vite-setup",
         title: "Vite Setup",
-      },
-      {
-        slug: "overview",
-        title: "Overview",
       },
     ],
   },

@@ -11,23 +11,35 @@ import { Flex } from "@prismane/core";
 ## Usage
 
 ```jsx
-<Flex gap={fr(2)}>
-  <Box bg="primary">Hello</Box>
-  <Box bg="teal">World</Box>
+<Flex gap={fr(2)} h={100} w="100%">
+  <Flex bg={["base", 700]} w={120}>
+    1
+  </Flex>
+  <Flex bg={["base", 700]} w={120}>
+    2
+  </Flex>
 </Flex>
 ```
 
 ```jsx
-<Flex direction="column" gap={fr(2)}>
-  <Box bg="primary">Hello</Box>
-  <Box bg="teal">World</Box>
+<Flex gap={fr(2)} h={100} w="100%">
+  <Flex bg={["base", 700]} w={120}>
+    1
+  </Flex>
+  <Flex bg={["base", 700]} grow>
+    2
+  </Flex>
 </Flex>
 ```
 
 ```jsx
-<Flex justify="between" grow>
-  <Box bg="primary">Hello</Box>
-  <Box bg="teal">World</Box>
+<Flex gap={fr(2)} h={100} w="100%" justify="between">
+  <Flex bg={["base", 700]} w={120}>
+    1
+  </Flex>
+  <Flex bg={["base", 700]} w={120}>
+    2
+  </Flex>
 </Flex>
 ```
 
