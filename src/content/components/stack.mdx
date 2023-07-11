@@ -11,7 +11,7 @@ import { Stack } from "@prismane/core";
 ## Usage
 
 ```jsx
-<Stack w="100%">
+<Stack>
   <Flex h={fr(10)} w="100%" bg="ruby">
     1
   </Flex>
@@ -31,7 +31,7 @@ import { Stack } from "@prismane/core";
   <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
     Column:
   </Text>
-  <Stack w="100%" mb={fr(5)}>
+  <Stack mb={fr(5)}>
     <Flex w="100%" h={fr(10)} bg="ruby">
       1
     </Flex>
@@ -45,7 +45,7 @@ import { Stack } from "@prismane/core";
   <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
     Row:
   </Text>
-  <Stack w="100%" mb={fr(5)} direction="row">
+  <Stack mb={fr(5)} direction="row">
     <Flex w="100%" h={fr(10)} bg="ruby">
       1
     </Flex>
@@ -59,7 +59,7 @@ import { Stack } from "@prismane/core";
   <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
     Row Reverse:
   </Text>
-  <Stack w="100%" mb={fr(5)} direction="row-reverse">
+  <Stack mb={fr(5)} direction="row-reverse">
     <Flex w="100%" h={fr(10)} bg="ruby">
       1
     </Flex>
@@ -73,7 +73,7 @@ import { Stack } from "@prismane/core";
   <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
     Column Reverse:
   </Text>
-  <Stack w="100%" mb={fr(5)} direction="column-reverse">
+  <Stack mb={fr(5)} direction="column-reverse">
     <Flex w="100%" h={fr(10)} bg="ruby">
       1
     </Flex>
