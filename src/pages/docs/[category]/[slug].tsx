@@ -2,6 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
@@ -173,6 +174,8 @@ export default function Page(params: any) {
   const title = content
     .find((nav: any) => nav.slug === params.category)
     .items.find((item: any) => item.slug === params.slug).title;
+
+  const router = useRouter();
 
   return (
     <>
@@ -402,7 +405,7 @@ export default function Page(params: any) {
                             fontFamily: "monospace",
                             fontSize: "1rem",
                           }}
-                          className="overflow-x-auto w-full bg-[#0f0f0f] rounded-md"
+                          className="overflow-x-auto w-full bg-base-900 rounded-md"
                         />
                         <ActionButton
                           variant="primary"
@@ -431,23 +434,31 @@ export default function Page(params: any) {
                   {children}
                 </h1>
               ),
-              h2: ({ children, ...props }: any) => (
-                <div
-                  className="flex items-center gap-4 mt-10"
-                  id={children
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-z0-9-]/g, "")}
-                >
-                  <h2
-                    className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold"
-                    {...props}
+              h2: ({ children, ...props }: any) => {
+                const id = children
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^a-z0-9-]/g, "");
+
+                return (
+                  <NextLink
+                    href={`${router.asPath}#${id}`}
+                    className="flex items-center gap-4 mt-10 group"
+                    id={id}
                   >
-                    {children}
-                  </h2>
-                  <Hash size={32} className="text-primary-500" />
-                </div>
-              ),
+                    <h2
+                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold no-underline group-hover:underline underline-offset-2 decoration-primary-500"
+                      {...props}
+                    >
+                      {children}
+                    </h2>
+                    <Hash
+                      size={32}
+                      className="hidden group-hover:flex text-primary-500"
+                    />
+                  </NextLink>
+                );
+              },
               h3: ({ children, ...props }) => (
                 <h3
                   className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold mt-6"
@@ -474,7 +485,7 @@ export default function Page(params: any) {
               ),
               code: ({ children, ...props }) => (
                 <code
-                  className="text-primary-500 bg-primary-500/20 dark:bg-primary-700/20 px-1 sm:px-2 py-0.5 rounded-md text-sm sm:text-base"
+                  className="text-primary-500 bg-primary-500/10 dark:bg-primary-700/10 px-1 sm:px-2 py-0.5 rounded-md text-sm sm:text-base"
                   {...props}
                 >
                   {children}
