@@ -22,6 +22,13 @@ export default function Document() {
         />
         <meta property="og:url" content="https://www.prismane.io" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@prismaneui" />
+        <meta name="twitter:title" content="Prismane" />
+        <meta
+          name="twitter:description"
+          content="Build stunning user interfaces with ease using 107+ components, 484+ themes, and 20+ custom hooks. Level up your productivity and create exceptional experiences. Join the Prismane community today!"
+        ></meta>
       </Head>
       <body>
         <Main />
