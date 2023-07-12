@@ -26,7 +26,7 @@ const Statistics = () => {
             20+
           </span>
           <span className="text-lg dark:text-base-300 text-base-900">
-            Custom React hooks
+            React hooks
           </span>
         </div>
       </div>

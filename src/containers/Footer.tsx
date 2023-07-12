@@ -17,7 +17,8 @@ const Footer = () => {
             </>
           </Link>
           <span className="max-w-[300px] dark:text-base-300 text-base-700">
-            Develop faster than ever and ship your products way quicker.
+            Unleash your potential with a comprehensive developer toolbox for
+            limitless possibilities.
           </span>
         </div>
         <div className="flex flex-col sm:flex-row gap-12 md:gap-24 lg:gap-36">

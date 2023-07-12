@@ -24,8 +24,8 @@ function Demo() {
 
   return (
     <Form
-      onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => setValues(JSON.stringify(v)));
+      onSubmit={(e) => {
+        handleSubmit(e, (v) => setValues(JSON.stringify(v)));
       }}
       onReset={() => {
         setValues("");
