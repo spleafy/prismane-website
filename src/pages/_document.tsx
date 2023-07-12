@@ -11,6 +11,10 @@ export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
+        <meta
+          name="keywords"
+          content="React UI library, UI components, component library, design system, web development, front-end development, JavaScript, CSS, responsive design, accessibility, user interface, user experience, developer tools, code reusability, Prismane, Open-source"
+        />
         <meta property="og:title" content="Prismane" />
         <meta
           property="og:description"
@@ -28,7 +32,11 @@ export default function Document() {
         <meta
           name="twitter:description"
           content="Build stunning user interfaces with ease using 107+ components, 484+ themes, and 20+ custom hooks. Level up your productivity and create exceptional experiences. Join the Prismane community today!"
-        ></meta>
+        />
+        <meta
+          name="twitter:image"
+          content="https://i.ibb.co/Lvp0Lbm/opengraph-banner.png"
+        />
       </Head>
       <body>
         <Main />
