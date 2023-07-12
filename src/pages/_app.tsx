@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GoogleAnalytics />
       <PrismaneProvider theme={theme}>
-        <div className="flex flex-col gap-5 sm:justify-center items-center sm:h-screen py-20">
+        <div className="flex flex-col gap-5 sm:justify-center items-center sm:h-screen py-10">
           <div className="flex items-center justify-center w-40 h-40 sm:w-56 sm:h-56 gradient rounded-3xl mb-6 sm:mb-14 shadow-2xl dark:shadow-primary-500/20 shadow-primary-500/30">
             <div className="relative w-36 sm:w-48 h-36 sm:h-48">
               <Image src="/logo_white.svg" alt="Logo White" fill />
