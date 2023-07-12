@@ -18,7 +18,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://i.ibb.co/gZN3hZ6/opengraph-banner.png"
+          content="https://i.ibb.co/Rjn7d65/opengraph-banner.png"
         />
         <meta property="og:url" content="https://www.prismane.io" />
         <meta property="og:type" content="website" />
