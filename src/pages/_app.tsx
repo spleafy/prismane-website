@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import Countdown from "react-countdown";
 import Image from "next/image";
-import { Form, TextField, Button, Alert } from "@prismane/core";
+import { Form, Field, Flex, Button, Alert } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
 import { required, email } from "@prismane/core/validators";
 // Analytics
@@ -80,35 +80,35 @@ export default function App({ Component, pageProps }: AppProps) {
                   <span className="text-6xl font-bold text-white">
                     {mounted ? days : "0"}
                   </span>
-                  <span className="text-3xl text-base-700">Days</span>
+                  <span className="text-3xl text-base-500">Days</span>
                 </div>
                 <div className="flex flex-col gap-2 justify-center items-center">
                   <span className="text-6xl font-bold text-white">
                     {mounted ? hours : "0"}
                   </span>
-                  <span className="text-3xl text-base-700">Hours</span>
+                  <span className="text-3xl text-base-500">Hours</span>
                 </div>
                 <div className="flex flex-col gap-2 justify-center items-center">
                   <span className="text-6xl font-bold text-white">
                     {mounted ? minutes : "0"}
                   </span>
-                  <span className="text-3xl text-base-700">Minutes</span>
+                  <span className="text-3xl text-base-500">Minutes</span>
                 </div>
                 <div className="flex flex-col gap-2 justify-center items-center">
                   <span className="text-6xl font-bold text-white">
                     {mounted ? seconds : "0"}
                   </span>
-                  <span className="text-3xl text-base-700">Seconds</span>
+                  <span className="text-3xl text-base-500">Seconds</span>
                 </div>
               </div>
             )}
           />
-          <hr className="w-1/3 mt-8" />
-          <span className="section-heading text-3xl mt-8">
+          <hr className="w-1/3 mt-8 border-base-700" />
+          <span className="section-heading text-4xl mt-8">
             Notify me on <span className="text-gradient">release</span>
           </span>
           <Form
-            className="flex items-end gap-5 mt-2"
+            className="flex items-end gap-5 mt-2 w-full sm:w-96 px-4 sm:px-0"
             onSubmit={(e: any) => {
               handleSubmit(e, async (v: any) => {
                 try {
@@ -138,14 +138,20 @@ export default function App({ Component, pageProps }: AppProps) {
               });
             }}
           >
-            <TextField
-              type="email"
-              placeholder="Enter your email"
-              {...register("email")}
-            />
-            <Button type="submit" className="!h-10 w-full">
-              Subscribe
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full">
+              <Field
+                className="!w-full"
+                type="email"
+                placeholder="Enter your email"
+                {...register("email")}
+              />
+              <Button type="submit" className="!h-10 w-full sm:w-fit">
+                Subscribe
+              </Button>
+            </div>
+            <div className="flex items-center self-start">
+              <Field.Error>{register("email").error}</Field.Error>
+            </div>
           </Form>
           {success && (
             <Alert variant="success">Thank you for your subscription!</Alert>
