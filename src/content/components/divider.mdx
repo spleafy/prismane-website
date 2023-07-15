@@ -15,7 +15,7 @@ import { Divider } from "@prismane/core";
 ```
 
 ```jsx
-<Flex direction="column" w="100%" gap={fr(2)}>
+<Stack>
   <Text as="h1">Lorem Ipsum</Text>
   <Divider />
   <Text>
@@ -26,7 +26,33 @@ import { Divider } from "@prismane/core";
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </Text>
-</Flex>
+</Stack>
+```
+
+### Divider Variants
+
+By default, `Divider` uses the `solid` variant.
+
+```jsx
+<>
+  <Divider variant="solid" />
+  <Divider variant="dashed" />
+  <Divider variant="dotted" />
+</>
+```
+
+### Divider Orientations
+
+By default, `Divider` uses the `horizontal` variant.
+
+```jsx
+<Divider orientation="horizontal" />
+```
+
+```jsx
+<Box w="100%" h={fr(20)}>
+  <Divider orientation="vertical" />
+</Box>
 ```
 
 ## API

@@ -18,7 +18,7 @@ import { Menu } from "@prismane/core";
 
 ```jsx
 <Menu w={fr(64)} open>
-  <Menu.Label>Menu</Menu.Label>
+  <Menu.Label>Account</Menu.Label>
   <Menu.Item>
     <Menu.Icon>
       <User />
@@ -27,9 +27,23 @@ import { Menu } from "@prismane/core";
   </Menu.Item>
   <Menu.Item>
     <Menu.Icon>
+      <Chat />
+    </Menu.Icon>
+    Messages
+  </Menu.Item>
+  <Divider />
+  <Menu.Label>Danger Zone</Menu.Label>
+  <Menu.Item>
+    <Menu.Icon>
       <GearSix />
     </Menu.Icon>
     Settings
+  </Menu.Item>
+  <Menu.Item color="red">
+    <Menu.Icon>
+      <SignOut />
+    </Menu.Icon>
+    Log Out
   </Menu.Item>
 </Menu>
 ```
@@ -44,7 +58,7 @@ function Demo() {
     <Flex direction="column" gap={fr(2)} w={fr(64)}>
       <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
       <Menu w={fr(64)} open={open}>
-        <Menu.Label>Menu</Menu.Label>
+        <Menu.Label>Account</Menu.Label>
         <Menu.Item>
           <Menu.Icon>
             <User />
@@ -53,16 +67,35 @@ function Demo() {
         </Menu.Item>
         <Menu.Item>
           <Menu.Icon>
+            <Chat />
+          </Menu.Icon>
+          Messages
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <Images />
+          </Menu.Icon>
+          Media
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <MagnifyingGlass />
+          </Menu.Icon>
+          Search
+        </Menu.Item>
+        <Divider />
+        <Menu.Label>Danger Zone</Menu.Label>
+        <Menu.Item>
+          <Menu.Icon>
             <GearSix />
           </Menu.Icon>
           Settings
         </Menu.Item>
-        <Divider />
         <Menu.Item color="red">
           <Menu.Icon>
             <SignOut />
           </Menu.Icon>
-          Sign Out
+          Log Out
         </Menu.Item>
       </Menu>
     </Flex>

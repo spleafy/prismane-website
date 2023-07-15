@@ -162,7 +162,7 @@ const Header = () => {
                       ).slug
                     }/${item.slug}`}
                     className={`text-sm px-3 py-1 rounded-md font-medium ${
-                      path.includes("/" + item.slug)
+                      path.split("/")[path.split("/").length - 1] === item.slug
                         ? "dark:text-primary-500 text-primary-700 bg-primary-700/20"
                         : "dark:text-white text-base-900"
                     }`}

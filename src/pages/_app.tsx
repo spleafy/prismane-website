@@ -34,12 +34,6 @@ export default function App({ Component, pageProps }: AppProps) {
     },
   };
 
-  /* <PrismaneProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </PrismaneProvider> */
-
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -73,7 +67,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
           </div>
           <Countdown
-            date={new Date("July 15, 2023 09:00:00 UTC")}
+            date={new Date("July 15, 2023 10:00:00 UTC")}
             renderer={({ days, hours, minutes, seconds, completed }) => (
               <div className="flex items-center gap-4 sm:gap-16 flex-col sm:flex-row">
                 <div className="flex flex-col gap-2 justify-center items-center">
@@ -162,6 +156,9 @@ export default function App({ Component, pageProps }: AppProps) {
             </Alert>
           )}
         </div>
+        {/* <Layout>
+          <Component {...pageProps} />
+        </Layout> */}
       </PrismaneProvider>
     </>
   );

@@ -62,72 +62,451 @@ const content: any = [
     slug: "components",
     icon: <SquaresFour />,
     items: [
-      { slug: "accordion", title: "Accordion" },
-      { slug: "action-button", title: "ActionButton" },
-      { slug: "alert", title: "Alert" },
-      { slug: "animation", title: "Animation" },
-      { slug: "aspect-ratio", title: "AspectRatio" },
-      { slug: "autocomplete-field", title: "AutocompleteField" },
-      { slug: "avatar", title: "Avatar" },
-      { slug: "backdrop", title: "Backdrop" },
-      { slug: "badge", title: "Badge" },
-      { slug: "box", title: "Box" },
-      { slug: "breadcrumb", title: "Breadcrumb" },
-      { slug: "button", title: "Button" },
-      { slug: "card", title: "Card" },
-      { slug: "center", title: "Center" },
-      { slug: "checkbox", title: "Checkbox" },
-      { slug: "chip", title: "Chip" },
-      { slug: "circle", title: "Circle" },
-      { slug: "close-button", title: "CloseButton" },
-      { slug: "collapse", title: "Collapse" },
-      { slug: "color-field", title: "ColorField" },
-      { slug: "container", title: "Container" },
-      { slug: "dialog", title: "Dialog" },
-      { slug: "divider", title: "Divider" },
-      { slug: "drawer", title: "Drawer" },
-      { slug: "field", title: "Field" },
-      { slug: "flex", title: "Flex" },
-      { slug: "form", title: "Form" },
-      { slug: "gradient", title: "Gradient" },
-      { slug: "grid", title: "Grid" },
-      { slug: "hidden", title: "Hidden" },
-      { slug: "hide", title: "Hide" },
-      { slug: "highlight", title: "Highlight" },
-      { slug: "icon", title: "Icon" },
-      { slug: "image", title: "Image" },
-      { slug: "initials", title: "Initials" },
-      { slug: "key", title: "Key" },
-      { slug: "link", title: "Link" },
-      { slug: "list", title: "List" },
-      { slug: "menu", title: "Menu" },
-      { slug: "modal", title: "Modal" },
-      { slug: "native-date-field", title: "NativeDateField" },
-      { slug: "native-select-field", title: "NativeSelectField" },
-      { slug: "number-field", title: "NumberField" },
-      { slug: "paper", title: "Paper" },
-      { slug: "password-field", title: "PasswordField" },
-      { slug: "pin-field", title: "PinField" },
-      { slug: "popover", title: "Popover" },
-      { slug: "portal", title: "Portal" },
-      { slug: "progress", title: "Progress" },
-      { slug: "radio", title: "Radio" },
-      { slug: "segmented-field", title: "SegmentedField" },
-      { slug: "select-field", title: "SelectField" },
-      { slug: "show", title: "Show" },
-      { slug: "skeleton", title: "Skeleton" },
-      { slug: "spinner", title: "Spinner" },
-      { slug: "square", title: "Square" },
-      { slug: "stack", title: "Stack" },
-      { slug: "switch", title: "Switch" },
-      { slug: "table", title: "Table" },
-      { slug: "tabs", title: "Tabs" },
-      { slug: "text", title: "Text" },
-      { slug: "textarea-field", title: "TextareaField" },
-      { slug: "text-field", title: "TextField" },
-      { slug: "toaster", title: "Toaster" },
-      { slug: "tooltip", title: "Tooltip" },
-      { slug: "transition", title: "Transition" },
+      {
+        slug: "getting-started",
+        title: "Getting Started",
+      },
+      {
+        slug: "accordion",
+        title: "Accordion",
+        category: "data-display",
+        description:
+          "Accordion displays a list of options that can be expanded or collapsed.",
+      },
+      {
+        slug: "action-button",
+        title: "ActionButton",
+        category: "inputs",
+        description: "ActionButton displays a square call-to-action button.",
+      },
+      {
+        slug: "alert",
+        title: "Alert",
+        category: "feedback",
+        description: "Alert displays an important message for an action.",
+      },
+      {
+        slug: "animation",
+        title: "Animation",
+        category: "miscellaneous",
+        description:
+          "Animation display a container that can animate between CSS properties.",
+      },
+      {
+        slug: "aspect-ratio",
+        title: "AspectRatio",
+        category: "layout",
+        description: "AspectRatio renders a responsive container.",
+      },
+      {
+        slug: "autocomplete-field",
+        title: "AutocompleteField",
+        category: "inputs",
+        description:
+          "AutocompleteField displays a field that has a set of options, which can be filtered.",
+      },
+      {
+        slug: "avatar",
+        title: "Avatar",
+        category: "data-display",
+        description:
+          "Avatar displays a profile picture or a color background with initials.",
+      },
+      {
+        slug: "backdrop",
+        title: "Backdrop",
+        category: "overlay",
+        description:
+          "Backdrop displays a container that is used to limit the user's actions and make them focus on it's content.",
+      },
+      {
+        slug: "badge",
+        title: "Badge",
+        category: "data-display",
+        description:
+          "Badge displays a small badge with short information to it's children.",
+      },
+      {
+        slug: "box",
+        title: "Box",
+        category: "layout",
+        description: "Box displays a versatile container, by default a div.",
+      },
+      {
+        slug: "breadcrumb",
+        title: "Breadcrumb",
+        category: "navigation",
+        description: "Box displays a versatile container, by default a div.",
+      },
+      {
+        slug: "button",
+        title: "Button",
+        category: "inputs",
+        description: "Button displays a styled button.",
+      },
+      {
+        slug: "card",
+        title: "Card",
+        category: "data-display",
+        description:
+          "Card displays a container that groups and displays content.",
+      },
+      {
+        slug: "center",
+        title: "Center",
+        category: "layout",
+        description:
+          "Center displays a container that places it's content in the center.",
+      },
+      {
+        slug: "checkbox",
+        title: "Checkbox",
+        category: "inputs",
+        description:
+          "Checkbox displays a field that has a set of options, which can be filtered.",
+      },
+      {
+        slug: "chip",
+        title: "Chip",
+        category: "data-display",
+        description:
+          "Chip displays a container that is used to highlight some important short information.",
+      },
+      {
+        slug: "circle",
+        title: "Circle",
+        category: "layout",
+        description:
+          "Circle displays a circle that renders it's content in the center.",
+      },
+      {
+        slug: "close-button",
+        title: "CloseButton",
+        category: "inputs",
+        description: "CloseButton displays a square close button.",
+      },
+      {
+        slug: "collapse",
+        title: "Collapse",
+        category: "data-display",
+        description:
+          "Collapse displays a container that can hide and show content.",
+      },
+      {
+        slug: "color-field",
+        title: "ColorField",
+        category: "inputs",
+        description:
+          "Color field displays a field that has a set of colors, which can be chosen.",
+      },
+      {
+        slug: "container",
+        title: "Container",
+        category: "layout",
+        description:
+          "Container displays a container that constrains the content, whilst still remaining fluid.",
+      },
+      {
+        slug: "dialog",
+        title: "Dialog",
+        category: "overlay",
+        description:
+          "Dialog displays a container that displays a notification.",
+      },
+      {
+        slug: "divider",
+        title: "Divider",
+        category: "miscellaneous",
+        description:
+          "Divider displays a horizontal line that visually separates the content.",
+      },
+      {
+        slug: "drawer",
+        title: "Drawer",
+        category: "overlay",
+        description:
+          "Drawer displays a container that slides from the side and occupies the users attention.",
+      },
+      {
+        slug: "field",
+        title: "Field",
+        category: "inputs",
+        description:
+          "Field displays a field that is used as the base component to create fields.",
+      },
+      {
+        slug: "flex",
+        title: "Flex",
+        category: "layout",
+        description: "Flex displays a container that has a display of flex.",
+      },
+      {
+        slug: "form",
+        title: "Form",
+        category: "inputs",
+        description:
+          "Form displays a form container that groups a given set of fields.",
+      },
+      {
+        slug: "gradient",
+        title: "Gradient",
+        category: "data-display",
+        description: "Gradient displays a container with gradient background.",
+      },
+      {
+        slug: "grid",
+        title: "Grid",
+        category: "layout",
+        description: "Grid displays a container that has a display of grid.",
+      },
+      {
+        slug: "hidden",
+        title: "Hidden",
+        category: "layout",
+        description: "Hidden displays a container that hides it's content.",
+      },
+      {
+        slug: "hide",
+        title: "Hide",
+        category: "layout",
+        description: "Hide displays a container that hides under a breakpoint.",
+      },
+      {
+        slug: "highlight",
+        title: "Highlight",
+        category: "typography",
+        description:
+          "Highlight displays a container that highlights it's content.",
+      },
+      {
+        slug: "icon",
+        title: "Icon",
+        category: "data-display",
+        description:
+          "Icon displays a container that can be used as a frame for an icon and provides consistency in sizing.",
+      },
+      {
+        slug: "image",
+        title: "Image",
+        category: "data-display",
+        description: "Image displays an image element.",
+      },
+      {
+        slug: "initials",
+        title: "Initials",
+        category: "typography",
+        description: "Initials displays the initials of a provided name.",
+      },
+      {
+        slug: "key",
+        title: "Key",
+        category: "data-display",
+        description:
+          "Key displays a container that is used to display keyboard key combinations.",
+      },
+      {
+        slug: "link",
+        title: "Link",
+        category: "navigation",
+        description:
+          "Link displays an anchor providing additional styling and features.",
+      },
+      {
+        slug: "list",
+        title: "List",
+        category: "data-display",
+        description:
+          "List displays a container that groups elements in a list.",
+      },
+      {
+        slug: "menu",
+        title: "Menu",
+        category: "overlay",
+        description:
+          "Menu displays a menu container that displays different actions the user can perform.",
+      },
+      {
+        slug: "modal",
+        title: "Modal",
+        category: "overlay",
+        description: "Modal displays a container that displays a notification.",
+      },
+      {
+        slug: "native-date-field",
+        title: "NativeDateField",
+        category: "inputs",
+        description: "NativeDateField displays a native date field.",
+      },
+      {
+        slug: "native-select-field",
+        title: "NativeSelectField",
+        category: "inputs",
+        description: "NativeSelectField displays a native select field.",
+      },
+      {
+        slug: "number-field",
+        title: "NumberField",
+        category: "inputs",
+        description:
+          "NumberField displays a field that handles numbers, allowing incrementing and decrementing the value.",
+      },
+      {
+        slug: "paper",
+        title: "Paper",
+        category: "data-display",
+        description: "Paper displays a container with background and shadow.",
+      },
+      {
+        slug: "password-field",
+        title: "PasswordField",
+        category: "inputs",
+        description:
+          "PasswordField displays a field that handles passwords, allowing for showing and hiding the password.",
+      },
+      {
+        slug: "pin-field",
+        title: "PinField",
+        category: "inputs",
+        description:
+          "PinField displays a field that handles pins, allowing for easily typing in number combinations.",
+      },
+      {
+        slug: "popover",
+        title: "Popover",
+        category: "overlay",
+        description:
+          "Popover displays a dialog container that is shown around a control.",
+      },
+      {
+        slug: "portal",
+        title: "Portal",
+        category: "overlay",
+        description:
+          "Portal displays a container that is displayed outside of the current DOM tree.",
+      },
+      {
+        slug: "progress",
+        title: "Progress",
+        category: "data-display",
+        description:
+          "Progress displays a container that shows the progress of a process.",
+      },
+      {
+        slug: "radio",
+        title: "Radio",
+        category: "inputs",
+        description:
+          "Radio displays a group of fields that handles toggling between multiple values.",
+      },
+      {
+        slug: "segmented-field",
+        title: "SegmentedField",
+        category: "inputs",
+        description:
+          "SegmentedField displays a field that handles toggling between multiple values.",
+      },
+      {
+        slug: "select-field",
+        title: "SelectField",
+        category: "inputs",
+        description:
+          "SelectField displays a field that handles choosing a value from a set values.",
+      },
+      {
+        slug: "show",
+        title: "Show",
+        category: "layout",
+        description: "Show displays a container that hides under a breakpoint.",
+      },
+      {
+        slug: "skeleton",
+        title: "Skeleton",
+        category: "feedback",
+        description: "Skeleton displays a loading state of a container.",
+      },
+      {
+        slug: "spinner",
+        title: "Spinner",
+        category: "feedback",
+        description:
+          "Spinner displays a spinning container displaying a loading state.",
+      },
+      {
+        slug: "square",
+        title: "Square",
+        category: "layout",
+        description: "Square displays a square container.",
+      },
+      {
+        slug: "stack",
+        title: "Stack",
+        category: "data-display",
+        description:
+          "Stack displays a container that groups elements together and puts space around them.",
+      },
+      {
+        slug: "switch",
+        title: "Switch",
+        category: "inputs",
+        description:
+          "Switch displays a field that handles toggling between true or false.",
+      },
+      {
+        slug: "table",
+        title: "Table",
+        category: "data-display",
+        description:
+          "Table displays a table container that is used to organize and display data in a convenient way.",
+      },
+      {
+        slug: "tabs",
+        title: "Tabs",
+        category: "data-display",
+        description:
+          "Tabs displays a container that allows the user to switch between different screens.",
+      },
+      {
+        slug: "text",
+        title: "Text",
+        category: "typography",
+        description:
+          "Text displays a text container used to display text and easily style it.",
+      },
+      {
+        slug: "textarea-field",
+        title: "TextareaField",
+        category: "inputs",
+        description:
+          "TextareaField displays a field that handles toggling between multiple values.",
+      },
+      {
+        slug: "text-field",
+        title: "TextField",
+        category: "inputs",
+        description:
+          "TextField displays a field that handles toggling between multiple values.",
+      },
+      {
+        slug: "toaster",
+        title: "Toaster",
+        category: "feedback",
+        description:
+          "Toaster displays a container that renders elements for a given time and then removes them from the DOM.",
+      },
+      {
+        slug: "tooltip",
+        title: "Tooltip",
+        category: "overlay",
+        description:
+          "Tooltip display a container that shows additional information on hover.",
+      },
+      {
+        slug: "transition",
+        title: "Transition",
+        category: "miscellaneous",
+        description:
+          "Transition display a container that can transition it's CSS properties.",
+      },
     ],
   },
   {

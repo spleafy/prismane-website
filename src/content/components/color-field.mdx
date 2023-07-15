@@ -5,7 +5,7 @@ Color field displays a field that has a set of colors, which can be chosen.
 ## Import
 
 ```js
-import { Drawer } from "@prismane/core";
+import { ColorField } from "@prismane/core";
 ```
 
 ## Usage
@@ -40,24 +40,6 @@ function Demo() {
       label="Default Field:"
       value={color}
       onChange={(e) => setColor(e.target.value)}
-    />
-  );
-}
-```
-
-### With Icon
-
-```jsx
-function Demo() {
-  const [color, setColor] = useState("");
-
-  return (
-    <ColorField
-      placeholder="Default Field"
-      label="Default Field:"
-      value={color}
-      onChange={(e) => setColor(e.target.value)}
-      icon={<GearSix />}
     />
   );
 }

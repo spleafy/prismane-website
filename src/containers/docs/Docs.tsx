@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 // Content
 import content from "@/content";
+import categories from "@/categories";
 
 interface T {
   children?: ReactNode;
@@ -59,7 +60,7 @@ export const Docs: FC<T> = ({ children }) => {
                 content.find((nav: any) => nav.slug === routes[0]).slug
               }/${item.slug}`}
               className={`text-sm px-3 py-1 rounded-md font-medium ${
-                path.includes("/" + item.slug)
+                path.split("/")[path.split("/").length - 1] === item.slug
                   ? "dark:text-primary-500 text-primary-700 bg-primary-700/20"
                   : "dark:text-white text-base-900"
               }`}
@@ -71,7 +72,7 @@ export const Docs: FC<T> = ({ children }) => {
       </nav>
       <div className="flex flex-col grow gap-5 p-5 w-full self-start">
         {children}
-        <div className="flex gap-5 mt-5">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-5">
           <div className="flex grow">
             {currentIndex > 0 && (
               <Link

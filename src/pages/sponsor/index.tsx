@@ -13,7 +13,7 @@ export default function Sponsor() {
           name="description"
           content="Support the growth and development of Prismane! By becoming a sponsor, you contribute to the continuous improvement of Prismane, enabling us to provide free, high-quality tools and resources to the developer community. Together, we can drive innovation, foster collaboration, and make great UI accessible to all."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
