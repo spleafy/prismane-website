@@ -16,7 +16,6 @@ export default function Home() {
           content="Discover Prismane, an innovative open-source React UI library with 107+ components, 20+ hooks, native dark theme support and TypeScript support  that empowers developers to create exceptional user interfaces."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
       <Statistics />

@@ -24,10 +24,7 @@ const Hero = () => {
         At Prismane, we firmly believe that software should be within reach of
         all.
       </h2>
-      <Link
-        href={process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""}
-        target="_blank"
-      >
+      <Link href="https://github.com/prismaneui/prismane" target="_blank">
         <Button
           variant="primary"
           icon={<GithubLogo size={24} />}

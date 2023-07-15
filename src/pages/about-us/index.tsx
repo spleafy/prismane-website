@@ -16,7 +16,6 @@ export default function About_Us() {
           name="description"
           content="Discover the story behind Prismane, a visionary React UI library. Learn about our mission, values, and commitment to providing easy-to-use, free tools for exceptional user interfaces. Join us in revolutionizing the way we design and create beautiful web experiences."
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
       <History />

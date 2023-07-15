@@ -17,7 +17,7 @@ const Support = () => {
       icon: <Users />,
       heading: "Join our community",
       text: "Join our community and help us grow! By contributing to our open source repository, you can help us accelerate the development of our product and make it even better. Your contributions, big or small, can have a huge impact on our growth and success. Join us today and be a part of something truly special!",
-      link: process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : "",
+      link: "https://github.com/prismaneui/prismane",
       action: "Contribute",
     },
     {
@@ -31,9 +31,7 @@ const Support = () => {
       icon: <HandCoins />,
       heading: "Donate",
       text: "We at Prismane want to keep making software free, with no tiers or hidden payments. By making a donation to us, you will enable us to produce even higher-quality products, expand our teams, work even faster and deliver updates more frequently.",
-      link: process.env.OPENCOLLECTIVE_URL
-        ? (process.env.OPENCOLLECTIVE_URL as Url)
-        : "",
+      link: "https://opencollective.com/prismane",
       action: "Donate",
     },
   ];

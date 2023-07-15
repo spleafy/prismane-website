@@ -42,7 +42,7 @@ function Demo() {
       label="Default Field:"
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      icon={<GearSix />}
+      icon={<User />}
       options={[
         { value: "ivan", element: "Ivan" },
         { value: "gosho", element: "Gosho" },
@@ -54,6 +54,8 @@ function Demo() {
 ```
 
 ### Custom Filter Function
+
+By providing a value to the `filter` prop, you can change the filtering method that the given field uses.
 
 ```jsx
 function Demo() {

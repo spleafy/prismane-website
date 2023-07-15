@@ -23,14 +23,7 @@ const Hero = () => {
         Your donation can help us enhance our product quality, expand our teams,
         accelerate our work, and release updates more frequently.
       </h2>
-      <Link
-        href={
-          process.env.OPENCOLLECTIVE_URL
-            ? (process.env.OPENCOLLECTIVE_URL as Url)
-            : ""
-        }
-        target="_blank"
-      >
+      <Link href="https://opencollective.com/prismane" target="_blank">
         <Button
           variant="primary"
           icon={<HandCoins size={24} />}

@@ -20,6 +20,8 @@ import { Alert } from "@prismane/core";
 
 ### Closable Alert
 
+By providing the `closable` prop to the alert, it displays a close button, which will close the alert.
+
 ```jsx
 <Alert closable>
   This is a closable alert. Click the close button to dismiss it.
@@ -27,6 +29,8 @@ import { Alert } from "@prismane/core";
 ```
 
 ### Custom Alert Icon
+
+Alert's icon can be changed, by passing another icon to the `icon` prop.
 
 ```jsx
 <Alert icon={<WarningDiamond size={24} />} variant="warning" closable>

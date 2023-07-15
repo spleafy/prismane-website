@@ -32,6 +32,8 @@ import { Link } from "@prismane/core";
 
 ### Foreign Link
 
+Links that have the `foreign` prop will open in a new browser window.
+
 ```jsx
 <Link href="https://www.google.com" foreign>
   Click Me
@@ -39,6 +41,8 @@ import { Link } from "@prismane/core";
 ```
 
 ### Before Function
+
+`Link` exposes the support for a `before` function, which will execute, before the user will be redirected.
 
 ```jsx
 <Link

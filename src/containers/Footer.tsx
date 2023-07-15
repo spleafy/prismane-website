@@ -39,9 +39,7 @@ const Footer = () => {
               Community
             </span>
             <Link
-              href={
-                process.env.GITHUB_URL ? (process.env.TWITTER_URL as Url) : ""
-              }
+              href="https://github.com/prismaneui/prismane"
               target="_blank"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >
@@ -49,9 +47,7 @@ const Footer = () => {
               <ArrowSquareOut />
             </Link>
             <Link
-              href={
-                process.env.REDDIT_URL ? (process.env.REDDIT_URL as Url) : ""
-              }
+              href="https://www.reddit.com/r/prismane/"
               target="_blank"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >
@@ -59,9 +55,7 @@ const Footer = () => {
               <ArrowSquareOut />
             </Link>
             <Link
-              href={
-                process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""
-              }
+              href="https://github.com/prismaneui/prismane"
               target="_blank"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >
@@ -69,11 +63,7 @@ const Footer = () => {
               <ArrowSquareOut />
             </Link>
             <Link
-              href={
-                process.env.OPENCOLLECTIVE_URL
-                  ? (process.env.OPENCOLLECTIVE_URL as Url)
-                  : ""
-              }
+              href="https://opencollective.com/prismane"
               target="_blank"
               className="flex items-center gap-2 dark:text-base-300 text-base-700 cursor-pointer hover:underline hover:!text-primary-500"
             >

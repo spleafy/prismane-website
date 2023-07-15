@@ -185,13 +185,12 @@ export default function Page(params: any) {
   return (
     <>
       <Head>
-        {/* <title>Prismane / {title.toString() || "Docs"} </title> */}
-        {/* <meta
+        <title>Prismane / {title.toString() || "Docs"} </title>
+        <meta
           name="description"
           content={`Explore the customizable ${title} component of Prismane. Discover the power of Prismane's ${title} component today.`}
-        /> */}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <DocsPage>
         {

@@ -175,22 +175,14 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-5 z-10">
-          <Link
-            href={process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""}
-            target="_blank"
-          >
+          <Link href="https://github.com/prismaneui/prismane" target="_blank">
             <ActionButton
               color="pink"
               variant="secondary"
               icon={<GithubLogo />}
             />
           </Link>
-          <Link
-            href={
-              process.env.TWITTER_URL ? (process.env.TWITTER_URL as Url) : ""
-            }
-            target="_blank"
-          >
+          <Link href="https://twitter.com/prismaneui" target="_blank">
             <ActionButton
               color="pink"
               variant="secondary"

@@ -37,6 +37,7 @@ export default function Document() {
           name="twitter:image"
           content="https://i.ibb.co/Lvp0Lbm/opengraph-banner.png"
         />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
         <Main />

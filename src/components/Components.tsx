@@ -23,7 +23,7 @@ const Components = () => {
             </span>
           </div>
           <Divider className="mb-4" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {content
               .find((obj: any) => obj.slug === "components")
               .items.filter((item: any) => item.category === category.name)

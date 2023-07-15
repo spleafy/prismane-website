@@ -61,7 +61,7 @@ const Contribute = () => {
           </div>
         </div>
         <Link
-          href={process.env.GITHUB_URL ? (process.env.GITHUB_URL as Url) : ""}
+          href="https://github.com/prismaneui/prismane"
           target="_blank"
           className="flex w-full"
         >
