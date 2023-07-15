@@ -7,6 +7,8 @@ import {
   WarningDiamond,
   LinkSimple,
   Toolbox,
+  CursorClick,
+  Database,
 } from "@phosphor-icons/react";
 
 const categories = {
@@ -38,6 +40,20 @@ const categories = {
     {
       name: "navigation",
       icon: <LinkSimple />,
+    },
+    {
+      name: "miscellaneous",
+      icon: <Toolbox />,
+    },
+  ],
+  hooks: [
+    {
+      name: "user-interface",
+      icon: <CursorClick />,
+    },
+    {
+      name: "state-management",
+      icon: <Database />,
     },
     {
       name: "miscellaneous",

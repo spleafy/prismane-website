@@ -138,6 +138,7 @@ import { Docs as DocsPage } from "@/containers/docs/Docs";
 import ColorPalette from "@/components/ColorPalette";
 import Important from "@/components/Important";
 import Components from "@/components/Components";
+import Hooks from "@/components/Hooks";
 
 export async function getStaticPaths() {
   const paths = content.flatMap((parent: any) =>
@@ -575,6 +576,7 @@ export default function Page(params: any) {
               ColorPalette,
               Important,
               Components,
+              Hooks,
               Chip,
               Tabs,
             }}

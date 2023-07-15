@@ -587,25 +587,131 @@ const content: any = [
     slug: "hooks",
     icon: <Wrench />,
     items: [
-      { slug: "use-animation", title: "useAnimation" },
-      { slug: "use-counter", title: "useCounter" },
-      { slug: "use-debounce", title: "useDebounce" },
-      { slug: "use-dimensions", title: "useDimensions" },
-      { slug: "use-draggable", title: "useDraggable" },
-      { slug: "use-emulated-field-change", title: "useEmulatedFieldChange" },
-      { slug: "use-form", title: "useForm" },
-      { slug: "use-id", title: "useId" },
-      { slug: "use-idle", title: "useIdle" },
-      { slug: "use-interval", title: "useInterval" },
-      { slug: "use-keyboard-shortcut", title: "useKeyboardShortcut" },
-      { slug: "use-local-storage", title: "useLocalStorage" },
-      { slug: "use-localization", title: "useLocalization" },
-      { slug: "use-media-query", title: "useMediaQuery" },
-      { slug: "use-memoization", title: "useMemoization" },
-      { slug: "use-outside-click", title: "useOutsideClick" },
-      { slug: "use-previous", title: "usePrevious" },
-      { slug: "use-styling", title: "useStyling" },
-      { slug: "use-toggle", title: "useToggle" },
+      { slug: "getting-started", title: "Getting Started" },
+      {
+        slug: "use-animation",
+        title: "useAnimation",
+        category: "user-interface",
+        description:
+          "useAnimation hook provides a simple way to manage animation state in your components.",
+      },
+      {
+        slug: "use-counter",
+        title: "useCounter",
+        category: "state-management",
+        description:
+          "useCounter hook provides a simple way to manage a stateful counter.",
+      },
+      {
+        slug: "use-debounce",
+        title: "useDebounce",
+        category: "state-management",
+        description:
+          "useDebounce hook provides a simple way to debounce heavy calculations.",
+      },
+      {
+        slug: "use-dimensions",
+        title: "useDimensions",
+        category: "user-interface",
+        description:
+          "useDimensions hook provides a simple way to get the dimensions of an element.",
+      },
+      {
+        slug: "use-draggable",
+        title: "useDraggable",
+        category: "user-interface",
+        description:
+          "useDraggable hook provides a simple way to drag elements.",
+      },
+      {
+        slug: "use-emulated-field-change",
+        title: "useEmulatedFieldChange",
+        category: "miscellaneous",
+        description:
+          "useEmulatedFieldChange hook provides a simple way to emulate field change events.",
+      },
+      {
+        slug: "use-form",
+        title: "useForm",
+        category: "state-management",
+        description: "useForm hook provides a simple way to handle forms.",
+      },
+      {
+        slug: "use-id",
+        title: "useId",
+        category: "miscellaneous",
+        description: "useId hook provides a simple way to create unique ids.",
+      },
+      {
+        slug: "use-idle",
+        title: "useIdle",
+        category: "user-interface",
+        description:
+          "useIdle hook provides a simple way to handle when a client is active and idle.",
+      },
+      {
+        slug: "use-interval",
+        title: "useInterval",
+        category: "state-management",
+        description:
+          "useInterval hook provides a simple way to handle complex intervals.",
+      },
+      {
+        slug: "use-keyboard-shortcut",
+        title: "useKeyboardShortcut",
+        category: "user-interface",
+        description:
+          "useKeyboardShortcut hook provides a simple way to handle key combinations.",
+      },
+      {
+        slug: "use-local-storage",
+        title: "useLocalStorage",
+        category: "state-management",
+        description:
+          "useLocalStorage hook provides a simple way to handle saving data to the localStorage.",
+      },
+      {
+        slug: "use-localization",
+        title: "useLocalization",
+        category: "miscellaneous",
+        description:
+          "useLocalization hook provides a simple way to handle localization and dynamic translation.",
+      },
+      {
+        slug: "use-media-query",
+        title: "useMediaQuery",
+        category: "user-interface",
+        description:
+          "useMediaQuery hook provides a simple way to handle media queries.",
+      },
+      {
+        slug: "use-memoization",
+        title: "useMemoization",
+        category: "state-management",
+        description:
+          "useMemoization hook provides a simple way to memoize expensive calculations.",
+      },
+      {
+        slug: "use-outside-click",
+        title: "useOutsideClick",
+        category: "user-interface",
+        description:
+          "useOutsideClick hook provides a simple way to handle a click out of the element's constraints.",
+      },
+      {
+        slug: "use-previous",
+        title: "usePrevious",
+        category: "state-management",
+        description:
+          "usePrevious hook provides a simple way to handle saving the previous value of a variable.",
+      },
+      {
+        slug: "use-toggle",
+        title: "useToggle",
+        category: "state-management",
+        description:
+          "useToggle hook provides a simple way to handle toggling between a set of values.",
+      },
     ],
   },
   {
