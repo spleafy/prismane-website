@@ -1,7 +1,7 @@
 import { Card } from "@prismane/core";
 import {
   Moon,
-  LockSimpleOpen,
+  Package,
   Money,
   Lightning,
   Palette,
@@ -18,9 +18,9 @@ const Features = () => {
       text: "Tailored for Diverse Color Preferences. Choose Light or Dark Mode with ease.",
     },
     {
-      icon: <LockSimpleOpen size={24} />,
-      heading: "Owned by you",
-      text: "Everything built with our tools is completely owned by you.",
+      icon: <Package size={24} />,
+      heading: "Everything you need",
+      text: "Our products provide a full set of components, hooks and form validators to levitate your development.",
     },
     {
       icon: <Money size={24} />,
@@ -40,7 +40,7 @@ const Features = () => {
     {
       icon: <Gauge size={24} />,
       heading: "Performance",
-      text: "Our tools are built with hardware-accelerated transitions and touch-optimized gestures for extra speed.",
+      text: "Our tools are built with performance in mind.",
     },
   ];
 
