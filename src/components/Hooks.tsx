@@ -9,7 +9,7 @@ const Hooks = () => {
     <div className="flex flex-col gap-10 mt-10">
       {categories.hooks.map((category, index) => (
         <div className="flex flex-col gap-3" key={index}>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4" id={category.name}>
             <div className="flex justify-center items-center text-white w-10 h-10 gradient rounded-md text-2xl">
               {category.icon}
             </div>

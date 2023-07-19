@@ -1,7 +1,3 @@
-# Avatar
-
-Avatar displays a profile picture or a color background with initials.
-
 ## Import
 
 ```js
@@ -10,10 +6,20 @@ import { Avatar } from "@prismane/core";
 
 ## Usage
 
-By default, `Avatar` uses the `base` color, if no source is provided.
+By default, if no initials or image are provided, `Avatar` uses a placeholder icon.
 
 ```jsx
-<Avatar>MP</Avatar>
+<Avatar />
+```
+
+### Custom Placeholder Icon
+
+By providing an icon as a direct child of `Avatar`, you can overwrite our placeholder icon.
+
+```jsx
+<Avatar>
+  <User weight="bold" size={36} />
+</Avatar>
 ```
 
 ### Image Avatar
@@ -22,12 +28,12 @@ By default, `Avatar` uses the `base` color, if no source is provided.
 <Avatar src="https://i.pinimg.com/originals/a7/3b/3d/a73b3d77e2fdca58f57e568ddcfab1a5.jpg" />
 ```
 
-### Placeholder Avatar
+### Initials Avatar
 
-By default, if no initials or image are provided, `Avatar` uses a placeholder icon.
+By default, `Avatar` uses the `base` color, if no source is provided.
 
 ```jsx
-<Avatar />
+<Avatar>MP</Avatar>
 ```
 
 ### Color Avatar
@@ -35,8 +41,8 @@ By default, if no initials or image are provided, `Avatar` uses a placeholder ic
 ```jsx
 <>
   <Avatar color="ruby">MP</Avatar>
-  <Avatar color={["copper", 800]}>MP</Avatar>
-  <Avatar color="#1e1e1e">MP</Avatar>
+  <Avatar color="copper">MP</Avatar>
+  <Avatar color="teal">MP</Avatar>
 </>
 ```
 

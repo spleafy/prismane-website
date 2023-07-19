@@ -1,4 +1,3 @@
-"use client";
 import "../styles/globals.css";
 import "@fontsource/inter/100.css";
 import "@fontsource/inter/200.css";

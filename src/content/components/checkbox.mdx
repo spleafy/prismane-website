@@ -1,7 +1,3 @@
-# Checkbox
-
-Checkbox displays a field that has a set of options, which can be filtered.
-
 ## Import
 
 ```js
@@ -16,7 +12,8 @@ function Demo() {
 
   return (
     <Checkbox
-      label="Default Field:"
+      name="agreement"
+      label="I agree that Prismane is the best!"
       value={value}
       onChange={(e) => setValue(e.target.checked)}
     />
@@ -34,31 +31,36 @@ function Demo() {
     <Flex direction="column" gap={fr(2)}>
       <Checkbox
         size="xs"
-        label="Default Field:"
+        name="size"
+        label="xs Size"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Checkbox
         size="sm"
-        label="Default Field:"
+        name="size"
+        label="sm Size"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Checkbox
         size="base"
-        label="Default Field:"
+        name="size"
+        label="base Size"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Checkbox
         size="md"
-        label="Default Field:"
+        name="size"
+        label="md Size"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Checkbox
         size="lg"
-        label="Default Field:"
+        name="size"
+        label="lg Size"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
@@ -76,7 +78,8 @@ function Demo() {
   return (
     <Checkbox
       indeterminate
-      label="Default Field:"
+      name="indeterminate"
+      label="I cannot determine"
       value={value}
       onChange={(e) => setValue(e.target.checked)}
     />

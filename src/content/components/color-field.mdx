@@ -1,7 +1,3 @@
-# ColorField
-
-Color field displays a field that has a set of colors, which can be chosen.
-
 ## Import
 
 ```js
@@ -16,8 +12,8 @@ function Demo() {
 
   return (
     <ColorField
-      placeholder="Default Field"
-      label="Default Field:"
+      placeholder="No color chosen"
+      label="Choose a color:"
       value={color}
       onChange={(e) => setColor(e.target.value)}
     />
@@ -36,8 +32,8 @@ function Demo() {
   return (
     <ColorField
       options={["teal", "#1e1e1e"]}
-      placeholder="Default Field"
-      label="Default Field:"
+      placeholder="No color chosen"
+      label="Custom color:"
       value={color}
       onChange={(e) => setColor(e.target.value)}
     />
@@ -55,29 +51,29 @@ function Demo() {
     <>
       <ColorField
         variant="outlined"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="Outlined Field"
+        label="Outlined Field:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         variant="filled"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="Filled Field"
+        label="Filled Field:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         variant="underlined"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="Underlined Field"
+        label="Underlined Field:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         variant="unstyled"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="Unstyled Field"
+        label="Unstyled Field:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
@@ -96,36 +92,36 @@ function Demo() {
     <Flex direction="column" gap={fr(2)}>
       <ColorField
         size="xs"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="xs Size"
+        label="xs Size:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         size="sm"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="sm Size"
+        label="sm Size:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         size="base"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="base Size"
+        label="base Size:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         size="md"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="md Size"
+        label="md Size:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
       <ColorField
         size="lg"
-        placeholder="Default Field"
-        label="Default Field:"
+        placeholder="lg Size"
+        label="lg Size:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />

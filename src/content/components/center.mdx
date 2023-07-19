@@ -1,7 +1,3 @@
-<Versatile>Center</Versatile>
-
-Center displays a container that places it's content in the center.
-
 ## Import
 
 ```js
@@ -23,6 +19,22 @@ import { Center } from "@prismane/core";
 ```jsx
 <Center w={64} h={64} bg="primary">
   <Heart size={24} />
+</Center>
+```
+
+### Page Example
+
+`Center` has a very common use case to easily center content on a page.
+
+```jsx
+<Center w="100%" h="20vh" direction="column" gap={fr(4)} ta="center">
+  <Text as="h1" fs="3xl">
+    Ooops... We ran into a problem!
+  </Text>
+  <Text>Our team is working hard to fix the problems as soon as possible!</Text>
+  <Link href="#" cl="primary" mt={fr(8)}>
+    Go back to home
+  </Link>
 </Center>
 ```
 

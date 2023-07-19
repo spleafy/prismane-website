@@ -1,7 +1,8 @@
 import { FC, ReactNode } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowRight, GithubLogo, Tag } from "@phosphor-icons/react";
+import { Chip } from "@prismane/core";
 // Content
 import content from "@/content";
 import categories from "@/categories";
@@ -25,6 +26,19 @@ export const Docs: FC<T> = ({ children }) => {
 
   const currentIndex = current.items.findIndex(
     (obj: any) => obj.slug === routes[1]
+  );
+
+  const currentItem = current.items[currentIndex];
+
+  const Versatile = ({ children }: any) => (
+    <div className="flex items-center gap-5">
+      <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
+        {children}
+      </h1>
+      <Link href="/docs/getting-started/overview#versatile-components">
+        <Chip>Versatile Component</Chip>
+      </Link>
+    </div>
   );
 
   return (
@@ -71,6 +85,49 @@ export const Docs: FC<T> = ({ children }) => {
         </div>
       </nav>
       <div className="flex flex-col grow gap-5 p-5 w-full self-start">
+        {currentItem && (
+          <>
+            {currentItem.versatile ? (
+              <Versatile>{currentItem.title}</Versatile>
+            ) : (
+              <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
+                {currentItem.title}
+              </h1>
+            )}
+            <span className="text-base-800 dark:text-base-100 leading-7 w-full">
+              {currentItem.description}
+            </span>
+          </>
+        )}
+        {currentItem &&
+          ["components", "hooks"].includes(current.slug) &&
+          currentItem.category && (
+            <div className="flex items-center gap-2 flex-col sm:flex-row">
+              <Link
+                href={`/docs/${current.slug}/getting-started#${currentItem.category}`}
+                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
+              >
+                <Tag size={18} /> Category:{" "}
+                {currentItem.category
+                  .split("-")
+                  .map(
+                    (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
+                  )
+                  .join(" ")}
+              </Link>
+              <Link
+                href={
+                  current.slug === "components"
+                    ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
+                    : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}.ts`
+                }
+                target="_blank"
+                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
+              >
+                <GithubLogo size={18} /> Source
+              </Link>
+            </div>
+          )}
         {children}
         <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-5">
           <div className="flex grow">

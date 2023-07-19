@@ -1,7 +1,3 @@
-# Container
-
-Container displays a container that constrains the content, whilst still remaining fluid.
-
 ## Import
 
 ```js
@@ -10,27 +6,18 @@ import { Container } from "@prismane/core";
 
 ## Usage
 
-By default, the `Container` component does not have a set `maxSize`.
+By default, the `Container` component has a set `maxSize` of `base`, which is `28rem`.
 
 ```jsx
 <Container>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Urna porttitor rhoncus dolor
-  purus non enim praesent elementum. Tortor vitae purus faucibus ornare
-  suspendisse sed nisi.
-</Container>
-```
-
-### Container With maxSize
-
-When provided a `maxSize`, the container will restrain it's width to that size, but will always remain fluid.
-
-```jsx
-<Container maxSize="xs">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Urna porttitor rhoncus dolor
-  purus non enim praesent elementum. Tortor vitae purus faucibus ornare
-  suspendisse sed nisi.
+  Containing text within a well-designed container is a powerful technique to
+  captivate users' attention. By providing space around the text, the content
+  gains prominence and becomes visually appealing. This focused presentation not
+  only enhances readability but also guides users' eyes to the essential
+  message. A thoughtful container complements the overall aesthetics of the
+  interface and creates a sense of order and elegance. Whether it's a subtle
+  drop shadow or a vibrant background, the container elevates the text, making
+  it stand out amidst other elements.
 </Container>
 ```
 
@@ -39,19 +26,22 @@ When provided a `maxSize`, the container will restrain it's width to that size, 
 ```jsx
 <Flex direction="column" gap={fr(1)} grow>
   <Container maxSize="xs" bg="red">
-    Lorem ipsum dolor sit amet.
+    xs Size Container
   </Container>
   <Container maxSize="sm" bg="green">
-    Lorem ipsum dolor sit amet.
+    sm Size Container
   </Container>
   <Container maxSize="base" bg="teal">
-    Lorem ipsum dolor sit amet.
+    base Size Container
   </Container>
   <Container maxSize="md" bg="copper">
-    Lorem ipsum dolor sit amet.
+    md Size Container
   </Container>
   <Container maxSize="lg" bg="ruby">
-    Lorem ipsum dolor sit amet.
+    lg Size Container
+  </Container>
+  <Container maxSize="500px" bg="gray">
+    500px Container
   </Container>
 </Flex>
 ```

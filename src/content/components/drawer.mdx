@@ -1,7 +1,3 @@
-# Drawer
-
-Drawer displays a container that slides from the side and occupies the users attention.
-
 ## Import
 
 ```js
@@ -21,20 +17,56 @@ function Demo() {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Toggle Drawer</Button>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} closable onClose={() => setOpen(false)}>
+        Press Esc key to close the Drawer. Or just click the backdrop.
+      </Drawer>
+    </>
+  );
+}
+```
+
+### Complex Drawer
+
+The `Drawer` component has the inner components of `Drawer.Header` and `Drawer.Footer`, which help with visually separating the content. When `Drawer` has a `closable` prop, then a close button is displayed inside the `Drawer.Header` component.
+
+```jsx
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer open={open} closable onClose={() => setOpen(false)}>
         <Drawer.Header>
-          <Text as="h1" cl="white">
-            Payment
-          </Text>
+          <Text as="h1">Create Account</Text>
         </Drawer.Header>
-        <Text cl="white" dp="inline">
-          Would you like to accept this incoming payment from{" "}
-          <strong>John Doe</strong> sending the sum of <strong>$405.30</strong>
-        </Text>
+        <Form>
+          <TextField
+            name="username"
+            label="Username:"
+            placeholder="Enter your username"
+          />
+          <TextField
+            name="email"
+            label="Email:"
+            placeholder="Enter your email"
+          />
+          <PasswordField
+            name="password"
+            label="Password:"
+            placeholder="Enter your password"
+          />
+        </Form>
         <Drawer.Footer gap={fr(2)}>
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Cancel</Button>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="tertiary"
+            color="base"
+          >
+            Cancel
+          </Button>
+          <Button>Create Account</Button>
         </Drawer.Footer>
       </Drawer>
     </>
@@ -43,6 +75,8 @@ function Demo() {
 ```
 
 ### Drawer Positions
+
+The `Drawer` component's `position` prop supports the values: `left`, `right`, `top` and `bottom`. By default, `Drawer` uses a `position` of `left`.
 
 ```jsx
 function Demo() {
@@ -55,21 +89,8 @@ function Demo() {
     <>
       <Button onClick={() => setTop(true)}>Toggle Top Drawer</Button>
       <Drawer open={top} closable onClose={() => setTop(false)} position="top">
-        <Drawer.Header>
-          <Text as="h1" cl="white">
-            Payment
-          </Text>
-        </Drawer.Header>
-        <Text cl="white" dp="inline">
-          Would you like to accept this incoming payment from{" "}
-          <strong>John Doe</strong> sending the sum of <strong>$405.30</strong>
-        </Text>
-        <Drawer.Footer gap={fr(2)}>
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Cancel</Button>
-        </Drawer.Footer>
+        Press Esc key to close the Drawer. Or just click the backdrop.
       </Drawer>
-
       <Button onClick={() => setBottom(true)}>Toggle Bottom Drawer</Button>
       <Drawer
         open={bottom}
@@ -77,21 +98,8 @@ function Demo() {
         onClose={() => setBottom(false)}
         position="bottom"
       >
-        <Drawer.Header>
-          <Text as="h1" cl="white">
-            Payment
-          </Text>
-        </Drawer.Header>
-        <Text cl="white" dp="inline">
-          Would you like to accept this incoming payment from{" "}
-          <strong>John Doe</strong> sending the sum of <strong>$405.30</strong>
-        </Text>
-        <Drawer.Footer gap={fr(2)}>
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Cancel</Button>
-        </Drawer.Footer>
+        Press Esc key to close the Drawer. Or just click the backdrop.
       </Drawer>
-
       <Button onClick={() => setRight(true)}>Toggle Right Drawer</Button>
       <Drawer
         open={right}
@@ -99,21 +107,8 @@ function Demo() {
         onClose={() => setRight(false)}
         position="right"
       >
-        <Drawer.Header>
-          <Text as="h1" cl="white">
-            Payment
-          </Text>
-        </Drawer.Header>
-        <Text cl="white" dp="inline">
-          Would you like to accept this incoming payment from{" "}
-          <strong>John Doe</strong> sending the sum of <strong>$405.30</strong>
-        </Text>
-        <Drawer.Footer gap={fr(2)}>
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Cancel</Button>
-        </Drawer.Footer>
+        Press Esc key to close the Drawer. Or just click the backdrop.
       </Drawer>
-
       <Button onClick={() => setLeft(true)}>Toggle Left Drawer</Button>
       <Drawer
         open={left}
@@ -121,21 +116,61 @@ function Demo() {
         onClose={() => setLeft(false)}
         position="left"
       >
-        <Drawer.Header>
-          <Text as="h1" cl="white">
-            Payment
-          </Text>
-        </Drawer.Header>
-        <Text cl="white" dp="inline">
-          Would you like to accept this incoming payment from{" "}
-          <strong>John Doe</strong> sending the sum of <strong>$405.30</strong>
-        </Text>
-        <Drawer.Footer gap={fr(2)}>
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Cancel</Button>
-        </Drawer.Footer>
+        Press Esc key to close the Drawer. Or just click the backdrop.
       </Drawer>
     </>
+  );
+}
+```
+
+### Drawer Sizes
+
+The `Drawer` component's `size` prop has supporort for all of [PrismaneBreakpoints](/docs/getting-started/overview#global-types) and any other CSS size. The `size` property will change the width or height of the `Drawer` depending on the
+value of the `position` prop. By default, `size` has a value of `base`.
+
+```jsx
+function Demo() {
+  const [position, setPosition] = useState("left");
+  const [size, setSize] = useState("base");
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Flex direction="column" gap={fr(4)}>
+      <Drawer
+        open={open}
+        closable
+        onClose={() => setOpen(false)}
+        position={position}
+        size={size}
+      >
+        Press Esc key to close the Drawer. Or just click the backdrop.
+      </Drawer>
+      <Text>Drawer Size</Text>
+      <Radio.Group
+        name="size"
+        value={size}
+        onChange={(e) => setSize(e.target.value)}
+      >
+        <Radio value="xs" label="xs" />
+        <Radio value="sm" label="sm" />
+        <Radio value="base" label="base" />
+        <Radio value="md" label="md" />
+        <Radio value="lg" label="lg" />
+        <Radio value="550px" label="550px" />
+      </Radio.Group>
+      <Text>Drawer Position</Text>
+      <Radio.Group
+        name="position"
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio value="left" label="left" />
+        <Radio value="right" label="right" />
+        <Radio value="top" label="top" />
+        <Radio value="bottom" label="bottom" />
+      </Radio.Group>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+    </Flex>
   );
 }
 ```

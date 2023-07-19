@@ -21,7 +21,8 @@ const Hero = () => {
       }
     >
       <h1 className="hero-heading">
-        Make great apps, ultra <span className="text-gradient">fast.</span>
+        Make great React apps, ultra{" "}
+        <span className="text-gradient">fast.</span>
       </h1>
       <h2 className="hero-subheading">
         Everything you need to start building your future ventures.

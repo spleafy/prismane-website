@@ -24,6 +24,7 @@ import {
   Chat,
   Images,
   MagnifyingGlass,
+  ShoppingCartSimple,
 } from "@phosphor-icons/react";
 import fs from "fs";
 import remarkGfm from "remark-gfm";
@@ -117,7 +118,6 @@ import {
   useMemoization,
   useOutsideClick,
   usePrevious,
-  useStyling,
   useToggle,
 } from "@prismane/core/hooks";
 import {
@@ -138,6 +138,7 @@ import { Docs as DocsPage } from "@/containers/docs/Docs";
 import ColorPalette from "@/components/ColorPalette";
 import Important from "@/components/Important";
 import Components from "@/components/Components";
+import ComponentsProps from "@/components/ComponentsProps";
 import Hooks from "@/components/Hooks";
 
 export async function getStaticPaths() {
@@ -294,7 +295,6 @@ export default function Page(params: any) {
                         useMemoization,
                         useOutsideClick,
                         usePrevious,
-                        useStyling,
                         useToggle,
                         usePrismaneTheme,
                         usePrismaneColor,
@@ -318,6 +318,7 @@ export default function Page(params: any) {
                         Chat,
                         Images,
                         MagnifyingGlass,
+                        ShoppingCartSimple,
                         useState: React.useState,
                         useEffect: React.useEffect,
                         useRef: React.useRef,
@@ -406,8 +407,8 @@ export default function Page(params: any) {
                       }}
                     >
                       {language === "jsx" && (
-                        <div className="flex p-5 border dark:border-[#0F0F0F] border-base-300 rounded-md text-white grow overflow-x-auto sm:overflow-x-visible">
-                          <LivePreview className="flex w-full grow gap-5" />
+                        <div className="flex p-5 border dark:border-base-800 dark:bg-[#0F0F0F] border-base-300 bg-base-50 rounded-md grow overflow-x-auto sm:overflow-x-visible">
+                          <LivePreview className="flex w-full grow gap-5 flex-wrap" />
                         </div>
                       )}
                       <div className="relative w-full">
@@ -451,11 +452,15 @@ export default function Page(params: any) {
                   .replace(/\s+/g, "-")
                   .replace(/[^a-z0-9-]/g, "");
 
+                console.log(router.asPath, id);
+
                 return (
                   <NextLink
                     href={`${router.asPath}#${id}`}
+                    target="_blank"
                     className="flex items-center gap-4 mt-10 group"
                     id={id}
+                    passHref
                   >
                     <h2
                       className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold no-underline group-hover:underline underline-offset-2 decoration-primary-500"
@@ -557,25 +562,16 @@ export default function Page(params: any) {
               a: ({ children, ...props }) => (
                 <NextLink
                   {...props}
+                  target="_blank"
                   className="inline-flex items-center text-primary-500 gap-1 underline"
                 >
                   {children} <ArrowSquareIn />
                 </NextLink>
               ),
-              Versatile: ({ children, ...props }) => (
-                <NextLink
-                  href="/docs/getting-started/overview#versatile-components"
-                  className="flex items-center gap-5"
-                >
-                  <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-                    {children}
-                  </h1>
-                  <Chip>Versatile Component</Chip>
-                </NextLink>
-              ),
               ColorPalette,
               Important,
               Components,
+              ComponentsProps,
               Hooks,
               Chip,
               Tabs,

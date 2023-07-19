@@ -1,7 +1,3 @@
-# Accordion
-
-Accordion displays a list of options that can be expanded or collapsed.
-
 ## Import
 
 ```js
@@ -10,10 +6,8 @@ import { Accordion } from "@prismane/core";
 
 ## Usage
 
-You can have an expanded element by default, by providing a value to the `defaultValue` prop of the `Accordion` component.
-
 ```jsx
-<Accordion defaultValue="first">
+<Accordion>
   <Accordion.Item value="first">
     <Accordion.Control>
       First
@@ -28,6 +22,30 @@ You can have an expanded element by default, by providing a value to the `defaul
       <Accordion.Icon />
     </Accordion.Control>
     <Accordion.Panel>Second Panel Content</Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+```
+
+### Default Value
+
+By setting the value of the `defaultValue` prop, you can have an item that will be expanded by default.
+
+```jsx
+<Accordion defaultValue="first">
+  <Accordion.Item value="first">
+    <Accordion.Control>
+      First
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>This panel will be expanded by default.</Accordion.Panel>
+  </Accordion.Item>
+
+  <Accordion.Item value="second">
+    <Accordion.Control>
+      Second
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>This one will be closed by default.</Accordion.Panel>
   </Accordion.Item>
 </Accordion>
 ```

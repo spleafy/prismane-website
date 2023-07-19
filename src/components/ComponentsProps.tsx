@@ -4,7 +4,7 @@ import { Divider } from "@prismane/core";
 import content from "../content";
 import categories from "../categories";
 
-const Components = () => {
+const ComponentsProps = () => {
   return (
     <div className="flex flex-col gap-10 mt-10">
       {categories.components.map((category, index) => (
@@ -25,11 +25,11 @@ const Components = () => {
           <Divider className="mb-4" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {content
-              .find((obj: any) => obj.slug === "components")
+              .find((obj: any) => obj.slug === "components-api")
               .items.filter((item: any) => item.category === category.name)
               .map((item: any, index: any) => (
                 <Link
-                  href={`/docs/components/${item.slug}`}
+                  href={`/docs/components-api/${item.slug}`}
                   className="flex flex-col gap-2 p-3 dark:bg-base-700/10 dark:hover:bg-base-700/20 bg-base-500/10 hover:bg-base-500/20 transition-colors rounded-md cursor-pointer"
                   key={index}
                 >
@@ -46,4 +46,4 @@ const Components = () => {
   );
 };
 
-export default Components;
+export default ComponentsProps;

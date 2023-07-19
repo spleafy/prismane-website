@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Prismane / Make great apps, ultra fast</title>
+        <title>Prismane / Make great React apps, ultra fast</title>
         <meta
           name="description"
           content="Discover Prismane, an innovative open-source React UI library with 107+ components, 20+ hooks, native dark theme support and TypeScript support  that empowers developers to create exceptional user interfaces."

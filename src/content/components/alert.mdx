@@ -1,7 +1,3 @@
-# Alert
-
-Alert displays an important message for an action.
-
 ## Import
 
 ```js
@@ -13,9 +9,20 @@ import { Alert } from "@prismane/core";
 `Alert` component can display an alert for four kinds of messages: `info`, `success`, `warning` and `error`
 
 ```jsx
-<Alert>
-  This is an info alert. It provides important information or updates.
-</Alert>
+<Stack>
+  <Alert variant="info">
+    This is an info alert. It provides important information or updates.
+  </Alert>
+  <Alert variant="success">
+    This is an success alert. It provides important information or updates.
+  </Alert>
+  <Alert variant="warning">
+    This is an warning alert. It provides important information or updates.
+  </Alert>
+  <Alert variant="error">
+    This is an error alert. It provides important information or updates.
+  </Alert>
+</Stack>
 ```
 
 ### Closable Alert
@@ -41,7 +48,7 @@ Alert's icon can be changed, by passing another icon to the `icon` prop.
 ### Complex Alert
 
 ```jsx
-<Alert closable>
+<Alert closable miw={fr(192)}>
   <Alert.Title>Demo alert title</Alert.Title>
   <Alert.Description>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -52,17 +59,6 @@ Alert's icon can be changed, by passing another icon to the `icon` prop.
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </Alert.Description>
 </Alert>
-```
-
-### Alert Variants
-
-```jsx
-<>
-  <Alert variant="success">Some demo alert!</Alert>
-  <Alert variant="info">Some demo alert!</Alert>
-  <Alert variant="warning">Some demo alert!</Alert>
-  <Alert variant="error">Some demo alert!</Alert>
-</>
 ```
 
 ## API

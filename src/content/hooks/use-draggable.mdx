@@ -1,7 +1,3 @@
-# useDraggable
-
-useDraggable hook provides a simple way to drag elements.
-
 ## Import
 
 ```js
@@ -15,7 +11,7 @@ function Demo() {
   const { ref, isDragging, position } = useDraggable();
 
   return (
-    <Box w={fr(240)} h={fr(80)} pos="relative">
+    <Box w="100%" h={fr(80)} pos="relative" of="hidden">
       <Box
         w={fr(30)}
         h={fr(30)}

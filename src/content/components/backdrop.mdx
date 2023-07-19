@@ -1,7 +1,3 @@
-# Backdrop
-
-Backdrop displays a container that is used to limit the user's actions and make them focus on it's content.
-
 ## Import
 
 ```js
@@ -21,12 +17,53 @@ function Demo() {
       <Button onClick={() => setShown(true)}>Show Backdrop</Button>
       {shown && (
         <Backdrop onClick={() => setShown(false)}>
-          <Text
-            cl={(theme) =>
-              theme.mode === "dark" ? ["base", 200] : ["base", 700]
-            }
-          >
-            This is the backdrop! Click on the backdrop to close it!
+          <Text>This is the backdrop! Click on the backdrop to close it!</Text>
+        </Backdrop>
+      )}
+    </>
+  );
+}
+```
+
+### Remove blur effect
+
+To remove the blur of the `Backdrop` component, you can use the `bft` property, which will overwrite the filter.
+
+```jsx
+function Demo() {
+  const [shown, setShown] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShown(true)}>Show Backdrop</Button>
+      {shown && (
+        <Backdrop onClick={() => setShown(false)} bft="blur(0px)">
+          <Text>
+            This backdrop does not have blur! Click on the backdrop to close it!
+          </Text>
+        </Backdrop>
+      )}
+    </>
+  );
+}
+```
+
+### Change the color
+
+To change the color of the `Backdrop` component, you can just overwrite the existing one, using the `bg` property.
+
+```jsx
+function Demo() {
+  const [shown, setShown] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShown(true)}>Show Backdrop</Button>
+      {shown && (
+        <Backdrop onClick={() => setShown(false)} bg={["diamond", 500, 0.1]}>
+          <Text>
+            This backdrop has a different color! Click on the backdrop to close
+            it!
           </Text>
         </Backdrop>
       )}

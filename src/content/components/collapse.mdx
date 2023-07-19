@@ -1,7 +1,3 @@
-# Collapse
-
-Collapse displays a container that can hide and show content.
-
 ## Import
 
 ```js
@@ -27,7 +23,7 @@ function Default() {
           setOpen(!open);
         }}
       >
-        Toggle
+        {!open ? "Click to expand" : "Click to collapse"}
       </Button>
     </Flex>
   );

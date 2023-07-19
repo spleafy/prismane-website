@@ -1,7 +1,3 @@
-<Versatile>Card</Versatile>
-
-Card displays a container that groups and displays content.
-
 ## Import
 
 ```js
@@ -15,22 +11,25 @@ import { Card } from "@prismane/core";
 
 ## Usage
 
+Put content inside the `Card` component to create a basic card.
+
 ```jsx
-<Card w={fr(75)} p={fr(5)} gap={fr(4)}>
-  <Text as="h1">Payment</Text>
-  <Text cl={["base", 300]}>
-    Would you like to accept this incoming payment from{" "}
-    <Text as="strong">John Doe</Text> sending the sum of{" "}
-    <Text as="strong">$405.30</Text>
+<Card p={fr(5)}>
+  <Text fw="bold" fs="3xl" cl="white">
+    97%
   </Text>
-  <Button variant="primary">Accept</Button>
+  <Text>Of users would recommend Prismane</Text>
+  <Progress value={97} size="xs" mt={fr(4)} />
 </Card>
 ```
 
-### Complex Card
+### Card With Image
+
+A very common use case is to combine the `Card` component with the `Image` component to achieve a more complex and good looking card.
+The `Card.Header` and `Card.Footer` components provide spacing so that the content is visually separated in a correct way.
 
 ```jsx
-<Card w={fr(120)} p={fr(5)}>
+<Card w={fr(96)} p={fr(5)}>
   <Card.Header>
     <Image
       src="https://app.vevolution.com/public/migrated/first-tiny-forest-planted-england-1.jpg"
@@ -46,10 +45,30 @@ import { Card } from "@prismane/core";
       warmest months and the annual precipitation is more than 200 mm.
     </Text>
   </Flex>
-  <Card.Footer gap={fr(3)}>
+  <Card.Footer justify="between">
     <Button variant="primary">Read More</Button>
     <ActionButton variant="tertiary" icon={<Heart />} />
   </Card.Footer>
+</Card>
+```
+
+### Horizontal Card
+
+The `Card` component extends the [Flex](/docs/components/flex) component. By default, `Card` has a `flex-direction` of `column`. By passing `direction` as `row` you can make a horizontal `Card`.
+
+```jsx
+<Card>
+  <Flex gap={fr(4)} align="center">
+    <Square size={fr(16)} br="md" bg="primary" cl="white">
+      <ShoppingCartSimple size={24} />
+    </Square>
+    <Flex direction="column" justify="center">
+      <Text>Total order</Text>
+      <Text fw="bold" fs="2xl">
+        20,000+
+      </Text>
+    </Flex>
+  </Flex>
 </Card>
 ```
 

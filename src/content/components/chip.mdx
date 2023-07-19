@@ -1,7 +1,3 @@
-# Chip
-
-Chip displays a container that is used to highlight some important short information.
-
 ## Import
 
 ```js
@@ -24,7 +20,7 @@ By default, `Chip` uses the `primary` color.
 
 ### Chip Colors
 
-By default, `Chip` uses the `primary` color.
+By default, `Chip` uses the `primary` color. The `Chip` accepts all of [PrismaneColors](/docs/getting-started/overview#global-types) as values of the `color` prop.
 
 ```jsx
 <>
@@ -37,14 +33,26 @@ By default, `Chip` uses the `primary` color.
 
 ### Chip Sizes
 
+The `Chip` component supports all of the [PrismaneBreakpoints](/docs/getting-started/overview#global-types) as values for the `size` prop.
+
 ```jsx
 <>
-  <Chip size="xs">Primary</Chip>
-  <Chip size="sm">Primary</Chip>
-  <Chip size="base">Primary</Chip>
-  <Chip size="md">Primary</Chip>
-  <Chip size="lg">Primary</Chip>
+  <Chip size="xs">xs Size</Chip>
+  <Chip size="sm">sm Size</Chip>
+  <Chip size="base">base Size</Chip>
+  <Chip size="md">md Size</Chip>
+  <Chip size="lg">lg Size</Chip>
 </>
+```
+
+### Text Colors
+
+To change the text color of the `Chip`, you can pass a value to the `cl` prop.
+
+```jsx
+<Chip color="base" cl="diamond">
+  Custom text color
+</Chip>
 ```
 
 ## API

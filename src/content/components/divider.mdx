@@ -1,7 +1,3 @@
-# Divider
-
-Divider displays a horizontal line that visually separates the content.
-
 ## Import
 
 ```js
@@ -14,17 +10,24 @@ import { Divider } from "@prismane/core";
 <Divider />
 ```
 
+### Article Example
+
+The `Divider` component is very commonly used to separate an article visually.
+
 ```jsx
 <Stack>
-  <Text as="h1">Lorem Ipsum</Text>
+  <Text as="h1">Enchanting Waterfalls</Text>
   <Divider />
   <Text>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Immerse yourself in the breathtaking beauty of nature's marvels – the
+    cascading waterfalls. Discover nature's symphony as water gracefully dances
+    down rugged cliffs, filling the air with a soothing melody. Feel the cool
+    mist on your skin and the invigorating rush of energy that these natural
+    wonders evoke. Each waterfall is a unique masterpiece, adorned with lush
+    greenery, vibrant wildlife, and hidden grottos. Witness the raw power and
+    tranquility coexisting in harmony, and let the enchanting waterfalls
+    transport you to a world of awe and wonder, where nature's magic reigns
+    supreme.
   </Text>
 </Stack>
 ```
@@ -41,18 +44,55 @@ By default, `Divider` uses the `solid` variant.
 </>
 ```
 
+### Title Example
+
+The `Divider` is commonly used to attract the user's attention to a title on the page.
+
+```jsx
+<Flex align="center" w="100%" gap={fr(2)}>
+  <Divider />
+  <Text as="h1">Prismane</Text>
+  <Divider />
+</Flex>
+```
+
 ### Divider Orientations
 
-By default, `Divider` uses the `horizontal` variant.
+By default, `Divider` uses the `horizontal` orientation, but it also supports a `vertical` one.
 
 ```jsx
 <Divider orientation="horizontal" />
 ```
 
 ```jsx
-<Box w="100%" h={fr(20)}>
+<Center w="100%" h={fr(20)}>
   <Divider orientation="vertical" />
-</Box>
+</Center>
+```
+
+### Vertical Divider Example
+
+The `Divider` component with `orientation` of `vertical` has a very common use case to separate images from text.
+
+```jsx
+<Flex gap={fr(6)} align="center" miw={fr(192)}>
+  <Square size={fr(32)} miw={fr(32)} br="md" of="hidden">
+    <Image
+      src="https://www.heinemann.com/shared/covers/9780867090192.jpg"
+      fit="cover"
+    />
+  </Square>
+  <Divider orientation="vertical" />
+  <Stack>
+    <Text as="h1">Hamlet</Text>
+    <Text maw={fr(144)}>
+      Hamlet is a tragedy play written by William Shakespeare, telling the story
+      of Prince Hamlet seeking revenge for his father's death. Fueled by his
+      inner turmoil, Hamlet grapples with existential questions, madness, and
+      the consequences of his actions.
+    </Text>
+  </Stack>
+</Flex>
 ```
 
 ## API
