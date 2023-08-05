@@ -28,8 +28,20 @@ const content: any = [
         title: "Installation",
       },
       {
-        slug: "overview",
-        title: "Overview",
+        slug: "globals",
+        title: "Globals",
+      },
+      {
+        slug: "versatile-components",
+        title: "Versatile Components",
+      },
+      {
+        slug: "prop-types",
+        title: "Prop Types",
+      },
+      {
+        slug: "passing-refs",
+        title: "Passing Refs",
       },
     ],
   },

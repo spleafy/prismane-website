@@ -1,0 +1,102 @@
+Our package exports a set of global types and props that are used throughout components and can be useful during development. They are all exported from the `@prismane/core` entry.
+
+## Global Types
+
+```tsx
+type PrismaneBreakpoints = "xs" | "sm" | "base" | "md" | "lg";
+
+type PrismaneShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+
+type PrismaneColors =
+  | "primary"
+  | "base"
+  | "slate"
+  | "gray"
+  | "coal"
+  | "sepia"
+  | "red"
+  | "orange"
+  | "copper"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "emerald"
+  | "teal"
+  | "cyan"
+  | "diamond"
+  | "blue"
+  | "amethyst"
+  | "violet"
+  | "purple"
+  | "magenta"
+  | "pink"
+  | "ruby";
+
+type PrismaneAnimations =
+  | "fade"
+  | "scale"
+  | "scale-y"
+  | "scale-x"
+  | "skew-up"
+  | "skew-down"
+  | "rotate-left"
+  | "rotate-right"
+  | "slide-down"
+  | "slide-up"
+  | "slide-left"
+  | "slide-right"
+  | "roll"
+  | "pulse"
+  | "shake"
+  | "bounce"
+  | "flip";
+
+type PrismanePositions =
+  | "top-start"
+  | "top"
+  | "top-end"
+  | "right-start"
+  | "right"
+  | "right-end"
+  | "bottom-end"
+  | "bottom"
+  | "bottom-start"
+  | "left-end"
+  | "left"
+  | "left-start";
+
+type PrismaneTransitions =
+  | "all"
+  | "colors"
+  | "opacity"
+  | "shadow"
+  | "transform";
+
+interface PrismaneFieldComponent {
+  name?: string;
+  id?: string;
+  error?: string | null;
+  label?: string;
+  value?: string | number;
+  defaultValue?: string | number;
+  size?: PrismaneBreakpoints;
+  variant?: "outlined" | "filled" | "underlined" | "unstyled";
+  addons?: React.ReactNode;
+}
+```
+
+## Global Constants
+
+- `PRISMANE_COLORS` This constant contains all of Prismane's pre-baked colors.
+- `PRISMANE_DEFAULT_COLORS_MAP` This constant is a map of Prismane's color names, meaning that **it does not include _primary_ or _base_ colors**.
+- `PRISMANE_COLORS_MAP` This constant extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **_primary_** and **_base_**.
+- `PRISMANE_SHADES_MAP` This constant is a map of all of Prismane's color shades.
+
+```tsx
+import {
+  PRISMANE_COLORS,
+  PRISMANE_DEFAULT_COLORS_MAP,
+  PRISMANE_COLORS_MAP,
+  PRISMANE_SHADES_MAP,
+} from "@prismane/core";
+```
