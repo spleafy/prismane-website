@@ -16,15 +16,10 @@ After installing the `@prismane/core` package, you have to wrap your application
 
 ```tsx
 import React from "react";
-import Application from "../somewhere";
 import { PrismaneProvider } from "@prismane/core";
 
 const App = () => {
-  return (
-    <PrismaneProvider>
-      <Application />
-    </PrismaneProvider>
-  );
+  return <PrismaneProvider>{/* Rest of application */}</PrismaneProvider>;
 };
 
 export default App;
