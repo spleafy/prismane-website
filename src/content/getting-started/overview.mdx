@@ -1,14 +1,3 @@
-Prismane is built with simplicity and performance in mind. In this guide we will explore how Prismaneis built, what core features it offers, what makes it better and much more.
-
-Our key features consist of:
-
-- **Style memoization:** Per key memoization of styles, which offers greatly improved performance, whilst still keeping the dynamic styling that is required in some edge cases.
-- **Hooks:** Prebuilt React hooks, giving you the ease of use and peace of mind, that is required in building great software.
-- **Form building:** We have built a custom `useForm` hook, which allows you to easily build controlled forms with no third party software needed.
-- **Form validation:** We have build a set of useful form validator functions, which would give you the ability to validate your forms faster than ever.
-- **Styling system:** We have created a styling system that is easily customizable, overwritable, having built in support for dark mode, as well as simple and easy to use.
-- **Themable:** We have made our library easily themable out of the box. You can choose primary and base colors out of our prebuilt color palette or you could provide your own.
-
 ## Package Structure
 
 Our package has multiple entries for it's different tools. Here we are going to list them and explain what every one of them provides:
@@ -26,8 +15,6 @@ Our package exports a set of constants that can be useful during development. Th
 - `PRISMANE_DEFAULT_COLORS_MAP` This constant is a map of Prismane's color names, meaning that **it does not include _primary_ or _base_ colors**.
 - `PRISMANE_COLORS_MAP` This constant extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **_primary_** and **_base_**.
 - `PRISMANE_SHADES_MAP` This constant is a map of all of Prismane's color shades.
-
-###
 
 ```tsx
 import {
@@ -140,8 +127,6 @@ import { ButtonProps } from "@prismane/core";
 Our components are built in a way that they extend their child's props. For example, the `<Flex/>` component extends it's child props, in this case the `<Box/>` component's props.
 
 ```tsx
-// import { Flex } from "@prismane/core";
-
 const Page = () => {
   return (
     <Flex

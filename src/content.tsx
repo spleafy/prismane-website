@@ -1,5 +1,6 @@
 import {
   Sparkle,
+  Atom,
   PaintBrush,
   Palette,
   SquaresFour,
@@ -15,13 +16,28 @@ const content: any = [
     icon: <Sparkle />,
     items: [
       {
-        slug: "overview",
-        title: "Overview",
+        slug: "introduction",
+        title: "Introduction",
+      },
+      {
+        slug: "advantages",
+        title: "Advantages",
       },
       {
         slug: "installation",
         title: "Installation",
       },
+      {
+        slug: "overview",
+        title: "Overview",
+      },
+    ],
+  },
+  {
+    title: "Frameworks",
+    slug: "frameworks",
+    icon: <Atom />,
+    items: [
       {
         slug: "nextjs-setup",
         title: "Next.js Setup",

@@ -1,22 +1,21 @@
 To use Prismane inside your website or app, you should install it first, by running one of the following commands:
 
-<Tabs defaultValue="npm">
-  <Tabs.List>
-    <Tabs.Tab value="npm">npm</Tabs.Tab>
-    <Tabs.Tab value="yarn">yarn</Tabs.Tab>
-  </Tabs.List>
-  <Tabs.Panel value="npm" my={8}>
-    ```js npm install @prismane/core ```
-  </Tabs.Panel>
-  <Tabs.Panel value="yarn" my={8}>
-    ```js yarn add @prismane/core ```
-  </Tabs.Panel>
-</Tabs>
+```js
+  npm i @prismane/core
+```
+
+```js
+  yarn add @prismane/core
+```
+
+```js
+  pnpm add @prismane/core
+```
 
 After installing the `@prismane/core` package, you have to wrap your application with our custom `PrismaneProvider` component. This can be either in your `index.jsx/tsx` or your `App.jsx/tsx`.
 
 ```tsx
-import * as React from "react";
+import React from "react";
 import Application from "../somewhere";
 import { PrismaneProvider } from "@prismane/core";
 
@@ -56,7 +55,7 @@ If you want to use a custom theme, with custom colors, spacing and more, you can
 You can achieve that functionality by importing the `extendTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
 
 ```tsx
-import * as React from "react";
+import React from "react";
 import Application from "../somewhere";
 import { PrismaneProvider } from "@prismane/core";
 import { extendTheme } from "@prismane/core/themes";

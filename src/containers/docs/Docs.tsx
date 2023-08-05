@@ -18,9 +18,13 @@ export const Docs: FC<T> = ({ children }) => {
 
   const path = asPath.replace("/docs", "");
 
-  const routes = path.split("/");
+  const splitRoutes = path.split("/");
 
-  routes.shift();
+  splitRoutes.shift();
+
+  const routes = splitRoutes.map((route) => {
+    return route.replace(/[#?].*$/, "");
+  });
 
   const current = content.find((nav: any) => nav.slug === routes[0]);
 
@@ -84,7 +88,7 @@ export const Docs: FC<T> = ({ children }) => {
           ))}
         </div>
       </nav>
-      <div className="flex flex-col grow gap-5 p-5 w-full self-start">
+      <div className="flex flex-col grow gap-4 p-5 w-full self-start">
         {currentItem && (
           <>
             {currentItem.versatile ? (

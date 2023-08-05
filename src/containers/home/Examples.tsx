@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   DownloadSimple,
   Fire,
@@ -77,14 +78,17 @@ const Examples = () => {
           <span className="text-2xl dark:text-white text-base-900 font-bold">
             Want to see more?
           </span>
-          <Button
-            color="pink"
-            variant="tertiary"
-            icon={<ArrowUpRight />}
-            className="text-lg dark:text-base-300 text-base-700"
-          >
-            Read the docs
-          </Button>
+          <Link href="/docs">
+            <Button
+              color="pink"
+              variant="tertiary"
+              icon={<ArrowUpRight />}
+              iconPosition="right"
+              className="text-lg dark:text-base-300 text-base-700"
+            >
+              Read the docs
+            </Button>
+          </Link>
         </div>
       </div>
     </Section>

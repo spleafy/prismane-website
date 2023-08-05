@@ -2,6 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import NextLink from "next/link";
+import NextImage from "next/image";
 import { useRouter } from "next/router";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -140,6 +141,8 @@ import Important from "@/components/Important";
 import Components from "@/components/Components";
 import ComponentsProps from "@/components/ComponentsProps";
 import Hooks from "@/components/Hooks";
+import ImageBanner from "@/components/ImageBanner";
+import Community from "@/components/Community";
 
 export async function getStaticPaths() {
   const paths = content.flatMap((parent: any) =>
@@ -438,36 +441,26 @@ export default function Page(params: any) {
                   </div>
                 );
               },
-              h1: ({ children, ...props }) => (
-                <h1
-                  className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold"
-                  {...props}
-                >
-                  {children}
-                </h1>
-              ),
-              h2: ({ children, ...props }: any) => {
+              h1: ({ children, ...props }: any) => {
                 const id = children
                   .toLowerCase()
                   .replace(/\s+/g, "-")
                   .replace(/[^a-z0-9-]/g, "");
 
-                console.log(router.asPath, id);
+                const href = `${router.asPath}#${id}`;
 
                 return (
                   <NextLink
-                    href={`${router.asPath}#${id}`}
-                    target="_blank"
-                    className="flex items-center gap-4 mt-10 group"
+                    href={href}
+                    className="flex items-center gap-2 group transition-all"
                     id={id}
-                    passHref
                   >
-                    <h2
-                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold no-underline group-hover:underline underline-offset-2 decoration-primary-500"
+                    <h1
+                      className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold transition-all"
                       {...props}
                     >
                       {children}
-                    </h2>
+                    </h1>
                     <Hash
                       size={32}
                       className="hidden group-hover:flex text-primary-500"
@@ -475,25 +468,87 @@ export default function Page(params: any) {
                   </NextLink>
                 );
               },
-              h3: ({ children, ...props }) => (
-                <h3
-                  className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold mt-6"
-                  {...props}
-                >
-                  {children}
-                </h3>
-              ),
-              h4: ({ children, ...props }) => (
-                <h4
-                  className="text-base-800 dark:text-base-100 text-base sm:text-lg font-bold"
-                  {...props}
-                >
-                  {children}
-                </h4>
-              ),
+              h2: ({ children, ...props }: any) => {
+                const id = children
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^a-z0-9-]/g, "");
+
+                const href = `${router.asPath}#${id}`;
+
+                return (
+                  <NextLink
+                    href={href}
+                    className="flex items-center gap-2 mt-10 group"
+                    id={id}
+                  >
+                    <h2
+                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all"
+                      {...props}
+                    >
+                      {children}
+                    </h2>
+                    <Hash
+                      size={24}
+                      className="hidden group-hover:flex text-primary-500"
+                    />
+                  </NextLink>
+                );
+              },
+              h3: ({ children, ...props }: any) => {
+                const id = children
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^a-z0-9-]/g, "");
+
+                const href = `${router.asPath}#${id}`;
+
+                return (
+                  <NextLink
+                    href={href}
+                    className="flex items-center gap-2 group transition-all mt-6"
+                    id={id}
+                  >
+                    <h3
+                      className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold transition-all"
+                      {...props}
+                    >
+                      {children}
+                    </h3>
+                    <Hash
+                      size={20}
+                      className="hidden group-hover:flex text-primary-500"
+                    />
+                  </NextLink>
+                );
+              },
+              h4: ({ children, ...props }: any) => {
+                const id = children
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^a-z0-9-]/g, "");
+
+                const href = `${router.asPath}#${id}`;
+
+                return (
+                  <NextLink
+                    href={href}
+                    className="flex items-center gap-2 group transition-all"
+                    id={id}
+                  >
+                    <h4
+                      className="text-base-800 dark:text-base-100 text-base sm:text-lg font-bold transition-all"
+                      {...props}
+                    >
+                      {children}
+                    </h4>
+                    <Hash className="hidden group-hover:flex text-primary-500" />
+                  </NextLink>
+                );
+              },
               p: ({ children, ...props }) => (
                 <p
-                  className="text-base-800 dark:text-base-100 leading-7 w-full"
+                  className="text-base-700 dark:text-base-400 leading-7 w-full"
                   {...props}
                 >
                   {children}
@@ -559,7 +614,7 @@ export default function Page(params: any) {
                   {children}
                 </th>
               ),
-              a: ({ children, ...props }) => (
+              a: ({ children, ...props }): any => (
                 <NextLink
                   {...props}
                   target="_blank"
@@ -573,8 +628,11 @@ export default function Page(params: any) {
               Components,
               ComponentsProps,
               Hooks,
+              ImageBanner,
+              Community,
               Chip,
               Tabs,
+              NextImage,
             }}
           />
         }
