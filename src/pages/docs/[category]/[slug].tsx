@@ -193,7 +193,7 @@ const HeadingLink = ({ children, ...props }: any) => {
   return (
     <NextLink
       href={href}
-      className="flex items-center gap-2 group transition-all overflow-auto"
+      className="flex items-center gap-2 group transition-all"
       style={{ scrollMarginTop: "120px" }}
       id={id}
       {...props}
