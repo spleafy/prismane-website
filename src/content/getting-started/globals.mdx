@@ -127,16 +127,34 @@ interface PrismaneFieldComponent {
 
 ## Global Constants
 
-- `PRISMANE_COLORS` This constant contains all of Prismane's pre-baked colors.
-- `PRISMANE_DEFAULT_COLORS_MAP` This constant is a map of Prismane's color names, meaning that **it does not include _primary_ or _base_ colors**.
-- `PRISMANE_COLORS_MAP` This constant extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **_primary_** and **_base_**.
-- `PRISMANE_SHADES_MAP` This constant is a map of all of Prismane's color shades.
+### PRISMANE_COLORS Constant
+
+A constant that contains all of Prismane's pre-baked colors.
 
 ```tsx
-import {
-  PRISMANE_COLORS,
-  PRISMANE_DEFAULT_COLORS_MAP,
-  PRISMANE_COLORS_MAP,
-  PRISMANE_SHADES_MAP,
-} from "@prismane/core";
+import { PRISMANE_COLORS } from "@prismane/core";
+```
+
+### PRISMANE_DEFAULT_COLORS_MAP Constant
+
+A constant that contains a map of Prismane's color names, meaning that it **does not** include **primary** or **base** colors.
+
+```tsx
+import { PRISMANE_DEFAULT_COLORS_MAP } from "@prismane/core";
+```
+
+### PRISMANE_COLORS_MAP Constant
+
+A constant that extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **primary** and **base**.
+
+```tsx
+import { PRISMANE_COLORS_MAP } from "@prismane/core";
+```
+
+### PRISMANE_SHADES_MAP Constant
+
+A map of all of Prismane's color shades.
+
+```tsx
+import { PRISMANE_SHADES_MAP } from "@prismane/core";
 ```
