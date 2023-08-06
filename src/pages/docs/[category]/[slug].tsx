@@ -193,7 +193,9 @@ const HeadingLink = ({ children, ...props }: any) => {
   return (
     <NextLink
       href={href}
-      className="flex items-center gap-2 group transition-all"
+      className={`flex items-center gap-2 group transition-all ${
+        children.type === "h2" ? "mt-10" : ""
+      }`}
       style={{ scrollMarginTop: "120px" }}
       id={id}
       {...props}
@@ -490,7 +492,7 @@ export default function Page(params: any) {
                 return (
                   <HeadingLink>
                     <h2
-                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all mt-10"
+                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all"
                       {...props}
                     >
                       {children}
