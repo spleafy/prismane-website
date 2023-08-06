@@ -7,7 +7,7 @@ const ImageBanner = () => {
         src="/banner_2.png"
         alt="Prismane Logo Banner"
         className="object-cover"
-        quality={100}
+        quality={50}
         fill
       />
     </div>
