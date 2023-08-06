@@ -490,7 +490,7 @@ export default function Page(params: any) {
                 return (
                   <HeadingLink>
                     <h2
-                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all"
+                      className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all mt-10"
                       {...props}
                     >
                       {children}
