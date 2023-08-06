@@ -1,7 +1,47 @@
 Our package exports prop types for each of our components. They can be found useful by some developers. To access them just add `Props` to the component's name. They are exported at `@prismane/core`.
 
-For example, the `<Button/>` component's prop types can be imported by doing the following:
+For example, the `<Chip/>` component's prop types can be imported by doing the following:
+
+```tsx
+import { ChipProps } from "@prismane/core";
+```
+
+## Usage
+
+The main usage of prop types is to still keep the TypeScript support when creating custom components built on top of Prismane's components
+
+```tsx
+import { ChipProps } from "@prismane/core";
+
+function CustomChip({ children, ...props }: ChipProps) {
+  return (
+    <Chip color="teal" br={fr(2)} {...props}>
+      {children}
+    </Chip>
+  );
+}
+
+function Demo() {
+  return <CustomChip>Custom Chip</CustomChip>;
+}
+```
+
+### Versatile Components Prop Types
+
+Versatile components' prop types are generic prop types that have to have a value passed to them, so that you get the right type.
 
 ```tsx
 import { ButtonProps } from "@prismane/core";
+
+function CustomButton({ children, ...props }: ButtonProps<"button">) {
+  return (
+    <Button color="white" br="full" {...props}>
+      {children}
+    </Button>
+  );
+}
+
+function Demo() {
+  return <CustomButton>Custom Chip</CustomButton>;
+}
 ```
