@@ -2,11 +2,27 @@ Our package exports a set of global types and props that are used throughout com
 
 ## Global Types
 
+### PrismaneBreakpoints Type
+
+PrismaneBreakpoints is a type that is used to provide a predefined set of sizes for our components.
+
 ```tsx
 type PrismaneBreakpoints = "xs" | "sm" | "base" | "md" | "lg";
+```
 
+### PrismaneShades Type
+
+PrismaneShades is a type that is used to provide a predefined set of shades for every color in our color pallete.
+
+```tsx
 type PrismaneShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+```
 
+### PrismaneColors Type
+
+PrismaneColors is a type that is used to provide a predefined set of colors that is used in our color pallete.
+
+```tsx
 type PrismaneColors =
   | "primary"
   | "base"
@@ -31,7 +47,13 @@ type PrismaneColors =
   | "magenta"
   | "pink"
   | "ruby";
+```
 
+### PrismaneAnimations Type
+
+PrismaneAnimations is a type that is used to provide a predefined set of animations each of which is a valid prop to the `Animation` component.
+
+```tsx
 type PrismaneAnimations =
   | "fade"
   | "scale"
@@ -50,7 +72,13 @@ type PrismaneAnimations =
   | "shake"
   | "bounce"
   | "flip";
+```
 
+### PrismanePositions Type
+
+PrismanePositions is a type that is used to provide a predefined set of positions each of which is a valid value to every `size` prop of our components.
+
+```tsx
 type PrismanePositions =
   | "top-start"
   | "top"
@@ -64,14 +92,26 @@ type PrismanePositions =
   | "left-end"
   | "left"
   | "left-start";
+```
 
+### PrismaneTransitions Type
+
+PrismaneTransitions is a type that is used to provide a predefined set of transitions each of which is a valid value to the `transition` prop of our `Transition` component.
+
+```tsx
 type PrismaneTransitions =
   | "all"
   | "colors"
   | "opacity"
   | "shadow"
   | "transform";
+```
 
+### PrismaneFieldComponent Type
+
+PrismaneFieldComponent is a type that is used to provide a set of props to each of our field components.
+
+```tsx
 interface PrismaneFieldComponent {
   name?: string;
   id?: string;
