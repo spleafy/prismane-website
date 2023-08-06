@@ -39,7 +39,7 @@ export const Docs: FC<T> = ({ children }) => {
       <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
         {children}
       </h1>
-      <Link href="/docs/getting-started/overview#versatile-components">
+      <Link href="/docs/getting-started/versatile-components">
         <Chip>Versatile Component</Chip>
       </Link>
     </div>
