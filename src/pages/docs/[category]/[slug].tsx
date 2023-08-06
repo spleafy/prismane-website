@@ -180,12 +180,45 @@ export async function getStaticProps({ params }: any) {
   };
 }
 
+const HeadingLink = ({ children, ...props }: any) => {
+  const router = useRouter();
+
+  const id = children.props.children
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+
+  const href = `${router.asPath}#${id}`;
+
+  return (
+    <NextLink
+      href={href}
+      className="flex items-center gap-2 group transition-all overflow-auto"
+      style={{ scrollMarginTop: "120px" }}
+      id={id}
+      {...props}
+    >
+      {children}
+      <Hash
+        size={
+          children.type === "h1"
+            ? 32
+            : children.type === "h2"
+            ? 24
+            : children.type === "h3"
+            ? 20
+            : 16
+        }
+        className="hidden group-hover:flex text-primary-500"
+      />
+    </NextLink>
+  );
+};
+
 export default function Page(params: any) {
   const title = content
     .find((nav: any) => nav.slug === params.category)
     .items.find((item: any) => item.slug === params.slug).title;
-
-  const router = useRouter();
 
   return (
     <>
@@ -442,108 +475,51 @@ export default function Page(params: any) {
                 );
               },
               h1: ({ children, ...props }: any) => {
-                const id = children
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-z0-9-]/g, "");
-
-                const href = `${router.asPath}#${id}`;
-
                 return (
-                  <NextLink
-                    href={href}
-                    className="flex items-center gap-2 group transition-all"
-                    id={id}
-                  >
+                  <HeadingLink>
                     <h1
                       className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold transition-all"
                       {...props}
                     >
                       {children}
                     </h1>
-                    <Hash
-                      size={32}
-                      className="hidden group-hover:flex text-primary-500"
-                    />
-                  </NextLink>
+                  </HeadingLink>
                 );
               },
               h2: ({ children, ...props }: any) => {
-                const id = children
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-z0-9-]/g, "");
-
-                const href = `${router.asPath}#${id}`;
-
                 return (
-                  <NextLink
-                    href={href}
-                    className="flex items-center gap-2 mt-10 group"
-                    id={id}
-                  >
+                  <HeadingLink>
                     <h2
                       className="text-base-800 dark:text-base-100 text-2xl sm:text-3xl font-bold transition-all"
                       {...props}
                     >
                       {children}
                     </h2>
-                    <Hash
-                      size={24}
-                      className="hidden group-hover:flex text-primary-500"
-                    />
-                  </NextLink>
+                  </HeadingLink>
                 );
               },
               h3: ({ children, ...props }: any) => {
-                const id = children
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-z0-9-]/g, "");
-
-                const href = `${router.asPath}#${id}`;
-
                 return (
-                  <NextLink
-                    href={href}
-                    className="flex items-center gap-2 group transition-all mt-6"
-                    id={id}
-                  >
+                  <HeadingLink>
                     <h3
                       className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold transition-all"
                       {...props}
                     >
                       {children}
                     </h3>
-                    <Hash
-                      size={20}
-                      className="hidden group-hover:flex text-primary-500"
-                    />
-                  </NextLink>
+                  </HeadingLink>
                 );
               },
               h4: ({ children, ...props }: any) => {
-                const id = children
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-z0-9-]/g, "");
-
-                const href = `${router.asPath}#${id}`;
-
                 return (
-                  <NextLink
-                    href={href}
-                    className="flex items-center gap-2 group transition-all"
-                    id={id}
-                  >
+                  <HeadingLink>
                     <h4
                       className="text-base-800 dark:text-base-100 text-base sm:text-lg font-bold transition-all"
                       {...props}
                     >
                       {children}
                     </h4>
-                    <Hash className="hidden group-hover:flex text-primary-500" />
-                  </NextLink>
+                  </HeadingLink>
                 );
               },
               p: ({ children, ...props }) => (
