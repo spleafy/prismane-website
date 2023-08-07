@@ -55,6 +55,11 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setExpanded(false);
+    setSearchOpen(false);
+  }, [asPath]);
+
   return (
     <header
       className={`flex items-center justify-center z-50 sticky left-0 top-0 transition-all px-5 sm:px-10 ${

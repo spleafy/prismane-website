@@ -98,7 +98,7 @@ const Search = ({ setOpen, open }: any) => {
             root: "w-full md:w-1/2 max-w-2xl px-4 sm:px-8",
             form: "!bg-transparent !w-full !text-2xl !h-auto before:hidden",
             input:
-              "dark:bg-base-900 !rounded-md dark:border-base-900 focus:!border-primary-500 !shadow-none dark:!text-white !text-base-900 dark:placeholder:!text-base-500 placeholder:!text-base-700 !caret-primary-500 !py-2 !pl-4",
+              "dark:bg-base-900 !rounded-md focus:!border-primary-500 !shadow-none dark:!text-white !text-base-900 dark:placeholder:!text-base-500 placeholder:!text-base-700 !caret-primary-500 !py-2 !pl-4 dark:!border-base-700 !border-base-300 shadow-xl",
             resetIcon: "!fill-primary-500",
             reset:
               "dark:active:bg-base-700/20 active:bg-base-500/20 dark:focus:bg-base-700/30 focus:bg-base-500/30 !w-7 !h-7 dark:bg-base-700/20 bg-base-500/20",
@@ -107,6 +107,7 @@ const Search = ({ setOpen, open }: any) => {
           onClick={(e: any) => {
             e.stopPropagation();
           }}
+          autoFocus
         />
         <NoResultsBoundary fallback={<NoResults />}>
           <EmptyQueryBoundary fallback={null}>
