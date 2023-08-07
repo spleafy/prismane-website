@@ -60,10 +60,13 @@ function NoResults() {
   const { indexUiState } = useInstantSearch();
 
   return (
-    <div>
-      <p>
-        No results for <q>{indexUiState.query}</q>.
-      </p>
+    <div className="flex w-full md:w-1/2 max-w-2xl">
+      <div className="!max-h-96 !overflow-y-auto mx-4 sm:mx-8 py-4 flex w-full px-4 sm:px-8 flex-col gap-2 rounded-md dark:bg-base-900 bg-white shadow-lg">
+        <h1 className="text-primary-500 text-4xl font-bold">Ooops...</h1>
+        <p className="text-lg">
+          No results for <q>{indexUiState.query}</q>.
+        </p>
+      </div>
     </div>
   );
 }
