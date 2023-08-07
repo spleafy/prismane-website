@@ -82,18 +82,17 @@ export const Docs: FC<T> = ({ children }) => {
         : []),
     ]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const active = entries.reduceRight(
-          (acc: any, item: any) =>
-            item.isIntersecting === true && !acc ? item : acc,
-          null
-        );
+    const observer = new IntersectionObserver((entries) => {
+      const active = entries.reduceRight(
+        (acc: any, item: any) =>
+          item.isIntersecting === true && !acc ? item : acc,
+        null
+      );
 
-        setVisible(active ? active.target.children[0].textContent : null);
-      },
-      { threshold: 0.75 }
-    );
+      setVisible((pv: any) =>
+        active ? active.target.children[0].textContent : pv
+      );
+    });
 
     elementIds.forEach((id: any) => {
       const targetElement = document.getElementById(id);
