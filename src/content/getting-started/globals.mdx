@@ -2,7 +2,7 @@ Our package exports a set of global types and props that are used throughout com
 
 ## Global Types
 
-### PrismaneBreakpoints Type
+### PrismaneBreakpoints
 
 PrismaneBreakpoints is a type that is used to provide a predefined set of sizes for our components.
 
@@ -10,7 +10,7 @@ PrismaneBreakpoints is a type that is used to provide a predefined set of sizes 
 type PrismaneBreakpoints = "xs" | "sm" | "base" | "md" | "lg";
 ```
 
-### PrismaneShades Type
+### PrismaneShades
 
 PrismaneShades is a type that is used to provide a predefined set of shades for every color in our color pallete.
 
@@ -18,7 +18,7 @@ PrismaneShades is a type that is used to provide a predefined set of shades for 
 type PrismaneShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 ```
 
-### PrismaneColors Type
+### PrismaneColors
 
 PrismaneColors is a type that is used to provide a predefined set of colors that is used in our color pallete.
 
@@ -49,7 +49,7 @@ type PrismaneColors =
   | "ruby";
 ```
 
-### PrismaneAnimations Type
+### PrismaneAnimations
 
 PrismaneAnimations is a type that is used to provide a predefined set of animations each of which is a valid prop to the `Animation` component.
 
@@ -74,7 +74,7 @@ type PrismaneAnimations =
   | "flip";
 ```
 
-### PrismanePositions Type
+### PrismanePositions
 
 PrismanePositions is a type that is used to provide a predefined set of positions each of which is a valid value to every `size` prop of our components.
 
@@ -94,7 +94,7 @@ type PrismanePositions =
   | "left-start";
 ```
 
-### PrismaneTransitions Type
+### PrismaneTransitions
 
 PrismaneTransitions is a type that is used to provide a predefined set of transitions each of which is a valid value to the `transition` prop of our `Transition` component.
 
@@ -107,7 +107,7 @@ type PrismaneTransitions =
   | "transform";
 ```
 
-### PrismaneFieldComponent Type
+### PrismaneFieldComponent
 
 PrismaneFieldComponent is a type that is used to provide a set of props to each of our field components.
 
@@ -127,7 +127,7 @@ interface PrismaneFieldComponent {
 
 ## Global Constants
 
-### PRISMANE_COLORS Constant
+### PRISMANE_COLORS
 
 A constant that contains all of Prismane's pre-baked colors.
 
@@ -135,7 +135,7 @@ A constant that contains all of Prismane's pre-baked colors.
 import { PRISMANE_COLORS } from "@prismane/core";
 ```
 
-### PRISMANE_DEFAULT_COLORS_MAP Constant
+### PRISMANE_DEFAULT_COLORS_MAP
 
 A constant that contains a map of Prismane's color names, meaning that it **does not** include **primary** or **base** colors.
 
@@ -143,7 +143,7 @@ A constant that contains a map of Prismane's color names, meaning that it **does
 import { PRISMANE_DEFAULT_COLORS_MAP } from "@prismane/core";
 ```
 
-### PRISMANE_COLORS_MAP Constant
+### PRISMANE_COLORS_MAP
 
 A constant that extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **primary** and **base**.
 
@@ -151,7 +151,7 @@ A constant that extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of
 import { PRISMANE_COLORS_MAP } from "@prismane/core";
 ```
 
-### PRISMANE_SHADES_MAP Constant
+### PRISMANE_SHADES_MAP
 
 A map of all of Prismane's color shades.
 

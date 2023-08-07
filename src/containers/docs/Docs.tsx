@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, GithubLogo, Tag } from "@phosphor-icons/react";
@@ -10,6 +10,17 @@ import categories from "@/categories";
 interface T {
   children?: ReactNode;
 }
+
+const Versatile = ({ children }: any) => (
+  <div className="flex items-center gap-5">
+    <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
+      {children}
+    </h1>
+    <Link href="/docs/getting-started/versatile-components">
+      <Chip>Versatile Component</Chip>
+    </Link>
+  </div>
+);
 
 export const Docs: FC<T> = ({ children }) => {
   const router = useRouter();
@@ -34,16 +45,63 @@ export const Docs: FC<T> = ({ children }) => {
 
   const currentItem = current.items[currentIndex];
 
-  const Versatile = ({ children }: any) => (
-    <div className="flex items-center gap-5">
-      <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-        {children}
-      </h1>
-      <Link href="/docs/getting-started/versatile-components">
-        <Chip>Versatile Component</Chip>
-      </Link>
-    </div>
-  );
+  const [tableOfContents, setTableOfContents] = useState([]);
+
+  useEffect(() => {
+    const headings = document.querySelectorAll(".docs-anchor");
+    const toc: any = [];
+
+    let currentHeading: any = null;
+
+    headings.forEach((element) => {
+      if (element.children[0].tagName === "H2") {
+        currentHeading = {
+          title: element.children[0].textContent,
+          id: element.id,
+          subheadings: [],
+        };
+        toc.push(currentHeading);
+      } else if (element.children[0].tagName === "H3" && currentHeading) {
+        currentHeading.subheadings.push({
+          title: element.children[0].textContent,
+          id: element.id,
+        });
+      }
+    });
+
+    setTableOfContents(toc);
+  }, [asPath]);
+
+  const [visible, setVisible] = useState<any>("");
+
+  useEffect(() => {
+    const elementIds: string[] = tableOfContents.flatMap((item: any) => [
+      item.id,
+      ...(item.subheadings
+        ? item.subheadings.map((subheading: any) => subheading.id)
+        : []),
+    ]);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const active = entries.reduceRight(
+          (acc: any, item: any) =>
+            item.isIntersecting === true && !acc ? item : acc,
+          null
+        );
+
+        setVisible(active ? active.target.children[0].textContent : null);
+      },
+      { threshold: 0.75 }
+    );
+
+    elementIds.forEach((id: any) => {
+      const targetElement = document.getElementById(id);
+      if (targetElement) {
+        observer.observe(targetElement);
+      }
+    });
+  }, [tableOfContents]);
 
   return (
     <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
@@ -176,6 +234,50 @@ export const Docs: FC<T> = ({ children }) => {
           </div>
         </div>
       </div>
+      {tableOfContents.length > 0 && (
+        <div className="hidden lg:flex flex-col self-start w-96 p-5 sticky top-24 left-0 max-h-[84vh] overflow-y-auto">
+          <span className="dark:text-white text-base-900 font-bold">
+            On This Page
+          </span>
+          <ul>
+            {tableOfContents.map((section: any, index) => (
+              <li key={index} className="mt-4 text-sm">
+                <Link
+                  className={
+                    visible === section.title
+                      ? "text-primary-500 font-medium"
+                      : ""
+                  }
+                  href={`${router.asPath.replace(/[#?].*$/, "")}#${section.id}`}
+                >
+                  {section.title}
+                </Link>
+                {section.subheadings.length > 0 && (
+                  <ul className="ml-4">
+                    {section.subheadings.map(
+                      (subheading: any, subIndex: any) => (
+                        <Link
+                          key={subIndex}
+                          className={
+                            visible === subheading.title
+                              ? "text-primary-500 font-medium"
+                              : ""
+                          }
+                          href={`${router.asPath.replace(/[#?].*$/, "")}#${
+                            subheading.id
+                          }`}
+                        >
+                          <li className="mt-2">{subheading.title}</li>
+                        </Link>
+                      )
+                    )}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

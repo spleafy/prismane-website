@@ -195,7 +195,7 @@ const HeadingLink = ({ children, ...props }: any) => {
       href={href}
       className={`flex items-center gap-2 group transition-all ${
         children.type === "h2" ? "mt-10" : ""
-      }`}
+      } docs-anchor`}
       style={{ scrollMarginTop: "120px" }}
       id={id}
       {...props}
