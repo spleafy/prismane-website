@@ -191,7 +191,7 @@ export const Docs: FC<T> = ({ children }) => {
           )}
         {children}
         <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-5">
-          <div className="flex grow">
+          <div className="flex grow w-full md:w-1/2">
             {currentIndex > 0 && (
               <Link
                 className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
@@ -211,7 +211,7 @@ export const Docs: FC<T> = ({ children }) => {
               </Link>
             )}
           </div>
-          <div className="flex grow">
+          <div className="flex grow w-full md:w-1/2">
             {currentIndex < current.items.length - 1 && (
               <Link
                 className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
