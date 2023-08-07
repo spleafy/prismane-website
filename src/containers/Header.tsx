@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import { useRouter } from "next/router";
 import {
   GithubLogo,
@@ -10,9 +9,11 @@ import {
   Moon,
   Equals,
   X,
+  MagnifyingGlass,
 } from "@phosphor-icons/react";
-// Components
 import { ActionButton, Divider, usePrismaneTheme } from "@prismane/core";
+// Components
+import Search from "@/components/Search";
 // Content
 import content from "@/content";
 
@@ -24,6 +25,8 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
 
   const [expanded, setExpanded] = useState(false);
+
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const { asPath } = router;
 
@@ -175,6 +178,13 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-5 z-10">
+          {searchOpen && <Search setOpen={setSearchOpen} open={searchOpen} />}
+          <ActionButton
+            color="pink"
+            variant="secondary"
+            icon={<MagnifyingGlass />}
+            onClick={() => setSearchOpen(true)}
+          />
           <Link href="https://github.com/prismaneui/prismane" target="_blank">
             <ActionButton
               color="pink"

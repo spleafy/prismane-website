@@ -9,6 +9,7 @@ import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 import "@fontsource/inter/900.css";
 import "@fontsource/inter/variable.css";
+import "instantsearch.css/themes/satellite.css";
 import type { AppProps } from "next/app";
 // Analytics
 import GoogleAnalytics from "./GoogleAnalytics";
