@@ -6,7 +6,7 @@ import {
   Hits,
   Highlight,
   useInstantSearch,
-} from "react-instantsearch-hooks-web";
+} from "react-instantsearch";
 import { Backdrop, fr } from "@prismane/core";
 import { useKeyboardShortcut } from "@prismane/core/hooks";
 

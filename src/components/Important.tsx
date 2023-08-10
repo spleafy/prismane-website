@@ -13,7 +13,9 @@ const Important = ({ children, ...props }: any) => {
         <h3 className="text-yellow-600 font-semibold dark:font-medium dark:text-white">
           Important
         </h3>
-        <p className="mt-2 text-base-800 dark:text-base-400">{children}</p>
+        <span className="mt-2 text-base-800 dark:text-base-400">
+          {children}
+        </span>
       </div>
     </div>
   );
