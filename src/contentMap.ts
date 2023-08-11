@@ -359,7 +359,7 @@ const contentMap: any = [
         title: "Link",
         category: "navigation",
         description:
-          "Link displays an anchor providing additional styling and features.",
+          "Link displays an anchor and leverages it's functionality by having the ability to execute functions before redirect.",
         versatile: true,
       },
       {

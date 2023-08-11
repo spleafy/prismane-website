@@ -6,8 +6,10 @@ import { Show } from "@prismane/core";
 
 ## Usage
 
+The `Show` component will show it's content, when the screen is bigger than the provided `breakpoint`. By default, the `breakpoint` prop has a value of `base (1024px)`
+
 ```jsx
-<Show>Shown over base breakpoint!</Show>
+<Show>Shown over base (1024px) breakpoint!</Show>
 ```
 
 ### Custom breakpoint
@@ -20,11 +22,11 @@ import { Show } from "@prismane/core";
 
 ```jsx
 <Stack direction="column" gap={fr(2)}>
-  <Show breakpoint="xs">Shown over xs breakpoint!</Show>
-  <Show breakpoint="sm">Shown over sm breakpoint!</Show>
-  <Show breakpoint="base">Shown over base breakpoint!</Show>
-  <Show breakpoint="md">Shown over md breakpoint!</Show>
-  <Show breakpoint="lg">Shown over lg breakpoint!</Show>
+  <Show breakpoint="xs">Shown over xs (640px) breakpoint!</Show>
+  <Show breakpoint="sm">Shown over sm (768px) breakpoint!</Show>
+  <Show breakpoint="base">Shown over base (1024px) breakpoint!</Show>
+  <Show breakpoint="md">Shown over md (1280px) breakpoint!</Show>
+  <Show breakpoint="lg">Shown over lg (1536px) breakpoint!</Show>
 </Stack>
 ```
 

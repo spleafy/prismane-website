@@ -6,11 +6,55 @@ import { Form } from "@prismane/core";
 
 ## Usage
 
+The `Form` component can be treated as a `form` element.
+
+```jsx
+function Demo() {
+  const [values, setValues] = useState("");
+
+  return (
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const data = new FormData(form);
+
+        setValues(data);
+      }}
+      onReset={() => {
+        setValues("");
+      }}
+    >
+      <TextField
+        name="username"
+        placeholder="Enter username: "
+        label="Username:"
+      />
+      <Flex align="center" gap={fr(1)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+      Values: {JSON.stringify(values)}
+    </Form>
+  );
+}
+```
+
+## Integration With useForm Hook
+
+The `Form` component can seamingly integrate with our `useForm` hook.
+
 ```jsx
 function Demo() {
   const { handleSubmit, handleReset, setValue, register } = useForm({
     fields: {
-      username: {
+      fullname: {
         value: "",
       },
     },
@@ -21,7 +65,7 @@ function Demo() {
   return (
     <Form
       onSubmit={(e) => {
-        handleSubmit(e, (v) => setValues(JSON.stringify(v)));
+        handleSubmit(e, (v) => setValues(v));
       }}
       onReset={() => {
         setValues("");
@@ -29,9 +73,9 @@ function Demo() {
       }}
     >
       <TextField
-        placeholder="Enter username: "
-        label="Username:"
-        {...register("username")}
+        placeholder="John Doe"
+        label="Full name:"
+        {...register("fullname")}
       />
       <Flex align="center" gap={fr(1)}>
         <Button variant="primary" type="submit">
@@ -41,7 +85,56 @@ function Demo() {
           Reset
         </Button>
       </Flex>
-      Values: {values}
+      Values: {JSON.stringify(values)}
+    </Form>
+  );
+}
+```
+
+### With Validators
+
+To use validators with the `useForm` hook, you can pass a validators object to the field inside the hook, and pass your validator function.
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, setValue, register } = useForm({
+    fields: {
+      fullname: {
+        value: "",
+        validators: {
+          required: (v) => required(v),
+          min: (v) => min(v, 4),
+        },
+      },
+    },
+  });
+
+  const [values, setValues] = useState("");
+
+  return (
+    <Form
+      onSubmit={(e) => {
+        handleSubmit(e, (v) => setValues(v));
+      }}
+      onReset={() => {
+        setValues("");
+        handleReset();
+      }}
+    >
+      <TextField
+        placeholder="John Doe"
+        label="Full name:"
+        {...register("fullname")}
+      />
+      <Flex align="center" gap={fr(1)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+      Values: {JSON.stringify(values)}
     </Form>
   );
 }

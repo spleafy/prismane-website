@@ -1,23 +1,31 @@
 ## Import
 
 ```js
-import { Divider } from "@prismane/core";
+import { Gradient } from "@prismane/core";
 ```
 
 ## Usage
 
-By default, `Gradient` has the values of `from` - ["primary", 500], `to` - ["primary", 300], `deg` - 90
+By default, `Gradient` has the values of `from` - `["primary", 500]`, `to` - `["primary", 300]`, `deg` - `90`
 
 ```jsx
 <Gradient w={360} h={120} />
 ```
 
-### Custom Gradient
+### Gradient Colors
 
-By changing the values of the `from`, `to` and `deg` props, you can display a variety of different gradients. Hex colors are also supported.
+By providing values to the `from` and `to` props, you can change the start and end colors of the gradient.
 
 ```jsx
-<Gradient w={360} h={120} from={["teal", 600]} to={["ruby", 600]} deg={45} />
+<Gradient w={360} h={120} from="teal" to="amethyst" />
+```
+
+### Gradient Degrees
+
+By changing the value of the `deg` prop, you can change the degrees of the gradient.
+
+```jsx
+<Gradient w={360} h={120} from="ruby" to="lime" deg={45} />
 ```
 
 ### Versatile Component

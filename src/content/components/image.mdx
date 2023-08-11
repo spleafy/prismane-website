@@ -16,13 +16,30 @@ import { Image } from "@prismane/core";
 
 ### Object Fit
 
+You can change the `object-fit` property of the `Image` component, by providing a value to the `fit` property.
+
 ```jsx
 <Image
   h={360}
   w={420}
   src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
   alt="Person Image"
-  fit="contain"
+  fit="cover"
+/>
+```
+
+### Rounded Image
+
+You can round the `Image` component, by providing a value to the `br` prop.
+
+```jsx
+<Image
+  h={120}
+  w={120}
+  src="https://pngimg.com/uploads/globe/globe_PNG100087.png"
+  alt="Person Image"
+  fit="cover"
+  br="full"
 />
 ```
 

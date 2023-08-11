@@ -12,12 +12,44 @@ import { Highlight } from "@prismane/core";
 </Text>
 ```
 
+### Highlight Background Color
+
+You can change the background color of the `Highlight` component, by providing a value to the `bg` prop.
+
+```jsx
+<Text>
+  You can <Highlight bg="lime">highlight</Highlight> this important content!
+</Text>
+```
+
+### Highlight Text Color
+
+You can change the text color of the `Highlight` component, by providing a value to the `cl` prop.
+
+```jsx
+<Text>
+  You can <Highlight cl="lime">highlight</Highlight> this important content!
+</Text>
+```
+
+### Highlight Border Radius
+
+You can change the border radius of the `Highlight` component, by providing a value to the `br` prop.
+
+```jsx
+<Text>
+  You can <Highlight br="full">highlight</Highlight> this important content!
+</Text>
+```
+
 ### Custom Highlight
+
+By providing a mix of custom properties you can fully customize the `Highlight` component.
 
 ```jsx
 <Text>
   You can{" "}
-  <Highlight br="full" px={fr(2)} mx={fr(2)} bg="teal">
+  <Highlight br="full" bg="teal" mx={fr(2)}>
     highlight
   </Highlight>{" "}
   this important content!

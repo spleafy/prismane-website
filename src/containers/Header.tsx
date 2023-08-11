@@ -26,8 +26,6 @@ const Header = () => {
 
   const [expanded, setExpanded] = useState(false);
 
-  const [searchOpen, setSearchOpen] = useState(false);
-
   const { asPath } = router;
 
   const path = asPath.replace("/docs", "");
@@ -57,7 +55,6 @@ const Header = () => {
 
   useEffect(() => {
     setExpanded(false);
-    setSearchOpen(false);
   }, [asPath]);
 
   return (
@@ -183,13 +180,7 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-5 z-10">
-          {searchOpen && <Search setOpen={setSearchOpen} open={searchOpen} />}
-          <ActionButton
-            color="pink"
-            variant="secondary"
-            icon={<MagnifyingGlass />}
-            onClick={() => setSearchOpen(true)}
-          />
+          <Search />
           <Link href="https://github.com/prismaneui/prismane" target="_blank">
             <ActionButton
               color="pink"

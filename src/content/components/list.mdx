@@ -25,8 +25,10 @@ By default, `List` component renders a list with no styling.
 
 ### Unordered List
 
+The `List.Unordered` will render a `List` component as a `ul`.
+
 ```jsx
-<List.Unordered>
+<List.Unordered ml={fr(5)}>
   <List.Item>First</List.Item>
   <List.Item>Second</List.Item>
   <List.Item>Third</List.Item>
@@ -35,8 +37,10 @@ By default, `List` component renders a list with no styling.
 
 ### Ordered List
 
+The `List.Ordered` will render a `List` component as an `ol`.
+
 ```jsx
-<List.Ordered>
+<List.Ordered ml={fr(5)}>
   <List.Item>First</List.Item>
   <List.Item>Second</List.Item>
   <List.Item>Third</List.Item>
@@ -44,6 +48,8 @@ By default, `List` component renders a list with no styling.
 ```
 
 ### List With Icon
+
+By providing a `List.Icon`
 
 ```jsx
 <List>
@@ -65,6 +71,44 @@ By default, `List` component renders a list with no styling.
     </List.Icon>
     Third
   </List.Item>
+</List>
+```
+
+### List Spacing
+
+By default, the `Link` component extends the `Flex` component, allowing it to easily space out its elements, by providing a value to the `gap` prop.
+
+```jsx
+<List gap={fr(2)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+### Horizontal List
+
+By default, the `Link` component extends the `Flex` component, allowing it to easily be made into a horizontal list, by providing a value of `row` to the `direction` prop.
+
+```jsx
+<List direction="row" gap={fr(2)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+### List With Divider
+
+It is very common to combine `List` and `Divider` components together.
+
+```jsx
+<List gap={fr(2)} w={fr(96)}>
+  <List.Item>First</List.Item>
+  <Divider size="xs" />
+  <List.Item>Second</List.Item>
+  <Divider size="xs" />
+  <List.Item>Third</List.Item>
 </List>
 ```
 

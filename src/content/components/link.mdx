@@ -15,30 +15,30 @@ import { Link } from "@prismane/core";
 ```jsx
 <>
   <Link href="#" underline="none">
-    Click Me
+    No Underline
   </Link>
   <Link href="#" underline="hover">
-    Click Me
+    Hover for Underline
   </Link>
   <Link href="#" underline="always">
-    Click Me
+    Always Underlined
   </Link>
 </>
 ```
 
 ### Foreign Link
 
-Links that have the `foreign` prop will open in a new browser window.
+Links that have the `foreign` prop will open in a blank page.
 
 ```jsx
 <Link href="https://www.google.com" foreign>
-  Click Me
+  I will open in a blank page
 </Link>
 ```
 
 ### Before Function
 
-`Link` exposes the support for a `before` function, which will execute, before the user will be redirected.
+`Link` exposes the support for a `before` function, which will execute, before the user is redirected.
 
 ```jsx
 <Link
@@ -48,7 +48,62 @@ Links that have the `foreign` prop will open in a new browser window.
   href="https://www.google.com"
   foreign
 >
-  Click Me
+  I will log to console, before redirecting
+</Link>
+```
+
+### Link Color
+
+You can change the color of the `Link` component, by providing a value to the `cl` prop. This will also result in a change of the underline color.
+
+```jsx
+<Link cl="primary" href="https://www.google.com" foreign>
+  I will log to console, before redirecting
+</Link>
+```
+
+### Link Underline Color
+
+You can change the color by providing a value to the `sx` prop and setting the `text-decoration-color` property.
+
+```jsx
+<Link
+  href="#"
+  sx={{
+    textDecorationColor: "lime",
+  }}
+>
+  I have a different underline color
+</Link>
+```
+
+### Link Underline Thickness
+
+You can change the thickness by providing a value to the `sx` prop and setting the `text-decoration-thickness` property.
+
+```jsx
+<Link
+  href="#"
+  sx={{
+    textDecorationThickness: "4px",
+  }}
+>
+  I have a thicker underline
+</Link>
+```
+
+### Link Underline Style
+
+You can change the style of the underline by providing a value to the `sx` prop and setting the `text-decoration-style` property.
+
+```jsx
+<Link
+  href="#"
+  sx={{
+    textDecorationStyle: "wavy",
+  }}
+>
+  I have a wavy underline
 </Link>
 ```
 

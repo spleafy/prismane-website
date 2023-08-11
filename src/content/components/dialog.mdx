@@ -25,7 +25,7 @@ function Default() {
           setOpen(!open);
         }}
       >
-        Toggle Dialog
+        {open ? "Close Dialog" : "Open Dialog"}
       </Button>
     </>
   );
@@ -42,7 +42,7 @@ function Default() {
 
   return (
     <>
-      <Dialog w={fr(64)} open={open} onClose={() => setOpen(false)} closable>
+      <Dialog w={fr(96)} open={open} onClose={() => setOpen(false)} closable>
         <Dialog.Header>
           <Text fw="bold">Account warning</Text>
         </Dialog.Header>
@@ -56,16 +56,16 @@ function Default() {
           setOpen(!open);
         }}
       >
-        Toggle Dialog
+        {open ? "Close Dialog" : "Open Dialog"}
       </Button>
     </>
   );
 }
 ```
 
-### Custom Animation
+### Change Position
 
-`Dialog`'s animation can be customized.
+`Dialog`'s position can be changed by providing a value to the `position` prop. Supported values are [PrismanePositions](/docs/getting-started/globals#prismanepositions)
 
 ```jsx
 function Default() {
@@ -74,8 +74,9 @@ function Default() {
   return (
     <>
       <Dialog
+        position="right-end"
         animation="slide-right"
-        w={fr(64)}
+        w={fr(96)}
         open={open}
         onClose={() => setOpen(false)}
         closable
@@ -93,7 +94,44 @@ function Default() {
           setOpen(!open);
         }}
       >
-        Toggle Dialog
+        {open ? "Close Dialog" : "Open Dialog"}
+      </Button>
+    </>
+  );
+}
+```
+
+### Custom Animation
+
+`Dialog`'s animation can be changed by providing a value to the `animation` prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations)
+
+```jsx
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog
+        animation="slide-down"
+        w={fr(96)}
+        open={open}
+        onClose={() => setOpen(false)}
+        closable
+      >
+        <Dialog.Header>
+          <Text fw="bold">Account warning</Text>
+        </Dialog.Header>
+        <Text fs="sm">Your account has not been completed yet.</Text>
+        <Dialog.Footer>
+          <Button>Complete</Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? "Close Dialog" : "Open Dialog"}
       </Button>
     </>
   );

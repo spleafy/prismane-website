@@ -28,6 +28,8 @@ function Demo() {
 
 ### Transition Delay
 
+The `delay` of the `Transition` can be set, by providing a different value to the `delay` property. By default, the `delay` value is `0`.
+
 ```jsx
 function Demo() {
   const [toggled, setToggled] = useState(false);
@@ -49,6 +51,8 @@ function Demo() {
 
 ### Transition Duration
 
+The `duration` of the `Transition` can be changed, by providing a different value to the `duration` property. By default, the `duration` value is `150`.
+
 ```jsx
 function Demo() {
   const [toggled, setToggled] = useState(false);
@@ -69,6 +73,8 @@ function Demo() {
 ```
 
 ### Transition Timing
+
+The `timing` of the `Transition` can be changed, by providing a different value to the `timing` property. By default, the `timing` value is `ease-in-out`.
 
 ```jsx
 function Demo() {
@@ -110,6 +116,7 @@ function Demo() {
         <Flex gap={fr(5)}>
           <Transition
             transition="all"
+            duration={1000}
             w={fr(30)}
             h={fr(30)}
             br={toggled ? "base" : "lg"}
@@ -119,6 +126,7 @@ function Demo() {
           />
           <Transition
             transition="colors"
+            duration={1000}
             w={fr(30)}
             h={fr(30)}
             br={toggled ? "base" : "lg"}
@@ -128,6 +136,7 @@ function Demo() {
           />
           <Transition
             transition="opacity"
+            duration={1000}
             w={fr(30)}
             h={fr(30)}
             br={toggled ? "base" : "lg"}
@@ -137,6 +146,7 @@ function Demo() {
           />
           <Transition
             transition="shadow"
+            duration={1000}
             w={fr(30)}
             h={fr(30)}
             br={toggled ? "base" : "lg"}
@@ -146,6 +156,7 @@ function Demo() {
           />
           <Transition
             transition="transform"
+            duration={1000}
             w={fr(30)}
             h={fr(30)}
             br={toggled ? "base" : "lg"}
