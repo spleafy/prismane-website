@@ -13,7 +13,7 @@ const Search = () => {
         return `https://github.com/prismaneui/prismane/issues/new?title=${query}`;
       }}
       resultsFooterComponent={({ state }: any) => {
-        return <span>{state.context.nbHits} hits found</span>;
+        return <span>{state.context.nbHits} results found</span>;
       }}
     />
   );

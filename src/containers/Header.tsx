@@ -68,7 +68,7 @@ const Header = () => {
       <div className="flex max-w-[1440px] w-full items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-3 z-10"
+          className="flex items-center gap-3 z-10 w-1/3"
           onClick={() => setExpanded(false)}
         >
           <>
@@ -179,7 +179,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-5 z-10">
+        <div className="flex items-center gap-5 z-10 w-1/3 justify-end">
           <Search />
           <Link href="https://github.com/prismaneui/prismane" target="_blank">
             <ActionButton
