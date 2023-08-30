@@ -4,6 +4,7 @@ import Hero from "../containers/home/Hero";
 import Statistics from "../containers/home/Statistics";
 import Features from "../containers/home/Features";
 import Examples from "../containers/home/Examples";
+import Preview from "../containers/home/Preview";
 import Start from "../containers/Start";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <Statistics />
       <Features />
+      <Preview />
       <Examples />
       <Start />
     </>

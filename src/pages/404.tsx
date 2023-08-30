@@ -14,7 +14,7 @@ const NotFound = () => {
       }
     >
       <h1 className="hero-heading">
-        Ooops, we <span className="text-gradient">lost</span> that page.
+        <span className="text-gradient">Ooops,</span> we lost that page.
       </h1>
       <h2 className="hero-subheading">
         Sorry, the page you are looking for doesn&apos;t exist or hase been

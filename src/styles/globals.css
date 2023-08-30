@@ -143,17 +143,15 @@
   color: rgb(190, 24, 93) !important;
 }
 
-*:is(.dark) {
-  .DocSearch-Button {
-    background-color: rgba(190, 24, 93, 0.2) !important;
-    color: rgba(var(--prismane-colors-base-300)) !important;
-  }
+.dark .DocSearch-Button {
+  background-color: rgba(190, 24, 93, 0.2) !important;
+  color: rgba(var(--prismane-colors-base-300)) !important;
+}
 
-  .DocSearch-Button:hover {
-    color: rgba(var(--prismane-colors-base-100)) !important;
-  }
+.dark .DocSearch-Button:hover {
+  color: rgba(var(--prismane-colors-base-100)) !important;
+}
 
-  .DocSearch-Search-Icon {
-    color: rgb(251, 207, 232) !important;
-  }
+.dark .DocSearch-Search-Icon {
+  color: rgb(251, 207, 232) !important;
 }
