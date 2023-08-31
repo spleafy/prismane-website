@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import { HandCoins } from "@phosphor-icons/react";
-import { Button } from "@prismane/core";
+// Components
+import Button from "@/components/Button";
 // Containers
 import Section from "../Section";
 
@@ -24,14 +24,7 @@ const Hero = () => {
         accelerate our work, and release updates more frequently.
       </h2>
       <Link href="https://opencollective.com/prismane" target="_blank">
-        <Button
-          variant="primary"
-          icon={<HandCoins size={24} />}
-          className="h-16 text-xl !sm:!px-12 !w-full sm:!w-fit button-gradient"
-          size="lg"
-        >
-          Support Our Journey
-        </Button>
+        <Button icon={<HandCoins size={24} />}>Support Our Journey</Button>
       </Link>
     </Section>
   );

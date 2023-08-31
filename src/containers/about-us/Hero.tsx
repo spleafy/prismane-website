@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import { GithubLogo } from "@phosphor-icons/react";
-import { Button } from "@prismane/core";
+// Components
+import Button from "@/components/Button";
 // Containers
 import Section from "../Section";
 
@@ -25,14 +25,7 @@ const Hero = () => {
         all.
       </h2>
       <Link href="https://github.com/prismaneui/prismane" target="_blank">
-        <Button
-          variant="primary"
-          icon={<GithubLogo size={24} />}
-          className="h-16 text-xl !sm:!px-12 !w-full sm:!w-fit button-gradient"
-          size="lg"
-        >
-          Join Our Mission
-        </Button>
+        <Button icon={<GithubLogo size={24} />}>Join Our Mission</Button>
       </Link>
     </Section>
   );

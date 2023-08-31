@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Lightning } from "@phosphor-icons/react";
-import { Button } from "@prismane/core";
+// Components
+import Button from "@/components/Button";
 // Containers
 import Section from "./Section";
 
@@ -20,10 +21,8 @@ const Start = () => {
       </span>
       <Link href="/docs" className="!w-full sm:!w-fit">
         <Button
-          variant="primary"
           icon={<Lightning size={24} />}
-          className="h-16 text-xl !sm:!px-12 !w-full sm:!w-fit mt-5 button-gradient hover:scale-[105%]"
-          size="lg"
+          className="mt-5 hover:scale-[105%]"
         >
           Start building for free
         </Button>

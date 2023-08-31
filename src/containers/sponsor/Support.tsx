@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import {
   Users,
   ChatsTeardrop,
@@ -7,7 +6,7 @@ import {
   ArrowSquareOut,
 } from "@phosphor-icons/react";
 // Components
-import { Button } from "@prismane/core";
+import Button from "@/components/Button";
 // Containers
 import Section from "../Section";
 
@@ -60,7 +59,8 @@ const Support = () => {
               <Button
                 variant="primary"
                 icon={<ArrowSquareOut />}
-                className="button-gradient !h-10 w-full"
+                size="base"
+                className="sm:!w-full !h-10"
                 full
               >
                 {way.action}

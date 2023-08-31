@@ -7,11 +7,7 @@ import { Index, App, CSS } from "@/config/sandpack/home";
 
 const Preview = () => {
   return (
-    <Section
-      background={
-        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 w-[1800px] h-[1800px] bg-radial-pink z-0 dark:opacity-5 opacity-30"></div>
-      }
-    >
+    <Section>
       <span className="section-heading">
         Efficiency meets{" "}
         <span className="section-heading text-gradient">excellence</span>

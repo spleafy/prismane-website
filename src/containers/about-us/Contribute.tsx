@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import { Check, GithubLogo } from "@phosphor-icons/react";
-import { Button, Card, Animation } from "@prismane/core";
+import { Card, Animation } from "@prismane/core";
+// Components
+import Button from "@/components/Button";
 // Containers
 import Section from "../Section";
 
@@ -65,13 +66,7 @@ const Contribute = () => {
           target="_blank"
           className="flex w-full"
         >
-          <Button
-            variant="primary"
-            className="h-16 text-xl !px-12 button-gradient mt-6"
-            icon={<GithubLogo size={24} />}
-            size="lg"
-            full
-          >
+          <Button className="mt-6" icon={<GithubLogo size={24} />} full>
             Contribute
           </Button>
         </Link>
