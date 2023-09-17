@@ -1,23 +1,13 @@
 import Image from "next/image";
 import { Animation } from "@prismane/core";
+// Components
+import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 
 const History = () => {
   return (
-    <Section
-      background={(isInView: boolean) => (
-        <Animation
-          duration={500}
-          animation={{
-            in: { transform: "translateX(-50%) scale(1)" },
-            out: { transform: "translateX(-50%) scale(0)" },
-          }}
-          animated={isInView}
-          className="absolute left-1/2 lg:left-[26%] top-10 !w-[700px] h-[700px] bg-radial-purple z-0 dark:opacity-10 opacity-30"
-        ></Animation>
-      )}
-    >
+    <Section background={<SectionSeparator position="bottom" />}>
       <span className="section-heading">
         Our brief <span className="text-gradient">history</span>
       </span>
@@ -27,7 +17,7 @@ const History = () => {
             src="/martin_petrov.jpg"
             alt="Profile Picture Martin Petrov"
             fill
-            className="rounded-3xl -z-10"
+            className="rounded-2xl -z-10"
           />
         </div>
         <div className="flex flex-col gap-5 sm:max-w-[60%]">
@@ -35,7 +25,7 @@ const History = () => {
             Martin Petrov
           </span>
           <span className="uppercase text-xl text-gradient font-bold text-center lg:text-start">
-            CEO & Founder
+            Creator
           </span>
           <span className="dark:text-white text-base-700 text-center lg:text-start">
             Embark on an astonishing journey with Martin Petrov, a visionary

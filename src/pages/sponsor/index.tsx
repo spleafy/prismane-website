@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 // Containers
 import Hero from "../../containers/sponsor/Hero";
 import Support from "../../containers/sponsor/Support";
@@ -15,6 +16,18 @@ export default function Sponsor() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <Image
+        src="/mesh_grid_3.png"
+        alt="Grid Mesh Background"
+        className="object-contain opacity-10 dark:opacity-20 blend-to-bottom"
+        fill
+      />
+      <Image
+        src="/mesh_gradient_8.png"
+        alt="Mesh Gradient Background"
+        className="object-cover opacity-20 blend-to-bottom"
+        fill
+      />
       <Hero />
       <Support />
       <Start />

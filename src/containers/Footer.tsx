@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 import { ArrowSquareOut } from "@phosphor-icons/react";
 
 const Footer = () => {

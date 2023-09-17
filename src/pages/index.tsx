@@ -1,10 +1,12 @@
 import Head from "next/head";
+import Image from "next/image";
 // Containers
 import Hero from "../containers/home/Hero";
 import Statistics from "../containers/home/Statistics";
 import Features from "../containers/home/Features";
 import Examples from "../containers/home/Examples";
 import Preview from "../containers/home/Preview";
+import Socials from "@/containers/Socials";
 import Start from "../containers/Start";
 
 export default function Home() {
@@ -18,11 +20,24 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <Image
+        src="/mesh_grid.png"
+        alt="Grid Mesh Background"
+        className="object-contain opacity-10 dark:opacity-20 blend-to-bottom"
+        fill
+      />
+      <Image
+        src="/mesh_gradient_6.png"
+        alt="Mesh Gradient Background"
+        className="object-cover opacity-20 blend-to-bottom"
+        fill
+      />
       <Hero />
       <Statistics />
       <Features />
       <Preview />
       <Examples />
+      <Socials />
       <Start />
     </>
   );

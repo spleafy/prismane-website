@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Users,
   Package,
@@ -6,6 +5,8 @@ import {
   SuitcaseSimple,
 } from "@phosphor-icons/react";
 import { Divider } from "@prismane/core";
+// Components
+import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 

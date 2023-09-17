@@ -2,12 +2,13 @@
 import Section from "../Section";
 // Components
 import SandpackEmbed from "@/components/SandpackEmbed";
+import SectionSeparator from "@/components/SectionSeparator";
 // Configs
 import { Index, App, CSS } from "@/config/sandpack/home";
 
 const Preview = () => {
   return (
-    <Section>
+    <Section background={<SectionSeparator />}>
       <span className="section-heading">
         Efficiency meets{" "}
         <span className="section-heading text-gradient">excellence</span>

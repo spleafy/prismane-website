@@ -13,6 +13,9 @@ import {
   Badge,
   Chip,
 } from "@prismane/core";
+// Components
+import { default as WebsiteButton } from "@/components/Button";
+import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 
@@ -20,7 +23,10 @@ const Examples = () => {
   return (
     <Section
       background={
-        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 w-[1800px] h-[1800px] bg-radial-pink z-0 dark:opacity-5 opacity-30"></div>
+        <>
+          <SectionSeparator />
+          <SectionSeparator position="bottom" />
+        </>
       }
     >
       <span className="section-heading">
@@ -31,7 +37,7 @@ const Examples = () => {
       <span className="section-subheading">
         Production-ready right out of the box
       </span>
-      <div className="flex border flex-wrap rounded-lg mt-20">
+      <div className="flex border flex-wrap rounded-lg overflow-hidden mt-20 shadow-glow dark:shadow-base-300/10 shadow-base-700/20">
         <div className="flex flex-col items-center justify-center gap-2 py-16 px-12 w-full sm:w-1/2 lg:w-1/3 dark:!bg-base-700/10 !bg-base-500/10 relative h-64 border-b lg:border-b-0 sm:border-r">
           <Button color="pink" variant="primary" icon={<DownloadSimple />}>
             Download
@@ -79,15 +85,12 @@ const Examples = () => {
             Want to see more?
           </span>
           <Link href="/docs">
-            <Button
-              color="pink"
-              variant="tertiary"
-              icon={<ArrowUpRight />}
+            <WebsiteButton
+              icon={<ArrowUpRight size={20} weight="bold" />}
               iconPosition="right"
-              className="text-lg dark:text-base-300 text-base-700"
             >
               Read the docs
-            </Button>
+            </WebsiteButton>
           </Link>
         </div>
       </div>

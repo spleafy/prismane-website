@@ -53,9 +53,7 @@ const SandpackEmbed = ({
           ...devDependencies,
         },
       }}
-      style={{
-        width: "100%",
-      }}
+      className="!w-full !outline !outline-[1px] !outline-primary-500 !rounded-md !shadow-glow !shadow-primary-500/30 !overflow-hidden"
     >
       <Box
         w="100%"

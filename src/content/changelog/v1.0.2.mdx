@@ -1,0 +1,11 @@
+---
+release: September 17, 2023
+---
+
+# 🧾 Release Notes
+
+This release fixes a very important issue that occured when we extended a component that had the same prop as the component that we were building. This resulted in incorrect prop types and TypeScript error. This issue has now been fixed and all of the overlapping props are being removed in favor of the props in the component that we are building.
+
+# 🐛 Bug Fixes
+
+- Component prop extension of base component

@@ -14,13 +14,18 @@ module.exports = {
       colors: {
         primary: colors.pink,
         secondary: colors.rose,
-        base: colors.gray,
+        base: colors.slate,
+      },
+      boxShadow: {
+        inset: "inset 0 0 2px 1px var(--tw-shadow-color)",
+        glow: "0 0 30px 10px var(--tw-shadow-color)",
       },
       animation: {
         breathe: "breathe 5s ease-in-out infinite",
         "breathe-light": "breathe-light 5s ease-in-out infinite",
         blink: "blink 1s ease-in-out infinite",
         phase: "phase 5s ease-in-out infinite",
+        scale: "scale 2s ease-in-out infinite",
       },
       keyframes: {
         breathe: {
@@ -40,6 +45,10 @@ module.exports = {
           "25%": { transform: "translate(128px, -128px)" },
           "50%": { transform: "translate(0px, 0px)" },
           "75%": { transform: "translate(-128px, -128px)" },
+        },
+        scale: {
+          "0%, 100%": { opacity: "100%", transform: "scale(1)" },
+          "50%": { opacity: "75%", transform: "scale(1.1)" },
         },
       },
     },

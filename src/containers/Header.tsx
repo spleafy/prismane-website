@@ -2,18 +2,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  GithubLogo,
-  TwitterLogo,
-  Sun,
-  Moon,
-  Equals,
-  X,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
+import { Sun, Moon, Equals, X } from "@phosphor-icons/react";
 import { ActionButton, Divider, usePrismaneTheme } from "@prismane/core";
 // Components
 import Search from "@/components/Search";
+import HeaderLink from "@/components/HeaderLink";
 // Content
 import content from "@/content";
 
@@ -59,67 +52,53 @@ const Header = () => {
 
   return (
     <header
-      className={`flex items-center justify-center z-50 sticky left-0 top-0 transition-all px-5 sm:px-10 ${
+      className={`flex items-center justify-center z-50 sticky left-0 top-10 transition-colors duration-150 px-5 sm:px-10 border-b py-4 ${
         sticky
-          ? "dark:bg-[#0c0c0c] bg-white shadow-lg dark:shadow-base-500/5 shadow-base-900/5 py-4"
-          : "bg-transparent py-8"
+          ? "dark:bg-base-900/50 bg-white/50 backdrop-blur-xl dark:border-white/10 border-black/10"
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="flex max-w-[1440px] w-full items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-3 z-10 w-1/3"
+          className="flex items-center gap-2 z-10 md:w-1/3"
           onClick={() => setExpanded(false)}
         >
-          <>
-            <Image src="/logo.svg" alt="Logo" width={48} height={48} />
-            <span className="hidden sm:inline-block text-3xl whitespace-nowrap dark:text-white text-base-900 font-bold">
-              Prismane
-            </span>
-          </>
+          <Image src="/logo.svg" alt="Logo" width={36} height={36} />
+          <span className="hidden sm:inline-block text-xl whitespace-nowrap dark:text-white text-base-900 font-bold">
+            Prismane
+          </span>
         </Link>
         <div
-          className={`fixed md:static dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit ${
-            sticky ? "top-0 h-full pt-24" : "h-[calc(100%-48px)] top-12 pt-28"
-          } md:h-fit bg-white dark:bg-[#0c0c0c] md:bg-transparent md:dark:bg-transparent p-5  md:!p-0 ${
+          className={`fixed md:static pt-20 top-0 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
             expanded ? "left-0" : "left-full"
           }`}
         >
           <div className="w-full md:w-fit flex items-center justify-center gap-4 md:gap-8">
-            <Link
-              href="/docs"
-              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
-              onClick={() => setExpanded(false)}
-            >
-              <>
-                {router.pathname.includes("docs") && (
-                  <div className="w-2 h-2 aspect-square rounded-full bg-primary-500"></div>
-                )}
-                Docs
-              </>
-            </Link>
-            <Link
-              href="/about-us"
-              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
-              onClick={() => setExpanded(false)}
-            >
-              <>
-                {router.pathname.includes("/about-us") && (
-                  <div className="w-2 h-2 aspect-square rounded-full bg-primary-500"></div>
-                )}
-                About Us
-              </>
-            </Link>
-            <Link
-              href="/sponsor"
-              className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-base font-medium gap-2 flex items-center justify-center rounded-md w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 sm:px-4"
-              onClick={() => setExpanded(false)}
-            >
+            <HeaderLink href="/docs" onClick={() => setExpanded(false)}>
+              {router.pathname.includes("docs") && (
+                <div className="w-2 h-2 aspect-square rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500"></div>
+              )}
+              Docs
+            </HeaderLink>
+            <HeaderLink href="/changelog" onClick={() => setExpanded(false)}>
+              {router.pathname.includes("/changelog") && (
+                <div className="w-2 h-2 aspect-square rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500"></div>
+              )}
+              Changelog
+            </HeaderLink>
+            <HeaderLink href="/about-us" onClick={() => setExpanded(false)}>
+              {router.pathname.includes("/about-us") && (
+                <div className="w-2 h-2 aspect-square rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500"></div>
+              )}
+              About Us
+            </HeaderLink>
+            <HeaderLink href="/sponsor" onClick={() => setExpanded(false)}>
               {router.pathname.includes("/sponsor") && (
-                <div className="w-2 h-2 aspect-square rounded-full bg-primary-500"></div>
+                <div className="w-2 h-2 aspect-square rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500"></div>
               )}
               Sponsor
-            </Link>
+            </HeaderLink>
           </div>
           <Divider className="!h-px !w-full md:!hidden" grow={false} />
           <div className="flex md:hidden flex-col w-full gap-5">
@@ -179,26 +158,36 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-5 z-10 w-1/3 justify-end">
+        <div className="flex items-center gap-3 z-10 md:w-1/3 justify-end">
           <Search />
-          <Link href="https://github.com/prismaneui/prismane" target="_blank">
-            <ActionButton
-              color="pink"
-              variant="secondary"
-              icon={<GithubLogo />}
+          <HeaderLink
+            className="hidden lg:flex"
+            href="https://github.com/prismaneui/prismane"
+            target="_blank"
+          >
+            <Image
+              src="/github_logo.svg"
+              alt="Github Logo"
+              width={20}
+              height={20}
+              className="filter dark:brightness-[100] brightness-0 min-h-[20px] min-w-[20px]"
             />
-          </Link>
-          <Link href="https://twitter.com/prismaneui" target="_blank">
-            <ActionButton
-              color="pink"
-              variant="secondary"
-              icon={<TwitterLogo />}
+          </HeaderLink>
+          <HeaderLink
+            className="hidden lg:flex"
+            href="https://twitter.com/prismaneui"
+            target="_blank"
+          >
+            <Image
+              src="/twitter_logo.svg"
+              alt="Twitter Logo"
+              width={20}
+              height={20}
+              className="filter dark:brightness-[100] brightness-0 min-h-[20px] min-w-[20px]"
             />
-          </Link>
-          <ActionButton
-            color="pink"
-            variant="secondary"
-            icon={theme.mode === "dark" ? <Sun /> : <Moon />}
+          </HeaderLink>
+          <div
+            className="whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-sm font-semibold gap-2 flex items-center justify-center rounded w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 px-1.5 sm:px-3"
             onClick={() => {
               document.documentElement.classList.remove(
                 theme.mode === "dark" ? "dark" : "light"
@@ -208,14 +197,27 @@ const Header = () => {
               );
               toggleThemeMode();
             }}
-          />
-          <ActionButton
-            color="pink"
-            variant="secondary"
-            icon={expanded ? <X /> : <Equals />}
+          >
+            {theme.mode === "dark" ? (
+              <Sun
+                size={18}
+                weight="fill"
+                className="dark:!text-white !text-base-900"
+              />
+            ) : (
+              <Moon
+                size={18}
+                weight="fill"
+                className="dark:!text-white !text-base-900"
+              />
+            )}
+          </div>
+          <div
+            className="flex md:hidden whitespace-nowrap dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer text-sm font-semibold gap-2 items-center justify-center rounded w-full md:w-fit py-1.5 sm:py-2 dark:hover:bg-base-500/20 hover:bg-base-700/10 transition-all duration-150 px-1.5 sm:px-3"
             onClick={() => setExpanded(!expanded)}
-            className="!flex md:!hidden"
-          />
+          >
+            {expanded ? <X size={20} /> : <Equals size={20} />}
+          </div>
         </div>
       </div>
     </header>

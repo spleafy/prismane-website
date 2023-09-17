@@ -1,16 +1,33 @@
-import { Button as PrismaneButton, ButtonProps } from "@prismane/core";
+import { ReactNode } from "react";
 
-const Button = ({ children, className, ...props }: ButtonProps) => {
+type ButtonProps = {
+  icon?: ReactNode;
+  iconPosition?: "right" | "left";
+  full?: boolean;
+} & React.ComponentPropsWithoutRef<"button">;
+
+const Button = ({
+  icon,
+  iconPosition = "left",
+  full,
+  children,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
-    <PrismaneButton
-      className={`h-16 !w-full sm:!w-fit sm:!px-12 button-gradient ${
-        className ? className : ""
-      }`}
-      size="lg"
+    <button
+      className={`flex items-center justify-center gap-2 !px-6 !py-2.5 w-full sm:w-fit !text-base !text-white font-semibold rounded-md hover:shadow-glow hover:!shadow-primary-500/20 bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300 ${
+        full ? "!w-full" : ""
+      } ${className ? className : ""}`}
       {...props}
     >
+      {icon && (
+        <div className={iconPosition === "left" ? "-order-1" : "order-1"}>
+          {icon}
+        </div>
+      )}
       {children}
-    </PrismaneButton>
+    </button>
   );
 };
 

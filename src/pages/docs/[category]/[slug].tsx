@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Head from "next/head";
 import NextLink from "next/link";
@@ -445,7 +444,7 @@ export default function Page(params: any) {
                       }}
                     >
                       {language === "jsx" && (
-                        <div className="flex p-5 border dark:border-base-800 dark:bg-[#0F0F0F] border-base-300 bg-base-50 rounded-md grow overflow-x-auto sm:overflow-x-visible">
+                        <div className="flex p-5 border dark:border-base-800 dark:bg-[#0F0F0F]/40 border-base-300 bg-base-50/40 rounded-md grow overflow-x-auto sm:overflow-x-visible">
                           <LivePreview className="flex w-full grow gap-5 flex-wrap" />
                         </div>
                       )}
@@ -592,7 +591,7 @@ export default function Page(params: any) {
                   {children}
                 </th>
               ),
-              a: ({ children, ...props }): any => (
+              a: ({ children, ...props }: any) => (
                 <NextLink
                   {...props}
                   target="_blank"

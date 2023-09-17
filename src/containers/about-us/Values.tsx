@@ -1,4 +1,6 @@
 import { CubeTransparent, Money, User } from "@phosphor-icons/react";
+// Components
+import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 

@@ -1,7 +1,7 @@
 import { FC, ReactNode, useRef } from "react";
 import { useInView } from "framer-motion";
 
-interface T {
+type SectionProps = {
   children: ReactNode | Function;
   className?: string;
   background?: ReactNode | Function;
@@ -11,9 +11,15 @@ interface T {
     margin?: string;
     root?: any;
   };
-}
+} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
-const Section: FC<T> = ({ children, background, viewOptions, className }) => {
+const Section: FC<SectionProps> = ({
+  children,
+  background,
+  viewOptions,
+  className,
+  ...props
+}) => {
   const ref = useRef(null);
 
   const isInView = useInView(ref, { once: true, amount: 0.3, ...viewOptions });
@@ -22,9 +28,10 @@ const Section: FC<T> = ({ children, background, viewOptions, className }) => {
     <section
       className="flex items-center justify-center relative overflow-x-clip"
       ref={ref}
+      {...props}
     >
       <div
-        className={`flex items-center justify-center max-w-[1200px] w-full py-10 sm:py-20 px-6 sm:px-12 z-10 flex-col gap-6 ${
+        className={`flex items-center justify-center max-w-[1200px] w-full py-10 sm:py-28 px-6 sm:px-12 sm:mt-10 z-10 flex-col gap-6 ${
           className ? className : ""
         }`}
       >

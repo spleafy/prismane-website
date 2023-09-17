@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
-import { Lightning, Copy, Check } from "@phosphor-icons/react";
+import { ArrowRight, Copy, Check } from "@phosphor-icons/react";
 // Components
 import Typewriter from "../../components/Typewriter";
 import Button from "@/components/Button";
+import Announce from "@/components/Announce";
 // Containers
 import Section from "../Section";
 
@@ -12,30 +12,35 @@ const Hero = () => {
   const [copy, setCopy] = useState(false);
 
   return (
-    <Section
-      className="section-hero"
-      background={
-        <>
-          <div className="absolute left-2/3 !-translate-x-1/3 -top-2/3 !w-[2400px] h-[1800px] bg-radial-pink z-0 dark:animate-breathe animate-breathe-light delay-[3000]"></div>
-          <div className="absolute -left-1/3 -top-full !w-[2400px] h-[1800px] bg-radial-purple z-0 dark:animate-breathe animate-breathe-light"></div>
-        </>
-      }
-    >
+    <Section className="section-hero sm:!pt-24">
+      <Announce href="/changelog/latest">Prismane v.1.0 is out now!</Announce>
       <h1 className="hero-heading">
-        Make great React apps, ultra{" "}
-        <span className="text-gradient">fast.</span>
+        Build exceptional React apps with{" "}
+        <span className="text-gradient">blazing speed.</span>
       </h1>
       <h2 className="hero-subheading">
         Everything you need to start building your future ventures.
       </h2>
       <div className="flex w-full items-center justify-center gap-5 flex-col lg:flex-row">
         <Link href="/docs" className="!w-full sm:!w-fit">
-          <Button icon={<Lightning size={24} />}>Start Developing</Button>
+          <Button
+            icon={
+              <ArrowRight
+                size={20}
+                weight="bold"
+                className="transition-all group-hover:translate-x-1"
+              />
+            }
+            iconPosition="right"
+            className="group"
+          >
+            Get Started
+          </Button>
         </Link>
-        <div className="flex items-center rounded-lg px-2 sm:px-4 py-2 sm:py-3 border dark:bg-base-700/40 bg-base-500/10 dark:text-white text-base-900 whitespace-nowrap gap-2 h-fit sm:h-16 font-mono text-base sm:text-lg !w-full sm:!w-fit">
+        <div className="flex items-center rounded-md px-2 py-1.5 border dark:bg-base-800 bg-base-500/10 dark:text-white text-base-900 whitespace-nowrap gap-2 font-mono !w-full sm:!w-72">
           $ npm i <Typewriter text="@prismane/core" />
           <button
-            className="p-3 ml-auto sm:ml-5 rounded-md cursor-pointer dark:bg-base-500/20 bg-base-700/10 dark:hover:bg-base-500/30 hover:bg-base-500/30 transition-all"
+            className="p-2 ml-auto rounded-md cursor-pointer dark:bg-base-500/20 bg-base-700/10 dark:hover:bg-base-500/30 hover:bg-base-500/30 transition-all"
             onClick={() => {
               navigator.clipboard.writeText("npm install @prismane/core");
               setCopy(true);

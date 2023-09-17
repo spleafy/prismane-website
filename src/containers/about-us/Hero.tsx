@@ -7,15 +7,7 @@ import Section from "../Section";
 
 const Hero = () => {
   return (
-    <Section
-      className="section-hero"
-      background={
-        <>
-          <div className="absolute left-2/3 !-translate-x-1/3 -top-2/3 !w-[2400px] h-[1800px] bg-radial-pink z-0 dark:animate-breathe animate-breathe-light delay-[3000]"></div>
-          <div className="absolute -left-1/3 -top-full !w-[2400px] h-[1800px] bg-radial-purple z-0 dark:animate-breathe animate-breathe-light"></div>
-        </>
-      }
-    >
+    <Section className="section-hero">
       <h1 className="hero-heading">
         We <span className="text-gradient">effortlessly</span> master
         complexity.

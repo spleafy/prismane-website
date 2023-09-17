@@ -3,6 +3,7 @@ import { Check, GithubLogo } from "@phosphor-icons/react";
 import { Card, Animation } from "@prismane/core";
 // Components
 import Button from "@/components/Button";
+import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 
@@ -11,17 +12,12 @@ const Contribute = () => {
     <Section
       className="lg:!py-48 lg:!flex-row justify-between"
       viewOptions={{ amount: 0.8 }}
-      background={(isInView: boolean) => (
-        <Animation
-          duration={500}
-          animation={{
-            in: { transform: "translateX(-50%) scale(1)" },
-            out: { transform: "translateX(-50%) scale(0)" },
-          }}
-          animated={isInView}
-          className="absolute left-2/3 -top-1/5 !w-[1600px] h-[1600px] bg-radial-purple z-0 dark:opacity-10 opacity-30"
-        ></Animation>
-      )}
+      background={
+        <>
+          <SectionSeparator />
+          <SectionSeparator position="bottom" />
+        </>
+      }
     >
       <div className="flex flex-col gap-2 lg:max-w-[50%] mb-12 lg:mb-0">
         <span className="lg:!text-start section-heading">
@@ -64,9 +60,9 @@ const Contribute = () => {
         <Link
           href="https://github.com/prismaneui/prismane"
           target="_blank"
-          className="flex w-full"
+          className="flex !w-full mt-6 grow"
         >
-          <Button className="mt-6" icon={<GithubLogo size={24} />} full>
+          <Button icon={<GithubLogo size={24} />} full>
             Contribute
           </Button>
         </Link>

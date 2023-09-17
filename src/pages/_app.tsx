@@ -26,12 +26,12 @@ import Layout from "@/containers/Layout";
 // Theme
 import { PrismaneProvider, PRISMANE_COLORS } from "@prismane/core";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: any) {
   const theme = {
     mode: "dark",
     colors: {
       primary: PRISMANE_COLORS.pink,
-      base: PRISMANE_COLORS.gray,
+      base: PRISMANE_COLORS.slate,
     },
   };
 
