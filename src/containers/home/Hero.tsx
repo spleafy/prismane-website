@@ -37,7 +37,7 @@ const Hero = () => {
             Get Started
           </Button>
         </Link>
-        <div className="flex items-center rounded-md px-2 py-1.5 border dark:bg-base-800 bg-base-500/10 dark:text-white text-base-900 whitespace-nowrap gap-2 font-mono !w-full sm:!w-72">
+        <div className="flex items-center rounded-md px-2 py-1.5 border dark:bg-base-800 bg-base-200 dark:text-white text-base-900 hover:shadow-glow shadow-base-900/10 dark:shadow-base-100/5 whitespace-nowrap gap-2 font-mono !w-full sm:!w-72 transition-all">
           $ npm i <Typewriter text="@prismane/core" />
           <button
             className="p-2 ml-auto rounded-md cursor-pointer dark:bg-base-500/20 bg-base-700/10 dark:hover:bg-base-500/30 hover:bg-base-500/30 transition-all"

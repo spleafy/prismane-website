@@ -20,7 +20,10 @@ export default function Document() {
           property="og:description"
           content="Build stunning user interfaces with ease using 107+ components, 484+ themes, and 20+ custom hooks. Level up your productivity and create exceptional experiences. Join the Prismane community today!"
         />
-        <meta property="og:image" content="/opengraph_banner.png" />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/YPShS1X/opengraph-banner.png"
+        />
         <meta property="og:url" content="https://www.prismane.io" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -30,7 +33,10 @@ export default function Document() {
           name="twitter:description"
           content="Build stunning user interfaces with ease using 107+ components, 484+ themes, and 20+ custom hooks. Level up your productivity and create exceptional experiences. Join the Prismane community today!"
         />
-        <meta name="twitter:image" content="/opengraph_banner.png" />
+        <meta
+          name="twitter:image"
+          content="https://i.ibb.co/YPShS1X/opengraph-banner.png"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
