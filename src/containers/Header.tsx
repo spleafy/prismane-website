@@ -70,7 +70,7 @@ const Header = () => {
           </span>
         </Link>
         <div
-          className={`fixed md:static pt-20 top-0 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
+          className={`absolute md:static pt-20 top-0 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-screen md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
             expanded ? "left-0" : "left-full"
           }`}
         >

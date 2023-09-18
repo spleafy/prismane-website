@@ -47,16 +47,16 @@ If you want to use the fonts that are used inside of the examples, you must inst
 
 If you want to use a custom theme, with custom colors, spacing and more, you can achieve that by providing a `theme` prop to the `PrismaneProvider` component.
 
-You can achieve that functionality by importing the `extendTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
+You can achieve that functionality by importing the `createTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
 
 ```tsx
 import React from "react";
 import Application from "../somewhere";
 import { PrismaneProvider } from "@prismane/core";
-import { extendTheme } from "@prismane/core/themes";
+import { createTheme } from "@prismane/core/themes";
 
 const App = () => {
-  const theme = extendTheme({
+  const theme = createTheme({
     colors: {
       primary: {
         100: "#ffffff",
