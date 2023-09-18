@@ -37,7 +37,7 @@
   }
 
   body {
-    @apply !font-["Inter"] dark:bg-[#0A0118] bg-white dark:text-base-300 text-base-700 overflow-x-hidden md:overflow-x-auto;
+    @apply !font-["Inter"] dark:bg-[#0A0118] bg-white dark:text-base-300 text-base-700 overflow-x-hidden md:overflow-x-auto w-screen md:w-auto;
   }
 
   h1 {
