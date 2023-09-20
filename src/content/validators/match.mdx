@@ -21,11 +21,11 @@ function Demo() {
       password: {
         value: "",
         validators: {
-          match: (v: string) => match(v, getValue("repassword")),
+          match: (v: string) => match(v, "password"),
         },
       },
       repassword: {
-        value: "",
+        value: "password",
       },
     },
   });
@@ -46,6 +46,7 @@ function Demo() {
       <TextField
         placeholder="Retype password: "
         label="Retype Password:"
+        readOnly
         {...register("repassword")}
       />
       <Button type="submit">Submit</Button>
