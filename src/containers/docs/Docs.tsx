@@ -104,7 +104,7 @@ export const Docs: FC<T> = ({ children }) => {
 
   return (
     <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
-      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-24 left-0 max-h-[84vh]">
+      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-32 left-0 max-h-[84vh]">
         {content.map((nav: any, index: number) => (
           <Link
             key={index}
@@ -234,7 +234,7 @@ export const Docs: FC<T> = ({ children }) => {
         </div>
       </div>
       {tableOfContents.length > 0 && (
-        <div className="hidden lg:flex flex-col self-start w-72 min-w-[288px] p-5 sticky top-24 left-0 max-h-[84vh] overflow-y-auto">
+        <div className="hidden lg:flex flex-col self-start w-72 min-w-[288px] p-5 sticky top-32 left-0 max-h-[84vh] overflow-y-auto">
           <span className="dark:text-white text-base-900 font-bold">
             On This Page
           </span>
