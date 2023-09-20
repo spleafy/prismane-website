@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Sun, Moon, Equals, X } from "@phosphor-icons/react";
-import { ActionButton, Divider, usePrismaneTheme } from "@prismane/core";
+import { Divider, usePrismaneTheme } from "@prismane/core";
 // Components
 import Search from "@/components/Search";
 import HeaderLink from "@/components/HeaderLink";
+// Hooks
+import usePresence from "@/hooks/usePresence";
 // Content
 import content from "@/content";
 
@@ -18,6 +20,8 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
 
   const [expanded, setExpanded] = useState(false);
+
+  const present = usePresence(expanded, 150, () => {});
 
   const { asPath } = router;
 
@@ -53,7 +57,7 @@ const Header = () => {
   return (
     <header
       className={`flex items-center justify-center z-50 sticky left-0 top-10 transition-colors duration-150 px-5 sm:px-10 border-b py-4 ${
-        !expanded ? "overflow-x-hidden md:overflow-x-auto" : ""
+        !present ? "overflow-x-hidden md:overflow-x-auto" : ""
       } ${
         sticky
           ? "dark:bg-base-900/50 bg-white/50 backdrop-blur-xl dark:border-white/10 border-black/10"
