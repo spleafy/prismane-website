@@ -37,7 +37,7 @@
   }
 
   #__next {
-    @apply w-screen;
+    @apply w-screen min-w-[100vw];
   }
 
   body {
