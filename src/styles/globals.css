@@ -40,6 +40,10 @@
     @apply w-screen min-w-[100vw];
   }
 
+  main {
+    @apply w-screen min-w-[100vw];
+  }
+
   body {
     @apply !font-["Inter"] dark:bg-[#0A0118] bg-white dark:text-base-300 text-base-700;
   }
