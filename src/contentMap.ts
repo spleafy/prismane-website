@@ -1176,13 +1176,19 @@ const contentMap: any = [
         description:
           "useMemoization hook provides a simple way to memoize expensive calculations.",
       },
-
       {
         slug: "use-outside-click",
         title: "useOutsideClick",
         category: "user-interface",
         description:
           "useOutsideClick hook provides a simple way to handle a click out of the element's constraints.",
+      },
+      {
+        slug: "use-presence",
+        title: "usePresence",
+        category: "user-interface",
+        description:
+          "usePresence hook provides a way to animate an element, before removing it from the DOM.",
       },
       {
         slug: "use-previous",

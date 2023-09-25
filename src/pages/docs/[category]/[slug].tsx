@@ -118,6 +118,7 @@ import {
   useMediaQuery,
   useMemoization,
   useOutsideClick,
+  usePresence,
   usePrevious,
   useToggle,
 } from "@prismane/core/hooks";
@@ -193,8 +194,9 @@ const HeadingLink = ({ children, ...props }: any) => {
   return (
     <NextLink
       href={href}
-      className={`flex items-center gap-2 group transition-all ${children.type === "h2" ? "mt-10" : ""
-        } ${children.type === "h3" ? "mt-6" : ""}  docs-anchor`}
+      className={`flex items-center gap-2 group transition-all ${
+        children.type === "h2" ? "mt-10" : ""
+      } ${children.type === "h3" ? "mt-6" : ""}  docs-anchor`}
       style={{ scrollMarginTop: "120px" }}
       id={id}
       {...props}
@@ -205,10 +207,10 @@ const HeadingLink = ({ children, ...props }: any) => {
           children.type === "h1"
             ? 32
             : children.type === "h2"
-              ? 24
-              : children.type === "h3"
-                ? 20
-                : 16
+            ? 24
+            : children.type === "h3"
+            ? 20
+            : 16
         }
         className="hidden group-hover:flex text-primary-500"
       />
@@ -316,8 +318,8 @@ export default function Page(params: any) {
                         Transition,
                         fr,
                         useAnimation,
-                        useCounter,
                         useCopyToClipboard,
+                        useCounter,
                         useDebounce,
                         useDimensions,
                         useDraggable,
@@ -332,6 +334,7 @@ export default function Page(params: any) {
                         useMediaQuery,
                         useMemoization,
                         useOutsideClick,
+                        usePresence,
                         usePrevious,
                         useToggle,
                         usePrismaneTheme,

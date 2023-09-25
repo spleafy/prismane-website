@@ -1,35 +1,24 @@
 ## Import
 
 ```js
-import { useCopyToClipboard } from "@prismane/core/hooks";
+import { usePresence } from "@prismane/core/hooks";
 ```
 
 ## Usage
 
 ```jsx
 function Demo() {
-  const [copiedValue, copyToClipboard] = useCopyToClipboard();
+  const [shown, setShown] = useState(true);
+
+  const present = usePresence(shown);
 
   return (
-    <Flex direction="column" gap={fr(5)} align="center">
-      <Text
-        as="h1"
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Click to copy:
-      </Text>
-      <Flex gap={fr(3)}>
-        <Button onClick={() => copyToClipboard("Hey")}>Hey</Button>
-        <Button onClick={() => copyToClipboard("Sup")}>Sup</Button>
-        <Button onClick={() => copyToClipboard("Nice")}>Nice</Button>
-      </Flex>
-      <Text
-        fs="xl"
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Copied value: {copiedValue || "Nothing is copied yet!"}
-      </Text>
-    </Flex>
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation w={fr(30)} h={fr(30)} bg="primary" animated={shown} />
+      )}
+    </Stack>
   );
 }
 ```
