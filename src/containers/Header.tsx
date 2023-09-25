@@ -7,8 +7,6 @@ import { Divider, usePrismaneTheme } from "@prismane/core";
 // Components
 import Search from "@/components/Search";
 import HeaderLink from "@/components/HeaderLink";
-// Hooks
-import usePresence from "@/hooks/usePresence";
 // Content
 import content from "@/content";
 
@@ -20,8 +18,6 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
 
   const [expanded, setExpanded] = useState(false);
-
-  const present = usePresence(expanded, 150, () => {});
 
   const { asPath } = router;
 
@@ -57,8 +53,6 @@ const Header = () => {
   return (
     <header
       className={`flex items-center justify-center z-50 sticky left-0 top-10 transition-colors duration-150 px-5 sm:px-10 border-b py-4 ${
-        !present ? "overflow-x-hidden md:overflow-x-auto" : ""
-      } ${
         sticky
           ? "dark:bg-base-900/50 bg-white/50 backdrop-blur-xl dark:border-white/10 border-black/10"
           : "bg-transparent border-transparent"
@@ -76,9 +70,9 @@ const Header = () => {
           </span>
         </Link>
         <div
-          className={`fixed md:static pt-20 top-0 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
+          className={`fixed md:static pt-20 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
             expanded ? "left-0" : "left-full"
-          }`}
+          } ${sticky ? "top-0" : "top-10"}`}
         >
           <div className="w-full md:w-fit flex items-center justify-center gap-4 md:gap-8">
             <HeaderLink href="/docs" onClick={() => setExpanded(false)}>
