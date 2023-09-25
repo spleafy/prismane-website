@@ -23,11 +23,43 @@ function Demo() {
 }
 ```
 
+### Change Animation Duration
+
+```jsx
+function Demo() {
+  const [shown, setShown] = useState(true);
+
+  const present = usePresence(shown, 500); // This will await 500ms and then will change the present boolean
+
+  return (
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation
+          w={fr(30)}
+          h={fr(30)}
+          bg="primary"
+          animated={shown}
+          duration={500}
+        />
+      )}
+    </Stack>
+  );
+}
+```
+
 ## API
+
+### Parameters
+
+| Name       | Type         | Description                                                    | Default |
+| ---------- | ------------ | -------------------------------------------------------------- | ------- |
+| `present`  | `boolean`    | The boolean that should trigger the await of the animation.    | -       |
+| `duration` | `number`     | The duration of the animation.                                 | `150`   |
+| `cb`       | `() => void` | A callback that will be called after the animation is finished | -       |
 
 ### Return Value
 
-| Name              | Type                                 | Description                                                                                                                                                                                                                                                                                                                                                                     |
-| ----------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `copiedValue`     | `string`                             | null                                                                                                                                                                                                                                                                                                                                                                            |
-| `copyToClipboard` | `(text: string) => Promise<boolean>` | A function that attempts to copy the provided `text` to the clipboard. It returns a promise that resolves to `true` if the copy was successful, and `false` otherwise. If the browser does not support clipboard operations, it will log a warning and return false. If there is an error during copying, it will log a warning, set `copiedValue` to null, and return `false`. |
+| Name      | Type      | Description                                                   |
+| --------- | --------- | ------------------------------------------------------------- |
+| `present` | `boolean` | The boolean that should be used to show and hide the element. |
