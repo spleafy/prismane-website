@@ -1073,6 +1073,14 @@ const contentMap: any = [
           "useCounter hook provides a simple way to manage a stateful counter.",
       },
       {
+        slug: "use-copy-to-clipboard",
+        title: "useCopyToClipboard",
+
+        category: "state-management",
+        description:
+          "useCopyToClipboard hook provides a copyToClipboard method to save a string in the clipboard and the copiedValue value (default: null).",
+      },
+      {
         slug: "use-debounce",
         title: "useDebounce",
 
