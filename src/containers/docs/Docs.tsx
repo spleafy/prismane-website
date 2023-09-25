@@ -180,7 +180,7 @@ export const Docs: FC<T> = ({ children }) => {
                 href={
                   current.slug === "components"
                     ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
-                    : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}.ts`
+                    : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.ts`
                 }
                 target="_blank"
                 className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
