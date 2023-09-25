@@ -93,6 +93,14 @@ const Page = ({ version }: any) => {
           name="description"
           content="Stay updated with the latest changes and enhancements in Prismane UI library. Discover new features, improvements, and bug fixes in our detailed changelog."
         />
+        <meta
+          name="twitter:image"
+          content={`/release_banners/${version.version}.png`}
+        />
+        <meta
+          property="og:image"
+          content={`/release_banners/${version.version}.png`}
+        />
       </Head>
       <Image
         src="/mesh_grid.png"
