@@ -31,6 +31,10 @@ const contentMap: any = [
         slug: "passing-refs",
         title: "Passing Refs",
       },
+      {
+        slug: "accessibility",
+        title: "Accessibility",
+      },
     ],
   },
   {
