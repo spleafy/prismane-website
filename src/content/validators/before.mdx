@@ -3,7 +3,9 @@
 ```tsx
 import { before } from "@prismane/core/validators";
 
+// new Date(Date.now() - 86400000) - Yesterday
 console.log(before(new Date(Date.now()), new Date(Date.now() - 86400000))); // Will return null
+// new Date(Date.now() + 86400000) - Tommorow
 console.log(before(new Date(Date.now() + 86400000), new Date(Date.now()))); // Will return an error`
 ```
 
