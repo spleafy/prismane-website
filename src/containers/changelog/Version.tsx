@@ -16,16 +16,23 @@ type VersionProps = {
 const Version = ({ version, content, data, ...props }: VersionProps) => {
   return (
     <Section className="!block">
-      <article className="flex flex-col md:flex-row gap-6 md:gap-32" {...props}>
-        <div className="flex flex-col gap-2 w-48 min-w-[192px] md:sticky top-0 left-0">
+      <article
+        className="flex flex-col md:flex-row gap-6 md:gap-32 relative"
+        {...props}
+      >
+        <div className="flex flex-col gap-2 w-48 min-w-[192px]">
           <Link
             href={`/changelog/${version}`}
             target="_blank"
-            className="dark:text-primary-500 text-primary-700 bg-primary-700/20 rounded-md px-3 py-0.5 text-center w-fit font-medium cursor-pointer"
+            className="dark:text-primary-500 text-primary-700 bg-primary-700/20 rounded-md px-3 py-0.5 text-center w-fit font-medium cursor-pointer static md:sticky top-36 left-0"
           >
             {version}
           </Link>
-          {data.release && <span>{data.release}</span>}
+          {data.release && (
+            <span className="static md:sticky top-44 left-0">
+              {data.release}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-2 grow">
           <h1 className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold transition-all mb-10">
