@@ -24,14 +24,17 @@ const Features = () => {
               className="dark:opacity-10 opacity-[.15] -z-[1]"
               fill
             />
-            <span className="mb-2 text-lg md:text-xl font-semibold dark:text-white text-base-900">
-              7+ Form Validators
+            {/* <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
+              28+
+            </span> */}
+            <span className="mt-6 mb-2 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+              28+ Form Validators
             </span>
             <span className="text-center mb-6 dark:text-base-400 text-base-500">
               Easily validate inputs with Prismane&apos;s prebuilt form
               validators.
             </span>
-            <Link href="/docs/validators/min">
+            <Link href="/docs/validators/getting-started">
               <Button
                 className="mt-6"
                 icon={<ArrowRight size={20} weight="bold" />}
