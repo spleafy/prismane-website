@@ -70,9 +70,9 @@ const Header = () => {
           </span>
         </Link>
         <div
-          className={`fixed md:static pt-20 h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 transition-all flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
-            expanded ? "left-0" : "left-full"
-          } ${sticky ? "top-0" : "top-10"}`}
+          className={`absolute left-0 top-0 md:static h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-8 flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-[#0A0118] md:bg-transparent md:dark:bg-transparent p-5 md:!p-0 ${
+            expanded ? "flex pt-20 md:pt-0" : "hidden md:!flex"
+          }`}
         >
           <div className="w-full md:w-fit flex items-center justify-center gap-4 md:gap-8">
             <HeaderLink href="/docs" onClick={() => setExpanded(false)}>
