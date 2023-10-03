@@ -1,5 +1,3 @@
-The `username` validator checks if a value is a username, the value must be between 4 and 255 characters, if it is not true, it returns an error message, if not it returns `null`.
-
 ## Basic Usage
 
 ```tsx
@@ -43,3 +41,12 @@ function Demo() {
   );
 }
 ```
+
+## API
+
+### Parameters
+
+| Name     | Type                 | Description                                                                           |
+| -------- | -------------------- | ------------------------------------------------------------------------------------- |
+| `value`  | `string`             | The string that will be validated.                                                    |
+| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |

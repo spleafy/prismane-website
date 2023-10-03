@@ -1,0 +1,53 @@
+## Basic Usage
+
+```tsx
+import { before } from "@prismane/core/validators";
+
+console.log(before(new Date(Date.now()), new Date(Date.now() - 86400000))); // Will return null
+console.log(before(new Date(Date.now() + 86400000), new Date(Date.now()))); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      date: {
+        value: "",
+        validators: {
+          before: (v: string) =>
+            before(new Date(v), new Date(Date.now() + 86400000)),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <NativeDateField
+        placeholder="Enter date: "
+        label="Date:"
+        {...register("date")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                      |
+| ----------- | -------------------- | -------------------------------- |
+| `date`      | `Date`               | The date that will be validated. |
+| `target`    | `Date`               | The target date.                 |
+| `fieldName` | `string / undefined` | The name of the field.           |

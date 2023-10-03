@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { lowercase } from "@prismane/core/validators";
+
+console.log(lowercase("martinpetrov")); // Will return null
+console.log(lowercase("MartinPetrov")); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          lowercase: (v: string) => lowercase(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter username:"
+        label="Username:"
+        {...register("username")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                                                                           |
+| ----------- | -------------------- | ------------------------------------------------------------------------------------- |
+| `value`     | `number`             | The number that will be validated.                                                    |
+| `regExp`    | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |
+| `fieldName` | `string / undefined` | The name of the field.                                                                |

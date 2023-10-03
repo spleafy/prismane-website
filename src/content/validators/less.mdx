@@ -1,11 +1,10 @@
 ## Basic Usage
 
 ```tsx
-import { min } from "@prismane/core/validators";
+import { less } from "@prismane/core/validators";
 
-console.log(min("Ivan is very cool", 2, "Username")); // Will return null
-console.log(min("Ivan is very cool", 100, "Username"));
-// Will return `Username has to be longer than 100 characters!`
+console.log(less(10, 20)); // Will return null
+console.log(less(40, 20)); // Will return an error`
 ```
 
 ## useForm Hook Usage
@@ -14,10 +13,10 @@ console.log(min("Ivan is very cool", 100, "Username"));
 function Demo() {
   const { handleSubmit, handleReset, register } = useForm({
     fields: {
-      username: {
-        value: "",
+      age: {
+        value: 9,
         validators: {
-          min: (v: string) => min(v, 4, "Username"),
+          less: (v: any) => less(v, 10),
         },
       },
     },
@@ -31,10 +30,10 @@ function Demo() {
       onReset={() => handleReset()}
       maw={300}
     >
-      <TextField
-        placeholder="Enter username: "
-        label="Username:"
-        {...register("username")}
+      <NumberField
+        placeholder="Enter age: "
+        label="Age:"
+        {...register("age")}
       />
       <Button type="submit">Submit</Button>
     </Form>
@@ -48,6 +47,6 @@ function Demo() {
 
 | Name        | Type                 | Description                        |
 | ----------- | -------------------- | ---------------------------------- |
-| `value`     | `string`             | The string that will be validated. |
-| `length`    | `number`             | The minimum length of the string.  |
+| `value`     | `number`             | The number that will be validated. |
+| `number`    | `number`             | The number that will be compared.  |
 | `fieldName` | `string / undefined` | The name of the field.             |

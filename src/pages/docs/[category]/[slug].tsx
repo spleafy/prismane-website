@@ -130,6 +130,26 @@ import {
   url,
   email,
   username,
+  after,
+  alphanumeric,
+  before,
+  between,
+  contains,
+  ends,
+  future,
+  less,
+  lowercase,
+  more,
+  multiple,
+  negative,
+  past,
+  positive,
+  regex,
+  starts,
+  substring,
+  trimmed,
+  uppercase,
+  uuid,
 } from "@prismane/core/validators";
 // Content
 import content from "@/content";
@@ -137,11 +157,10 @@ import content from "@/content";
 import { Docs as DocsPage } from "@/containers/docs/Docs";
 
 // Docs Components
+import GettingStarted from "@/components/GettingStarted";
 import ColorPalette from "@/components/ColorPalette";
 import Important from "@/components/Important";
-import Components from "@/components/Components";
 import ComponentsProps from "@/components/ComponentsProps";
-import Hooks from "@/components/Hooks";
 import ImageBanner from "@/components/ImageBanner";
 import Community from "@/components/Community";
 
@@ -347,6 +366,26 @@ export default function Page(params: any) {
                         url,
                         email,
                         username,
+                        after,
+                        alphanumeric,
+                        before,
+                        between,
+                        contains,
+                        ends,
+                        future,
+                        less,
+                        lowercase,
+                        more,
+                        multiple,
+                        negative,
+                        past,
+                        positive,
+                        regex,
+                        starts,
+                        substring,
+                        trimmed,
+                        uppercase,
+                        uuid,
                         Heart,
                         Fire,
                         User,
@@ -606,14 +645,13 @@ export default function Page(params: any) {
               ),
               ColorPalette,
               Important,
-              Components,
               ComponentsProps,
-              Hooks,
               ImageBanner,
               Community,
               Chip,
               Tabs,
               NextImage,
+              GettingStarted,
             }}
           />
         }

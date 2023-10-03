@@ -612,10 +612,10 @@
     picocolors "^1.0.0"
     tslib "^2.5.0"
 
-"@prismane/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@prismane/core/-/core-1.1.0.tgz#b66045cecde56ef65e6ec3d2488578c844fc4934"
-  integrity sha512-0zIatom9iMIgkrSQ6mg2bTaZBZybtUcB3bgP7noqbd2rwiR3EeqyxKXNBCuxGKSeHhYKKfFiH/t2uNM/03Jn5w==
+"@prismane/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@prismane/core/-/core-1.2.0.tgz#69370e0bdf5979f929a5f125663abdb251609fa0"
+  integrity sha512-ebayEsyvILlY4Z5orhd8sS2IWwxV47ez2+0iQlIWVhUu52mRW58efqcx4qUis0s5mFVS40uqO0E42KPbxfpDuw==
   dependencies:
     "@stitches/react" "^1.2.8"
 

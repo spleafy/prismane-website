@@ -155,7 +155,7 @@ export const Docs: FC<T> = ({ children }) => {
                 {currentItem.title}
               </h1>
             )}
-            <span className="text-base-800 dark:text-base-100 leading-7 w-full">
+            <span className="text-base-700 dark:text-base-400 leading-7 w-full">
               {currentItem.description}
             </span>
           </>

@@ -1,0 +1,42 @@
+---
+release: October 2, 2023
+---
+
+# 🧾 Release Notes
+
+This release introduces an impressive set of 21 new form validators. These additions encompass a diverse range of validators for strings, numbers, and dates, further enriching Prismane's comprehensive validator list.
+
+# ✨ New
+
+## String Validators
+
+- **uuid**: This validator checks if a string is a valid id.
+- **trimmed**: This validator checks if a string has no more than one consecutive spaces.
+- **uppercase**: This validator checks if a string has only uppercase characters.
+- **lowercase**: This validator checks if a string has only lowercase characters.
+- **alphanumeric**: This validator checks if a string has only alphanumeric characters.
+- **starts**: This validator checks if a string starts with a given substring.
+- **ends**: This validator checks if a string ends with a given substring.
+- **contains**: This validator checks if a string contains a given substring.
+- **substring**: This validator checks if a string is a substring of a given string.
+- **regex**: This validator checks if a string matches a regular expression pattern.
+
+## Number Validators
+
+- **less**: This validator checks if a number is less than a given number.
+- **more**: This validator checks if a number is more than a given number.
+- **positive**: This validator checks if a number is positive.
+- **negative**: This validator checks if a number is negative.
+- **between**: This validator checks if a number is between an interval of two numbers.
+- **multiple**: This validator checks if a number is a multiple of a given number.
+
+## Date Validators
+
+- **before**: This validator checks if a date is before a given date.
+- **after**: This validator checks if a date is after a given date.
+- **future**: This validator checks if a date is in the future.
+- **past**: This validator checks if a date is in the past.
+
+## Validate Function
+
+The `validate` function is used to asynchronously validate a given set of validators and on the first occurrence of an error, to return the returned error.

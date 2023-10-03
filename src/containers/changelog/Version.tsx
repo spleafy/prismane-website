@@ -56,7 +56,7 @@ const Version = ({ version, content, data, ...props }: VersionProps) => {
               h2: ({ children, ...props }: any) => {
                 return (
                   <h2
-                    className="text-base-800 dark:text-base-100 text-xl sm:text-2xl font-bold transition-all mt-12 mb-6"
+                    className="text-base-800 dark:text-base-100 text-xl sm:text-2xl font-bold transition-all mt-4 mb-1"
                     {...props}
                   >
                     {children}

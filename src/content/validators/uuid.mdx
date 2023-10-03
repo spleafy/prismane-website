@@ -1,11 +1,10 @@
 ## Basic Usage
 
 ```tsx
-import { url } from "@prismane/core/validators";
+import { uuid } from "@prismane/core/validators";
 
-console.log(url("https://www.google.com")); // Will return null
-console.log(url("Ivan is cool"));
-// Will return `This is not a valid URL!`
+console.log(uuid("1a2b3c4d5e6f7890")); // Will return null
+console.log(uuid("invaliduuid123")); // Will return an error`
 ```
 
 ## useForm Hook Usage
@@ -14,10 +13,10 @@ console.log(url("Ivan is cool"));
 function Demo() {
   const { handleSubmit, handleReset, register } = useForm({
     fields: {
-      link: {
+      id: {
         value: "",
         validators: {
-          url: (v: string) => url(v),
+          uuid: (v: string) => uuid(v),
         },
       },
     },
@@ -32,9 +31,9 @@ function Demo() {
       maw={300}
     >
       <TextField
-        placeholder="Enter link: "
-        label="Username:"
-        {...register("link")}
+        placeholder="eg. 1a2b3c4d5e6f7890"
+        label="ID:"
+        {...register("id")}
       />
       <Button type="submit">Submit</Button>
     </Form>

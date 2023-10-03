@@ -1214,13 +1214,186 @@ const contentMap: any = [
     title: "Validators",
     slug: "validators",
     items: [
-      { slug: "min", title: "min" },
-      { slug: "max", title: "max" },
-      { slug: "required", title: "required" },
-      { slug: "match", title: "match" },
-      { slug: "url", title: "url" },
-      { slug: "email", title: "email" },
-      { slug: "username", title: "username" },
+      { slug: "getting-started", title: "Getting Started" },
+      {
+        slug: "after",
+        title: "after",
+        category: "date",
+        description: "This validator checks if a date is after a given date.",
+      },
+      {
+        slug: "alphanumeric",
+        title: "alphanumeric",
+        category: "string",
+        description:
+          "This validator checks if a string has only alphanumeric characters.",
+      },
+      {
+        slug: "before",
+        title: "before",
+        category: "date",
+        description: "This validator checks if a date is before a given date.",
+      },
+      {
+        slug: "between",
+        title: "between",
+        category: "number",
+        description:
+          "This validator checks if a number is between an interval of two numbers.",
+      },
+      {
+        slug: "contains",
+        title: "contains",
+        category: "string",
+        description:
+          "This validator checks if a string contains a given substring.",
+      },
+      {
+        slug: "email",
+        title: "email",
+        category: "string",
+        description: "This validator checks if a string is a valid email.",
+      },
+      {
+        slug: "ends",
+        title: "ends",
+        category: "string",
+        description:
+          "This validator checks if a string ends with a given substring.",
+      },
+      {
+        slug: "future",
+        title: "future",
+        category: "date",
+        description: "This validator checks if a date is in the future.",
+      },
+      {
+        slug: "less",
+        title: "less",
+        category: "number",
+        description:
+          "This validator checks if a number is less than a given number.",
+      },
+      {
+        slug: "lowercase",
+        title: "lowercase",
+        category: "string",
+        description:
+          "This validator checks if a string has only lowercase characters.",
+      },
+      {
+        slug: "match",
+        title: "match",
+        category: "multiple",
+        description:
+          "This validator checks if a given set of variables are the same.",
+      },
+      {
+        slug: "max",
+        title: "max",
+        category: "string",
+        description:
+          "This validator checks if a given string's length is less than a given maximum.",
+      },
+      {
+        slug: "min",
+        title: "min",
+        category: "string",
+        description:
+          "This validator checks if a given string's length is more than a given minimum.",
+      },
+      {
+        slug: "more",
+        title: "more",
+        category: "number",
+        description:
+          "This validator checks if a number is more than a given number.",
+      },
+      {
+        slug: "multiple",
+        title: "multiple",
+        category: "number",
+        description:
+          "This validator checks if a number is a multiple of a given number.",
+      },
+      {
+        slug: "negative",
+        title: "negative",
+        category: "number",
+        description: "This validator checks if a number is negative.",
+      },
+      {
+        slug: "past",
+        title: "past",
+        category: "date",
+        description: "This validator checks if a date is in the past.",
+      },
+      {
+        slug: "positive",
+        title: "positive",
+        category: "number",
+        description: "This validator checks if a number is positive.",
+      },
+      {
+        slug: "regex",
+        title: "regex",
+        category: "string",
+        description:
+          "This validator checks if a string matches a regular expression pattern.",
+      },
+      {
+        slug: "required",
+        title: "required",
+        category: "multiple",
+        description:
+          "This validator checks if a given variable has a value or not.",
+      },
+      {
+        slug: "starts",
+        title: "starts",
+        category: "string",
+        description:
+          "This validator checks if a string starts with a given substring.",
+      },
+      {
+        slug: "substring",
+        title: "substring",
+        category: "string",
+        description:
+          "This validator checks if a string is a substring of a given string.",
+      },
+      {
+        slug: "trimmed",
+        title: "trimmed",
+        category: "string",
+        description:
+          "This validator checks if a string has no more than one consecutive spaces.",
+      },
+      {
+        slug: "uppercase",
+        title: "uppercase",
+        category: "string",
+        description:
+          "This validator checks if a string has only uppercase characters.",
+      },
+      {
+        slug: "url",
+        title: "url",
+        category: "string",
+        description: "This validator checks if a string is a valid URL.",
+      },
+      {
+        slug: "username",
+        title: "username",
+        category: "string",
+        description: "This validator checks if a string is a valid username.",
+      },
+      {
+        slug: "uuid",
+        title: "uuid",
+        category: "string",
+        description: "This validator checks if a string is a valid ID.",
+      },
     ],
   },
 ];

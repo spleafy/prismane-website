@@ -9,6 +9,8 @@ import {
   Toolbox,
   CursorClick,
   Database,
+  Calendar,
+  MathOperations,
 } from "@phosphor-icons/react";
 
 const categories = {
@@ -57,6 +59,24 @@ const categories = {
     },
     {
       name: "miscellaneous",
+      icon: <Toolbox />,
+    },
+  ],
+  validators: [
+    {
+      name: "string",
+      icon: <TextAa />,
+    },
+    {
+      name: "number",
+      icon: <MathOperations />,
+    },
+    {
+      name: "date",
+      icon: <Calendar />,
+    },
+    {
+      name: "multiple",
       icon: <Toolbox />,
     },
   ],
