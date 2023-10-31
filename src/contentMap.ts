@@ -1117,6 +1117,14 @@ const contentMap: any = [
           "useEmulatedFieldChange hook provides a simple way to emulate field change events.",
       },
       {
+        slug: "use-focus-trap",
+        title: "useFocusTrap",
+        category: "user-interface",
+
+        description:
+          "useFocusTrap hook provides a simple way to trap the user's focus.",
+      },
+      {
         slug: "use-form",
         title: "useForm",
         category: "state-management",
@@ -1181,6 +1189,13 @@ const contentMap: any = [
           "useMemoization hook provides a simple way to memoize expensive calculations.",
       },
       {
+        slug: "use-network-status",
+        title: "useNetworkStatus",
+        category: "miscellaneous",
+        description:
+          "useNetworkStatus hook provides a simple way of handling changes in the internet connection.",
+      },
+      {
         slug: "use-outside-click",
         title: "useOutsideClick",
         category: "user-interface",
@@ -1200,6 +1215,27 @@ const contentMap: any = [
         category: "state-management",
         description:
           "usePrevious hook provides a simple way to handle saving the previous value of a variable.",
+      },
+      {
+        slug: "use-scroll",
+        title: "useScroll",
+        category: "user-interface",
+        description:
+          "useScroll hook provides a simple way to simplify handling scrolling.",
+      },
+      {
+        slug: "use-search",
+        title: "useSearch",
+        category: "state-management",
+        description:
+          "useSearch hook provides a simple way to search through different types of data.",
+      },
+      {
+        slug: "use-sorting",
+        title: "useSorting",
+        category: "state-management",
+        description:
+          "useSorting hook provides a simple way of sorting big chunks of data by key and direction.",
       },
       {
         slug: "use-toggle",

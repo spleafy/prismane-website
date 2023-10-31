@@ -1,0 +1,12 @@
+---
+release: October 31, 2023
+---
+
+# 🧾 Release Notes
+
+This new version fixes an important issue in the useFocusTrap hook, which didn't search in-depth for the focusable element when a `data-initialfocus` attribute is used. Thus meaning that if for example a complex input component is used and the `data-initialfocus` attribute is passed to the wrapper, the hook would try to focus the wrapper. Also the issue where the `isOpen` boolean didn't toggle the hook is fixed with this version. This version also fixes a small bug in the `TextField` component, which passed the rest of the props to the label, instead of the wrapper.
+
+# 🐛 Bug Fixes
+
+- **useFocusTrap**: Fixed in-depth search for focusable element and hook toggling.
+- **TextField**: Fixed spread of props onto wrapper instead of label.

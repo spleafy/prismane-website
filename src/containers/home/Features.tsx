@@ -151,7 +151,7 @@ const Features = () => {
               fill
             />
             <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
-              20+
+              25+
             </span>
             <h3 className="mt-6 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
               React Hooks
