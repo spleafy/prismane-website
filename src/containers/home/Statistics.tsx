@@ -9,7 +9,7 @@ const Statistics = () => {
       <div className="flex flex-col md:flex-row w-full border rounded-lg overflow-hidden shadow-glow dark:shadow-base-500/10 shadow-base-700/20">
         <div className="flex flex-col grow items-center gap-2 py-10 px-12 w-full md:w-1/3 dark:!bg-base-700/10 bg-base-500/10 border-b border-r-0 md:border-b-0 md:border-r">
           <Counter
-            value={107}
+            value={111}
             className="text-6xl bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-transparent font-black"
           >
             +
@@ -20,7 +20,7 @@ const Statistics = () => {
         </div>
         <div className="flex flex-col grow items-center gap-2 py-10 px-12 w-full md:w-1/3 dark:dark:!bg-base-700/10 bg-base-500/10 border-b border-r-0 md:border-b-0 md:border-r">
           <Counter
-            value={20}
+            value={26}
             className="text-6xl bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-transparent font-black"
           >
             +

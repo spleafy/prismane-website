@@ -24,11 +24,11 @@ const Features = () => {
               className="dark:opacity-10 opacity-[.15] -z-[1]"
               fill
             />
-            {/* <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
+            <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
               28+
-            </span> */}
+            </span>
             <span className="mt-6 mb-2 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-              28+ Form Validators
+              Form Validators
             </span>
             <span className="text-center mb-6 dark:text-base-400 text-base-500">
               Easily validate inputs with Prismane&apos;s prebuilt form
@@ -77,7 +77,7 @@ const Features = () => {
               fill
             />
             <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
-              107+
+              111+
             </span>
             <h3 className="mt-6 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
               Components
@@ -151,7 +151,7 @@ const Features = () => {
               fill
             />
             <span className="bg-clip-text bg-gradient-to-l from-primary-500 to-secondary-500 text-transparent text-7xl font-bold">
-              25+
+              26+
             </span>
             <h3 className="mt-6 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
               React Hooks

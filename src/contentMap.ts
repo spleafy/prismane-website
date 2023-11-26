@@ -285,6 +285,13 @@ const contentMap: any = [
         versatile: true,
       },
       {
+        slug: "footer",
+        title: "Footer",
+        category: "layout",
+        description: "Footer displays a footer element.",
+        versatile: false,
+      },
+      {
         slug: "form",
         title: "Form",
         category: "inputs",
@@ -304,6 +311,13 @@ const contentMap: any = [
         title: "Grid",
         category: "layout",
         description: "Grid displays a container that has a display of grid.",
+        versatile: false,
+      },
+      {
+        slug: "header",
+        title: "Header",
+        category: "layout",
+        description: "Header displays a header element.",
         versatile: false,
       },
       {
@@ -372,6 +386,13 @@ const contentMap: any = [
         category: "data-display",
         description:
           "List displays a container that groups elements in a list.",
+        versatile: false,
+      },
+      {
+        slug: "main",
+        title: "Main",
+        category: "layout",
+        description: "Main displays a main element.",
         versatile: false,
       },
       {
@@ -784,6 +805,13 @@ const contentMap: any = [
         description: "Learn about the Flex component's props and CSS classes.",
       },
       {
+        slug: "footer-api",
+        title: "Footer API",
+        category: "layout",
+        description:
+          "Learn about the Footer component's props and CSS classes.",
+      },
+      {
         slug: "form-api",
         title: "Form API",
         category: "inputs",
@@ -801,6 +829,13 @@ const contentMap: any = [
         title: "Grid API",
         category: "layout",
         description: "Learn about the Grid component's props and CSS classes.",
+      },
+      {
+        slug: "header-api",
+        title: "Header API",
+        category: "layout",
+        description:
+          "Learn about the Header component's props and CSS classes.",
       },
       {
         slug: "hidden-api",
@@ -859,6 +894,12 @@ const contentMap: any = [
         title: "List API",
         category: "data-display",
         description: "Learn about the List component's props and CSS classes.",
+      },
+      {
+        slug: "main-api",
+        title: "Main API",
+        category: "layout",
+        description: "Learn about the Main component's props and CSS classes.",
       },
       {
         slug: "menu-api",
@@ -1236,6 +1277,13 @@ const contentMap: any = [
         category: "state-management",
         description:
           "useSorting hook provides a simple way of sorting big chunks of data by key and direction.",
+      },
+      {
+        slug: "use-theme-mode-value",
+        title: "useThemeModeValue",
+        category: "miscellaneous",
+        description:
+          "useThemeModeValue hook simplifies the logic for using two style properties for dark and light modes.",
       },
       {
         slug: "use-toggle",

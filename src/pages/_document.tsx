@@ -22,7 +22,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://i.ibb.co/PhMGFyh/opengraph-banner.png"
+          content="https://i.ibb.co/gjy8wBF/opengraph-banner.png"
         />
         <meta property="og:url" content="https://www.prismane.io" />
         <meta property="og:type" content="website" />
@@ -35,7 +35,7 @@ export default function Document() {
         />
         <meta
           name="twitter:image"
-          content="https://i.ibb.co/PhMGFyh/opengraph-banner.png"
+          content="https://i.ibb.co/gjy8wBF/opengraph-banner.png"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
