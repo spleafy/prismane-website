@@ -1,0 +1,52 @@
+## Import
+
+```js
+import { GridProps } from "@prismane/core";
+```
+
+## Props
+
+### Grid
+
+`Grid` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name              | Type                                                      | Description                                       | Default |
+| ----------------- | --------------------------------------------------------- | ------------------------------------------------- | ------- |
+| `templateColumns` | `1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / none` | The gridTemplateColumns CSS property of the grid. | -       |
+| `templateRows`    | `1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / none` | The gridTemplateRows CSS property of the grid.    | -       |
+| `flow`            | `row / column / dense / row-dense / column-dense`         | The gridAutoFlow CSS property of the grid.        | -       |
+| `autoColumns`     | `auto / min / max / fr`                                   | The gridAutoColumns CSS property of the grid.     | -       |
+| `autoRows`        | `auto / min / max / fr`                                   | The gridAutoRows CSS property of the grid.        | -       |
+| `gap`             | `string / number`                                         | The gap CSS property of the grid.                 | -       |
+
+### Grid.Item
+
+`Grid.Item` extends [Flex](/docs/components-api/flex-api) component's props.
+
+| Name          | Type                                                          | Description                                        | Default |
+| ------------- | ------------------------------------------------------------- | -------------------------------------------------- | ------- |
+| `columnStart` | `1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13/ auto` | The gridColumnStart CSS property of the grid item. | -       |
+| `columnEnd`   | `1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13/ auto` | The gridColumnEnd CSS property of the grid item.   | -       |
+| `columnSpan`  | `1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13/ full` | The gridColumnSpan CSS property of the grid item.  | -       |
+| `rowStart`    | `1 / 2 / 3 / 4 / 5 / 6 / 7 / auto`                            | The gridRowStart CSS property of the grid item.    | -       |
+| `rowEnd`      | `1 / 2 / 3 / 4 / 5 / 6 / 7  / auto`                           | The gridRowEnd CSS property of the grid item.      | -       |
+| `rowSpan`     | `1 / 2 / 3 / 4 / 5 / 6 / 7 / full`                            | The gridRowSpan CSS property of the grid item.     | -       |
+| `gap`         | `string / number`                                             | The gap CSS property of the grid item.             | -       |
+
+## CSS
+
+### Grid
+
+`Grid` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class         | Description         |
+| ------ | -------------------- | ------------------- |
+| `root` | `.PrismaneGrid-root` | The grid container. |
+
+### Grid.Item
+
+`Grid.Item` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class             | Description    |
+| ------ | ------------------------ | -------------- |
+| `root` | `.PrismaneGridItem-root` | The grid item. |

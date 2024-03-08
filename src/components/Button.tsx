@@ -16,7 +16,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`flex items-center justify-center gap-2 !px-6 !py-2.5 w-full sm:w-fit !text-base !text-white font-semibold rounded-md hover:shadow-glow hover:!shadow-primary-500/20 bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300 ${
+      className={`relative rounded-lg bg-white/10 dark:bg-base-900/10 overflow-hidden group flex justify-center items-center gap-4 px-5 py-[10px] font-medium transition-colors text-white bg-gradient-to-br gradient-stops ${
         full ? "!w-full" : ""
       } ${className ? className : ""}`}
       {...props}
@@ -27,6 +27,8 @@ const Button = ({
         </div>
       )}
       {children}
+      <div className="absolute top-0 left-0 w-full h-full rounded-lg transition-colors shadow-button-inset hover:bg-[#ffffff1a] z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full rounded-lg bg-gradient-to-b from-white/20 to-transparent p-px mask"></div>
     </button>
   );
 };

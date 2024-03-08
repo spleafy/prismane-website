@@ -11,7 +11,7 @@ interface T {
 export const Layout: FC<T> = ({ children }) => {
   return (
     <>
-      <News />
+      {/* <News /> */}
       <Header />
       <main>{children}</main>
       <Footer />

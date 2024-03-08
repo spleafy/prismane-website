@@ -7,18 +7,16 @@ import Section from "../Section";
 
 const Hero = () => {
   return (
-    <Section className="section-hero">
-      <h1 className="hero-heading">
-        We <span className="text-gradient">effortlessly</span> master
-        complexity.
-      </h1>
-      <h2 className="hero-subheading">
-        At Prismane, we firmly believe that software should be within reach of
-        all.
-      </h2>
-      <Link href="https://github.com/prismaneui/prismane" target="_blank">
-        <Button icon={<GithubLogo size={24} />}>Join Our Mission</Button>
-      </Link>
+    <Section className="section-hero sm:!pt-24 !pb-16 !h-fit !gap-0 !items-start">
+      <div className="flex flex-col w-full lg:w-1/2">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
+          About Us
+        </h1>
+        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+          At Prismane, we firmly believe that software should be within reach of
+          all.
+        </p>
+      </div>
     </Section>
   );
 };

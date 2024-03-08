@@ -1,0 +1,135 @@
+## Import
+
+Prismane's `Field` component has 4 additional inner components:
+
+- _Field.Error_: The layout container that displays the field's error.
+- _Field.Label_: The layout container that displays the field's label.
+- _Field.Wrapper_: The wrapper container that arranges the field's containers.
+- _Field.Addon_: The additional container that can be displayed on either side of the field.
+
+```js
+import { Field } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Field placeholder="Simple Field" />
+```
+
+### Field Variants
+
+Use the _variant_ prop to change the visual appearance of the field. You can set the value to _outlined_, _filled_, _underlined_, _unstyled_. By default, the _outlined_ variant is used.
+
+```jsx preview
+<>
+  <Field variant="outlined" placeholder="Outlined Field" />
+  <Field variant="filled" placeholder="Filled Field" />
+  <Field variant="underlined" placeholder="Underlined Field" />
+  <Field variant="unstyled" placeholder="Unstyled Field" />
+</>
+```
+
+### Field Sizes
+
+Use the _size_ prop to change the size of the field. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _base_ value is used.
+
+```jsx preview
+<Stack>
+  <Field size="xs" placeholder="xs" />
+  <Field size="sm" placeholder="sm" />
+  <Field size="base" placeholder="base" />
+  <Field size="md" placeholder="md" />
+  <Field size="lg" placeholder="lg" />
+</Stack>
+```
+
+### Disabled Field
+
+You can disable the field by passing the _disabled_ prop.
+
+```jsx preview
+<Field placeholder="This field is disabled" disabled />
+```
+
+### Validating Field
+
+Pass the _validating_ prop when the field is validating to display a loader.
+
+```jsx preview
+<Field placeholder="This field is validating" validating />
+```
+
+### Field Icon
+
+You can add an icon to the field, by using the _icon_ prop.
+
+```jsx preview
+<Field icon={<EnvelopeSimple />} placeholder="Enter Your Email" />
+```
+
+### Field Addon
+
+You can add an addon to the field, by using the _addons_ prop and passing the `Field.Addon` component.
+
+```jsx preview
+<Field addons={<Field.Addon>.com</Field.Addon>} placeholder="mysite" />
+```
+
+### Field Addon Position
+
+You can change the position of the addon, by using the _position_ prop of the `Field.Addon` component. Values can either be _left_ or _right_. By default, the _right_ value is used.
+
+```jsx preview
+<Field
+  addons={
+    <>
+      <Field.Addon position="left">www.</Field.Addon>
+      <Field.Addon position="right">.com</Field.Addon>
+    </>
+  }
+  placeholder="mysite"
+/>
+```
+
+### Advanced Composition
+
+You can use the before mentioned `Field.Wrapper`, `Field.Label` and `Field.Error` components to create an advanced field.
+
+```jsx preview
+<Field.Wrapper>
+  <Field.Label for="hashtag">Hashtag:</Field.Label>
+  <Field
+    name="hashtag"
+    addons={<Field.Addon position="left">#</Field.Addon>}
+    placeholder="Enter hashtag"
+  />
+  <Field.Error>Some static error!</Field.Error>
+</Field.Wrapper>
+```
+
+### Field Type
+
+Use the _type_ prop to change the type of the field.
+
+```jsx preview
+<Field placeholder="This is a number field" type="number" />
+```
+
+### Versatile Component
+
+`Field` is a [versatile component](/docs/getting-started/versatile-components), it's default root element is - _input_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx preview
+<Field as="select" placeholder="Native Select Field">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</Field>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Field`](/docs/components-api/field-api)

@@ -1,0 +1,103 @@
+## Import
+
+Prismane's `List` component has 4 additional inner components:
+
+- _List.Unordered_: An unordered list container.
+- _List.Ordered_: An ordered list container.
+- _List.Item_: The wrapper container of the list item
+- _List.Icon_: An icon that is displayed as a bullet of the list.
+
+```js
+import { List } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<List>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+### Unordered List
+
+Use the `List.Unordered` component to create an unordered list that still displays bullets.
+
+```jsx preview
+<List.Unordered ml={fr(5)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List.Unordered>
+```
+
+### Ordered List
+
+Use the `List.Ordered` component to create an ordered list that displays number bullets.
+
+```jsx preview
+<List.Ordered ml={fr(5)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List.Ordered>
+```
+
+### List With Icon
+
+Pass the `List.Icon` component as a child of `List.Item` to change the icon of the given list item.
+
+```jsx preview
+<List>
+  <List.Item>
+    <List.Icon cl="green">
+      <CheckCircle weight="fill" />
+    </List.Icon>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </List.Item>
+  <List.Item>
+    <List.Icon cl="green">
+      <CheckCircle weight="fill" />
+    </List.Icon>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </List.Item>
+  <List.Item>
+    <List.Icon cl="red">
+      <XCircle weight="fill" />
+    </List.Icon>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </List.Item>
+</List>
+```
+
+### List Spacing
+
+The `List` component extends the [`Flex`](/docs/components/flex) component and its respective props. We can change the spacing of our list by using the _gap_ prop.
+
+```jsx preview
+<List gap={fr(4)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+### Horizontal List
+
+Pass the _direction_ prop to change the _flex-direction_ of our list. Use a value of _row_ to make the list horizontal.
+
+```jsx preview
+<List direction="row" gap={fr(2)}>
+  <List.Item>First</List.Item>
+  <List.Item>Second</List.Item>
+  <List.Item>Third</List.Item>
+</List>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`List`](/docs/components-api/list-api)

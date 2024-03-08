@@ -1,0 +1,68 @@
+## Import
+
+```js
+import { Hidden } from "@prismane/core";
+```
+
+## Usage
+
+The `Hidden` component is used to visually hide elements or texts, but make them accessible to screen-readers.
+
+```jsx preview
+<ActionButton
+  icon={
+    <>
+      <DownloadSimple />
+      <Hidden>Download</Hidden>
+    </>
+  }
+  variant="secondary"
+  color="base"
+/>
+```
+
+### Hidden Input
+
+The `Hidden` component is usually used to hide inputs in custom made input components
+
+```jsx preview
+function Demo() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Stack>
+      <Flex
+        as="label"
+        htmlFor="checkbox"
+        align="center"
+        gap={fr(2)}
+        cs="pointer"
+      >
+        <Box h={fr(6)} w={fr(6)} bg={checked ? "primary" : "base"} br="sm" />
+        Click to check
+        <Hidden>
+          <input
+            name="checkbox"
+            id="checkbox"
+            type="checkbox"
+            onChange={(e) => {
+              setChecked(e.target.checked);
+            }}
+          />
+        </Hidden>
+      </Flex>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Checked: {checked.toString()}
+      </Text>
+    </Stack>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Hidden`](/docs/components-api/hidden-api)

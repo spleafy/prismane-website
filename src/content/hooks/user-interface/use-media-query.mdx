@@ -1,0 +1,35 @@
+## Import
+
+```js
+import { useMediaQuery } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+    >
+      {isMobile ? "Mobile View" : "Desktop View"}
+    </Text>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name    | Type     | Description                             | Default |
+| ------- | -------- | --------------------------------------- | ------- |
+| `query` | `string` | The media query that should be tracked. | -       |
+
+### Return Value
+
+| Name      | Type      | Description                                                         |
+| --------- | --------- | ------------------------------------------------------------------- |
+| `matches` | `boolean` | The boolean that shows if the current media query is true or false. |

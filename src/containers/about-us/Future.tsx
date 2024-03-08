@@ -4,9 +4,8 @@ import {
   PlugsConnected,
   SuitcaseSimple,
 } from "@phosphor-icons/react";
-import { Divider } from "@prismane/core";
 // Components
-import SectionSeparator from "@/components/SectionSeparator";
+import Separator from "@/components/Separator";
 // Containers
 import Section from "../Section";
 
@@ -40,7 +39,7 @@ const Future = () => {
         Our <span className="text-gradient">future</span> plans
       </span>
       <div className="mt-10 sm:mt-16 flex flex-wrap lg:flex-nowrap items-start justify-between gap-24 w-full relative">
-        <Divider className="absolute top-0 lg:top-6 left-6 lg:left-0 !w-px lg:!w-full !h-full lg:!h-px" />
+        <Separator className="absolute top-0 lg:top-6 left-6 lg:left-0 !w-px lg:!w-full !h-full lg:!h-px" />
         {items.map((item, index) => (
           <div
             className="flex flex-row lg:flex-col gap-7 items-start justify-center z-10 group lg:max-w-[240px]"

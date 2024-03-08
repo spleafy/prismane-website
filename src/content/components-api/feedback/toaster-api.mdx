@@ -1,0 +1,32 @@
+## Import
+
+```js
+import { ToasterProps } from "@prismane/core";
+```
+
+## Props
+
+### Toaster
+
+`Toaster` extends [Flex](/docs/components-api/flex-api) component's props.
+
+| Name       | Type                                                | Description                            | Default      |
+| ---------- | --------------------------------------------------- | -------------------------------------- | ------------ |
+| `position` | `bottom-right / top-right / bottom-left / top-left` | The position of the toaster container. | bottom-right |
+
+## CSS
+
+`Toaster` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                       | Description                                                   |
+| ------ | ---------------------------------- | ------------------------------------------------------------- |
+| `root` | `.PrismaneToaster-root`            | The container of the square component.                        |
+| `root` | `.PrismaneToaster-root-{position}` | The container of the square component based on it's position. |
+
+## useToast
+
+### Return Value
+
+| Name    | Type                                                 | Description                                  |
+| ------- | ---------------------------------------------------- | -------------------------------------------- |
+| `toast` | `(toast: ToastProps & {element: ReactNode}) => void` | Function that pushes a toast into the queue. |

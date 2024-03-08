@@ -1,0 +1,128 @@
+## Import
+
+```js
+import { NumberField } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState(0);
+
+  return (
+    <NumberField value={value} onChange={(e) => setValue(e.target.value)} />
+  );
+}
+```
+
+### With Icon
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState(0);
+
+  return (
+    <NumberField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      icon={<Images />}
+    />
+  );
+}
+```
+
+### NumberField Variants
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
+      <NumberField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </>
+  );
+}
+```
+
+### NumberField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <NumberField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <NumberField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </Flex>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`NumberField`](/docs/components-api/number-field-api)

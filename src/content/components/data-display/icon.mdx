@@ -1,0 +1,74 @@
+## Import
+
+```js
+import { Icon } from "@prismane/core";
+```
+
+<Warning>
+  The icon pack that is used in the examples below is not included with
+  Prismane!
+</Warning>
+
+<Details summary="Additional steps to include the icons used in the examples">
+To install the icons used in the examples you have to install the `@phosphor-icon/react` package.
+
+This can be done by running the following command:
+
+```json files={[ { name: "npm", value: "npm i @phopshor-icons/react", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @phosphor-icons/react", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @phosphor-icons/react", language: "json", icon: <Pnpm />, }, ]}
+
+```
+
+</Details>
+
+## Usage
+
+The `Icon` component provides a frame around any icon and also provides the consistency in sizing.
+
+```jsx preview
+<Icon>
+  <Heart />
+</Icon>
+```
+
+### Icon Sizes
+
+Use the _size_ prop to change the size of the icon. You can set the value to _xs_, _sm_, _base_, _md_, _lg_ or any other valid custom size. By default, the _base_ value is used.
+
+```jsx preview
+<>
+  <Icon size="xs">
+    <SquaresFour />
+  </Icon>
+  <Icon size="sm">
+    <SquaresFour />
+  </Icon>
+  <Icon size="base">
+    <SquaresFour />
+  </Icon>
+  <Icon size="md">
+    <SquaresFour />
+  </Icon>
+  <Icon size="lg">
+    <SquaresFour />
+  </Icon>
+  <Icon size="52px">
+    <SquaresFour />
+  </Icon>
+</>
+```
+
+### As A Frame
+
+The `Icon` component can also be used to frame the icon.
+
+```jsx preview
+<Icon size="lg" bg="primary" cl="white" br={5}>
+  <Wrench size={24} />
+</Icon>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Icon`](/docs/components-api/icon-api)

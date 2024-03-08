@@ -14,15 +14,12 @@ const Announce = ({
   return (
     <Link
       href={href}
-      className="flex justify-center items-center px-1 h-7 dark:bg-white/10 dark:hover:bg-white/20 bg-base-500/5 hover:bg-base-500/10 border dark:border-white/5 dark:hover:border-white/10 border-black/10 hover:border-black/[.15] hover:shadow-glow shadow-white/5 transition-colors rounded-full text-sm cursor-pointer"
+      className="flex justify-center items-center relative px-4 h-7 bg-gradient-to-br dark:from-primary-400/5 dark:to-secondary-400/5 from-primary-400/10 to-secondary-400/10 hover:shadow-announce transition-all rounded-full text-sm cursor-pointer"
     >
-      <div className="flex justify-center items-center mr-4 h-5 px-2 rounded-full bg-primary-500 text-xs text-white">
-        {label}
-      </div>
-      {children}
-      <div className="flex justify-center items-center ml-2 h-5 px-2 rounded-full bg-white/10">
-        →
-      </div>
+      <span className="bg-gradient-to-br from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+        {label}: {children}
+      </span>
+      <div className="absolute rounded-full p-px bg-gradient-to-br dark:from-primary-400/20 dark:to-secondary-400/20 from-primary-400/30 to-secondary-400/30 mask"></div>
     </Link>
   );
 };

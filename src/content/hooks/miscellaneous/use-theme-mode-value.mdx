@@ -1,0 +1,29 @@
+## Import
+
+```js
+import { useThemeModeValue } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const { toggleThemeMode } = usePrismaneTheme();
+
+  const background = useThemeModeValue(["base", 300], ["base", 900]);
+
+  return (
+    <Center w="100%" h={fr(72)} bg={background}>
+      <Button onClick={toggleThemeMode}>Toggle Theme Mode</Button>
+    </Center>
+  );
+}
+```
+
+## API
+
+### Return Value
+
+| Name    | Type  | Description               |
+| ------- | ----- | ------------------------- |
+| `value` | `any` | The current active value. |

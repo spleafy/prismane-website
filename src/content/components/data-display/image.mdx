@@ -1,0 +1,49 @@
+## Import
+
+```js
+import { Image } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Image
+  src="https://wallup.net/wp-content/uploads/2016/01/136699-coast-beach-waves-lighthouse-Oregon-landscape.jpg"
+  alt="Coast Image"
+/>
+```
+
+### Object Fit
+
+Use the _fit_ prop to change the _object-fit_ of the image. Values can be _contain_, _cover_, _fill_, _scale-down_, _none_. By default, the _fill_ value is used.
+
+```jsx preview
+<Image
+  h={320}
+  w="100%"
+  src="https://i2.wp.com/wadetours.com/wp-content/uploads/2020/01/Statue-of-Liberty-2-scaled.jpg"
+  alt="Person Image"
+  fit="cover"
+/>
+```
+
+### Rounded Image
+
+Use the _br_ prop to round the image.
+
+```jsx preview
+<Image
+  h={240}
+  w={240}
+  src="https://i.pinimg.com/originals/e5/3c/6b/e53c6bfa45da3f684fda60c4b21b1307.jpg"
+  alt="Person Image"
+  fit="cover"
+  br="full"
+/>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Image`](/docs/components-api/image-api)

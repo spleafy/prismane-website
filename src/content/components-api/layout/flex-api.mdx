@@ -1,0 +1,29 @@
+## Import
+
+```js
+import { FlexProps } from "@prismane/core";
+```
+
+## Props
+
+`Flex` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name        | Type                                               | Description                                       | Default |
+| ----------- | -------------------------------------------------- | ------------------------------------------------- | ------- |
+| `justify`   | `start / end / center / between / around / evenly` | The justifyContent CSS property of the container. | -       |
+| `align`     | `start / end / center / baseline / stretch`        | The alignItems CSS property of the container.     | -       |
+| `gap`       | `string / number`                                  | The gap CSS property of the container.            | -       |
+| `direction` | `row / row-reverse / column / column-reverse`      | The flexDirection CSS property of the container.  | -       |
+| `self`      | `auto / start / end / center / stretch / baseline` | The alignSelf CSS property of the container.      | -       |
+| `basis`     | `string / number`                                  | The flexBasis CSS property of the container.      | -       |
+| `grow`      | `boolean`                                          | The flexGrow CSS property of the container.       | -       |
+| `shrink`    | `boolean`                                          | The flexShrink CSS property of the container.     | -       |
+| `wrap`      | `wrap / wrap-reverse / nowrap`                     | The flexWrap CSS property of the container.       | -       |
+
+## CSS
+
+`Flex` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class         | Description                          |
+| ------ | -------------------- | ------------------------------------ |
+| `root` | `.PrismaneFlex-root` | The container of the flex container. |

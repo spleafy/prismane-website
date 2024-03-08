@@ -1,0 +1,240 @@
+---
+release: December 13, 2023
+tag: "Tutorial"
+title: "Form Validation With Zod"
+description: "Learn how to integrate Zod into Prismane's useForm hook and easily build complex forms"
+authors: ["1"]
+---
+# Introduction
+
+Greetings, everyone! Welcome to our tutorial on form validation in Prismane using the Zod library. 
+
+Zod is a TypeScript-first schema declaration and validation library. It allows developers to define data structures (schemas) in a type-safe manner and provides validation functions to ensure that data adheres to the specified structure.
+
+By using Zod in Prismane, developers can leverage their form validation even more by easily creating more complex validators.
+
+All of the code in the example below can be directly accessed through the [GitHub Repository](https://github.com/spleafy/prismane-form-building).
+
+Before continuing, you should get familiar with the [Zod library](https://zod.dev), if you are not.
+
+# Initial Setup
+
+From this point on, we will accept that you understand how Prismane’s useForm hooks works and you know how to build forms using Prismane. If not, please refer to this [tutorial](https://medium.com/@prismaneui/form-building-with-prismane-e84a99e90ccb).
+
+## Install Zod
+
+Firstly, we need to install the `zod` package from the `npm` registry. We can do this by running this command:
+
+```bash
+npm install zod
+```
+
+## Initial App
+
+Now, we are going to use this initial app built only with Prismane:
+
+```tsx
+import {
+  Center,
+  Card,
+  Form,
+  Button,
+  TextField,
+  PasswordField,
+} from "@prismane/core";
+import { useForm } from "@prismane/core/hooks";
+import { z } from "zod";
+
+function App() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          required: (v) => p(v, z.string()),
+          min: (v) => p(v, z.string().min(5)),
+        },
+      },
+      password: {
+        value: "",
+        validators: {
+          required: (v) => p(v, z.string()),
+          min: (v) => p(v, z.string().min(5)),
+        },
+      },
+    },
+  });
+
+  return (
+    <Center w="100vw" h="100vh">
+      <Card w={300} h={400}>
+        <Form
+          onSubmit={(e: any) => {
+            handleSubmit(e, (v: any) => console.log(v));
+          }}
+          onReset={() => handleReset()}
+        >
+          <TextField
+            placeholder="Enter username: "
+            label="Username:"
+            {...register("username")}
+          />
+          <PasswordField
+            placeholder="Enter password: "
+            label="Password:"
+            {...register("password")}
+          />
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Card>
+    </Center>
+  );
+}
+
+export default App;
+```
+
+<Note>💡 This application creates a form using the `useForm` hook, creates a form and registers two fields - `username` and `password`.</Note>
+
+## Adapt Zod to Prismane Validators
+
+Great! Now, let's solve a key problem. Zod's validators don't work seamlessly with Prismane by default. To fix this, we'll create a function that adapts Zod validators to fit Prismane's form validation style. This way, you can smoothly use Zod with Prismane for your forms.
+
+Firstly, let’s create the `zodToPrismane` file, where we will create our transform function.
+
+```bash
+touch zodToPrismane.ts
+```
+
+Then, inside the `zodToPrismane.ts` file, we are going to add the following function:
+
+```tsx
+const p = (value: any, validator: any) => {
+  const result = validator.safeParse(value);
+
+  if (!result.success) {
+    return result.error.errors[0].message;
+  }
+
+  return null;
+};
+
+export default p;
+```
+
+We are going to name it `p` so it can be shorter and not visually blocking when we use it.
+
+<Note>The `p` function executes Zod's validator and provides the error message if there's one, or `null` if there are no errors.</Note>
+
+## Add Validators
+
+Now, after having the `p` function, we can easily add Zod validators to Prismane’s `useForm` hook:
+
+```tsx
+...
+import p from "./zodToPrismane";
+...
+
+...
+const { handleSubmit, handleReset, register } = useForm({
+  fields: {
+    username: {
+      value: "",
+      validators: {
+        required: (v) => p(v, z.string().min(1)),
+        min: (v) => p(v, z.string().min(5)),
+      },
+    },
+    password: {
+      value: "",
+      validators: {
+        required: (v) => p(v, z.string().min(1)),
+        min: (v) => p(v, z.string().min(5)),
+      },
+    },
+  },
+});
+...
+```
+
+<Note>
+💡 We are adding two validators to each of our fields - required and min.
+</Note>
+<Note>
+The `required` validator isn’t directly supported by Zod, so we will have to check if the length of the value is at least 1 using the `.min()` property of the `z.string()` validator.
+</Note>
+<Note>
+The `min` validator can be created by using the `.min()` property of the `z.string()` validator.
+</Note>
+
+Let’s see the current result:
+
+![Without_Customization.gif](GIF_1.gif)
+
+## Customizing the Error Messages
+
+With Zod, we can modify the default error messages to create more personalized errors for our fields.
+
+For the `required` validator we can pass an object to the `z.string().min()` and give a value to the `message` property.
+
+```tsx
+username: {
+ ...
+  validators: {
+    required: (v) => p(v, z.string.min(1, {
+      message: "The username field is required!",
+    })),
+		...
+  },
+},
+password: {
+  ...
+  validators: {
+    required: (v) => p(v, z.string.min(1, {
+      message: "The password field is required!",
+    })),
+    ...
+  },
+},
+```
+
+For the `min` validator we can pass an object as a second parameter to the `.min()` and give a value to the `message` property.
+
+```tsx
+username: {
+  ...
+  validators: {
+    ...
+    min: (v) =>
+      p(
+        v,
+        z.string().min(5, {
+          message: "Username must be longer than 5 characters!",
+        })
+      ),
+  },
+},
+password: {
+  ...
+  validators: {
+    ...
+    min: (v) =>
+      p(
+        v,
+        z.string().min(5, {
+          message: "The password must be longer than 5 characters!",
+        })
+      ),
+  },
+},
+```
+
+Great! Now all of the error messages are changed and personalized for the fields that we have and use.
+
+Now, let’s see the final result:
+
+![Customized.gif](GIF_2.gif)
+
+Great, now you can build even form validators with ease using Prismane and Zod!

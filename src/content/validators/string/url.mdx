@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { url } from "@prismane/core/validators";
+
+console.log(url("https://www.google.com")); // Will return null
+console.log(url("Ivan is cool"));
+// Will return `This is not a valid URL!`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      link: {
+        value: "",
+        validators: {
+          url: (v: string) => url(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter link: "
+        label="Username:"
+        {...register("link")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name     | Type                 | Description                                                                           |
+| -------- | -------------------- | ------------------------------------------------------------------------------------- |
+| `value`  | `string`             | The string that will be validated.                                                    |
+| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |

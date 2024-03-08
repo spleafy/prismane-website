@@ -29,7 +29,7 @@ const Error = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 md:mt-32">
           <Link
             href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
+            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-900/30 dark:hover:bg-base-900/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
           >
             <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
               Home
@@ -38,7 +38,7 @@ const Error = () => {
           </Link>
           <Link
             href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
+            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-900/30 dark:hover:bg-base-900/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
           >
             <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
               Docs
@@ -49,7 +49,7 @@ const Error = () => {
           </Link>
           <Link
             href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
+            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-900/30 dark:hover:bg-base-900/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
           >
             <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
               Sponsor

@@ -1,0 +1,109 @@
+## Import
+
+```js
+import { Flex } from "@prismane/core";
+```
+
+## Usage
+
+### Shorthand props
+
+The `Flex` component supports a few helpful shorthand props:
+
+| Prop        | CSS Property      | Supported Value                                         |
+| ----------- | ----------------- | ------------------------------------------------------- |
+| `justify`   | `justify-content` | _start_, _end_, _center_, _between_, _around_, _evenly_ |
+| `align`     | `align-items`     | _start_, _end_, _center_, _baseline_, _stretch_         |
+| `gap`       | `gap`             | _string_, _number_                                      |
+| `direction` | `flex-direction`  | _row_, _row-reverse_, _column_, _column-reverse_        |
+| `self`      | `align-self`      | _auto_, _start_, _end_, _center_, _stretch_, _baseline_ |
+| `basis`     | `flex-basis`      | _string_, _number_                                      |
+| `grow`      | `flex-grow`       | _boolean_                                               |
+| `shrink`    | `flex-shrink`     | _boolean_                                               |
+| `wrap`      | `flex-wrap`       | _wrap_, _wrap-reverse_, _nowrap_                        |
+
+### Space Out items
+
+Use the _gap_ prop to space out items by a given amount.
+
+```jsx preview
+<Flex gap={10} h={100}>
+  <Flex bg="base" w={120}>
+    1
+  </Flex>
+  <Flex bg="base" w={120}>
+    2
+  </Flex>
+  <Flex bg="base" w={120}>
+    3
+  </Flex>
+</Flex>
+```
+
+### Evenly Space Out Items
+
+Use the _justify_ prop to evenly space out items in a flex container. Pass the _between_ value to make the space between them evenly distributed.
+
+```jsx preview
+<Flex h={100} justify="between" w="100%">
+  <Flex bg="base" w={120}>
+    1
+  </Flex>
+  <Flex bg="base" w={120}>
+    2
+  </Flex>
+  <Flex bg="base" w={120}>
+    3
+  </Flex>
+</Flex>
+```
+
+### Vertical direction
+
+Use the _direction_ prop to change the direction of the flex container. Pass a value of _column_ to make it vertical.
+
+```jsx preview
+<Flex gap={10} direction="column">
+  <Flex bg="base" w={120} h={100}>
+    1
+  </Flex>
+  <Flex bg="base" w={120} h={100}>
+    2
+  </Flex>
+  <Flex bg="base" w={120} h={100}>
+    3
+  </Flex>
+</Flex>
+```
+
+### Occupy The Space Left
+
+Pass the _grow_ prop to a flex container to make it occupy the space that is left and grow as big as it can horizontaly.
+
+```jsx preview
+<Flex h={100} w="100%">
+  <Flex bg="ruby" w={120}>
+    1
+  </Flex>
+  <Flex bg="orange" w={120} grow>
+    2
+  </Flex>
+</Flex>
+```
+
+### Versatile Component
+
+`Flex` is a [versatile component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx preview
+<Flex as="a" href="/" direction="column" gap={fr(2)}>
+  <Text as="h2">Go To Home</Text>
+  <Text>Click me to be redirected directly to the home page.</Text>
+</Flex>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Flex`](/docs/components-api/flex-api)

@@ -1,0 +1,137 @@
+## Import
+
+```js
+import { TextareaField } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => setValue(e.target.value);
+
+  return (
+    <TextareaField
+      value={value}
+      onChange={handleChange}
+      label="Text:"
+      placeholder="Enter Text"
+    />
+  );
+}
+```
+
+### With Icon
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <TextareaField
+      label="Email:"
+      placeholder="Enter Email"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      icon={<EnvelopeSimple />}
+    />
+  );
+}
+```
+
+### TextareaField Variants
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
+      <TextareaField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </>
+  );
+}
+```
+
+### TextareaField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <TextareaField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextareaField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </Flex>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`TextareaField`](/docs/components-api/textarea-field-api)

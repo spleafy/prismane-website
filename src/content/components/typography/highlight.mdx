@@ -1,0 +1,74 @@
+## Import
+
+```js
+import { Highlight } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Text>
+  You can <Highlight>highlight</Highlight> this important word!
+</Text>
+```
+
+### Highlight Background Color
+
+Use the _bg_ prop to change the background of the highlighted container.
+
+```jsx preview
+<Text>
+  You can <Highlight bg="lime">highlight</Highlight> this important word!
+</Text>
+```
+
+### Highlight Text Color
+
+Use the _cl_ prop to change the text color of the highlighted container.
+
+```jsx preview
+<Text>
+  You can <Highlight cl="lime">highlight</Highlight> this important word!
+</Text>
+```
+
+### Highlight Border Radius
+
+Use the _br_ prop to change the border radius of the highlighted container.
+
+```jsx preview
+<Text>
+  You can <Highlight br="full">highlight</Highlight> this important word!
+</Text>
+```
+
+### Advanced Customization
+
+Using a combination of all of [Prismane's Style Props](/docs/styling/style-props), you can fully customize the highlighted container.
+
+```jsx preview
+<Text>
+  You can{" "}
+  <Highlight br="md" bg="teal" px={fr(2)}>
+    highlight
+  </Highlight>{" "}
+  this important word!
+</Text>
+```
+
+### Versatile Component
+
+`Highlight` is a [versatile component](/docs/getting-started/versatile-components), it's default root element is - _mark_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx preview
+<Text>
+  This is a <Highlight as="strong">highlight</Highlight> container with a custom
+  element.
+</Text>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Highlight`](/docs/components-api/highlight-api)

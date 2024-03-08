@@ -1,28 +1,113 @@
-import { FC, ReactNode, useState, useEffect } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, GithubLogo, Tag } from "@phosphor-icons/react";
-import { Chip } from "@prismane/core";
+import Image from "next/image";
+import {
+  Tag,
+  Intersect,
+  Pen,
+  ShootingStar,
+  Chats,
+  HandHeart,
+  Note,
+  Video,
+} from "@phosphor-icons/react";
+// Components
+import Separator from "@/components/Separator";
+// Containers
+import Breadcrumbs from "./Breadcrumbs";
+import TableOfContents from "./TableOfContents";
+import Navigation from "./Navigation";
+// Hooks
+import useNavigation from "@/useNavigation";
 // Content
 import content from "@/content";
-import categories from "@/categories";
+import findBySlugs from "@/findBySlugs";
 
-interface T {
-  children?: ReactNode;
-}
+type SideNavigationProps = {
+  items: any;
+  toggle: (item: any) => void;
+  path: string;
+  expanded: any;
+  inner?: boolean;
+  parentRoute?: string;
+};
 
-const Versatile = ({ children }: any) => (
-  <div className="flex items-center gap-5">
-    <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-      {children}
-    </h1>
-    <Link href="/docs/getting-started/versatile-components">
-      <Chip>Versatile Component</Chip>
-    </Link>
+const SideNavigation = ({
+  items,
+  toggle,
+  path,
+  expanded,
+  inner,
+  parentRoute,
+}: SideNavigationProps) => (
+  <div
+    className={`flex flex-col gap-2 ${
+      inner
+        ? "ml-2.5 [&_.inner]:!ml-6 mb-3 border-l dark:border-base-800 border-base-200 inner"
+        : ""
+    }`}
+  >
+    {items.map((item: any) => (
+      <>
+        <Link
+          href={
+            parentRoute ? `${parentRoute}/${item.slug}` : `/docs/${item.slug}`
+          }
+          className={`flex items-center justify-between cursor-pointer ${
+            inner
+              ? `pl-5 -ml-px border-l border-transparent hover:border-base-400 dark:hover:border-base-500 ${
+                  path.includes(item.route) ? "!border-primary-500" : ""
+                }`
+              : ""
+          }`}
+          onClick={(e) => {
+            if (item.items) {
+              e.preventDefault();
+            }
+          }}
+        >
+          <span
+            className={`w-full text-sm font-medium flex whitespace-nowrap items-center gap-3 transition-colors ${
+              item.items && item.items.length > 0
+                ? "mb-2 mt-4 !font-semibold text-base-900 dark:text-base-200"
+                : `text-base-700 hover:text-base-900 dark:text-base-400 dark:hover:text-base-300 py-0.5 ${
+                    path.includes(item.route)
+                      ? "!text-primary-500 !font-semibold"
+                      : ""
+                  }`
+            }`}
+          >
+            {item.icon && (
+              <div className="text-inherit flex items-center justify-center text-xl">
+                {item.icon}
+              </div>
+            )}
+            {item.title}
+          </span>
+        </Link>
+        {item.items && (
+          <SideNavigation
+            items={item.items}
+            path={path}
+            toggle={toggle}
+            expanded={expanded}
+            inner
+            parentRoute={
+              parentRoute ? `${parentRoute}/${item.slug}` : `/docs/${item.slug}`
+            }
+          />
+        )}
+      </>
+    ))}
   </div>
 );
 
-export const Docs: FC<T> = ({ children }) => {
+interface DocsProps {
+  children?: ReactNode;
+}
+
+export const Docs: FC<DocsProps> = ({ children }) => {
   const router = useRouter();
 
   const { asPath } = router;
@@ -43,83 +128,39 @@ export const Docs: FC<T> = ({ children }) => {
     (obj: any) => obj.slug === routes[1]
   );
 
-  const currentItem = current.items[currentIndex];
+  const currentItem = findBySlugs(content, routes);
 
-  const [tableOfContents, setTableOfContents] = useState([]);
+  const currentCategory = findBySlugs(content, routes.slice(0, -1));
 
-  useEffect(() => {
-    const headings = document.querySelectorAll(".docs-anchor");
-    const toc: any = [];
-
-    let currentHeading: any = null;
-
-    headings.forEach((element) => {
-      if (element.children[0].tagName === "H2") {
-        currentHeading = {
-          title: element.children[0].textContent,
-          id: element.id,
-          subheadings: [],
-        };
-        toc.push(currentHeading);
-      } else if (element.children[0].tagName === "H3" && currentHeading) {
-        currentHeading.subheadings.push({
-          title: element.children[0].textContent,
-          id: element.id,
-        });
-      }
-    });
-
-    setTableOfContents(toc);
-  }, [asPath]);
-
-  const [visible, setVisible] = useState<any>("");
-
-  useEffect(() => {
-    const elementIds: string[] = tableOfContents.flatMap((item: any) => [
-      item.id,
-      ...(item.subheadings
-        ? item.subheadings.map((subheading: any) => subheading.id)
-        : []),
-    ]);
-
-    const observer = new IntersectionObserver((entries) => {
-      const active = entries.reduceRight(
-        (acc: any, item: any) =>
-          item.isIntersecting === true && !acc ? item : acc,
-        null
-      );
-
-      setVisible((pv: any) =>
-        active ? active.target.children[0].textContent : pv
-      );
-    });
-
-    elementIds.forEach((id: any) => {
-      const targetElement = document.getElementById(id);
-      if (targetElement) {
-        observer.observe(targetElement);
-      }
-    });
-  }, [tableOfContents]);
+  const { navigation, expanded, toggle } = useNavigation(content);
 
   return (
-    <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
-      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-32 left-0 max-h-[84vh]">
+    <div className="flex gap-5 items-center mx-auto pt-5 max-w-[1280px]">
+      <nav className="hidden md:flex flex-col items-stretch gap-5 min-w-[240px] max-h-[calc(100vh-100px)] p-5 pl-0 self-start sticky top-[88px] left-0 overflow-y-auto">
         {content.map((nav: any, index: number) => (
           <Link
             key={index}
-            href={`/docs/${nav.slug}/${nav.items[0].slug}`}
-            className="flex flex-col gap-5 px-3 group"
+            href={`/docs/${nav.slug}/${
+              nav.items.length > 0 ? nav.items[0].slug : ""
+            }`}
+            className="flex flex-col gap-5 px-3 xl:px-0 group"
+            {...nav.props}
           >
             <div className="flex items-center gap-4 cursor-pointer group">
-              <div className="flex w-6 h-6 items-center justify-center text-white rounded-sm gradient">
+              <div
+                className={`flex w-6 h-6 items-center justify-center rounded ${
+                  routes[0] === nav.slug
+                    ? "gradient text-white"
+                    : "border dark:border-base-700 dark:bg-base-900 border-base-300 bg-base-100 dark:text-base-400 text-base-500 group-hover:text-white group-hover:gradient group-hover:border-none"
+                }`}
+              >
                 {nav.icon}
               </div>
               <span
                 className={`font-medium text-sm transition-colors ${
                   routes[0] === nav.slug
-                    ? "dark:text-primary-500 text-primary-700"
-                    : "dark:text-white text-base-900 dark:group-hover:text-base-300 group-hover:text-base-700"
+                    ? "text-primary-500"
+                    : "dark:text-base-400 text-base-500 dark:group-hover:text-white group-hover:text-base-700"
                 }`}
               >
                 {nav.title}
@@ -127,156 +168,157 @@ export const Docs: FC<T> = ({ children }) => {
             </div>
           </Link>
         ))}
-        <div className="mt-5 flex flex-col gap-2 overflow-y-auto h-full">
-          {current.items.map((item: any, index: number) => (
-            <Link
-              key={index}
-              href={`/docs/${
-                content.find((nav: any) => nav.slug === routes[0]).slug
-              }/${item.slug}`}
-              className={`text-sm px-3 py-1 rounded-md font-medium ${
-                path.split("/")[path.split("/").length - 1] === item.slug
-                  ? "dark:text-primary-500 text-primary-700 bg-primary-700/20"
-                  : "dark:text-white text-base-900"
-              }`}
-            >
-              {item.title}
-            </Link>
-          ))}
+        <Separator className="mt-2" />
+        <div className="flex flex-col gap-0.5 px-3 xl:px-0 h-full max-h-full">
+          <SideNavigation
+            items={navigation.find((nav: any) => nav.slug === routes[0]).items}
+            expanded={expanded}
+            toggle={toggle}
+            path={path}
+            parentRoute={routes[0]}
+          />
         </div>
       </nav>
-      <div className="flex flex-col grow gap-4 p-5 w-full self-start">
+      <div className="flex flex-col grow p-5 self-start [&:has(.docs-anchor)]:!max-w-[800px] max-w-[1040px]">
+        <Breadcrumbs
+          items={{
+            parent: {
+              title: current.title,
+              slug: current.slug,
+            },
+            child: {
+              title: currentItem.title,
+              slug: currentItem.slug,
+            },
+          }}
+        />
         {currentItem && (
-          <>
-            {currentItem.versatile ? (
-              <Versatile>{currentItem.title}</Versatile>
-            ) : (
-              <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-                {currentItem.title}
-              </h1>
+          <div className="flex flex-col">
+            <h1 className="text-3xl sm:text-4xl font-bold text-base-900 dark:text-white tracking-tight">
+              {currentItem.title}
+            </h1>
+            {currentItem.description && (
+              <span className="mt-4 text-lg text-base-500 dark:text-base-400">
+                {currentItem.description}
+              </span>
             )}
-            <span className="text-base-700 dark:text-base-400 leading-7 w-full">
-              {currentItem.description}
-            </span>
-          </>
-        )}
-        {currentItem &&
-          ["components", "hooks"].includes(current.slug) &&
-          currentItem.category && (
-            <div className="flex items-center gap-2 flex-col sm:flex-row">
-              <Link
-                href={`/docs/${current.slug}/getting-started#${currentItem.category}`}
-                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
-              >
-                <Tag size={18} /> Category:{" "}
-                {currentItem.category
-                  .split("-")
-                  .map(
-                    (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
-                  )
-                  .join(" ")}
-              </Link>
-              <Link
-                href={
-                  current.slug === "components"
-                    ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
-                    : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.ts`
-                }
-                target="_blank"
-                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
-              >
-                <GithubLogo size={18} /> Source
-              </Link>
-            </div>
-          )}
-        {children}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-5">
-          <div className="flex grow w-full md:w-1/2">
-            {currentIndex > 0 && (
-              <Link
-                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
-                href={`/docs/${routes[0]}/${
-                  current.items[currentIndex - 1].slug
-                }`}
-              >
-                <ArrowLeft size={24} weight="bold" />
-                <div className="flex flex-col gap-2">
-                  <span className="font-medium text-lg sm:text-2xl self-end">
-                    Go Back
-                  </span>
-                  <span className="dark:text-white text-base-900 self-end text-sm sm:text-base">
-                    {current.items[currentIndex - 1].title}
-                  </span>
-                </div>
-              </Link>
-            )}
-          </div>
-          <div className="flex grow w-full md:w-1/2">
-            {currentIndex < current.items.length - 1 && (
-              <Link
-                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
-                href={`/docs/${routes[0]}/${
-                  current.items[currentIndex + 1].slug
-                }`}
-              >
-                <div className="flex flex-col gap-2">
-                  <span className="font-medium text-lg sm:text-2xl ">
-                    Up Next
-                  </span>
-                  <span className="dark:text-white text-base-900 text-sm sm:text-base">
-                    {current.items[currentIndex + 1].title}
-                  </span>
-                </div>
-                <ArrowRight size={24} weight="bold" />
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
-      {tableOfContents.length > 0 && (
-        <div className="hidden lg:flex flex-col self-start w-72 min-w-[288px] p-5 sticky top-32 left-0 max-h-[84vh] overflow-y-auto">
-          <span className="dark:text-white text-base-900 font-bold">
-            On This Page
-          </span>
-          <ul>
-            {tableOfContents.map((section: any, index) => (
-              <li key={index} className="mt-4 text-sm">
-                <Link
-                  className={
-                    visible === section.title
-                      ? "text-primary-500 font-medium"
-                      : ""
-                  }
-                  href={`${router.asPath.replace(/[#?].*$/, "")}#${section.id}`}
-                >
-                  {section.title}
-                </Link>
-                {section.subheadings.length > 0 && (
-                  <ul className="ml-4">
-                    {section.subheadings.map(
-                      (subheading: any, subIndex: any) => (
-                        <Link
-                          key={subIndex}
-                          className={
-                            visible === subheading.title
-                              ? "text-primary-500 font-medium"
-                              : ""
-                          }
-                          href={`${router.asPath.replace(/[#?].*$/, "")}#${
-                            subheading.id
-                          }`}
-                        >
-                          <li className="mt-2">{subheading.title}</li>
-                        </Link>
+            {currentItem &&
+              ["components", "hooks"].includes(current.slug) &&
+              routes.length >= 3 && (
+                <div className="flex sm:items-center gap-2 flex-col sm:flex-row mt-8">
+                  {currentItem.versatile && (
+                    <Link
+                      href="/docs/getting-started/versatile-components"
+                      className="h-[30px] focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-primary-300 dark:ring-primary-700 text-primary-900 dark:text-white bg-white hover:bg-primary-50 disabled:bg-white dark:bg-primary-900/30 dark:hover:bg-primary-700/30 dark:disabled:bg-primary-900 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center transition-colors"
+                    >
+                      <Intersect size={18} /> Versatile Component
+                    </Link>
+                  )}
+                  <Link
+                    href={`/docs/${current.slug}/getting-started#${currentCategory.slug}`}
+                    className="h-[30px] focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-base-300 dark:ring-base-700 text-base-900 dark:text-white bg-white hover:bg-base-50 disabled:bg-white dark:bg-base-900 dark:hover:bg-base-700/50 dark:disabled:bg-base-900 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center transition-colors"
+                  >
+                    <Tag size={18} /> Category:{" "}
+                    {currentCategory.slug
+                      .split("-")
+                      .map(
+                        (word: any) =>
+                          word.charAt(0).toUpperCase() + word.slice(1)
                       )
-                    )}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+                      .join(" ")}
+                  </Link>
+                  <Link
+                    href={
+                      current.slug === "components"
+                        ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
+                        : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.ts`
+                    }
+                    target="_blank"
+                    className="h-[30px] focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-base-300 dark:ring-base-700 text-base-900 dark:text-white bg-white hover:bg-base-50 disabled:bg-white dark:bg-base-900 dark:hover:bg-base-700/50 dark:disabled:bg-base-900 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center"
+                  >
+                    <Image
+                      src="/github_logo.svg"
+                      alt="Github Logo"
+                      width={18}
+                      height={18}
+                      className="filter dark:brightness-[100]"
+                    />{" "}
+                    Source
+                  </Link>
+                </div>
+              )}
+            <Separator className="my-8" />
+          </div>
+        )}
+        <div className="flex flex-col grow">{children}</div>
+        {currentItem.slug !== "getting-started" && (
+          <Navigation
+            current={current}
+            currentIndex={currentIndex}
+            routes={routes}
+          />
+        )}
+      </div>
+      <TableOfContents>
+        <Separator className="my-4" />
+        <span className="dark:text-white text-base-900 font-semibold text-sm">
+          Community
+        </span>
+        <Link
+          href={`https://github.com/spleafy/prismane-website/tree/main/src/content/${routes.join(
+            "/"
+          )}.mdx`}
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <Pen size={20} />
+          <span>Edit this page</span>
+        </Link>
+        <Link
+          href="https://www.github.com/prismaneui/prismane"
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <ShootingStar size={20} />
+          <span>Star on GitHub</span>
+        </Link>
+        <Link
+          href="https://discord.gg/gFvcmdpKeb"
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <Chats size={20} />
+          <span>Chat on Discord</span>
+        </Link>
+        <Link
+          href="https://opencollective.com/prismane"
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <HandHeart size={20} />
+          <span>Become a sponsor</span>
+        </Link>
+        <Separator className="my-4" />
+        <span className="dark:text-white text-base-900 font-semibold text-sm">
+          Ecosystem
+        </span>
+        <Link
+          href="https://medium.com/@prismaneui"
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <Note size={20} />
+          <span>Tutorials</span>
+        </Link>
+        <Link
+          href="https://www.youtube.com/@prismaneui"
+          target="_blank"
+          className="flex items-center gap-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 text-sm/6"
+        >
+          <Video size={20} />
+          <span>Video Tutorials</span>
+        </Link>
+      </TableOfContents>
     </div>
   );
 };

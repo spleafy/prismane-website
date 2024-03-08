@@ -1,0 +1,35 @@
+## Import
+
+```js
+import { ButtonProps } from "@prismane/core";
+```
+
+## Props
+
+`Button` extends [Transition](/docs/components-api/transition-api) component's props.
+
+| Name          | Type                                                                          | Description                                                      | Default |
+| ------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
+| `icon`        | `ReactNode`                                                                   | The icon of the button.                                          | -       |
+| `type`        | `submit / reset / button`                                                     | The type of the button.                                          | -       |
+| `loading`     | `boolean`                                                                     | Triggers the button's loading state.                             | -       |
+| `disabled`    | `boolean`                                                                     | Triggers the button's disabled state.                            | -       |
+| `variant`     | `primary / secondary / tertiary / text`                                       | Changes the variant of the button.                               | primary |
+| `color`       | [PrismaneColors](/docs/getting-started/globals#prismanecolors-type)           | Changes the color of the button.                                 | primary |
+| `size`        | [PrismaneBreakpoints](/docs/getting-started/globals#prismanebreakpoints-type) | Changes the size of the button.                                  | base    |
+| `full`        | `boolean`                                                                     | Triggers the button spreading to the full size of the container. | -       |
+| `shadow`      | `boolean`                                                                     | Triggers the button's shadow.                                    | -       |
+| `fillOnHover` | `boolean`                                                                     | Triggers the button filling it's background on hover.            | -       |
+
+## CSS
+
+`Button` extends [Transition](/docs/components-api/transition-api) component's CSS classes.
+
+| Rule   | Global Class                     | Description                                         |
+| ------ | -------------------------------- | --------------------------------------------------- |
+| `root` | `.PrismaneButton-root`           | The wrapper box of the button.                      |
+| `root` | `.PrismaneButton-root-{variant}` | The wrapper box of the button based on the variant. |
+| `root` | `.PrismaneButton-root-{size}`    | The wrapper box of the button based on the size.    |
+| `root` | `.PrismaneButton-root-{color}`   | The wrapper box of the button based on the color.   |
+| `icon` | `.PrismaneButton-icon`           | The icon wrapper box of the button.                 |
+| `text` | `.PrismaneButton-text`           | The text wrapper box of the button.                 |

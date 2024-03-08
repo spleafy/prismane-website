@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { email } from "@prismane/core/validators";
+
+console.log(email("martinpetrov404@gmail.com")); // Will return null
+console.log(email("Ivan is cool"));
+// Will return `This is not a valid email!`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      email: {
+        value: "",
+        validators: {
+          email: (v: string) => email(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter email: "
+        label="Username:"
+        {...register("email")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name     | Type                 | Description                                                                          |
+| -------- | -------------------- | ------------------------------------------------------------------------------------ |
+| `value`  | `string`             | The string that will be validated.                                                   |
+| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the regex that is used to match the email. |

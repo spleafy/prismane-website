@@ -31,7 +31,7 @@ const Section: FC<SectionProps> = ({
       {...props}
     >
       <div
-        className={`flex items-center justify-center max-w-[1200px] w-full py-10 sm:py-28 px-6 sm:px-12 sm:mt-10 z-10 flex-col gap-6 ${
+        className={`flex items-center justify-center max-w-[1280px] w-full py-10 sm:py-28 px-6 sm:px-12 xl:px-0 z-10 flex-col gap-6 ${
           className ? className : ""
         }`}
       >

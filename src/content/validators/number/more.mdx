@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { more } from "@prismane/core/validators";
+
+console.log(more(10, 0)); // Will return null
+console.log(more(40, 50)); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      age: {
+        value: 14,
+        validators: {
+          more: (v: any) => more(v, 13),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <NumberField
+        placeholder="Enter age: "
+        label="Age:"
+        {...register("age")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                        |
+| ----------- | -------------------- | ---------------------------------- |
+| `value`     | `number`             | The number that will be validated. |
+| `number`    | `number`             | The number that will be compared.  |
+| `fieldName` | `string / undefined` | The name of the field.             |

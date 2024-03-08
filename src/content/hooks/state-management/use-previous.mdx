@@ -1,0 +1,48 @@
+## Import
+
+```js
+import { usePrevious } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [count, setCount] = useState(0);
+  const previous = usePrevious(count);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Current: {count}
+      </Text>
+      <Text
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Previous: {previous}
+      </Text>
+      <Button onClick={() => increment()}>Increment</Button>
+    </Flex>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name    | Type  | Description                       | Default |
+| ------- | ----- | --------------------------------- | ------- |
+| `value` | `any` | The value that should be tracked. | -       |
+
+### Return Value
+
+| Name       | Type  | Description                                |
+| ---------- | ----- | ------------------------------------------ |
+| `previous` | `any` | The previous value of the passed variable. |

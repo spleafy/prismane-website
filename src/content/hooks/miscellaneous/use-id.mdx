@@ -1,0 +1,29 @@
+## Import
+
+```js
+import { useId } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const id = useId();
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+    >
+      Refresh to regenerate id: {id}
+    </Text>
+  );
+}
+```
+
+## API
+
+### Return Value
+
+| Name | Type     | Description       |
+| ---- | -------- | ----------------- |
+| `id` | `string` | The generated id. |

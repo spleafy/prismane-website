@@ -1,20 +1,11 @@
 To use Prismane inside your website or app, you should install it first, by running one of the following commands:
 
-```js
-  npm i @prismane/core
-```
-
-```js
-  yarn add @prismane/core
-```
-
-```js
-  pnpm add @prismane/core
+```json files={[ { name: "npm", value: "npm i @prismane/core", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @prismane/core", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @prismane/core", language: "json", icon: <Pnpm />, }, ]}
 ```
 
 After installing the `@prismane/core` package, you have to wrap your application with our custom `PrismaneProvider` component. This can be either in your `_app.jsx/tsx`.
 
-```tsx
+```tsx name="App.tsx" icon={<File />}
 function App({ Component, pageProps }) {
   return (
     <PrismaneProvider>
@@ -30,17 +21,17 @@ export default App;
 
 ### Icons Used In Examples
 
-<Important>
+<Warning>
   Prismane does not include the icons that are used in examples!
-</Important>
+</Warning>
 
 If you want to use the icons that are used inside of the examples, you must install the `@phosphor-icons/react` library.
 
 ### Fonts Used In Examples
 
-<Important>
+<Warning>
   Prismane does not include the fonts that are used in examples!
-</Important>
+</Warning>
 
 If you want to use the fonts that are used inside of the examples, you must install the `@fontsource/inter` library.
 
@@ -50,7 +41,7 @@ If you want to use a custom theme, with custom colors, spacing and more, you can
 
 You can achieve that functionality by importing the `createTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
 
-```tsx
+```tsx name="App.tsx" icon={<File />}
 import { PrismaneProvider } from "@prismane/core";
 import { createTheme } from "@prismane/core/themes";
 

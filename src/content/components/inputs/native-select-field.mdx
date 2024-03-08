@@ -1,0 +1,207 @@
+## Import
+
+```js
+import { NativeSelectField } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+<NativeSelectField
+  name="select"
+  options={[
+    { value: "demon-slayer", label: "The Demon Slayer" },
+    { value: "doomsday", label: "Doomsday Incoming" },
+    { value: "titanic", label: "The Titanic" },
+  ]}
+/>
+```
+
+### Controlled
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <NativeSelectField
+      name="select"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "demon-slayer", label: "The Demon Slayer" },
+        { value: "doomsday", label: "Doomsday Incoming" },
+        { value: "titanic", label: "The Titanic" },
+      ]}
+    />
+  );
+}
+```
+
+### With Icon
+
+```jsx
+<NativeSelectField
+  name="select"
+  icon={<GearSix />}
+  options={[
+    { value: "demon-slayer", label: "The Demon Slayer" },
+    { value: "doomsday", label: "Doomsday Incoming" },
+    { value: "titanic", label: "The Titanic" },
+  ]}
+/>
+```
+
+### With Addon
+
+```jsx
+<NativeSelectField
+  name="select"
+  addons={<Field.Addon position="left">Name</Field.Addon>}
+  options={[
+    { value: "demon-slayer", label: "The Demon Slayer" },
+    { value: "doomsday", label: "Doomsday Incoming" },
+    { value: "titanic", label: "The Titanic" },
+  ]}
+/>
+```
+
+### NativeSelectField Variants
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
+      <NativeSelectField
+        variant="outlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="filled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="underlined"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        variant="unstyled"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+    </>
+  );
+}
+```
+
+### NativeSelectField Sizes
+
+```jsx
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <NativeSelectField
+        size="xs"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="sm"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="base"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="md"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+      <NativeSelectField
+        size="lg"
+        placeholder="Default Field"
+        label="Default Field:"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        options={[
+          { value: "demon-slayer", label: "The Demon Slayer" },
+          { value: "doomsday", label: "Doomsday Incoming" },
+          { value: "titanic", label: "The Titanic" },
+        ]}
+      />
+    </Flex>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`NativeSelectField`](/docs/components-api/native-select-field-api)

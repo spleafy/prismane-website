@@ -7,7 +7,7 @@ import Section from "../Section";
 
 const History = () => {
   return (
-    <Section background={<SectionSeparator position="bottom" />}>
+    <Section>
       <span className="section-heading">
         Our brief <span className="text-gradient">history</span>
       </span>

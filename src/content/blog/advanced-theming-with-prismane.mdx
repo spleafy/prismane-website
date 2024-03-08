@@ -1,0 +1,293 @@
+---
+release: November 29, 2023
+tag: "Tutorial"
+title: "Advanced Theming with Prismane"
+description: "Learn how to theme your applications with ease like a pro"
+authors: ["1"]
+---
+## Theming Techniques
+
+In this section, we will learn how to change the theme of Prismane. You will discover that it is as easy as pie. We will explore how to customize colors, spacing, and more. We will also discuss best practices and tips for efficient theming.
+
+From this point on, we will accept that you have installed Prismane in your React application. If that is not the case, please refer to this [tutorial](https://www.prismane.io/docs/getting-started/installation).
+
+### Example App
+
+Let’s use this example application that contains two Button components, which we will style throughout our tutorial.
+
+```tsx name="index.tsx" icon={<File />}
+...
+import { PrismaneProvider } from "@prismane/core";
+import "@fontsource/poppins/100.css";
+import "@fontsource/poppins/200.css";
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
+import "@fontsource/poppins/900.css";
+...
+
+...
+root.render(
+  <React.StrictMode>
+    <PrismaneProvider>
+      <App />
+    </PrismaneProvider>
+  </React.StrictMode>
+);
+...
+```
+
+We are going to add two Button components stacked underneath each other. These buttons will be used as examples of how the theme changes affect the components throughout this tutorial. The first button will use the primary variant and the second one will use the secondary variant of the Button component.
+
+```tsx name="App.tsx" icon={<File />}
+import { Stack, Button } from "@prismane/core";
+
+function App() {
+  return (
+    <Stack w="100vw" h="100vh" align="center" justify="center">
+      <Button>Primary Button</Button>
+      <Button variant="secondary">Secondary Button</Button>
+    </Stack>
+  );
+}
+
+export default App;
+```
+
+![First](1.png)
+
+Great. Now we see the two buttons using the default theme that comes with Prismane.
+
+### Theming with Prismane
+
+As we saw on the previous screenshot, Prismane uses a default theme object, which can be modified. The modification of the theme of Prismane is done by providing a new theme object to the PrismaneProvider component that wraps your application. This way, you can ensure that the new theme is applied to all of your components.
+
+The new theme object can have only the properties of the PrismaneTheme type, which you want to change (overwrite). The ones that are missing, will be taken from the default theme.
+
+The theme object defines various aspects of the theme, such as the mode (light or dark), colors, border radius, and spacing.
+
+The `mode` prop determines the overall appearance of the theme, either `light` or `dark`. This setting affects various aspects of the UI, such as text and background colors, contrasts, and shadows.
+
+The `colors` prop defines the palette of colors used throughout the theme. It includes properties for primary and base colors. These colors are used for elements like buttons, links, headings, and borders.
+
+The `borderRadius` prop controls the roundedness of corners in various UI components. It can be specified as an object with specific values for different breakpoints.
+
+The `spacing` prop defines the default spacing between UI elements. These values ensure consistent and visually appealing scaling throughout components.
+
+### Theme Object Type
+
+```tsx
+export interface PrismaneTheme {
+  // The theme mode "dark" or "light"
+  mode: "light" | "dark";
+
+  // The theme colors
+  colors: {
+    primary: {
+      50: string;
+      100: string;
+      200: string;
+      300: string;
+      400: string;
+      500: string;
+      600: string;
+      700: string;
+      800: string;
+      900: string;
+    };
+    base: {
+      50: string;
+      100: string;
+      200: string;
+      300: string;
+      400: string;
+      500: string;
+      600: string;
+      700: string;
+      800: string;
+      900: string;
+    };
+  };
+
+	// The borderRadius that the components use
+	borderRadius: {
+	  xs: string;
+	  sm: string;
+	  base: string;
+	  md: string;
+	  lg: string;
+	  xl: string;
+	  "2xl": string;
+  };
+	
+
+  // The theme spacing, changing it will scale up or down the size of your components
+  spacing: string;
+}
+```
+
+### Base Theme
+
+Here you can see the properties of the default theme object that Prismane comes with.
+
+```tsx name="base.ts" icon={<File />}
+const base: PrismaneTheme = {
+  mode: "light",
+  colors: {
+    primary: {
+      // Prismane's diamond colors
+      50: "#f0f9ff",
+      100: "#e0f2fe",
+      200: "#bae6fd",
+      300: "#7dd3fc",
+      400: "#38bdf8",
+      500: "#0ea5e9",
+      600: "#0284c7",
+      700: "#0369a1",
+      800: "#075985",
+      900: "#0c4a6e",
+    },
+    base: {
+      // Prismane's gray colors
+      50: "#f9fafb",
+      100: "#f3f4f6",
+      200: "#e5e7eb",
+      300: "#d1d5db",
+      400: "#9ca3af",
+      500: "#6b7280",
+      600: "#4b5563",
+      700: "#374151",
+      800: "#1f2937",
+      900: "#111827",
+    },
+  },
+  spacing: "4px",
+	borderRadius: {
+    xs: fr(0.75), // 3px, when spacing is 4px
+    sm: fr(1), // 4px, when spacing is 4px
+    base: fr(1.5), // 6px, when spacing is 4px
+    md: fr(2), // 8px, when spacing is 4px
+    lg: fr(2.5), // 10px, when spacing is 4px
+    xl: fr(3), // 12px, when spacing is 4px
+    "2xl": fr(3.5), // 14px, when spacing is 4px
+  },
+};
+
+export default base;
+```
+
+## Theme Colors Configuration
+
+To customize the theme colors, as mentioned earlier, we need to provide values for the “colors” property of the a new theme object.
+
+<Note>
+💡 The `colors` property of both `primary` and `base` must be objects. The keys of these objects should correspond to the desired shades (100 - 900). If a specific shade is not provided, the corresponding shade from the theme will be used as the default.
+</Note>
+
+Prismane comes with a prebuilt color palette that users can choose from, but it is not necessary. Users can provide their own color values if they prefer.
+
+For the purpose of this tutorial, we are going to use the the Ruby and the Coal colors from our [Color Palette](https://www.prismane.io/docs/styling/color-palette).
+
+![Second](2.png)
+
+To get access to these colors, we have to import the `PRISMANE_COLORS` global from the root entry of our package. The `PRISMANE_COLORS` global gives us access to Prismane’s predefined color palette.
+
+```tsx name="index.tsx" icon={<File />}
+import { PRISMANE_COLORS } from "@prismane/core";
+```
+
+After that, we can set the “primary” and “base” properties of the “colors” key of our new theme theme object.
+
+```tsx name="index.tsx" icon={<File />}
+const theme = {
+  colors: {
+    primary: PRISMANE_COLORS.ruby,
+    base: PRISMANE_COLORS.coal,
+  },
+};
+```
+
+The last step is to pass the new theme object to the PrismaneProvider component using the “theme” prop. 
+
+```tsx name="index.tsx" icon={<File />}
+<PrismaneProvider theme={theme}>
+  <App />
+</PrismaneProvider>
+```
+
+Let’s see the result
+
+![Third](3.png)
+
+Great! Now you have successfully changed the theme colors of your application!
+
+## Theme Spacing Configuration
+
+Prismane comes with scaling being core part of the theming ability. The scaling is controlled by the “spacing” property of the theme object and using it we can scale our components globally.
+
+By default, the `spacing` property has a value of `4px` .
+
+The `font-size` of the document is calculated using this formula and is automatically applied when Prismane is installed.
+
+```css name="index.css" icon={<File />}
+html {
+  font-size: calc(4 * var(--prismane-spacing));
+}
+```
+
+All of Prismane’s components have sizes in `rem` thanks to the `fr` function, which means that by changing the `font-size` of the document, we will scale our components.
+
+So, in short terms, to scale our components, we just need to pass a value to the `spacing` prop of the theme object we created.
+
+```tsx name="index.tsx" icon={<File />}
+const theme = {
+  ...
+  spacing: "6px",
+};
+```
+
+Let’s see the result
+
+![Fourth](4.png)
+
+## Theme Border Radius Configuration
+
+We can change the predefined fixed border radius sizes, by changing the value of the `borderRadius` property of the theme object.
+
+<Note>
+💡 The `borderRadius` property is related to the `spacing` property of the theme, because it uses the `fr` function to set it’s predefined sizes, by default. This way, when the components are scaled, so does the border radius. We recommend to use the `fr` function when overwriting the `borderRadius` to keep this functionality.
+</Note>
+
+If you are not familiar with the `fr` function, please refer to the [documentation](https://www.prismane.io/docs/styling/responsive-styles#the-fr-function).
+
+Let’s import the `fr` function from the root entry of our package.
+
+```tsx name="index.tsx" icon={<File />}
+import { ..., fr } from "@prismane/core";
+```
+
+Let’s make our buttons a little duller by passing specific values for each size.
+
+```tsx name="index.tsx" icon={<File />}
+const theme = {
+  ...
+  borderRadius: {
+    xs: fr(0.25), // 1px, when spacing is 4px
+    sm: fr(0.5), // 2px, when spacing is 4px
+    base: fr(0.75), // 3px, when spacing is 4px
+    md: fr(1.25), // 5px, when spacing is 4px
+    lg: fr(1.75), // 7px, when spacing is 4px
+    xl: fr(2.25), // 9px, when spacing is 4px
+    "2xl": fr(2.75), // 11px, when spacing is 4px
+  },
+};
+```
+
+Let’s see the changes
+
+![Fifth](5.png)
+
+Great! Now you are fully capable to customize your Prismane theme with ease and develop with ease!

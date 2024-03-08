@@ -1,0 +1,27 @@
+## Import
+
+```js
+import { Box } from "@prismane/core";
+```
+
+## Usage
+
+The `Box` component is the base of all Prismane components. It is useful, because it provides the following features:
+
+- An easy way of styling using [shorthand props](/docs/styling/style-props) (for e.g. _cl_ instead of _color_).
+- A [sx](/docs/styling/sx-prop) style prop that can easily handle complex styling.
+- An [as](/docs/getting-started/versatile-components) prop that allows you to compose a new component and override the default element or component.
+
+You can use the `Box` component as the base for your component or to replace your HTML code.
+
+```jsx preview
+<Box as="a" href="/" w="100%" p={fr(6)} bg="amethyst">
+  My Box component that will render an anchor.
+</Box>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Box`](/docs/components-api/box-api)

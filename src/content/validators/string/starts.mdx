@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { starts } from "@prismane/core/validators";
+
+console.log(starts("www.", "www.mysite.com")); // Will return null
+console.log(starts("www.", "mysite.eu")); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      url: {
+        value: "",
+        validators: {
+          starts: (v: string) => starts(v, "www."),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="eg. www.mysite.com"
+        label="URL:"
+        {...register("url")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                        |
+| ----------- | -------------------- | ---------------------------------- |
+| `value`     | `string`             | The string that will be validated. |
+| `prefix`    | `string`             | The prefix that will be searched.  |
+| `fieldName` | `string / undefined` | The name of the field.             |

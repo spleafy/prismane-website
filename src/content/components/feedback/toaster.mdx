@@ -1,0 +1,41 @@
+## Import
+
+```js
+import { Toaster } from "@prismane/core";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const Inner = () => {
+    const toast = useToast();
+
+    return (
+      <Button
+        onClick={() => {
+          toast({
+            element: <Alert>Hello, World!</Alert>,
+          });
+        }}
+      >
+        Click to show toast
+      </Button>
+    );
+  };
+
+  return (
+    <Toaster>
+      <Inner />
+    </Toaster>
+  );
+}
+```
+
+<Warning>Always wrap the application with the `Toaster` component!</Warning>
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Toaster`](/docs/components-api/toaster-api)

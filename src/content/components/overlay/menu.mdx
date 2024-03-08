@@ -1,0 +1,104 @@
+## Import
+
+Prismane's `Menu` component has 3 additional inner components:
+
+- _Menu.Item_: The container wrapper of each menu item.
+- _Menu.Label_: A label container of the menu.
+- _Menu.Icon_: An icon that is displayed inside the menu item.
+
+```js
+import { Menu } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Stack>
+      <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
+      <Menu w={fr(64)} open={open}>
+        <Menu.Item>
+          <Menu.Icon>
+            <User />
+          </Menu.Icon>
+          Account
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <Chat />
+          </Menu.Icon>
+          Messages
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <GearSix />
+          </Menu.Icon>
+          Settings
+        </Menu.Item>
+      </Menu>
+    </Stack>
+  );
+}
+```
+
+### Complex Menu
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Flex direction="column" gap={fr(2)} w={fr(64)}>
+      <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
+      <Menu w={fr(64)} open={open}>
+        <Menu.Label>Account</Menu.Label>
+        <Menu.Item>
+          <Menu.Icon>
+            <User />
+          </Menu.Icon>
+          Account
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <Chat />
+          </Menu.Icon>
+          Messages
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <Images />
+          </Menu.Icon>
+          Media
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <MagnifyingGlass />
+          </Menu.Icon>
+          Search
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <GearSix />
+          </Menu.Icon>
+          Settings
+        </Menu.Item>
+        <Menu.Item color="red">
+          <Menu.Icon>
+            <SignOut />
+          </Menu.Icon>
+          Log Out
+        </Menu.Item>
+      </Menu>
+    </Flex>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Menu`](/docs/components-api/menu-api)

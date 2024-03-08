@@ -23,21 +23,31 @@
   mask: linear-gradient(transparent, white 20%, transparent);
 }
 
+.mask {
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: add, add;
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   ::selection {
-    @apply bg-primary-500 text-white;
+    @apply bg-primary-500/80 text-white;
   }
 
   * {
-    @apply m-0 p-0 dark:border-base-600 border-base-700/20;
+    @apply m-0 p-0 dark:border-base-600 border-base-700/20 scroll-smooth;
   }
 
   body {
-    @apply !font-["Inter"] dark:bg-[#0A0118] bg-white dark:text-base-300 text-base-700;
+    @apply !font-["Inter"] dark:bg-base-950 bg-white dark:text-base-300 text-base-700;
   }
 
   h1 {
@@ -76,11 +86,11 @@
 
 @layer components {
   .gradient {
-    @apply bg-gradient-to-tr from-secondary-500  to-primary-500;
+    @apply bg-gradient-to-tr gradient-stops;
   }
 
   .section-hero {
-    @apply !py-12 sm:!py-24 md:!py-32 lg:!py-40 !justify-start !items-center sm:h-[85vh] flex flex-col !gap-10;
+    @apply !py-12 sm:!py-24 md:!py-32 lg:!py-40 !justify-start !items-center flex flex-col !gap-10;
   }
 
   .hero-heading {
@@ -92,11 +102,11 @@
   }
 
   .section-heading {
-    @apply text-center text-4xl lg:text-5xl font-extrabold dark:text-white text-base-900;
+    @apply text-center text-4xl lg:text-5xl font-extrabold dark:text-white text-base-900 max-w-3xl;
   }
 
   .section-subheading {
-    @apply text-center text-xl leading-6 dark:text-base-400 text-base-700;
+    @apply text-center text-xl leading-6 dark:text-base-400 text-base-700 max-w-2xl;
   }
 
   .text-gradient {
@@ -109,6 +119,10 @@
 
   .header-logo path {
     @apply dark:!fill-white !fill-base-900;
+  }
+
+  .gradient-stops {
+    @apply from-primary-500 to-secondary-500;
   }
 }
 

@@ -1,0 +1,44 @@
+## Import
+
+```js
+import { useCopyToClipboard } from "@prismane/core/hooks";
+```
+
+## Usage
+
+```jsx
+function Demo() {
+  const [copiedValue, copyToClipboard] = useCopyToClipboard();
+
+  return (
+    <Flex direction="column" gap={fr(5)} align="center">
+      <Text
+        as="h1"
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Click to copy:
+      </Text>
+      <Flex gap={fr(3)}>
+        <Button onClick={() => copyToClipboard("Hey")}>Hey</Button>
+        <Button onClick={() => copyToClipboard("Sup")}>Sup</Button>
+        <Button onClick={() => copyToClipboard("Nice")}>Nice</Button>
+      </Flex>
+      <Text
+        fs="xl"
+        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      >
+        Copied value: {copiedValue || "Nothing is copied yet!"}
+      </Text>
+    </Flex>
+  );
+}
+```
+
+## API
+
+### Return Value
+
+| Name              | Type                                 | Description                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `copiedValue`     | `string`                             | null                                                                                                                                                                                                                                                                                                                                                                            |
+| `copyToClipboard` | `(text: string) => Promise<boolean>` | A function that attempts to copy the provided `text` to the clipboard. It returns a promise that resolves to `true` if the copy was successful, and `false` otherwise. If the browser does not support clipboard operations, it will log a warning and return false. If there is an error during copying, it will log a warning, set `copiedValue` to null, and return `false`. |

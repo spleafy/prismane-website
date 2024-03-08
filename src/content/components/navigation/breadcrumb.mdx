@@ -1,0 +1,72 @@
+## Import
+
+Prismane's `Breadcrumb` component has 2 additional inner components:
+
+- _Breadcrumb.Item_: Single breadcrumb item.
+- _Breadcrumb.Separator_: The visual separator between each breadcrumb.
+
+```js
+import { Breadcrumb } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Breadcrumb>
+  <Breadcrumb.Item href="https://www.google.com">Home</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="https://www.google.com">Pages</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+### Custom Separator
+
+You can change the default separator, by passing a new one as a child of the `Breadcrumb.Separator` component.
+
+```jsx preview
+<Breadcrumb>
+  <Breadcrumb.Item href="https://www.google.com">Home</Breadcrumb.Item>
+  <Breadcrumb.Separator>-</Breadcrumb.Separator>
+  <Breadcrumb.Item href="https://www.google.com">Pages</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+### Foreign Links
+
+By default, the `Breadcrumb.Item` component uses the [`Link`](/docs/components/link) component and inherits its props. To open the link of the item in a new tab, just pass the _foreign_ prop.
+
+```jsx preview
+<Breadcrumb>
+  <Breadcrumb.Item href="https://www.google.com" foreign>
+    I will open in a new tab
+  </Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="https://www.google.com" foreign>
+    I will too
+  </Breadcrumb.Item>
+</Breadcrumb>
+```
+
+### Custom Item Component
+
+The `Breadcrumb.Item` component is a [versatile component](/docs/getting-started/versatile-components), which means that we can change the element or component that it renders by using the _as_ prop.
+
+By default, the `Breadcrumb.Item` component renders a [`Link`](/docs/components/link) component.
+
+```jsx preview
+<Breadcrumb>
+  <Breadcrumb.Item as="a" href="https://www.google.com" target="_blank">
+    I am a normal anchor
+  </Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item as="a" href="https://www.google.com" target="_blank">
+    Me too
+  </Breadcrumb.Item>
+</Breadcrumb>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Breadcrumb`](/docs/components-api/breadcrumb-api)

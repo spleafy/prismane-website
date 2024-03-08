@@ -1,0 +1,53 @@
+## Basic Usage
+
+```tsx
+import { min } from "@prismane/core/validators";
+
+console.log(min("Ivan is very cool", 2, "Username")); // Will return null
+console.log(min("Ivan is very cool", 100, "Username"));
+// Will return `Username has to be longer than 100 characters!`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          min: (v: string) => min(v, 4, "Username"),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                        |
+| ----------- | -------------------- | ---------------------------------- |
+| `value`     | `string`             | The string that will be validated. |
+| `length`    | `number`             | The minimum length of the string.  |
+| `fieldName` | `string / undefined` | The name of the field.             |

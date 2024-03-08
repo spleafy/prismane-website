@@ -3,7 +3,6 @@ import { Check, GithubLogo } from "@phosphor-icons/react";
 import { Card, Animation } from "@prismane/core";
 // Components
 import Button from "@/components/Button";
-import SectionSeparator from "@/components/SectionSeparator";
 // Containers
 import Section from "../Section";
 
@@ -12,12 +11,6 @@ const Contribute = () => {
     <Section
       className="lg:!py-48 lg:!flex-row justify-between"
       viewOptions={{ amount: 0.8 }}
-      background={
-        <>
-          <SectionSeparator />
-          <SectionSeparator position="bottom" />
-        </>
-      }
     >
       <div className="flex flex-col gap-2 lg:max-w-[50%] mb-12 lg:mb-0">
         <span className="lg:!text-start section-heading">

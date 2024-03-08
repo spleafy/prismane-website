@@ -1,0 +1,67 @@
+## Import
+
+```js
+import { CloseButton } from "@prismane/core";
+```
+
+## Usage
+
+The `CloseButton` component uses the [`Button`](/docs/components/button) component, but only renders an icon. Hence, you have to provide a _aria-label_ to the button, so that screen readers can give the button a meaning.
+
+```jsx preview
+<CloseButton aria-label="Close Modal" />
+```
+
+### CloseButton Variants
+
+Like the [`Button`](/docs/components/button) component, you can change the button's visual appearance by using the _variant_ prop.
+
+```jsx preview
+<>
+  <CloseButton variant="primary" aria-label="Close Popup" />
+  <CloseButton variant="secondary" aria-label="Close Popup" />
+  <CloseButton variant="tertiary" aria-label="Close Popup" />
+  <CloseButton variant="text" aria-label="Close Popup" />
+</>
+```
+
+### CloseButton Sizes
+
+Like the [`Button`](/docs/components/button) component, you can change the size of the button using the _size_ prop.
+
+```jsx preview
+<>
+  <CloseButton size="xs" aria-label="Close Download Popup" />
+  <CloseButton size="sm" aria-label="Close Download Popup" />
+  <CloseButton size="base" aria-label="Close Download Popup" />
+  <CloseButton size="md" aria-label="Close Download Popup" />
+  <CloseButton size="lg" aria-label="Close Download Popup" />
+</>
+```
+
+### CloseButton Color
+
+Like the [`Button`](/docs/components/button) component, you can change the color of the button using the _color_ prop.
+
+```jsx preview
+<CloseButton color="orange" aria-label="Close Settings" />
+```
+
+### Custom Button
+
+The `CloseButton` component uses the [`Button`](/docs/components/button) component and inherits all of its props, which means that we can easily customize the button only using props.
+
+```jsx preview
+<CloseButton
+  aria-label="Close Ad Popup"
+  br="full"
+  variant="secondary"
+  color="lime"
+/>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`CloseButton`](/docs/components-api/close-button-api)

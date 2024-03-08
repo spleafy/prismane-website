@@ -1,0 +1,24 @@
+## Import
+
+```js
+import { TransitionProps } from "@prismane/core";
+```
+
+## Props
+
+`Transition` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name         | Type                                                                                     | Description                                 | Default     |
+| ------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------- | ----------- |
+| `transition` | [PrismaneTransitions](/docs/getting-started/globals#prismanetransitions-type) / `string` | The transition properties of the container. | all         |
+| `duration`   | `number`                                                                                 | The duration of the transition.             | 150         |
+| `delay`      | `number`                                                                                 | The delay of the transition.                | 0           |
+| `timing`     | `string`                                                                                 | The timing of the transition.               | ease-in-out |
+
+## CSS
+
+`Transition` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class               | Description                                |
+| ------ | -------------------------- | ------------------------------------------ |
+| `root` | `.PrismaneTransition-root` | The container of the transition component. |

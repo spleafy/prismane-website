@@ -1,0 +1,47 @@
+## Import
+
+```js
+import { AspectRatio } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<AspectRatio ratio="16/9" w={320} bg="base" />
+```
+
+### Embed Video
+
+To embed a video, you can paste the iframe with *src* pointing to the video source and wrap that with the `AspectRatio` component.
+
+```jsx preview
+<AspectRatio ratio="1/1" w={420}>
+  <iframe
+    width="100%"
+    height="100%"
+    src="https://www.youtube.com/embed/w0AOGeqOnFY"
+    title="YouTube video player"
+    allowfullscreen
+  />
+</AspectRatio>
+```
+
+### Embed Image
+
+To embed an image, you have to add an *img* element with a *src* pointing to the image source and give it an *object-fit* of *cover* and then just wrap that with the `AspectRatio` component.
+
+```jsx preview
+<AspectRatio w={360} ratio="1/1">
+  <img
+    src="https://memes.co.in/memes/update/uploads/2021/04/65efc04-1536x1536.jpg"
+    alt="meme"
+    objectFit="cover"
+  />
+</AspectRatio>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`AspectRatio`](/docs/components-api/aspect-ratio-api)

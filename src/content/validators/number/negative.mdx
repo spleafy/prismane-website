@@ -1,0 +1,51 @@
+## Basic Usage
+
+```tsx
+import { negative } from "@prismane/core/validators";
+
+console.log(negative(-1)); // Will return null
+console.log(negative(1)); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      number: {
+        value: 0,
+        validators: {
+          negative: (v: any) => negative(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <NumberField
+        placeholder="Enter number: "
+        label="Number:"
+        {...register("number")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                        |
+| ----------- | -------------------- | ---------------------------------- |
+| `value`     | `number`             | The number that will be validated. |
+| `fieldName` | `string / undefined` | The name of the field.             |

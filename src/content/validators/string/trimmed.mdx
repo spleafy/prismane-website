@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { trimmed } from "@prismane/core/validators";
+
+console.log(trimmed("John Doe")); // Will return null
+console.log(trimmed("John                           Doe")); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      name: {
+        value: "",
+        validators: {
+          trimmed: (v: string) => trimmed(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="eg. John Doe"
+        label="Name:"
+        {...register("name")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                                                                           |
+| ----------- | -------------------- | ------------------------------------------------------------------------------------- |
+| `value`     | `string`             | The string that will be validated.                                                    |
+| `regExp`    | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |
+| `fieldName` | `string / undefined` | The name of the field.                                                                |

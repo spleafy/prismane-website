@@ -1,0 +1,116 @@
+## Import
+
+```js
+import { Badge } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Badge label="4">
+  <ActionButton icon={<EnvelopeSimple />} variant="secondary" color="base" />
+</Badge>
+```
+
+### Badge Positions
+
+You can change the position of the badge by using the _position_ prop. You can choose any of [PrismanePositions](/docs/getting-started/globals#prismanepositions) as a value. By default, the _right-start_ position is used.
+
+```jsx preview
+function Demo() {
+  const [position, setPosition] = useState("top");
+
+  const [point, setPoint] = useState("end");
+
+  return (
+    <Stack gap={fr(8)} align="center">
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio label="Top" value="top" />
+        <Radio label="Bottom" value="bottom" />
+        <Radio label="Left" value="left" />
+        <Radio label="Right" value="right" />
+      </Radio.Group>
+      <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
+        <Radio label="Start" value="start" />
+        <Radio label="Middle (e.g. right, left)" value="middle" />
+        <Radio label="End" value="end" />
+      </Radio.Group>
+      <Badge
+        label="4"
+        position={point !== "middle" ? `${position}-${point}` : position}
+      >
+        <ActionButton icon={<Bell />} variant="secondary" color="base" />
+      </Badge>
+    </Stack>
+  );
+}
+```
+
+### Badge Sizes
+
+Use the _size_ prop to change the size of the badge. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _base_ value is used.
+
+```jsx preview
+<>
+  <Badge label="4">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" size="xs" />
+  </Badge>
+  <Badge label="4" size="sm">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" size="sm" />
+  </Badge>
+  <Badge label="4" size="base">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+  <Badge label="4" size="md">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" size="md" />
+  </Badge>
+  <Badge label="4" size="lg">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" size="lg" />
+  </Badge>
+</>
+```
+
+### Badge Colors
+
+Use the _color_ prop to change the color scheme of the badge. You can use all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_, _base_ colors from the theme.
+
+By default, the _primary_ color is used.
+
+```jsx preview
+<>
+  <Badge label="4" color="red">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+  <Badge label="4" color="orange">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+  <Badge label="4" color="lime">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+  <Badge label="4" color="cyan">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+  <Badge label="4" color="amethyst">
+    <ActionButton icon={<Bell />} variant="secondary" color="base" />
+  </Badge>
+</>
+```
+
+### Change Text Color
+
+You can use the _cl_ prop to change the text color of the badge.
+
+```jsx preview
+<Badge label="4" color="base" cl="diamond">
+  <ActionButton icon={<Bell />} variant="secondary" color="base" />
+</Badge>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Badge`](/docs/components-api/badge-api)

@@ -1,0 +1,68 @@
+## Import
+
+```js
+import { Paper } from "@prismane/core";
+```
+
+## Usage
+
+```jsx preview
+<Paper w={120} h={120} />
+```
+
+### Paper Shadow
+
+Pass the _shadow_ prop to add a shadow to the paper container.
+
+```jsx preview
+<Paper w={120} h={120} shadow />
+```
+
+### Square Corners
+
+Use the _br_ prop to change the _border-radius_ property of the paper container. Use a value of _none_ to make the corners square.
+
+```jsx preview
+<Paper br="none" w={120} h={120} />
+```
+
+### Paper Background Color
+
+Use the _bg_ prop to change the background color of the paper container.
+
+You can use all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_, _base_ colors from the theme.
+
+To use [shades](/docs/getting-started/globals#prismaneshades) with the colors, provide the value as an array of this sort: _[name, shade]_
+
+```jsx preview
+<Paper bg="base" w={120} h={120} />
+```
+
+### Versatile Component
+
+`Paper` is a [versatile component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Paper } from "@prismane/core";
+
+function Demo() {
+  <Paper as="a">Link Paper</Paper>;
+}
+```
+
+You can also use components for the _as_ prop, for example NextJS's `Link` component:
+
+```jsx
+import { Paper } from "@prismane/core";
+import Link from "next/link";
+
+function Demo() {
+  <Paper as={Link}>NextJS Link Paper</Paper>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Paper`](/docs/components-api/paper-api)

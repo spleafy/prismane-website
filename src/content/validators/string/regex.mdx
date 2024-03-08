@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { regex } from "@prismane/core/validators";
+
+console.log(regex("martinpetrov", /^[a-z]+$/)); // Will return null
+console.log(regex("MARTIN", /^[a-z]+$/)); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          regex: (v: string) => regex(v, /^[a-z]+$/),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="eg. ivanivanov"
+        label="Username:"
+        {...register("username")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                        |
+| ----------- | -------------------- | ---------------------------------- |
+| `value`     | `number`             | The number that will be validated. |
+| `regExp`    | `RegExp`             | The regex that will be matched.    |
+| `fieldName` | `string / undefined` | The name of the field.             |

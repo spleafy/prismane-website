@@ -1,0 +1,52 @@
+## Basic Usage
+
+```tsx
+import { substring } from "@prismane/core/validators";
+
+console.log(substring("martin", "martinpetrov")); // Will return null
+console.log(substring("michael", "ivanpetkanov")); // Will return an error`
+```
+
+## useForm Hook Usage
+
+```jsx
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      substring: {
+        value: "",
+        validators: {
+          substring: (v: string) => substring(v, "prismaneisthebest"),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+      maw={300}
+    >
+      <TextField
+        placeholder="substring of prismaneisthebest"
+        label="Substring:"
+        {...register("substring")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Name        | Type                 | Description                          |
+| ----------- | -------------------- | ------------------------------------ |
+| `value`     | `string`             | The string that will be validated.   |
+| `string`    | `string`             | The string that will be searched in. |
+| `fieldName` | `string / undefined` | The name of the field.               |

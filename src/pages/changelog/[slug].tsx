@@ -2,8 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import path from "path";
 import fs from "fs";
-import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
 import semver from "semver";
+// MDX Parsing Plugins
+import remarkGfm from "remark-gfm";
+import rehypeMdxCodeProps from "rehype-mdx-code-props";
 // Containers
 import Hero from "@/containers/changelog/Hero";
 import Version from "@/containers/changelog/Version";
@@ -27,7 +30,7 @@ export async function getStaticPaths() {
   };
 }
 
-export function getStaticProps({ params }: any) {
+export async function getStaticProps({ params }: any) {
   const { slug } = params;
 
   const directoryPath = path.join(process.cwd(), "src/content/changelog/");
@@ -48,14 +51,19 @@ export function getStaticProps({ params }: any) {
 
     const filePath = path.join(directoryPath, sorted[0].fileName);
 
-    const file = fs.readFileSync(filePath, "utf-8");
+    const data = fs.readFileSync(filePath, "utf-8");
 
-    const { data, content } = matter(file);
+    const source = await serialize(data, {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [rehypeMdxCodeProps as any],
+      },
+      parseFrontmatter: true,
+    });
 
     const version = {
       version: sorted[0].fileName.split(".mdx")[0],
-      content,
-      data,
+      source,
     };
 
     return {
@@ -67,14 +75,19 @@ export function getStaticProps({ params }: any) {
 
   const filePath = path.join(directoryPath, `${slug}.mdx`);
 
-  const file = fs.readFileSync(filePath, "utf-8");
+  const data = fs.readFileSync(filePath, "utf-8");
 
-  const { data, content } = matter(file);
+  const source = await serialize(data, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeMdxCodeProps as any],
+    },
+    parseFrontmatter: true,
+  });
 
   const version = {
     version: slug,
-    content,
-    data,
+    source,
   };
 
   return {
@@ -102,7 +115,7 @@ const Page = ({ version }: any) => {
           content={`/release_banners/${version.version}.png`}
         />
       </Head>
-      <Image
+      {/* <Image
         src="/mesh_grid.png"
         alt="Grid Mesh Background"
         className="object-contain opacity-10 blend-to-bottom"
@@ -113,7 +126,7 @@ const Page = ({ version }: any) => {
         alt="Mesh Gradient Background"
         className="object-cover dark:opacity-20 opacity-30 blend-to-top rotate-180"
         fill
-      />
+      /> */}
       <Hero />
       <Version {...version} />
     </>

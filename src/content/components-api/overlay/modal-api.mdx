@@ -1,0 +1,52 @@
+## Import
+
+```js
+import { ModalProps, ModalHeaderProps, ModalFooterProps } from "@prismane/core";
+```
+
+## Props
+
+### Modal
+
+`Modal` extends [Paper](/docs/components-api/paper-api) and [Animation](/docs/components-api/animation-api) components' props.
+
+| Name       | Type         | Description                                           | Default  |
+| ---------- | ------------ | ----------------------------------------------------- | -------- |
+| `open`     | `boolean`    | Triggers the open state of the dialog.                | false    |
+| `closable` | `boolean`    | Triggers the closable state of the dialog.            | -        |
+| `onClose`  | `() => void` | Callback that will be executed on closing the dialog. | () => {} |
+
+### Modal.Header
+
+`Modal.Header` extends [Flex](/docs/components-api/flex-api) component's props.
+
+### Modal.Footer
+
+`Modal.Footer` extends [Flex](/docs/components-api/flex-api) component's props.
+
+## CSS
+
+### Modal
+
+`Modal` extends [Paper](/docs/components-api/paper-api) and [Animation](/docs/components-api/animation-api) components' CSS classes.
+
+| Rule   | Global Class               | Description                                           |
+| ------ | -------------------------- | ----------------------------------------------------- |
+| `root` | `.PrismaneModal-root`      | The wrapper box of the modal.                         |
+| `root` | `.PrismaneModal-root-open` | The wrapper box of the modal based on the open state. |
+
+### Modal.Header
+
+`Modal.Header` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                | Description                                      |
+| ------ | --------------------------- | ------------------------------------------------ |
+| `root` | `.PrismaneModalHeader-root` | The wrapper box of the modal's header component. |
+
+### Modal.Footer
+
+`Modal.Footer` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                | Description                                      |
+| ------ | --------------------------- | ------------------------------------------------ |
+| `root` | `.PrismaneModalFooter-root` | The wrapper box of the modal's footer component. |

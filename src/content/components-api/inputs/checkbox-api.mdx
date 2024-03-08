@@ -1,0 +1,25 @@
+## Import
+
+```js
+import { CheckboxProps } from "@prismane/core";
+```
+
+## Props
+
+`Checkbox` extends [Flex](/docs/components-api/flex-api), [Transition](/docs/components-api/transition-api) and [PrismaneFieldComponent](/docs/getting-started/globals#prismanefieldcomponent-type) component's props.
+
+| Name            | Type      | Description                        | Default |
+| --------------- | --------- | ---------------------------------- | ------- |
+| `indeterminate` | `boolean` | Toggles the state of the checkbox. | false   |
+
+## CSS
+
+`Checkbox` extends [Flex](/docs/components-api/flex-api), [Transition](/docs/components-api/transition-api) components' CSS classes.
+
+| Rule    | Global Class               | Description                                                    |
+| ------- | -------------------------- | -------------------------------------------------------------- |
+| `root`  | `.PrismaneCheckbox-root`   | The container of the checkbox component.                       |
+| `root`  | `.PrismaneCheckbox-active` | The container of the checkbox component based on it's `value`. |
+| `thumb` | `.PrismaneCheckbox-thumb`  | The thumb container of the checkbox component.                 |
+| `label` | `.PrismaneCheckbox-label`  | The label container of the checkbox component.                 |
+| `error` | `.PrismaneCheckbox-error`  | The error container of the checkbox component.                 |
