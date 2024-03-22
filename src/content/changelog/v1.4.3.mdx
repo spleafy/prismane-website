@@ -1,0 +1,21 @@
+---
+release: February 26, 2024
+---
+
+# 🧾 Release Notes
+
+This new version fixes multiple very important styling issues and fixes type declaration conflicts.
+
+# 🐛 Bug Fixes
+
+## Components
+
+- **Dialog**: Fixed dialog closing when clicked inside.
+- **Container**: Fixed maxSize prop type to support sizes up to 6xl.
+- **Button**: Fixed border-radius not scaling consistently on larger sizes.
+- **Button**: Fixed inconsistent background color on secondary variant in light and dark theme mode.
+- **Checkbox**: Fixed indeterminate state not being shown if the checkbox is not checked.
+
+## Typescript
+
+- Fixed TypeScript type declaration conflicts with JSDoc comments by removing all JSDoc comments.
