@@ -353,6 +353,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.15.tgz#eed1873d68755d3b52d6fcfcfa3493118430a512"
   integrity sha512-FzleM9AxZQK2nqsTDtBiY0PMEVWvnKnuu2i09+p6DHvrHsuucoV2j0tmw+kAT3L4hvsLdAIDv6MdGehsPIdT+Q==
 
+"@fontsource/poppins@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.10.tgz#44dbfeacb5d89efca5ad7ad6cc941b2ac1ee424b"
+  integrity sha512-oYZVHsnlwV3VWM1SE/m6SUxVh0QLk5+2wB+lBiXcI7N/0KVQWmV9YykaPqfJHBLvmdya+MAOnv+BQHeLU1vOOw==
+
 "@fontsource/poppins@^5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.8.tgz#a1c5540aedb3719a36eba5c7c5dfaa3aed3c9f80"
@@ -612,12 +617,15 @@
     picocolors "^1.0.0"
     tslib "^2.5.0"
 
-"@prismane/core@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@prismane/core/-/core-1.4.3.tgz#851b8757855a92f0deb91ecc559c85b094e305f7"
-  integrity sha512-V1Y6s6Xk4DJZzbAE48iguK/tEyihGV2TS13S86oly8z6r2bZAXKno/cOc4BI9MtwMTnSncp6vHMTzrhoGHamag==
+"@prismane/core@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@prismane/core/-/core-1.5.0.tgz#a5ffbcefe0cf6a156fafda5aaa34e416045b8d14"
+  integrity sha512-ED9p7Je1xJmyBBTbSLl1zXtYlU9nobFAeqrk9ZzfzlYa9joyE/A3HoPlJehs5+16+SxKcPFEguEtAhTV0opSqQ==
   dependencies:
+    "@fontsource/poppins" "^4.5.10"
+    "@phosphor-icons/react" "^2.0.9"
     "@stitches/react" "^1.2.8"
+    csstype "^3.1.3"
 
 "@react-hook/intersection-observer@^3.1.1":
   version "3.1.1"
@@ -1267,6 +1275,11 @@ csstype@^3.0.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+csstype@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
+  integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
 d@1, d@^1.0.1:
   version "1.0.1"
