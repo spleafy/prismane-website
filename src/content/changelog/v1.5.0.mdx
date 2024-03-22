@@ -1,0 +1,40 @@
+---
+release: March 22, 2024
+---
+
+# 🧾 Release Notes
+
+This new version introduces new props and features to components and provides numerous improvements and bug fixes throughout the codebase.
+
+# 💎 Improvements
+
+## Components
+
+- **Badge**: Improved badge positions.
+- **Button**: Loading state spinner is now shown as an icon, without removing the button's text, and now has a smaller stroke width.
+- **Form**: Removed type declarations for `onSubmit` and `onReset` props as they conflicted with default ones.
+- **Alert**: Custom actions passed to the `action` prop now close the alert.
+
+## Hooks
+
+- **useForm**: Improved error handling that provides concise error messages.
+
+# ✨ New
+
+## Components
+
+- **Text**: Now has predefined colors and respects the current theme mode.
+- **Radio.Group**: Now can show a label and error for the whole group using the newly added `label` and `error` props.
+- **Checkbox**: Now can replace the default icon using the newly added `icon` prop.
+- **Grid**: Now can handle `grid-template-areas` using the newly added `templateAreas` prop.
+- **Grid.Item**: Now can handle `grid-area` using the newly added `area` prop.
+- **All**: Now the `theme` object is passed to all properties of the `sx` prop, not only top-level ones, including `media queries`, `pseudo-classes`, and more.
+
+## TypeScript
+
+- Added CSS type declarations to all Styling Props of Prismane.
+
+# 🐛 Bug Fixes
+
+- **TextareaField**: Fixed layer classNames not following the naming convention.
+- **Grid.Item**: Fixed an issue with the `columnSpan` and `rowSpan` props.
