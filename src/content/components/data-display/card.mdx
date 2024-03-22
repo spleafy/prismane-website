@@ -120,6 +120,7 @@ Both `Card.Header` and `Card.Footer` extend the [`Flex`](/docs/components/flex) 
       icon={<DotsThreeVertical weight="bold" />}
       variant="secondary"
       color="base"
+      size="sm"
     />
   </Card.Header>
   Prismane was a mixture of passion, dedication and hard work. Numerous days of development
@@ -174,6 +175,8 @@ You can use the [`Stack`](/docs/components/stack) component to render multiple c
 
 ### Versatile Component
 
+`Card` is a [versatile component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
 ```jsx preview
 <Card w={420} as="a" href="https://youtu.be/dQw4w9WgXcQ?si=Ncz4aReXXWURx_oe">
   <Image
@@ -188,7 +191,7 @@ You can use the [`Stack`](/docs/components/stack) component to render multiple c
     fw="bold"
     cl={(theme) => (theme.mode === "dark" ? ["base", 100] : ["base", 900])}
   >
-    YOU HAVE WON 1,000,000 DOLARS
+    YOU HAVE WON 1,000,000 DOLLARS
   </Text>
   <Text
     mt={fr(2)}

@@ -13,8 +13,8 @@ const Footer = () => {
   }
 
   return (
-    <footer className="flex flex-col items-center justify-center relative overflow-hidden mt-12">
-      <div className="flex flex-col lg:grid grid-flow-col auto-cols-fr gap-8 xl:col-span-2 max-w-[1280px] justify-center md:justify-between w-full py-16 px-5 xl:px-0 sm:gap-32 lg:gap-40 border-t border-base-200 dark:border-base-800">
+    <footer className="flex flex-col items-center justify-center relative overflow-hidden mt-12 border-t border-base-200 dark:border-base-900">
+      <div className="flex flex-col lg:grid grid-flow-col auto-cols-fr gap-8 xl:col-span-2 max-w-[1280px] justify-center md:justify-between w-full py-16 px-5 xl:px-0 sm:gap-32 lg:gap-40">
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-3">
             <>
@@ -238,20 +238,22 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex max-w-[1280px] w-full items-center justify-between flex-col md:flex-row gap-4 border-t border-base-200 dark:border-base-800 py-6 px-5 xl:px-0 z-10">
-        <span className="text-sm dark:text-base-500 text-base-700">
-          Copyright © 2023 Prismane - MIT License
-        </span>
-        <span className="text-sm dark:text-base-500 text-base-700">
-          Made in <span className="mx-1">&#127463;&#127468;</span> by{" "}
-          <Link
-            href="https://www.github.com/spleafy"
-            target="_blank"
-            className="text-sm relative text-base-600 dark:text-base-300 hover:text-base-900 dark:hover:text-white"
-          >
-            Martin Petrov
-          </Link>
-        </span>
+      <div className="flex w-full justify-center border-t border-base-200 dark:border-base-900">
+        <div className="flex max-w-[1280px] w-full items-center justify-between flex-col md:flex-row gap-4 py-6 px-5 xl:px-0 z-10">
+          <span className="text-sm dark:text-base-500 text-base-700">
+            Copyright © 2023 Prismane - MIT License
+          </span>
+          <span className="text-sm dark:text-base-500 text-base-700">
+            Made in <span className="mx-1">&#127463;&#127468;</span> by{" "}
+            <Link
+              href="https://www.github.com/spleafy"
+              target="_blank"
+              className="text-sm relative text-base-600 dark:text-base-300 hover:text-base-900 dark:hover:text-white"
+            >
+              Martin Petrov
+            </Link>
+          </span>
+        </div>
       </div>
     </footer>
   );
