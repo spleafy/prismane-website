@@ -6,19 +6,22 @@ import { Progress } from "@prismane/core";
 
 ## Usage
 
-```jsx
-<Progress value={75} label="75%" />
+```jsx preview
+<Progress value={80} />
 ```
 
 ### Progress Sizes
 
-```jsx
-<Stack grow>
-  <Progress value={75} label="75%" size="xs" />
-  <Progress value={75} label="75%" size="sm" />
-  <Progress value={75} label="75%" size="base" />
-  <Progress value={75} label="75%" size="md" />
-  <Progress value={75} label="75%" size="lg" />
+Use the _size_ prop to change the size of the button. You can set the value to _xs_, _sm_, _base_, _md_, _lg_ or any other valid custom size. By default, the _base_ value is used.
+
+```jsx preview
+<Stack gap={fr(5)}>
+  <Progress value={30} size="xs" />
+  <Progress value={30} size="sm" />
+  <Progress value={30} size="base" />
+  <Progress value={30} size="md" />
+  <Progress value={30} size="lg" />
+  <Progress value={30} size="20px" />
 </Stack>
 ```
 

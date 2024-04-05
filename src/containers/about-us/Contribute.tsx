@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { Check, GithubLogo } from "@phosphor-icons/react";
-import { Card, Animation } from "@prismane/core";
 // Components
 import Button from "@/components/Button";
+import Card from "@/components/Card";
 // Containers
 import Section from "../Section";
 
 const Contribute = () => {
   return (
     <Section
-      className="lg:!py-48 lg:!flex-row justify-between"
+      className="lg:!py-48 lg:!flex-row justify-between !items-start"
       viewOptions={{ amount: 0.8 }}
     >
       <div className="flex flex-col gap-2 lg:max-w-[50%] mb-12 lg:mb-0">
@@ -23,7 +23,7 @@ const Contribute = () => {
           repository.
         </span>
       </div>
-      <Card className="!p-6 lg:!p-12 border !dark:!bg-base-700/10 !bg-base-500/10 rounded-2xl !gap-8 w-full lg:w-fit lg:min-w-[500px]">
+      <Card className="!p-6 lg:!p-12 flex flex-col !gap-8 w-full lg:w-fit lg:min-w-[500px]">
         <span className="text-5xl lg:ext-7xl font-black dark:text-white text-base-900">
           Chip in.
         </span>

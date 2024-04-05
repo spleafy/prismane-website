@@ -6,24 +6,26 @@ import { Circle } from "@prismane/core";
 
 ## Usage
 
+The `Circle` component extends the [`Center`](/docs/components/layout/center) component and renders a container with fully rounded corners.
+
+Use the _size_ prop to adjust the size of the circle.
+
 ```jsx preview
-<Circle size={60} bg="primary" cl="white">
-  <Fire size={24} />
+<Circle size={fr(10)} bg="primary">
+  <Wrench size={24} />
 </Circle>
 ```
 
 ### Versatile Component
 
+`Circle` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
 ```jsx
-<Circle
-  as="a"
-  href="https://www.google.com"
-  target="_blank"
-  size={60}
-  bg="base"
->
-  <Fire size={20} />
-</Circle>
+import { Circle } from "@prismane/core";
+
+function Demo() {
+  <Circle as="button">Circle Button</Circle>;
+}
 ```
 
 ## API

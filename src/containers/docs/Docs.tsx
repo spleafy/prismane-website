@@ -124,10 +124,6 @@ export const Docs: FC<DocsProps> = ({ children }) => {
 
   const current = content.find((nav: any) => nav.slug === routes[0]);
 
-  const currentIndex = current.items.findIndex(
-    (obj: any) => obj.slug === routes[1]
-  );
-
   const currentItem = findBySlugs(content, routes);
 
   const currentCategory = findBySlugs(content, routes.slice(0, -1));
@@ -252,11 +248,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
         )}
         <div className="flex flex-col grow">{children}</div>
         {currentItem.slug !== "getting-started" && (
-          <Navigation
-            current={current}
-            currentIndex={currentIndex}
-            routes={routes}
-          />
+          <Navigation slugs={routes} />
         )}
       </div>
       <TableOfContents>

@@ -116,6 +116,31 @@ function Demo() {
 }
 ```
 
+### Modal Animation
+
+The `Modal` component extends the [`Animation`](/docs/components/animation) component and its respective props.
+
+You can change the default animation using the _animation_ prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
+
+- _in_: Style object with properties for mounted state.
+- _out_: Style object with properties for unmounted state.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal animation="fade" open={open} onClose={() => setOpen(false)}>
+        This is a simple modal with a fade animation. To close it just click the
+        Escape key or simply click the backdrop.
+      </Modal>
+    </>
+  );
+}
+```
+
 ## API
 
 Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.

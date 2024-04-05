@@ -1,21 +1,26 @@
 ## Import
 
+Prismane's `Popover` component has 2 additional inner components:
+
+- _Popover.Control_: The container that wraps the control that will trigger the popover.
+- _Popover.Panel_: The container that wraps the content of the popover.
+
 ```js
 import { Popover } from "@prismane/core";
 ```
 
 ## Usage
 
-```jsx
+```jsx preview
 <Popover>
   <Popover.Control>
-    <Button>Toggle Popover</Button>
+    <Button>Toggle</Button>
   </Popover.Control>
   <Popover.Panel>
     <Text
       cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
     >
-      This is the content of the popover!
+      JavaScript was developed in 10 days by Brendan Eich.
     </Text>
   </Popover.Panel>
 </Popover>
@@ -23,153 +28,47 @@ import { Popover } from "@prismane/core";
 
 ### Popover Positions
 
-```jsx
-<Flex w="100%" gap={fr(5)} wrap="wrap">
-  <Popover position="right-start">
-    <Popover.Control>
-      <Button>right-start</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+You can change the position of the popover by using the _position_ prop. You can choose any of [PrismanePositions](/docs/getting-started/globals#prismanepositions) as a value. By default, the _bottom_ position is used.
+
+```jsx preview
+function Demo() {
+  const [position, setPosition] = useState("bottom");
+
+  const [point, setPoint] = useState("middle");
+
+  return (
+    <Stack gap={fr(4)} align="center">
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
       >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="right">
-    <Popover.Control>
-      <Button>right</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="right-end">
-    <Popover.Control>
-      <Button>right-end</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="left-start">
-    <Popover.Control>
-      <Button>left-start</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="left">
-    <Popover.Control>
-      <Button>left</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="left-end">
-    <Popover.Control>
-      <Button>left-end</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="top-start">
-    <Popover.Control>
-      <Button>top-start</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="top">
-    <Popover.Control>
-      <Button>top</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="top-end">
-    <Popover.Control>
-      <Button>top-end</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="bottom-start">
-    <Popover.Control>
-      <Button>bottom-start</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="bottom">
-    <Popover.Control>
-      <Button>bottom</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-  <Popover position="bottom-end">
-    <Popover.Control>
-      <Button>bottom-end</Button>
-    </Popover.Control>
-    <Popover.Panel>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        This is the content of the popover!
-      </Text>
-    </Popover.Panel>
-  </Popover>
-</Flex>
+        <Radio label="Top" value="top" />
+        <Radio label="Bottom" value="bottom" />
+        <Radio label="Left" value="left" />
+        <Radio label="Right" value="right" />
+      </Radio.Group>
+      <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
+        <Radio label="Start" value="start" />
+        <Radio label="None (e.g. right, left)" value="none" />
+        <Radio label="End" value="end" />
+      </Radio.Group>
+      <Popover position={point !== "none" ? `${position}-${point}` : position}>
+        <Popover.Control>
+          <Button>Toggle</Button>
+        </Popover.Control>
+        <Popover.Panel>
+          <Text
+            cl={(theme) =>
+              theme.mode === "dark" ? ["base", 200] : ["base", 700]
+            }
+          >
+            This is the content of the popover!
+          </Text>
+        </Popover.Panel>
+      </Popover>
+    </Stack>
+  );
+}
 ```
 
 ## API

@@ -6,13 +6,15 @@ import { Spinner } from "@prismane/core";
 
 ## Usage
 
-```jsx
+```jsx preview
 <Spinner />
 ```
 
 ### Spinner Sizes
 
-```jsx
+Use the _size_ prop to change the size of the spinner. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _base_ value is used.
+
+```jsx preview
 <>
   <Spinner size="xs" />
   <Spinner size="sm" />
@@ -20,6 +22,14 @@ import { Spinner } from "@prismane/core";
   <Spinner size="md" />
   <Spinner size="lg" />
 </>
+```
+
+### Spinner Color
+
+You can use the _cl_ prop to change the color of the spinner. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette), _primary_, _base_ colors from the theme or any valid color.
+
+```jsx preview
+<Spinner cl="primary" />
 ```
 
 ## API

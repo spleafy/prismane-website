@@ -98,7 +98,7 @@
   }
 
   .hero-subheading {
-    @apply dark:text-white text-base-700 text-center text-lg sm:text-xl font-medium sm:max-w-[50%] mb-4 -mt-4;
+    @apply dark:text-base-300 text-base-700 text-center text-lg sm:text-xl font-medium sm:max-w-[50%] mb-4 -mt-4;
   }
 
   .section-heading {

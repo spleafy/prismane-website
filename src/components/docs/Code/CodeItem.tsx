@@ -20,8 +20,8 @@ const CodeItem = ({
     <button
       className={`px-2 py-1.5 focus:outline-none text-sm rounded-md flex items-center gap-1.5 transition-colors ${
         item === value
-          ? "text-base-700 dark:text-base-200 bg-base-100 dark:bg-base-800 code-item-active"
-          : "hover:bg-base-50 dark:hover:bg-base-800/50 code-item-inactive"
+          ? "text-base-700 dark:text-base-200 bg-base-100 dark:bg-base-900 code-item-active"
+          : "hover:bg-base-50 dark:hover:bg-base-900/50 code-item-inactive"
       } ${className ? className : className}`}
       onClick={() => item !== value && setValue(item)}
       {...props}

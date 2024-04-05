@@ -35,6 +35,7 @@ The `Grid` component supports a few helpful shorthand props:
 | ----------------- | ----------------------- | --------------------------------------------------------------------- |
 | `templateColumns` | `grid-template-columns` | _1_, _2_, _3_, _4_, _5_, _6_, _7_, _8_, _9_, _10_, _11_, _12_, _none_ |
 | `templateRows`    | `grid-template-rows`    | _1_, _2_, _3_, _4_, _5_, _6_, _7_, _8_, _9_, _10_, _11_, _12_, _none_ |
+| `templateAreas`   | `grid-template-areas`   | _string_                                                              |
 | `flow`            | `grid-auto-flow`        | _row_, _column_, _dense_, _row-dense_, _column-dense_                 |
 | `autoColumns`     | `grid-auto-columns`     | _auto_, _min_, _max_, _fr_                                            |
 | `autoRows`        | `grid-auto-rows`        | _auto_, _min_, _max_, _fr_                                            |
@@ -76,29 +77,34 @@ Use the _columnStart_ and _columnEnd_ props to make the element start and end at
 </Grid>
 ```
 
-### Complex Layout
+### Grid Areas
 
-Using the combination of all of the shorthand props that the `Grid` and `Grid.Item` components expose, we could easily build complex layouts.
+The _templateAreas_ prop of the `Grid` component specifies layout areas within the grid. You can use template literals to name the area.
+
+Use the _area_ prop fo the `Grid.Item` component to reference the area that you want the given item to occupy.
 
 ```jsx preview
 <Grid
-  gap={fr(1)}
-  templateColumns={8}
-  templateRows={4}
+  templateAreas={`"header header header"
+                  "nav main main"
+                  "nav footer footer"`}
+  templateRows={"40px 1fr 40px"}
+  templateColumns={"120px 1fr"}
   h={fr(60)}
   w="100%"
+  gap={fr(1)}
   cl="white"
 >
-  <Grid.Item columnStart={1} columnEnd={2} rowStart={2} rowEnd={5} bg="primary">
+  <Grid.Item pl="8px" bg="orange" area={"header"}>
+    Header
+  </Grid.Item>
+  <Grid.Item pl="8px" bg="pink" area={"nav"}>
     Nav
   </Grid.Item>
-  <Grid.Item columnStart={1} columnEnd={9} rowStart={1} rowEnd={2} bg="lime">
-    Top Bar
-  </Grid.Item>
-  <Grid.Item columnStart={2} columnEnd={9} rowStart={2} rowEnd={4} bg="teal">
+  <Grid.Item pl="8px" bg="green" area={"main"}>
     Main
   </Grid.Item>
-  <Grid.Item columnStart={2} columnEnd={9} rowStart={4} rowEnd={5} bg="ruby">
+  <Grid.Item pl="8px" bg="blue" area={"footer"}>
     Footer
   </Grid.Item>
 </Grid>

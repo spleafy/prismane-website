@@ -96,7 +96,9 @@ function Default() {
 
 ### Dialog Animation
 
-You can change the default animation using the `animation` prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
+The `Dialog` component extends the [`Animation`](/docs/components/animation) component and its respective props.
+
+You can change the default animation using the _animation_ prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
 
 - _in_: Style object with properties for mounted state.
 - _out_: Style object with properties for unmounted state.
@@ -152,10 +154,28 @@ You can change the position of the dialog by using the _position_ prop. You can 
 function Default() {
   const [open, setOpen] = useState(false);
 
+  const [position, setPosition] = useState("top");
+
+  const [point, setPoint] = useState("end");
+
   return (
-    <>
+    <Stack gap={fr(4)} align="center">
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio label="Top" value="top" />
+        <Radio label="Bottom" value="bottom" />
+        <Radio label="Left" value="left" />
+        <Radio label="Right" value="right" />
+      </Radio.Group>
+      <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
+        <Radio label="Start" value="start" />
+        <Radio label="None (e.g. right, left)" value="none" />
+        <Radio label="End" value="end" />
+      </Radio.Group>
       <Dialog
-        position="top-end"
+        position={point !== "none" ? `${position}-${point}` : position}
         w={fr(96)}
         open={open}
         onClose={() => setOpen(false)}
@@ -186,7 +206,7 @@ function Default() {
       >
         {open ? "Close Dialog" : "Open Dialog"}
       </Button>
-    </>
+    </Stack>
   );
 }
 ```

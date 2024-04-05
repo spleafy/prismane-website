@@ -13,8 +13,7 @@ const Hero = () => {
           About Us
         </h1>
         <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-          At Prismane, we firmly believe that software should be within reach of
-          all.
+          Learn more about us, our story, mission and core values.
         </p>
       </div>
     </Section>

@@ -34,7 +34,7 @@ const Future = () => {
   ];
 
   return (
-    <Section>
+    <Section className="!items-start">
       <span className="section-heading">
         Our <span className="text-gradient">future</span> plans
       </span>

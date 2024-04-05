@@ -6,168 +6,154 @@ import { Transition } from "@prismane/core";
 
 ## Usage
 
-By default, `Transition` transitions all CSS properties.
-
-```jsx
+```jsx preview
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Transition
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "base" : "lg"}
+        br={toggled ? "full" : "lg"}
         bg={toggled ? "base" : "primary"}
+        ml={toggled ? fr(16) : 0}
       />
-    </Flex>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
   );
 }
 ```
 
 ### Transition Delay
 
-The `delay` of the `Transition` can be set, by providing a different value to the `delay` property. By default, the `delay` value is `0`.
+Use the _delay_ prop to change the delay of the transition.
 
-```jsx
+```jsx preview
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Transition
-        delay={250}
+        delay={500}
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "base" : "lg"}
+        br={toggled ? "full" : "lg"}
         bg={toggled ? "base" : "primary"}
+        ml={toggled ? fr(16) : 0}
       />
-    </Flex>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
   );
 }
 ```
 
 ### Transition Duration
 
-The `duration` of the `Transition` can be changed, by providing a different value to the `duration` property. By default, the `duration` value is `150`.
+Use the _duration_ prop to change the duration of the transition. By default, a value of _150_ is used.
 
-```jsx
+```jsx preview
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Transition
         duration={1000}
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "base" : "lg"}
+        br={toggled ? "full" : "lg"}
         bg={toggled ? "base" : "primary"}
+        ml={toggled ? fr(16) : 0}
       />
-    </Flex>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
   );
 }
 ```
 
 ### Transition Timing
 
-The `timing` of the `Transition` can be changed, by providing a different value to the `timing` property. By default, the `timing` value is `ease-in-out`.
+Use the _timing_ prop to change the duration of the transition. By default, a value of _ease-in-out_ is used.
 
-```jsx
+```jsx preview
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Transition
-        timing="ease-in"
+        timing="linear"
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "base" : "lg"}
+        br={toggled ? "full" : "lg"}
         bg={toggled ? "base" : "primary"}
+        ml={toggled ? fr(16) : 0}
       />
-    </Flex>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
   );
 }
 ```
 
 ### Transition Properties
 
-`Transition` has the following properties:
+Use the _transition_ prop to change what CSS properties should be transitioned.
 
-- `all` - all,
-- `colors` - color, background-color, border-color, text-decoration-color, fill, stroke,
-- `opacity` - opacity,
-- `shadow` - box-shadow, filter,
-- `transform` - transform,
+Values can be:
 
-```jsx
+- _all_ - all CSS properties
+- _colors_ - color, background-color, border-color, text-decoration-color, fill, stroke.
+- _opacity_ - opacity
+- _shadow_ - box-shadow, filter
+- _transform_ - transform
+
+By default, a value of _all_ is used.
+
+```jsx preview
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
+  const [transition, setTransition] = useState("all");
+
   return (
-    <Flex gap={fr(5)}>
-      <Flex direction="column" gap={fr(5)}>
-        <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
-        <Flex gap={fr(5)}>
-          <Transition
-            transition="all"
-            duration={1000}
-            w={fr(30)}
-            h={fr(30)}
-            br={toggled ? "base" : "lg"}
-            bg={toggled ? "base" : "primary"}
-            op={toggled ? 0.5 : 1}
-            bsh={toggled ? "sm" : "lg"}
-          />
-          <Transition
-            transition="colors"
-            duration={1000}
-            w={fr(30)}
-            h={fr(30)}
-            br={toggled ? "base" : "lg"}
-            bg={toggled ? "base" : "primary"}
-            op={toggled ? 0.5 : 1}
-            bsh={toggled ? "sm" : "lg"}
-          />
-          <Transition
-            transition="opacity"
-            duration={1000}
-            w={fr(30)}
-            h={fr(30)}
-            br={toggled ? "base" : "lg"}
-            bg={toggled ? "base" : "primary"}
-            op={toggled ? 0.5 : 1}
-            bsh={toggled ? "sm" : "lg"}
-          />
-          <Transition
-            transition="shadow"
-            duration={1000}
-            w={fr(30)}
-            h={fr(30)}
-            br={toggled ? "base" : "lg"}
-            bg={toggled ? "base" : "primary"}
-            op={toggled ? 0.5 : 1}
-            bsh={toggled ? "sm" : "lg"}
-          />
-          <Transition
-            transition="transform"
-            duration={1000}
-            w={fr(30)}
-            h={fr(30)}
-            br={toggled ? "base" : "lg"}
-            bg={toggled ? "base" : "primary"}
-            op={toggled ? 0.5 : 1}
-            bsh={toggled ? "sm" : "lg"}
-          />
-        </Flex>
-      </Flex>
-    </Flex>
+    <Stack gap={fr(4)}>
+      <Transition
+        transition={transition}
+        duration={1000}
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? "base" : "lg"}
+        bg={toggled ? "base" : "primary"}
+        op={toggled ? 0.5 : 1}
+        bsh={toggled ? "sm" : "lg"}
+      />
+      <Radio.Group
+        value={transition}
+        onChange={(e) => setTransition(e.target.value)}
+      >
+        <Radio label="All" value="all" />
+        <Radio label="Colors" value="colors" />
+        <Radio label="Opacity" value="opacity" />
+        <Radio label="Shadow" value="shadow" />
+        <Radio label="Transform" value="transform" />
+      </Radio.Group>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
   );
+}
+```
+
+### Versatile Component
+
+`Transition` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Transition } from "@prismane/core";
+
+function Demo() {
+  <Transition as="button">Transition Button</Transition>;
 }
 ```
 

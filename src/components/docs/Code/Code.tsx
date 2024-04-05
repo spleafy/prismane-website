@@ -22,9 +22,16 @@ interface CodeProps extends HTMLAttributes<HTMLElement> {
     button?: string;
   };
   preview?: boolean;
+  expandable?: boolean;
 }
 
-const Code = ({ files, classNames, preview = false, ...props }: CodeProps) => {
+const Code = ({
+  files,
+  classNames,
+  preview = false,
+  expandable = false,
+  ...props
+}: CodeProps) => {
   const [active, setActive] = useState<string | null>(
     typeof files !== "string" ? files[0].name : null
   );
@@ -46,7 +53,7 @@ const Code = ({ files, classNames, preview = false, ...props }: CodeProps) => {
         }}
       >
         <button
-          className={`focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 p-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 dark:hover:bg-base-200/10 hover:bg-base-500/10 underline-offset-4 hover:underline focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center absolute top-2.5 right-2.5 ${
+          className={`focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 p-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 dark:hover:bg-base-900/70 hover:bg-base-500/10 underline-offset-4 hover:underline focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center absolute top-2.5 right-2.5 ${
             classNames && classNames.button ? classNames.button : ""
           }`}
           onClick={() => {
@@ -79,6 +86,7 @@ const Code = ({ files, classNames, preview = false, ...props }: CodeProps) => {
             item={file.name}
             language={file.language ?? "jsx"}
             preview={preview}
+            expandable={expandable}
             key={index}
           >
             {file.value}

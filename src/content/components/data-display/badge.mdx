@@ -35,12 +35,12 @@ function Demo() {
       </Radio.Group>
       <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
         <Radio label="Start" value="start" />
-        <Radio label="Middle (e.g. right, left)" value="middle" />
+        <Radio label="None (e.g. right, left)" value="none" />
         <Radio label="End" value="end" />
       </Radio.Group>
       <Badge
         label="4"
-        position={point !== "middle" ? `${position}-${point}` : position}
+        position={point !== "none" ? `${position}-${point}` : position}
       >
         <ActionButton icon={<Bell />} variant="secondary" color="base" />
       </Badge>
@@ -101,7 +101,7 @@ By default, the _primary_ color is used.
 
 ### Change Text Color
 
-You can use the _cl_ prop to change the text color of the badge.
+You can use the _cl_ prop to change the text color of the badge. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette), _primary_, _base_ colors from the theme or any valid color.
 
 ```jsx preview
 <Badge label="4" color="base" cl="diamond">

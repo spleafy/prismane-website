@@ -6,81 +6,54 @@ import { Stack } from "@prismane/core";
 
 ## Usage
 
-```jsx
+```jsx preview
 <Stack>
-  <Flex h={fr(10)} w="100%" bg="ruby">
+  <Button color="base" full>
     1
-  </Flex>
-  <Flex h={fr(10)} w="100%" bg="lime">
+  </Button>
+  <Button color="base" full>
     2
-  </Flex>
-  <Flex h={fr(10)} w="100%" bg="teal">
+  </Button>
+  <Button color="base" full>
     3
-  </Flex>
+  </Button>
 </Stack>
 ```
 
-### Stack Directions
+### Stack Gap
 
-```jsx
-<Flex direction="column" gap={fr(5)} w="100%">
-  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
-    Column:
-  </Text>
-  <Stack mb={fr(5)}>
-    <Flex w="100%" h={fr(10)} bg="ruby">
-      1
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="lime">
-      2
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="teal">
-      3
-    </Flex>
-  </Stack>
-  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
-    Row:
-  </Text>
-  <Stack mb={fr(5)} direction="row">
-    <Flex w="100%" h={fr(10)} bg="ruby">
-      1
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="lime">
-      2
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="teal">
-      3
-    </Flex>
-  </Stack>
-  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
-    Row Reverse:
-  </Text>
-  <Stack mb={fr(5)} direction="row-reverse">
-    <Flex w="100%" h={fr(10)} bg="ruby">
-      1
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="lime">
-      2
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="teal">
-      3
-    </Flex>
-  </Stack>
-  <Text cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}>
-    Column Reverse:
-  </Text>
-  <Stack mb={fr(5)} direction="column-reverse">
-    <Flex w="100%" h={fr(10)} bg="ruby">
-      1
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="lime">
-      2
-    </Flex>
-    <Flex w="100%" h={fr(10)} bg="teal">
-      3
-    </Flex>
-  </Stack>
-</Flex>
+Use the _gap_ prop to change the spacing between the items.
+
+```jsx preview
+<Stack gap={fr(8)}>
+  <Button color="base" full>
+    1
+  </Button>
+  <Button color="base" full>
+    2
+  </Button>
+  <Button color="base" full>
+    3
+  </Button>
+</Stack>
+```
+
+### Stack Items Horizontally
+
+Pass the _direction_ prop and set it to _row_ to make the stack horizontal.
+
+```jsx preview
+<Stack direction="row">
+  <Button color="base" full>
+    1
+  </Button>
+  <Button color="base" full>
+    2
+  </Button>
+  <Button color="base" full>
+    3
+  </Button>
+</Stack>
 ```
 
 ## API

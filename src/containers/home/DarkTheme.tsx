@@ -11,12 +11,28 @@ import DarkThemeExample, {
   DarkThemeExampleSource,
 } from "../examples/DarkThemeExample";
 
-const codeContent = `
+const codeContentDark = `
 import { PrismaneProvider } from "@prismane/core";
 
 export default function App({ Component, pageProps }: any) {
   const theme = {
     mode: "dark",
+  };
+
+  return (
+    <PrismaneProvider theme={theme}>
+        <Component {...pageProps} />
+    </PrismaneProvider>
+  );
+}
+`;
+
+const codeContentLight = `
+import { PrismaneProvider } from "@prismane/core";
+
+export default function App({ Component, pageProps }: any) {
+  const theme = {
+    mode: "light",
   };
 
   return (
@@ -66,7 +82,7 @@ const DarkTheme = () => {
           <SingleCode
             icon={<File />}
             name="App.tsx"
-            value={codeContent}
+            value={theme.mode === "dark" ? codeContentDark : codeContentLight}
             classNames={{
               root: "h-full !my-0",
             }}

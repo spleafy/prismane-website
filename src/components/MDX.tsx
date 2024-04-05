@@ -173,7 +173,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         li: ({ children, ...props }) =>
           t(
             <li
-              className={`dark:text-white text-base-800 ${c("li")}`}
+              className={`dark:text-white text-base-800 my-1 ${c("li")}`}
               {...props}
             >
               {children}
@@ -247,7 +247,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
             <Link
               {...props}
               target="_blank"
-              className={`text-primary-500 [&>code]:!border-dashed hover:[&>code]:!border-solid hover:[&>code]:border-primary-500 underline decoration-primary-500 decoration-dashed hover:decoration-solid ${c(
+              className={`text-primary-500 [&>code]:!border-dashed hover:[&>code]:!border-solid hover:[&>code]:border-primary-500 [&>code]:underline [&>code]:decoration-primary-500 hover:underline decoration-primary-500 ${c(
                 "a"
               )}`}
             >

@@ -11,7 +11,7 @@ import rehypeMdxCodeProps from "rehype-mdx-code-props";
 import Hero from "@/containers/blog/Hero";
 import Section from "@/containers/Section";
 // Components
-import GlowCard from "@/components/GlowCard";
+import Card from "@/components/Card";
 // Authors
 import authors from "@/authors";
 
@@ -79,7 +79,11 @@ export default function Blog({ blogs }: any) {
             key={index}
             className="h-full"
           >
-            <GlowCard className="h-full [&>div]:h-full">
+            <Card
+              classNames={{
+                wrapper: "h-full",
+              }}
+            >
               <div className="w-full pb-[55%] relative">
                 <Image
                   src={`/blog/${blog.frontmatter.name}/banner.png`}
@@ -126,7 +130,7 @@ export default function Blog({ blogs }: any) {
                   )}
                 </div>
               </div>
-            </GlowCard>
+            </Card>
           </Link>
         ))}
       </Section>

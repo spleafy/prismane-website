@@ -6,196 +6,85 @@ import { Animation } from "@prismane/core";
 
 ## Usage
 
+The `Animation` component extends the [`Transition`](/docs/components/miscellaneous/transition) component and its respective props.
+
+It provides a predefined set of animations that can be programmatically mounted and unmounted.
+
+Use the _animated_ prop to mount and unmount the animation.
+
 ```jsx preview
 function Demo() {
   const [animated, setAnimated] = useState(true);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setAnimated(!animated)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Animation w={fr(30)} h={fr(30)} bg="primary" animated={animated} />
-    </Flex>
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
   );
 }
 ```
 
 ### Animation Variants
 
-By default, `Animation` exports these animations:
+Use the _animation_ prop to change the animation that will be used.
 
-- `fade`
-- `scale`
-- `scale-x`
-- `scale-y`
-- `skew-up`
-- `skew-down`
-- `rotate-left`
-- `rotate-right`
-- `slide-down`
-- `slide-up`
-- `slide-left`
-- `slide-right`
+Values can be _fade_, _scale_, _scale-x_, _scale-y_, _skew-up_, _skew-down_, _rotate-left_, _rotate-right_, _slide-down_, _slide-up_, _slide-right_, _slide-down_, _slide-left_ or an animation object.
 
-```jsx
+By default, a value of _fade_ is used.
+
+```jsx preview
 function Demo() {
   const [animated, setAnimated] = useState(true);
 
+  const [animation, setAnimation] = useState("fade");
+
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setAnimated(!animated)}>Toggle Properties</Button>
-      <Flex gap={fr(5)} wrap="wrap">
-        <Animation
-          animation="fade"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Fade
-          </Flex>
-        </Animation>
-        <Animation
-          animation="scale"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Scale
-          </Flex>
-        </Animation>
-        <Animation
-          animation="scale-y"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Scale Y
-          </Flex>
-        </Animation>
-        <Animation
-          animation="scale-x"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Scale X
-          </Flex>
-        </Animation>
-        <Animation
-          animation="skew-up"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Skew Up
-          </Flex>
-        </Animation>
-        <Animation
-          animation="skew-down"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Skew Down
-          </Flex>
-        </Animation>
-        <Animation
-          animation="rotate-left"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Rotate Left
-          </Flex>
-        </Animation>
-        <Animation
-          animation="rotate-right"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Rotate Right
-          </Flex>
-        </Animation>
-        <Animation
-          animation="slide-down"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Slide Down
-          </Flex>
-        </Animation>
-        <Animation
-          animation="slide-up"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Slide Up
-          </Flex>
-        </Animation>
-        <Animation
-          animation="slide-left"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Slide Left
-          </Flex>
-        </Animation>
-        <Animation
-          animation="slide-right"
-          w={fr(16)}
-          h={fr(16)}
-          bg="primary"
-          animated={animated}
-        >
-          <Flex ta="center" justify="center" align="center" h="100%">
-            Slide Right
-          </Flex>
-        </Animation>
-      </Flex>
-    </Flex>
+    <Stack gap={fr(4)}>
+      <Animation
+        animation={animation}
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animated}
+      />
+      <Radio.Group
+        value={animation}
+        onChange={(e) => setAnimation(e.target.value)}
+        wrap="wrap"
+      >
+        <Radio label="fade" value="fade" />
+        <Radio label="scale" value="scale" />
+        <Radio label="scale-x" value="scale-x" />
+        <Radio label="scale-y" value="scale-y" />
+        <Radio label="skew-up" value="skew-up" />
+        <Radio label="skew-down" value="skew-down" />
+        <Radio label="rotate-left" value="rotate-left" />
+        <Radio label="rotate-right" value="rotate-right" />
+        <Radio label="slide-down" value="slide-down" />
+        <Radio label="slide-up" value="slide-up" />
+        <Radio label="slide-right" value="slide-right" />
+        <Radio label="slide-left" value="slide-left" />
+      </Radio.Group>
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
   );
 }
 ```
 
-### Custom animation
+### Custom Animation
 
-The `animation` object must contain the following properties:
+To create your own animation, you must pass an object to the _animation_ prop. The object must follow the following structure:
 
-- `in` In which the animated CSS properties are defined.
-- `out` In which the CSS properties before animation are defined.
+- _in_: Style object with properties for mounted state.
+- _out_: Style object with properties for unmounted state.
 
-```jsx
+```jsx preview
 function Demo() {
   const [animated, setAnimated] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setAnimated(!animated)}>Toggle Properties</Button>
+    <Stack gap={fr(4)}>
       <Animation
         w={fr(30)}
         h={fr(30)}
@@ -209,34 +98,90 @@ function Demo() {
           out: { transform: "translateX(0px)", borderRadius: "0px" },
         }}
       />
-    </Flex>
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
+  );
+}
+```
+
+### Animation Delay
+
+Like the [`Transition`](/docs/components/miscellaneous/transition) component you can use the _delay_ prop to change the delay of the animation.
+
+```jsx preview
+function Demo() {
+  const [animated, setAnimated] = useState(true);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Animation
+        delay={500}
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animated}
+      />
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
+  );
+}
+```
+
+### Animation Duration
+
+Like the [`Transition`](/docs/components/miscellaneous/transition) component you can use the _duration_ prop to change the duration of the animation. By default, a value of _150_ is used.
+
+```jsx preview
+function Demo() {
+  const [animated, setAnimated] = useState(true);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Animation
+        duration={1000}
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animated}
+      />
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
+  );
+}
+```
+
+### Animation Timing
+
+Like the [`Transition`](/docs/components/miscellaneous/transition) component you can use the _timing_ prop to change the duration of the animation. By default, a value of _ease-in-out_ is used.
+
+```jsx preview
+function Demo() {
+  const [animated, setAnimated] = useState(true);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Animation
+        timing="linear"
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animated}
+      />
+      <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
+    </Stack>
   );
 }
 ```
 
 ### Versatile Component
 
-```jsx
-function Demo() {
-  const [animated, setAnimated] = useState(true);
+`Animation` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
 
-  return (
-    <Flex direction="column" gap={fr(5)}>
-      <Button onClick={() => setAnimated(!animated)}>Toggle Properties</Button>
-      <Animation
-        as={Flex}
-        justify="center"
-        align="center"
-        ta="center"
-        bg="primary"
-        w={fr(60)}
-        h={fr(20)}
-        animated={animated}
-      >
-        Animated Flex Component
-      </Animation>
-    </Flex>
-  );
+```jsx
+import { Animation } from "@prismane/core";
+
+function Demo() {
+  <Animation as="p">Animated Paragraph</Animation>;
 }
 ```
 

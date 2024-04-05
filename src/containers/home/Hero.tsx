@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { ArrowRight } from "@phosphor-icons/react";
 // Components
 import Button from "@/components/Button";
@@ -10,11 +9,9 @@ import Announce from "@/components/Announce";
 import Section from "../Section";
 
 const Hero = () => {
-  const [copy, setCopy] = useState(false);
-
   return (
     <Section className="section-hero sm:!pt-24">
-      <Announce href="/changelog/latest">Prismane v1.4 is out now!</Announce>
+      <Announce href="/changelog/latest">Prismane v1.5 is out now!</Announce>
       <h1 className="hero-heading">
         Build exceptional React apps with{" "}
         <span className="text-gradient">blazing speed.</span>

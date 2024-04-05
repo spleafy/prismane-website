@@ -20,9 +20,9 @@ export default function About_Us() {
       </Head>
       <Hero />
       <History />
-      <Future />
       <Values />
-      <Contribute />
+      <Future />
+      {/* <Contribute /> */}
       <Start />
     </>
   );

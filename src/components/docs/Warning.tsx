@@ -10,7 +10,7 @@ const Warning = ({
 }: HTMLAttributes<HTMLElement>) => {
   return (
     <Note
-      icon={<PhosphorWarning />}
+      icon={<PhosphorWarning size={32} />}
       className={`!border-amber-500/20 !bg-amber-50/50 dark:!border-amber-500/30 dark:!bg-amber-500/10 !text-amber-900 dark:!text-amber-200 ${
         className ? className : ""
       }`}
