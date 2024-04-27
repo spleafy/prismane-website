@@ -6,182 +6,281 @@ import { SelectField } from "@prismane/core";
 
 ## Usage
 
-```jsx
-function Demo() {
-  const [value, setValue] = useState("");
+The `SelectField` provides a selectable list of options.
 
-  const handleChange = (e) => setValue(e.target.value);
+It is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
+
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
+
+Use the _options_ prop to add options to the field. The structure of each option must be as follows:
+
+- _value_: The value of the option that will be set as the field's value if chosen.
+- _element_: The element that will be displayed as an item of the dropdown.
+
+```jsx preview
+function Demo() {
+  const [framework, setFramework] = useState("");
 
   return (
     <SelectField
-      value={value}
-      onChange={handleChange}
-      placeholder="Choose A Shape"
+      label="Name:"
+      placeholder="Pick a framework"
+      value={framework}
+      onChange={(e) => setFramework(e.target.value)}
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { value: "react", element: "React" },
+        { value: "olivia", element: "Angular" },
+        { value: "vue", element: "Vue" },
       ]}
     />
   );
 }
 ```
 
-## With Icon
+### Scrollable Dropdown
 
-```jsx
+By default, the dropdown of the `SelectField` has a max height of _260px_ after which it becomes scrollable.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
-  const handleChange = (e) => setValue(e.target.value);
-
   return (
     <SelectField
+      placeholder="Scrollable Field"
+      label="Scrollable Field:"
       value={value}
-      onChange={handleChange}
-      placeholder="Choose A Shape"
-      icon={<GearSix />}
+      onChange={(e) => setValue(e.target.value)}
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+        { value: "isabella", element: "Isabella" },
+        { value: "sophia", element: "Sophia" },
+        { value: "michael", element: "Michael" },
+        { value: "william", element: "William" },
+        { value: "james", element: "James" },
+        { value: "benjamin", element: "Benjamin" },
+        { value: "elijah", element: "Elijah" },
+        { value: "lucas", element: "Lucas" },
+        { value: "alexander", element: "Alexander" },
+        { value: "oliver", element: "Oliver" },
+        { value: "ethan", element: "Ethan" },
+        { value: "david", element: "David" },
+        { value: "jackson", element: "Jackson" },
+        { value: "mason", element: "Mason" },
+        { value: "sebastian", element: "Sebastian" },
       ]}
     />
   );
 }
 ```
 
-### SelectField Variants
+### Customized Option
 
-```jsx
+Use the _item_ prop to customize each item of the dropdown. The _item_ prop accepts a function with the following parameters in the following order:
+
+- _chosen_: A boolean showcasing if the current option is the chosen one.
+- _value_: The value of the current option.
+- _element_: The element of the current option.
+- _active_: A boolean showcasing if the current option is currently selected by keyboard navigation.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
   return (
-    <>
-      <SelectField
-        variant="outlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        variant="filled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        variant="underlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        variant="unstyled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-    </>
+    <SelectField
+      placeholder="Choose a name"
+      label="Name:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+      ]}
+      item={(chosen, value, element, active) => (
+        <Flex
+          px={fr(4)}
+          py={fr(2)}
+          fs="sm"
+          cl={(theme) =>
+            chosen ? "primary" : theme.mode === "dark" ? "white" : ["base", 900]
+          }
+          bg={(theme) =>
+            active
+              ? theme.mode === "dark"
+                ? ["base", 900, 0.2]
+                : ["base", 100, 0.2]
+              : "transparent"
+          }
+        >
+          {element}
+        </Flex>
+      )}
+    />
   );
 }
 ```
 
-### SelectField Sizes
+### Keyboard Navigation
 
-```jsx
+The `SelectField` component's options can be navigated using the _Arrow_ keys on the keyboard and selected using _Enter_. The dropdown can be closed using the _Esc_ key.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
   return (
-    <Flex direction="column" gap={fr(2)}>
-      <SelectField
-        size="xs"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        size="sm"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        size="base"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        size="md"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-      <SelectField
-        size="lg"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { element: "Star", value: "star" },
-          { element: "Circle", value: "circle" },
-          { element: "Square", value: "square" },
-        ]}
-      />
-    </Flex>
+    <SelectField
+      placeholder="Navigate using keyboard"
+      label="Choose a name:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+      ]}
+    />
   );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field will not show suggestions and won't change.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <SelectField
+      placeholder="This field is read only"
+      label="Choose a name:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+      ]}
+      readOnly
+    />
+  );
+}
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <SelectField
+      placeholder="This field is disabled"
+      label="Choose a name:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      options={[
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+      ]}
+      disabled
+    />
+  );
+}
+```
+
+### useForm Example
+
+The `SelectField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_select: {
+        value: "",
+      },
+    },
+  });
+
+  return (
+    <SelectField
+      label="Controlled SelectField"
+      placeholder="Controlled Field"
+      options={[
+        { value: "liam", element: "Liam" },
+        { value: "olivia", element: "Olivia" },
+        { value: "noah", element: "Noah" },
+        { value: "emma", element: "Emma" },
+        { value: "ava", element: "Ava" },
+      ]}
+      {...register("hook_select")}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from "react";
+import { SelectField } from "@prismane/core";
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <SelectField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `SelectField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { SelectField } from "@prismane/core";
+
+function Demo() {
+  return <SelectField aria-label="SelectField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { SelectField } from "@prismane/core";
+
+function Demo() {
+  return <SelectField label="SelectField's Input" />;
 }
 ```
 

@@ -6,118 +6,166 @@ import { NumberField } from "@prismane/core";
 
 ## Usage
 
-```jsx
-function Demo() {
-  const [value, setValue] = useState(0);
+The `NumberField` is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
 
-  return (
-    <NumberField value={value} onChange={(e) => setValue(e.target.value)} />
-  );
-}
-```
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
 
-### With Icon
-
-```jsx
+```jsx preview
 function Demo() {
   const [value, setValue] = useState(0);
 
   return (
     <NumberField
+      label="Increment and decrement:"
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      icon={<Images />}
     />
   );
 }
 ```
 
-### NumberField Variants
+### Min Limit
 
-```jsx
+Use the _min_ prop to limit the value from the bottom.
+
+```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(10);
 
   return (
-    <>
-      <NumberField
-        variant="outlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        variant="filled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        variant="underlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        variant="unstyled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-    </>
+    <NumberField
+      label="Decrement the value:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      min={5}
+    />
   );
 }
 ```
 
-### NumberField Sizes
+### Max Limit
 
-```jsx
+Use the _max_ prop to limit the value from the bottom.
+
+```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(10);
 
   return (
-    <Flex direction="column" gap={fr(2)}>
-      <NumberField
-        size="xs"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        size="sm"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        size="base"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        size="md"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <NumberField
-        size="lg"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-    </Flex>
+    <NumberField
+      label="Increment the value:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      max={15}
+    />
   );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field won't change.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState(0);
+
+  return (
+    <NumberField
+      label="Choose a number:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      readOnly
+    />
+  );
+}
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState(0);
+
+  return (
+    <NumberField
+      label="Choose a number:"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      disabled
+    />
+  );
+}
+```
+
+### useForm Example
+
+The `NumberField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_number: {
+        value: 0,
+      },
+    },
+  });
+
+  return (
+    <NumberField
+      label="Controlled NumberField"
+      placeholder="Controlled Field"
+      {...register("hook_number")}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from "react";
+import { NumberField } from "@prismane/core";
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <NumberField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `NumberField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { NumberField } from "@prismane/core";
+
+function Demo() {
+  return <NumberField aria-label="NumberField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { NumberField } from "@prismane/core";
+
+function Demo() {
+  return <NumberField label="NumberField's Input" />;
 }
 ```
 

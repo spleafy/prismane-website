@@ -6,54 +6,160 @@ import { Switch } from "@prismane/core";
 
 ## Usage
 
-```jsx
-function Demo() {
-  const [value, setValue] = useState(false);
-
-  return <Switch value={value} onChange={(e) => setValue(e.target.checked)} />;
-}
-```
-
-### Switch Sizes
-
-```jsx
+```jsx preview
 function Demo() {
   const [value, setValue] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(2)}>
+    <Switch
+      label="Switch"
+      name="switch"
+      value={value}
+      onChange={(e) => setValue(e.target.checked)}
+    />
+  );
+}
+```
+
+### Disabled Switch
+
+You can disable the switch by passing the _disabled_ prop.
+
+```jsx preview
+<>
+  <Switch label="I am disabled" name="disabled" disabled />
+  <Switch
+    label="I am checked and disabled"
+    name="checked_disabled"
+    value={true}
+    disabled
+  />
+</>
+```
+
+### Switch Sizes
+
+Use the _size_ prop to change the switch's size. Values can be either _xs_, _sm_, _base_, _md_ or _lg_.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState("");
+
+  return (
+    <>
       <Switch
         size="xs"
-        label="Default Field:"
+        label="xs"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Switch
         size="sm"
-        label="Default Field:"
+        label="sm"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Switch
         size="base"
-        label="Default Field:"
+        label="base"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Switch
         size="md"
-        label="Default Field:"
+        label="md"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
       <Switch
         size="lg"
-        label="Default Field:"
+        label="lg"
         value={value}
         onChange={(e) => setValue(e.target.checked)}
       />
-    </Flex>
+    </>
   );
+}
+```
+
+### useForm Example
+
+The `Switch` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_switch: {
+        value: false,
+      },
+    },
+  });
+
+  return <Switch label="Controlled Switch" {...register("hook_switch")} />;
+}
+```
+
+### useForm Example
+
+The `Switch` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_switch: {
+        value: false,
+      },
+    },
+  });
+
+  return <Switch label="Controlled Switch" {...register("hook_switch")} />;
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from "react";
+import { Switch } from "@prismane/core";
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <Switch ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `Switch` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { Switch } from "@prismane/core";
+
+function Demo() {
+  return <Switch aria-label="Switch's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { Switch } from "@prismane/core";
+
+function Demo() {
+  return <Switch label="Switch's Input" />;
 }
 ```
 

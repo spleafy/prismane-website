@@ -138,6 +138,43 @@ function Demo() {
 }
 ```
 
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from "react";
+import { Checkbox } from "@prismane/core";
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <Checkbox ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `Checkbox` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { Checkbox } from "@prismane/core";
+
+function Demo() {
+  return <Checkbox aria-label="Checkbox's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { Checkbox } from "@prismane/core";
+
+function Demo() {
+  return <Checkbox label="Checkbox's Input" />;
+}
+```
+
 ## API
 
 Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.

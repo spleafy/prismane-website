@@ -6,13 +6,24 @@ import { NativeSelectField } from "@prismane/core";
 
 ## Usage
 
-```jsx
+The `NativeSelectField` is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
+
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
+
+Use the _options_ prop to add options to the field. The structure of each option must be as follows:
+
+- _value_: The value of the option that will be set as the field's value if chosen.
+- _label_: The text label that will be displayed as an item of the dropdown.
+
+```jsx preview
 <NativeSelectField
-  name="select"
+  name="framework"
+  label="Choose a framework:"
+  placeholder="Choose your favorite framework"
   options={[
-    { value: "demon-slayer", label: "The Demon Slayer" },
-    { value: "doomsday", label: "Doomsday Incoming" },
-    { value: "titanic", label: "The Titanic" },
+    { value: "react", label: "React" },
+    { value: "angular", label: "Angular" },
+    { value: "vue", label: "Vue" },
   ]}
 />
 ```
@@ -25,178 +36,144 @@ function Demo() {
 
   return (
     <NativeSelectField
-      name="select"
+      name="framework"
+      label="Choose a framework:"
+      placeholder="Choose your favorite framework"
+      options={[
+        { value: "react", label: "React" },
+        { value: "angular", label: "Angular" },
+        { value: "vue", label: "Vue" },
+      ]}
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      options={[
-        { value: "demon-slayer", label: "The Demon Slayer" },
-        { value: "doomsday", label: "Doomsday Incoming" },
-        { value: "titanic", label: "The Titanic" },
-      ]}
     />
   );
 }
 ```
 
-### With Icon
+### Read Only Field
 
-```jsx
-<NativeSelectField
-  name="select"
-  icon={<GearSix />}
-  options={[
-    { value: "demon-slayer", label: "The Demon Slayer" },
-    { value: "doomsday", label: "Doomsday Incoming" },
-    { value: "titanic", label: "The Titanic" },
-  ]}
-/>
-```
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field will not show options and won't change.
 
-### With Addon
-
-```jsx
-<NativeSelectField
-  name="select"
-  addons={<Field.Addon position="left">Name</Field.Addon>}
-  options={[
-    { value: "demon-slayer", label: "The Demon Slayer" },
-    { value: "doomsday", label: "Doomsday Incoming" },
-    { value: "titanic", label: "The Titanic" },
-  ]}
-/>
-```
-
-### NativeSelectField Variants
-
-```jsx
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
   return (
-    <>
-      <NativeSelectField
-        variant="outlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        variant="filled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        variant="underlined"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        variant="unstyled"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-    </>
+    <NativeSelectField
+      name="framework"
+      label="Choose a framework:"
+      placeholder="Choose your favorite framework"
+      options={[
+        { value: "react", label: "React" },
+        { value: "angular", label: "Angular" },
+        { value: "vue", label: "Vue" },
+      ]}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      readOnly
+    />
   );
 }
 ```
 
-### NativeSelectField Sizes
+### Disabled Field
 
-```jsx
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
   return (
-    <Flex direction="column" gap={fr(2)}>
-      <NativeSelectField
-        size="xs"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        size="sm"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        size="base"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        size="md"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-      <NativeSelectField
-        size="lg"
-        placeholder="Default Field"
-        label="Default Field:"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        options={[
-          { value: "demon-slayer", label: "The Demon Slayer" },
-          { value: "doomsday", label: "Doomsday Incoming" },
-          { value: "titanic", label: "The Titanic" },
-        ]}
-      />
-    </Flex>
+    <NativeSelectField
+      name="framework"
+      label="Choose a framework:"
+      placeholder="Choose your favorite framework"
+      options={[
+        { value: "react", label: "React" },
+        { value: "angular", label: "Angular" },
+        { value: "vue", label: "Vue" },
+      ]}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      disabled
+    />
   );
+}
+```
+
+### useForm Example
+
+The `NativeSelectField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_native_select: {
+        value: "",
+      },
+    },
+  });
+
+  return (
+    <NativeSelectField
+      label="Controlled NativeSelectField"
+      placeholder="Controlled Field"
+      options={[
+        { value: "react", label: "React" },
+        { value: "angular", label: "Angular" },
+        { value: "vue", label: "Vue" },
+      ]}
+      {...register("hook_native_select")}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from "react";
+import { NativeSelectField } from "@prismane/core";
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <NativeSelectField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `NativeSelectField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { NativeSelectField } from "@prismane/core";
+
+function Demo() {
+  return <NativeSelectField aria-label="NativeSelectField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { NativeSelectField } from "@prismane/core";
+
+function Demo() {
+  return <NativeSelectField label="NativeSelectField's Input" />;
 }
 ```
 

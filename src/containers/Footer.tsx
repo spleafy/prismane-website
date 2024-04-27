@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="flex items-center gap-4 flex-wrap">
             <Link
               href="https://twitter.com/prismaneui"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image
@@ -43,7 +43,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://discord.gg/gFvcmdpKeb"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image
@@ -56,7 +56,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://www.reddit.com/r/prismane"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image
@@ -69,7 +69,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://github.com/prismaneui/prismane"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image
@@ -82,7 +82,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://www.youtube.com/@prismaneui"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image
@@ -95,7 +95,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://medium.com/@prismaneui"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-800 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
+              className="flex items-center justify-center w-8 h-8 focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-base-700 dark:text-base-200 hover:text-base-900 dark:hover:text-white hover:bg-base-50 dark:hover:bg-base-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400"
               target="_blank"
             >
               <Image

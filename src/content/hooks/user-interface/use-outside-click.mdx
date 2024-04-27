@@ -6,25 +6,20 @@ import { useOutsideClick } from "@prismane/core/hooks";
 
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const ref = useRef(null);
 
-  const [clicked, setClicked] = useState(false);
+  const [shown, setShown] = useState(true);
 
-  useOutsideClick(ref, () => {
-    setClicked(true);
-  });
+  useOutsideClick(ref, () => setShown(false));
 
   return (
-    <Stack>
-      <Box w={fr(30)} h={fr(30)} bg="primary" ref={ref} />
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Clicked outside: {clicked.toString()}
-      </Text>
-    </Stack>
+    <>
+      <Button onClick={() => setShown(true)}>Show Paper</Button>
+
+      {shown && <Paper ref={ref}>Click outside to close</Paper>}
+    </>
   );
 }
 ```

@@ -44,14 +44,45 @@ function Demo() {
 }
 ```
 
-### Complex Menu
+### Labeled Menu
 
-```jsx preview expandable
+Use the `Menu.Label` component to separate the menu into different labeled subparts.
+
+It provides the needed spacing and adapts to the theme mode changes.
+
+```jsx preview
 function Demo() {
   const [open, setOpen] = useState(false);
 
   return (
-    <Flex direction="column" gap={fr(2)} w={fr(64)}>
+    <Stack w={fr(64)}>
+      <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
+      <Menu w={fr(64)} open={open}>
+        <Menu.Label>Account</Menu.Label>
+        <Menu.Item>Account</Menu.Item>
+        <Menu.Item>Messages</Menu.Item>
+        <Menu.Item>Settings</Menu.Item>
+
+        <Menu.Label>Workspace</Menu.Label>
+        <Menu.Item>Overview</Menu.Item>
+        <Menu.Item>Members</Menu.Item>
+        <Menu.Item>Workspace Settings</Menu.Item>
+      </Menu>
+    </Stack>
+  );
+}
+```
+
+### Menu With Icons
+
+Use the `Menu.Icon` component to add icons into the items of the menu.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Stack w={fr(64)}>
       <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
       <Menu w={fr(64)} open={open}>
         <Menu.Label>Account</Menu.Label>
@@ -69,15 +100,60 @@ function Demo() {
         </Menu.Item>
         <Menu.Item>
           <Menu.Icon>
-            <Images />
+            <GearSix />
           </Menu.Icon>
-          Media
+          Settings
+        </Menu.Item>
+
+        <Menu.Label>Workspace</Menu.Label>
+        <Menu.Item>
+          <Menu.Icon>
+            <Cards />
+          </Menu.Icon>
+          Overview
         </Menu.Item>
         <Menu.Item>
           <Menu.Icon>
-            <MagnifyingGlass />
+            <Users />
           </Menu.Icon>
-          Search
+          Members
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <GearSix />
+          </Menu.Icon>
+          Workspace Settings
+        </Menu.Item>
+      </Menu>
+    </Stack>
+  );
+}
+```
+
+### Menu Colors
+
+Use the _color_ prop of the `Menu.Item` component to change it's background and text colors. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_ and _base_ colors from the theme.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Stack w={fr(64)}>
+      <Button onClick={() => setOpen(!open)}>Toggle Menu</Button>
+      <Menu w={fr(64)} open={open}>
+        <Menu.Label>Account</Menu.Label>
+        <Menu.Item>
+          <Menu.Icon>
+            <User />
+          </Menu.Icon>
+          Account
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Icon>
+            <Chat />
+          </Menu.Icon>
+          Messages
         </Menu.Item>
         <Menu.Item>
           <Menu.Icon>
@@ -92,7 +168,7 @@ function Demo() {
           Log Out
         </Menu.Item>
       </Menu>
-    </Flex>
+    </Stack>
   );
 }
 ```
