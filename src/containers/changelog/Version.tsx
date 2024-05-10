@@ -108,7 +108,7 @@ const Version = ({ version, content, data, ...props }: VersionProps) => {
               ),
               li: ({ children, ...props }) => (
                 <li
-                  className="dark:text-white text-base-800 text-lg sm:text-xl"
+                  className="dark:text-white text-base-800 text-lg sm:text-xl [&>ul]:ml-8"
                   {...props}
                 >
                   - {children}

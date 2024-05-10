@@ -1,0 +1,40 @@
+---
+release: May 8, 2024
+---
+
+# 🧾 Release Notes
+
+This new version fixes multiple issues across field components, styling issues, type issues, and some functionality issues.
+
+# 🐛 Bug Fixes
+
+## Components
+
+- **NativeSelectField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **NumberField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **PinField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **SelectField**:
+  - Fixed the functionality of the `disabled` and `readOnly` props.
+  - Fixed an issue where the dropdown container made the field higher than others.
+- **SegmentedField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **NativeDateField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **PasswordField**:
+  - Fixed the functionality of the `disabled` and `readOnly` props.
+  - Fixed an issue where the hidden input obstructed the layout of the fields.
+  - Fixed an issue where only a given set of properties were passed to each field.
+- **TextField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **TextareaField**: Fixed the functionality of the `disabled` and `readOnly` props.
+- **Button**:
+  - Fixed inconsistent background color on secondary variant in dark mode.
+  - Fixed the border color when having a variant of `tertiary` and the button is hovered.
+- **Transition**: Fixes an issue where the `property` prop did not change the `transition-property` style.
+- **Menu**: Fixed an issue where the menu was not scrollable if it exceeded a given height.
+
+## Typescript
+
+- **Accordion.Icon**: Fixed the prop type for the `active` parameter of the `children` prop if provided as a function.
+- **Container**: Fixed the prop type for the `maxSize` prop to allow any valid numeric or string value too.
+- **Gradient**: Fixed the prop types for the `from`, `to`, and `deg` props making them not required.
+- **Grid**: Fixed the prop types for the `templateColumns` and `templateRows` props.
+- **AutocompleteField**: Fixed the prop type for the function passed to the `filter` prop.
+- Fixed the type of the `sx` prop.
