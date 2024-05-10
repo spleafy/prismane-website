@@ -173,7 +173,9 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         li: ({ children, ...props }) =>
           t(
             <li
-              className={`dark:text-white text-base-800 my-1 ${c("li")}`}
+              className={`dark:text-white text-base-800 my-1 [&>ul]:ml-6 [&>ul]:!list-[circle] ${c(
+                "li"
+              )}`}
               {...props}
             >
               {children}

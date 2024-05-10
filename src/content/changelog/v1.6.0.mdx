@@ -1,0 +1,43 @@
+---
+release: May 11, 2024
+---
+
+# 🧾 Release Notes
+
+This new version introduces new props and features to components and hooks and provides numerous improvements and bug fixes throughout the codebase.
+
+# 💎 Improvements
+
+## Components
+
+- **Portal**: Improved performance by reducing unnecessary use of hooks.
+- **Table**: The table now occupies the entire width of its parent.
+- **Dialog**: Improved default animations by making them related to the value of the `position` prop.
+- **Field**: Every field component now occupies the entire width of its parent.
+- **Menu**: Improved spacing of `Menu.Label` by providing a margin when the label isn't the first child in the menu container.
+
+# ✨ New
+
+## Components
+
+- **Progress**: Now can change its color using the `color` prop.
+- **Table**:
+  - Now can change the lines between the columns and rows using the `lines` prop.
+  - Now can toggle the table border using the `bordered` prop.
+  - Now can make the table appear as 'striped' using the `striped` prop.
+  - Now can automatically change the `padding` and `font-size` of the table using the `size` prop, making the table appear smaller or bigger.
+- **Tabs**: Now each `Tabs.Tab` can be disabled using the `disabled` prop.
+- **Spinner**: Now the color of the spinner can be changed using the `color` prop.
+- **TextareaField**: Now can be resized using the `resize` prop.
+- **All**:
+  - The `fs` prop now supports both Prismane's predefined values and any other valid value for the `font-size` CSS property.
+  - The `fw` prop now supports both Prismane's predefined values and any other valid value for the `font-weight` CSS property.
+
+## Hooks
+
+- **useClickOutside**: Now accepts a third parameter - an array of DOM event names that will trigger the callback. By default, the hook listens for `mousedown` and `touchstart` events.
+
+# 🐛 Bug Fixes
+
+- **Table**: Fixed a border appearing above the `Table.Head` component.
+- **TextField**: Fixed an issue where the `prefix` wasn't shown properly, due to prop inheritance.
