@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <Section className="section-hero sm:!pt-24">
-      <Announce href="/changelog/latest">Prismane v1.4 is out now!</Announce>
+      <Announce href="/changelog/latest">Prismane v1.6 is out now!</Announce>
       <h1 className="hero-heading">
         Build exceptional React apps with{" "}
         <span className="text-gradient">blazing speed.</span>
