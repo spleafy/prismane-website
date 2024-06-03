@@ -4,9 +4,36 @@
 import { useDimensions } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useDimensions` hook accepts the following parameters:
+
+| Name  | Type        | Description                      | Default Value |
+| ----- | ----------- | -------------------------------- | ------------- |
+| `ref` | _RefObject_ | The ref of the target container. | -             |
+
+## Return Value
+
+The `useDimensions` hook returns an object containing the following properties:
+
+| Name      | Type                                                          | Description                                              |
+| --------- | ------------------------------------------------------------- | -------------------------------------------------------- |
+| `top`     | _number_                                                      | The top position of the container.                       |
+| `bottom`  | _number_                                                      | The bottom position of the container.                    |
+| `left`    | _number_                                                      | The left position of the container.                      |
+| `right`   | _number_                                                      | The right position of the container.                     |
+| `width`   | _number_                                                      | The width of the container.                              |
+| `height`  | _number_                                                      | The height of the container.                             |
+| `x`       | _number_                                                      | The x position of the container.                         |
+| `y`       | _number_                                                      | The y position of the container.                         |
+| `center`  | _\{x: number, y: number}_                                     | The center point's x and y coordinates of the container. |
+| `margin`  | _\{top: number, right: number, bottom: number, left: number}_ | The margin for each side of the container.               |
+| `padding` | _\{top: number, right: number, bottom: number, left: number}_ | The padding for each side of the container.              |
+| `border`  | _\{top: number, right: number, bottom: number, left: number}_ | The border for each side of the container.               |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const ref = useRef(null);
 
@@ -28,18 +55,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name    | Type     | Description                         | Default |
-| ------- | -------- | ----------------------------------- | ------- |
-| `value` | `any`    | The value that should be debounced. | -       |
-| `delay` | `number` | The debounce delay.                 | `500`   |
-
-### Return Value
-
-| Name        | Type  | Description          |
-| ----------- | ----- | -------------------- |
-| `debounced` | `any` | The debounced value. |

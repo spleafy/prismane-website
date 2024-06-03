@@ -4,26 +4,20 @@
 import { useId } from "@prismane/core/hooks";
 ```
 
-## Usage
+## Return Value
 
-```jsx
-function Demo() {
-  const id = useId();
-
-  return (
-    <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-    >
-      Refresh to regenerate id: {id}
-    </Text>
-  );
-}
-```
-
-## API
-
-### Return Value
+The `useId` hook returns the following variable:
 
 | Name | Type     | Description       |
 | ---- | -------- | ----------------- |
-| `id` | `string` | The generated id. |
+| `id` | _string_ | The generated id. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const id = useId();
+
+  return <Text>Refresh to regenerate id: {id}</Text>;
+}
+```

@@ -4,28 +4,54 @@
 import { useSorting } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useSorting` hook accepts the following parameters:
+
+| Name               | Type                                       | Description                                     | Default Value                          |
+| ------------------ | ------------------------------------------ | ----------------------------------------------- | -------------------------------------- |
+| `data`             | _any[]_                                    | The data that will be tracked.                  | -                                      |
+| `initialKey`       | _string_, _null_                           | The key by which the data will be sorted.       | _null_                                 |
+| `initialDirection` | _'asc'_, _'desc'_                          | The direction by which the data will be sorted. | _'asc'_                                |
+| `options`          | _\{ resetDirectionOnKeyChange?: boolean }_ | The options of the hook.                        | _\{ resetDirectionOnKeyChange: true }_ |
+
+## Return Value
+
+The `useSorting` hook returns an object containing the following properties:
+
+| Name              | Type                                  | Description                                                           |
+| ----------------- | ------------------------------------- | --------------------------------------------------------------------- |
+| `sorted`          | _any[]_                               | The sorted data.                                                      |
+| `key`             | _string_                              | The current key by which the hook is sorting.                         |
+| `direction`       | _'asc'_, _'desc'_                     | The current direction by which the hook is sorting.                   |
+| `setKey`          | _(key: string) => void_               | The function that sets the new key by which the hook will sort.       |
+| `setDirection`    | _(direction: 'asc' / 'desc') => void_ | The function that sets the new direction by which the hook will sort. |
+| `toggleDirection` | _() => void_                          | The function that toggles the direction by which the hook will sort.  |
+
 ## Usage
 
-```jsx
+Use the _setKey_ function that is returned by the hook, to specify by which key of each object to sort.
+
+By default, a value of _null_ is used, which means that the data will not be sorted.
+
+```jsx preview
 function Demo() {
   const items = [
-    { name: "Apple", quantity: 10 },
     { name: "Banana", quantity: 5 },
+    { name: "Apple", quantity: 10 },
     { name: "Cherry", quantity: 15 },
     { name: "Date", quantity: 8 },
   ];
 
-  const { sorted, key, direction, setKey, toggleDirection } = useSorting(
-    items,
-    "name"
-  );
+  const { sorted, key, setKey } = useSorting(items);
 
   return (
-    <Stack as={Center}>
-      <Button onClick={() => setKey("name")}>Sort by Name</Button>
-      <Button onClick={() => setKey("quantity")}>Sort by Quantity</Button>
-      <Button onClick={toggleDirection}>Toggle Order</Button>
-      <Stack mt={fr(6)}>
+    <Stack>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => setKey("name")}>Sort by name</Button>
+        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+      </Flex>
+      <Stack>
         {sorted.map((item, index) => (
           <Text key={index}>
             {item.name} - {item.quantity}
@@ -33,38 +59,164 @@ function Demo() {
         ))}
       </Stack>
       <Text>
-        Sorting by: <Text as="strong">{key}</Text> (Order:{" "}
-        <Text as="strong">{direction}</Text>)
+        Sorting by: <Text as="strong">{key}</Text>
       </Text>
     </Stack>
   );
 }
 ```
 
-## API
+### Initial Sorting Key
 
-### Parameters
+Pass the _initialKey_ parameter, which is the second parameter, to change the initial sorting key.
 
-| Name               | Type                | Description                                     | Default                               |
-| ------------------ | ------------------- | ----------------------------------------------- | ------------------------------------- |
-| `data`             | `any[]`             | The data that will be tracked.                  | -                                     |
-| `initialKey`       | `string / null`     | The key by which the data will be sorted.       | null                                  |
-| `initialDirection` | `'asc' / 'desc'`    | The direction by which the data will be sorted. | 'asc'                                 |
-| `options`          | `useSortingOptions` | The options of the hook.                        | `{ resetDirectionOnKeyChange: true }` |
+```jsx preview
+function Demo() {
+  const items = [
+    { name: "Banana", quantity: 5 },
+    { name: "Apple", quantity: 10 },
+    { name: "Cherry", quantity: 15 },
+    { name: "Date", quantity: 8 },
+  ];
 
-```tsx
-type useSortingOptions = {
-  resetDirectionOnKeyChange?: boolean;
-};
+  const { sorted, key, setKey } = useSorting(items, "name");
+
+  return (
+    <Stack>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => setKey("name")}>Sort by name</Button>
+        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+      </Flex>
+      <Stack>
+        {sorted.map((item, index) => (
+          <Text key={index}>
+            {item.name} - {item.quantity}
+          </Text>
+        ))}
+      </Stack>
+      <Text>
+        Sorting by: <Text as="strong">{key}</Text>
+      </Text>
+    </Stack>
+  );
+}
 ```
 
-### Return Value
+### Sort Direction
 
-| Name              | Type                                  | Description                                                           |
-| ----------------- | ------------------------------------- | --------------------------------------------------------------------- |
-| `sorted`          | `any[]`                               | The sorted data.                                                      |
-| `key`             | `string`                              | The current key by which the hook is sorting.                         |
-| `direction`       | `'asc' / 'desc'`                      | The current direction by which the hook is sorting.                   |
-| `setKey`          | `(key: string) => void`               | The function that sets the new key by which the hook will sort.       |
-| `setDirection`    | `(direction: 'asc' / 'desc') => void` | The function that sets the new direction by which the hook will sort. |
-| `toggleDirection` | `() => void`                          | The function that toggles the direction by which the hook will sort.  |
+Use the _setDirection_ or _toggleDirection_ functions returned by the hook to change the direction of the sort.
+
+Use the _direction_ property returned by the hook to keep track of the current sorting direction.
+
+```jsx preview
+function Demo() {
+  const items = [
+    { name: "Banana", quantity: 5 },
+    { name: "Apple", quantity: 10 },
+    { name: "Cherry", quantity: 15 },
+    { name: "Date", quantity: 8 },
+  ];
+
+  const { sorted, direction, setDirection, toggleDirection } = useSorting(
+    items,
+    "name"
+  );
+
+  return (
+    <Stack>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => setDirection("asc")}>Ascending order</Button>
+        <Button onClick={() => setDirection("desc")}>Descending order</Button>
+        <Button onClick={toggleDirection}>Toggle order</Button>
+      </Flex>
+      <Stack>
+        {sorted.map((item, index) => (
+          <Text key={index}>
+            {item.name} - {item.quantity}
+          </Text>
+        ))}
+      </Stack>
+      <Text>
+        Sorting direction: <Text as="strong">{direction}</Text>
+      </Text>
+    </Stack>
+  );
+}
+```
+
+### Initial Sorting Direction
+
+Pass the _initialDirection_ parameter, which is the third parameter, to change the initial sorting direction.
+
+```jsx preview
+function Demo() {
+  const items = [
+    { name: "Banana", quantity: 5 },
+    { name: "Apple", quantity: 10 },
+    { name: "Cherry", quantity: 15 },
+    { name: "Date", quantity: 8 },
+  ];
+
+  const { sorted, direction, setDirection, toggleDirection } = useSorting(
+    items,
+    "name",
+    "desc"
+  );
+
+  return (
+    <Stack>
+      {sorted.map((item, index) => (
+        <Text key={index}>
+          {item.name} - {item.quantity}
+        </Text>
+      ))}
+    </Stack>
+  );
+}
+```
+
+### Options
+
+Use the _options_ parameter, which is the fourth parameter, to change different functionalities of the hook.
+
+#### Reset Direction On Key Change
+
+Pass the _resetDirectionOnKeyChange_ to the _options_ parameter object, to toggle if the hook should reset the sorting direction on each sorting key change. By default, a value of _true_ is used.
+
+```jsx preview
+function Demo() {
+  const items = [
+    { name: "Banana", quantity: 5 },
+    { name: "Apple", quantity: 10 },
+    { name: "Cherry", quantity: 15 },
+    { name: "Date", quantity: 8 },
+  ];
+
+  const { sorted, key, setKey } = useSorting(items, "name", "desc", {
+    resetDirectionOnKeyChange: false,
+  });
+
+  return (
+    <Stack>
+      <Text>
+        This hook will sort in descending order, until changed, but changing the
+        sorting keys will not change the sorting direction.
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => setKey("name")}>Sort by name</Button>
+        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+      </Flex>
+      <Stack>
+        {sorted.map((item, index) => (
+          <Text key={index}>
+            {item.name} - {item.quantity}
+          </Text>
+        ))}
+      </Stack>
+      <Text>
+        Sorting by: <Text as="strong">{key}</Text>
+      </Text>
+    </Stack>
+  );
+}
+```

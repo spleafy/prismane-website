@@ -4,9 +4,24 @@
 import { useThemeModeValue } from "@prismane/core";
 ```
 
+The `useThemeModeValue` hook accepts the following parameters:
+
+| Name    | Type  | Description                                | Default Value |
+| ------- | ----- | ------------------------------------------ | ------------- |
+| `dark`  | _any_ | The respective value for dark theme mode.  | -             |
+| `light` | _any_ | The respective value for light theme mode. | -             |
+
+## Return Value
+
+The `useThemeModeValue` hook returns the following variable:
+
+| Name    | Type  | Description               |
+| ------- | ----- | ------------------------- |
+| `value` | _any_ | The current active value. |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const { toggleThemeMode } = usePrismaneTheme();
 
@@ -19,11 +34,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Return Value
-
-| Name    | Type  | Description               |
-| ------- | ----- | ------------------------- |
-| `value` | `any` | The current active value. |

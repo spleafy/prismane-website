@@ -4,45 +4,36 @@
 import { usePrevious } from "@prismane/core/hooks";
 ```
 
-## Usage
+## Parameters
 
-```jsx
-function Demo() {
-  const [count, setCount] = useState(0);
-  const previous = usePrevious(count);
+The `usePrevious` hook accepts the following parameters:
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+| Name    | Type  | Description                       | Default Value |
+| ------- | ----- | --------------------------------- | ------------- |
+| `value` | _any_ | The value that should be tracked. | -             |
 
-  return (
-    <Flex direction="column" gap={fr(2)}>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Current: {count}
-      </Text>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Previous: {previous}
-      </Text>
-      <Button onClick={() => increment()}>Increment</Button>
-    </Flex>
-  );
-}
-```
+## Return Value
 
-## API
-
-### Parameters
-
-| Name    | Type  | Description                       | Default |
-| ------- | ----- | --------------------------------- | ------- |
-| `value` | `any` | The value that should be tracked. | -       |
-
-### Return Value
+The `usePrevious` hook returns the following variable:
 
 | Name       | Type  | Description                                |
 | ---------- | ----- | ------------------------------------------ |
-| `previous` | `any` | The previous value of the passed variable. |
+| `previous` | _any_ | The previous value of the passed variable. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [count, setCount] = useState(0);
+
+  const previous = usePrevious(count);
+
+  return (
+    <Stack>
+      <Text>Current: {count}</Text>
+      <Text>Previous Value: {previous}</Text>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+    </Stack>
+  );
+}
+```

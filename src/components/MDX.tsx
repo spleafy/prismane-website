@@ -236,7 +236,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         th: ({ children, ...props }) =>
           t(
             <th
-              className={`pb-2 px-2 first:!pl-0 text-left font-semibold ${c(
+              className={`pb-2 px-2 first:!pl-0 text-left font-semibold whitespace-nowrap ${c(
                 "th"
               )}`}
               {...props}

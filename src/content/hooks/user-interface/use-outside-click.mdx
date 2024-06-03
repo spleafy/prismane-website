@@ -4,6 +4,15 @@
 import { useOutsideClick } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useOutsideClick` hook accepts the following parameters:
+
+| Name       | Type              | Description                                             | Default Value |
+| ---------- | ----------------- | ------------------------------------------------------- | ------------- |
+| `ref`      | _RefObject\<any>_ | The ref of the element that will be tracked.            | -             |
+| `callback` | _() => void_      | The function that will be called when the event occurs. | -             |
+
 ## Usage
 
 ```jsx preview
@@ -15,20 +24,9 @@ function Demo() {
   useOutsideClick(ref, () => setShown(false));
 
   return (
-    <>
-      <Button onClick={() => setShown(true)}>Show Paper</Button>
-
-      {shown && <Paper ref={ref}>Click outside to close</Paper>}
-    </>
+    <Stack>
+      {shown && <Card ref={ref}>Click outside of the card to hide it</Card>}
+    </Stack>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name       | Type             | Description                                             | Default |
-| ---------- | ---------------- | ------------------------------------------------------- | ------- |
-| `ref`      | `RefObject<any>` | The ref of the element that will be tracked.            | -       |
-| `callback` | `() => void`     | The function that will be called when the event occurs. | -       |

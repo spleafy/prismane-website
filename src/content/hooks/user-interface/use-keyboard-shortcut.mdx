@@ -4,9 +4,19 @@
 import { useKeyboardShortcut } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useKeyboardShortcut` hook accepts the following parameters:
+
+| Name             | Type         | Description                                                                       | Default Value |
+| ---------------- | ------------ | --------------------------------------------------------------------------------- | ------------- |
+| `keys`           | _string[]_   | The key combination that will trigger the callback.                               | -             |
+| `callback`       | _() => void_ | The callback that will be executed on a successful key combination.               | -             |
+| `shouldRegister` | _boolean_    | A boolean to handle dynamic registering and unregistering of the event listeners. | _true_        |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const [registered, setRegistered] = useState(false);
 
@@ -18,6 +28,7 @@ function Demo() {
     <Text
       cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
     >
+      Hold: Shift + K <br />
       Registered: {registered.toString()}
     </Text>
   );
@@ -26,9 +37,9 @@ function Demo() {
 
 ### Conditional Registering
 
-By providing a third parameter to `useKeyboardShortcut`, you can conditionally register and unregister the event listeners.
+Pass the _shouldRegister_ parameter, which is the third parameter, you can conditionally register and unregister the event listeners.
 
-```jsx
+```jsx preview
 function Demo() {
   const [enabled, setEnabled] = useState(false);
 
@@ -50,19 +61,10 @@ function Demo() {
       <Text
         cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
       >
+        Hold: Shift + K <br />
         Registered: {registered.toString()}
       </Text>
     </Stack>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name             | Type       | Description                                                                   | Default |
-| ---------------- | ---------- | ----------------------------------------------------------------------------- | ------- |
-| `keys`           | `string[]` | The key combination that will trigger the callback.                           | -       |
-| `callback`       | `number`   | The callback that will be executed on a successful key combination.           | -       |
-| `shouldRegister` | `boolean`  | A boolean to handle dynamic registering and unregistering the eventListeners. | `true`  |

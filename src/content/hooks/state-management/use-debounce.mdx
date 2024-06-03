@@ -4,42 +4,65 @@
 import { useDebounce } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useDebounce` hook accepts the following parameters:
+
+| Name    | Type     | Description                         | Default Value |
+| ------- | -------- | ----------------------------------- | ------------- |
+| `value` | _any_    | The value that should be debounced. | -             |
+| `delay` | _number_ | The debounce delay.                 | _500_         |
+
+## Return Value
+
+The `useDebounce` hook returns the following variable:
+
+| Name        | Type  | Description          |
+| ----------- | ----- | -------------------- |
+| `debounced` | _any_ | The debounced value. |
+
 ## Usage
 
-```jsx
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState("");
+
+  const debounced = useDebounce(value);
+
+  return (
+    <Stack>
+      <Field
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        label="Type to update the value"
+        placeholder="Debounce Field"
+      />
+      <Text>Debounced value: {debounced}</Text>
+    </Stack>
+  );
+}
+```
+
+### Debounce Delay
+
+Pass the _delay_ parameter, which is the second parameter, to change the delay after which the debounced value is updated.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
   const debounced = useDebounce(value, 1000);
 
   return (
-    <Flex direction="column" gap={fr(5)}>
+    <Stack>
       <Field
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        label="Type to update the value"
         placeholder="Debounce Field"
       />
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        {debounced}
-      </Text>
-    </Flex>
+      <Text>Debounced value: {debounced}</Text>
+    </Stack>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name    | Type     | Description                         | Default |
-| ------- | -------- | ----------------------------------- | ------- |
-| `value` | `any`    | The value that should be debounced. | -       |
-| `delay` | `number` | The debounce delay.                 | `500`   |
-
-### Return Value
-
-| Name        | Type  | Description          |
-| ----------- | ----- | -------------------- |
-| `debounced` | `any` | The debounced value. |

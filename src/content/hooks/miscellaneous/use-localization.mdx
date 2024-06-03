@@ -4,48 +4,40 @@
 import { useLocalization } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useLocalization` hook accepts the following parameters:
+
+| Name            | Type                      | Description                                               | Default Value |
+| --------------- | ------------------------- | --------------------------------------------------------- | ------------- |
+| `defaultLocale` | _string_                  | The default locale.                                       | -             |
+| `translations`  | _Record\<string, string>_ | The translations object with all of the translated texts. | -             |
+
+## Return Value
+
+The `useLocalization` hook returns an object containing the following properties:
+
+| Name           | Type                  | Description                                          |
+| -------------- | --------------------- | ---------------------------------------------------- |
+| `locale`       | _string_              | The current locale.                                  |
+| `text`         | _string_, _undefined_ | The translated text or texts.                        |
+| `changeLocale` | _() => void_          | Function that changes the locale to a different one. |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
-  const [registered, setRegistered] = useState(false);
-
   const { locale, text, changeLocale } = useLocalization("en", {
     en: "Hello from Bulgaria!",
     de: "Hallo aus Bulgarien!",
   });
 
   return (
-    <Flex direction="column" gap={fr(2)}>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Locale: {locale}
-      </Text>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        {text}
-      </Text>
+    <Stack>
+      <Text>Locale: {locale}</Text>
+      <Text>{text}</Text>
       <Button onClick={() => changeLocale("de")}>Change Locale</Button>
-    </Flex>
+    </Stack>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name            | Type     | Description                                               | Default |
-| --------------- | -------- | --------------------------------------------------------- | ------- |
-| `defaultLocale` | `string` | The default locale.                                       | -       |
-| `translations`  | `any`    | The translations object with all of the translated texts. | -       |
-
-### Return Value
-
-| Name           | Type         | Description                                          |
-| -------------- | ------------ | ---------------------------------------------------- |
-| `locale`       | `string`     | The current locale.                                  |
-| `text`         | `any`        | The translated text or texts.                        |
-| `changeLocale` | `() => void` | Function that changes the locale to a different one. |

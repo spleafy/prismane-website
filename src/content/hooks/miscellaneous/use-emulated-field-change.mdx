@@ -4,9 +4,28 @@
 import { useEmulatedFieldChange } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useEmulatedFieldChange` hook accepts the following parameters:
+
+| Name     | Type              | Description                                                               | Default Value |
+| -------- | ----------------- | ------------------------------------------------------------------------- | ------------- |
+| `ref`    | _RefObject\<any>_ | The ref of the field, whose value will be updated.                        | -             |
+| `change` | _() => void_      | The function that will be triggered on the onChange event from the field. | -             |
+
+## Return Value
+
+The `useEmulatedFieldChange` hook returns the following variable:
+
+| Name      | Type                   | Description                              |
+| --------- | ---------------------- | ---------------------------------------- |
+| `emulate` | _(value: any) => void_ | The value that will be set to the input. |
+
 ## Usage
 
-```jsx
+The `useEmulatedFieldChange` hook is used to programmatically simulate a change event of an input element.
+
+```jsx preview
 function Demo() {
   const [value, setValue] = useState("");
 
@@ -14,7 +33,7 @@ function Demo() {
 
   const handleChange = (e) => setValue(e.target.value);
 
-  const emulate = useEmulatedFieldChange(ref, handleChange);
+  const emulateFieldChange = useEmulatedFieldChange(ref, handleChange);
 
   return (
     <Stack>
@@ -24,25 +43,10 @@ function Demo() {
         placeholder="Emulated Value"
         ref={ref}
       />
-      <Button onClick={() => emulate("Custom Value")}>
-        Emulate Custom Change Event
+      <Button onClick={() => emulateFieldChange("Custom Value")}>
+        Emulate Change Event
       </Button>
     </Stack>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name     | Type             | Description                                                               | Default |
-| -------- | ---------------- | ------------------------------------------------------------------------- | ------- |
-| `ref`    | `RefObject<any>` | The ref of the field, whose value will be updated.                        | -       |
-| `change` | `() => void`     | The function that will be triggered on the onChange event from the field. | -       |
-
-### Return Value
-
-| Name      | Type                   | Description                              |
-| --------- | ---------------------- | ---------------------------------------- |
-| `emulate` | `(value: any) => void` | The value that will be set to the input. |

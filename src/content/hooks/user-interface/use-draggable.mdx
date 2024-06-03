@@ -4,9 +4,27 @@
 import { useDraggable } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useDraggable` hook accepts the following parameters:
+
+| Name            | Type                      | Description                                    | Default Value   |
+| --------------- | ------------------------- | ---------------------------------------------- | --------------- |
+| `defaultValues` | _\{x: number, y: number}_ | The initial position of the draggable element. | _\{x: 0, y: 0}_ |
+
+## Return Value
+
+The `useDraggable` hook returns an object containing the following properties:
+
+| Name         | Type                      | Description                       |
+| ------------ | ------------------------- | --------------------------------- |
+| `ref`        | _RefObject\<any>_         | The ref of the draggable element. |
+| `isDragging` | _boolean_                 | The state of the dragging action. |
+| `position`   | _\{x: number, y: number}_ | The position of the element.      |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const { ref, isDragging, position } = useDraggable();
 
@@ -28,12 +46,28 @@ function Demo() {
 }
 ```
 
-## API
+### Default Position
 
-### Return Value
+Pass the _defaultValues_ parameter, which is the first parameter, to the `useDraggable` hook to change the default position of the element. The default value is _\{x: 0, y: 0}_
 
-| Name         | Type                     | Description                       |
-| ------------ | ------------------------ | --------------------------------- |
-| `ref`        | `RefObject<any>`         | The ref of the draggable element. |
-| `isDragging` | `boolean`                | The state of the dragging action. |
-| `position`   | `{x: number, y: number}` | The position of the element.      |
+```jsx preview
+function Demo() {
+  const { ref, isDragging, position } = useDraggable({ x: 20, y: 20 });
+
+  return (
+    <Box w="100%" h={fr(80)} pos="relative" of="hidden">
+      <Box
+        w={fr(30)}
+        h={fr(30)}
+        bg={isDragging ? "teal" : "primary"}
+        pos="absolute"
+        t={position.y}
+        l={position.x}
+        ref={ref}
+      >
+        Drag Me
+      </Box>
+    </Box>
+  );
+}
+```

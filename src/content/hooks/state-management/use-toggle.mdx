@@ -4,36 +4,34 @@
 import { useToggle } from "@prismane/core/hooks";
 ```
 
-## Usage
+## Parameters
 
-```jsx
-function Demo() {
-  const [status, toggle] = useToggle(["Active", "Inactive", "Sleep"]);
+The `useToggle` hook accepts the following parameters:
 
-  return (
-    <Flex direction="column" gap={fr(2)}>
-      <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
-      >
-        Status: {status}
-      </Text>
-      <Button onClick={() => toggle()}>Toggle Status</Button>
-    </Flex>
-  );
-}
-```
+| Name     | Type    | Description                                                  | Default Value |
+| -------- | ------- | ------------------------------------------------------------ | ------------- |
+| `values` | _any[]_ | The array of properties, which the hook will toggle between. | -             |
 
-## API
+## Return Value
 
-### Parameters
-
-| Name     | Type    | Description                                                  | Default |
-| -------- | ------- | ------------------------------------------------------------ | ------- |
-| `values` | `any[]` | The array of properties, which the hook will toggle between. | -       |
-
-### Return Value
+The `useToggle` hook returns an array containing the following properties:
 
 | Name           | Type         | Description                                     |
 | -------------- | ------------ | ----------------------------------------------- |
-| `currentValue` | `any`        | The current active value.                       |
-| `toggle`       | `() => void` | The toggle function to toggle the next element. |
+| `currentValue` | _any_        | The current active value.                       |
+| `toggle`       | _() => void_ | The toggle function to toggle the next element. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [status, toggleStatus] = useToggle(["Active", "Inactive", "Sleep"]);
+
+  return (
+    <Stack>
+      <Text>Current Status: {status}</Text>
+      <Button onClick={() => toggleStatus()}>Toggle Status</Button>
+    </Stack>
+  );
+}
+```

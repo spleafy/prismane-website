@@ -4,18 +4,26 @@
 import { useMemoization } from "@prismane/core/hooks";
 ```
 
+## Return Value
+
+The `useMemoization` hook returns the following variable:
+
+| Name      | Type         | Description                                            |
+| --------- | ------------ | ------------------------------------------------------ |
+| `memoize` | _() => void_ | A function that caches the result of the passed value. |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const { memoize, clear } = useMemoization();
 
   const [value, setValue] = useState("");
 
-  const [computed, setComputed] = useState(0);
+  const [timesComputed, setTimesComputer] = useState(0);
 
   const expensiveFunction = memoize((pk, pv) => {
-    setComputed((pc: number) => pc + 1);
+    setTimesComputer((pc: number) => pc + 1);
     return pv + 1;
   });
 
@@ -27,18 +35,12 @@ function Demo() {
   return (
     <Stack>
       <Text>Value from cache: {value}</Text>
-      <Text>Times computed: {computed}</Text>
-      <Button onClick={handleClick}>Calculate</Button>
-      <Button onClick={() => clear()}>Clear Cache</Button>
+      <Text>Times computed: {timesComputed}</Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={handleClick}>Calculate</Button>
+        <Button onClick={clear}>Clear Cache</Button>
+      </Flex>
     </Stack>
   );
 }
 ```
-
-## API
-
-### Return Value
-
-| Name      | Type         | Description                                              |
-| --------- | ------------ | -------------------------------------------------------- |
-| `memoize` | `() => void` | A function that memoizes the result of the passed value. |

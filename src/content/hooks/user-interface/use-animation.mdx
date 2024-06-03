@@ -4,9 +4,32 @@
 import { useAnimation } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useAnimation` hook accepts the following parameters:
+
+| Name       | Type      | Description                                    | Default Value |
+| ---------- | --------- | ---------------------------------------------- | ------------- |
+| `initial`  | _boolean_ | The initial state of the animation.            | _false_       |
+| `duration` | _number_  | The duration of the animation in milliseconds. | _150_         |
+| `timing`   | _string_  | The timing function for the animation.         | _ease_        |
+
+## Return Value
+
+The `useAnimation` hook returns an object containing the following properties:
+
+| Name        | Type         | Description                                    |
+| ----------- | ------------ | ---------------------------------------------- |
+| `animating` | _boolean_    | Represents the current animation state.        |
+| `animate`   | _() => void_ | A function to toggle the animation state.      |
+| `duration`  | _number_     | The duration of the animation in milliseconds. |
+| `timing`    | _string_     | The timing function for the animation.         |
+
 ## Usage
 
-```jsx
+The `useAnimation` hook is designed to easily integrate with our [`Animation`](/docs/components/miscellaneous/animation) component. It enables us to easily and consistently handle and toggle animations.
+
+```jsx preview
 function Demo() {
   const { animating, animate, timing, duration } = useAnimation();
 
@@ -26,13 +49,63 @@ function Demo() {
 }
 ```
 
-### Complex Usage
+### Initial State
 
-```jsx
+Pass the _initial_ parameter, which is the first parameter, to the `useAnimation` hook to change the initial state of the animation. By default a value of _false_ is used.
+
+```jsx preview
+function Demo() {
+  const { animating, animate, timing, duration } = useAnimation(true);
+
+  return (
+    <Flex direction="column" gap={fr(5)}>
+      <Button onClick={() => animate()}>Toggle Animation</Button>
+      <Animation
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animating}
+        timing={timing}
+        duration={duration}
+      />
+    </Flex>
+  );
+}
+```
+
+### Duration
+
+Pass the _duration_ parameter, which is the second parameter, to the `useAnimation` hook to change the duration of the animation. By default a value of _150_ is used.
+
+```jsx preview
+function Demo() {
+  const { animating, animate, timing, duration } = useAnimation(true, 1000);
+
+  return (
+    <Flex direction="column" gap={fr(5)}>
+      <Button onClick={() => animate()}>Toggle Animation</Button>
+      <Animation
+        w={fr(30)}
+        h={fr(30)}
+        bg="primary"
+        animated={animating}
+        timing={timing}
+        duration={duration}
+      />
+    </Flex>
+  );
+}
+```
+
+### Timing
+
+Pass the _timing_ parameter, which is the third parameter, to the `useAnimation` hook to change the timing of the animation. By default a value of _ease_ is used.
+
+```jsx preview
 function Demo() {
   const { animating, animate, timing, duration } = useAnimation(
     true,
-    750,
+    1000,
     "ease-in-out"
   );
 
@@ -51,22 +124,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name       | Type      | Description                                    | Default |
-| ---------- | --------- | ---------------------------------------------- | ------- |
-| `initial`  | `boolean` | The initial state of the animation.            | `false` |
-| `duration` | `number`  | The duration of the animation in milliseconds. | `150`   |
-| `timing`   | `string`  | The timing function for the animation.         | `ease`  |
-
-### Return Value
-
-| Name        | Type         | Description                                    |
-| ----------- | ------------ | ---------------------------------------------- |
-| `animating` | `boolean`    | Represents the current animation state.        |
-| `animate`   | `() => void` | A function to toggle the animation state.      |
-| `duration`  | `number`     | The duration of the animation in milliseconds. |
-| `timing`    | `string`     | The timing function for the animation.         |

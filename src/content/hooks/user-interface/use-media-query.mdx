@@ -4,9 +4,25 @@
 import { useMediaQuery } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `useMediaQuery` hook accepts the following parameters:
+
+| Name    | Type     | Description                             | Default Value |
+| ------- | -------- | --------------------------------------- | ------------- |
+| `query` | _string_ | The media query that should be tracked. | -             |
+
+## Return Value
+
+The `useMediaQuery` hook returns the following variable:
+
+| Name      | Type      | Description                                                         |
+| --------- | --------- | ------------------------------------------------------------------- |
+| `matches` | _boolean_ | The boolean that shows if the current media query is true or false. |
+
 ## Usage
 
-```jsx
+```jsx preview
 function Demo() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -14,22 +30,9 @@ function Demo() {
     <Text
       cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
     >
-      {isMobile ? "Mobile View" : "Desktop View"}
+      Resize screen to change <br />
+      Current View: {isMobile ? "Mobile" : "Desktop"}
     </Text>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name    | Type     | Description                             | Default |
-| ------- | -------- | --------------------------------------- | ------- |
-| `query` | `string` | The media query that should be tracked. | -       |
-
-### Return Value
-
-| Name      | Type      | Description                                                         |
-| --------- | --------- | ------------------------------------------------------------------- |
-| `matches` | `boolean` | The boolean that shows if the current media query is true or false. |

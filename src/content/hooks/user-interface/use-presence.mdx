@@ -4,9 +4,29 @@
 import { usePresence } from "@prismane/core/hooks";
 ```
 
+## Parameters
+
+The `usePresence` hook accepts the following parameters:
+
+| Name       | Type         | Description                                                    | Default |
+| ---------- | ------------ | -------------------------------------------------------------- | ------- |
+| `present`  | _boolean_    | The boolean that should trigger the await of the animation.    | -       |
+| `duration` | _number_     | The duration of the animation.                                 | _150_   |
+| `cb`       | _() => void_ | A callback that will be called after the animation is finished | -       |
+
+## Return Value
+
+The `usePresence` hook returns the following variable:
+
+| Name      | Type      | Description                                                   |
+| --------- | --------- | ------------------------------------------------------------- |
+| `present` | _boolean_ | The boolean that should be used to show and hide the element. |
+
 ## Usage
 
-```jsx
+The `usePresence` hook is used to ensure that an animated element first animates out and then unmounts from the DOM.
+
+```jsx preview
 function Demo() {
   const [shown, setShown] = useState(true);
 
@@ -23,13 +43,15 @@ function Demo() {
 }
 ```
 
-### Change Animation Duration
+### Animation Duration
 
-```jsx
+Pass the _duration_ parameter, which is the second parameter, to change the duration that the hook awaits before toggling the _presence_ variable.
+
+```jsx preview
 function Demo() {
   const [shown, setShown] = useState(true);
 
-  const present = usePresence(shown, 500); // This will await 500ms and then will change the present boolean
+  const present = usePresence(shown, 500);
 
   return (
     <Stack>
@@ -48,18 +70,31 @@ function Demo() {
 }
 ```
 
-## API
+### Custom Callback
 
-### Parameters
+Pass the _cb_ parameter, which is the third parameter, to pass a callback that will be executed when the animation finishes.
 
-| Name       | Type         | Description                                                    | Default |
-| ---------- | ------------ | -------------------------------------------------------------- | ------- |
-| `present`  | `boolean`    | The boolean that should trigger the await of the animation.    | -       |
-| `duration` | `number`     | The duration of the animation.                                 | `150`   |
-| `cb`       | `() => void` | A callback that will be called after the animation is finished | -       |
+```jsx preview
+function Demo() {
+  const [shown, setShown] = useState(true);
 
-### Return Value
+  const present = usePresence(shown, 500, () => {
+    console.log("Animation has finished!");
+  });
 
-| Name      | Type      | Description                                                   |
-| --------- | --------- | ------------------------------------------------------------- |
-| `present` | `boolean` | The boolean that should be used to show and hide the element. |
+  return (
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation
+          w={fr(30)}
+          h={fr(30)}
+          bg="primary"
+          animated={shown}
+          duration={500}
+        />
+      )}
+    </Stack>
+  );
+}
+```
