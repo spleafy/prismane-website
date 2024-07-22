@@ -1,22 +1,79 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { multiple } from "@prismane/core/validators";
-
-console.log(multiple(20, 10)); // Will return null
-console.log(multiple(40, 13)); // Will return an error`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `multiple` validator accepts the following parameters:
+
+| Name        | Type                  | Description                       |
+| ----------- | --------------------- | --------------------------------- |
+| `value`     | _number_              | The value that will be validated. |
+| `of`        | _number_              | The number that will be compared. |
+| `fieldName` | _string_, _undefined_ | The name of the field.            |
+
+## Usage
+
+The `multiple` validator tests the provided value and checks if it is multiple of the provided number.
+
+```ts
+const value = 15;
+
+const number = 10;
+
+const error = multiple(value, number);
+
+console.log(error); // This number must be multiple of 10!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = 20;
+
+const number = 10;
+
+const error = multiple(value, number);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it multiple personalized to the given field.
+
+```ts
+const value = 15;
+
+const number = 10;
+
+const error = multiple(value, number, "Count");
+
+console.log(error); // Count must be multiple of 10!
+```
+
+### useForm Example
+
+The `multiple` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       number: {
-        value: 10,
+        value: 0,
         validators: {
-          multiple: (v: any) => multiple(v, 10),
+          multiple: (v: string) => multiple(v, 5),
         },
       },
     },
@@ -25,13 +82,11 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <NumberField
-        placeholder="Enter number: "
+        placeholder="Enter your number:"
         label="Number:"
         {...register("number")}
       />
@@ -40,13 +95,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name        | Type                 | Description                        |
-| ----------- | -------------------- | ---------------------------------- |
-| `value`     | `number`             | The number that will be validated. |
-| `of`        | `number`             | The number that will be checked.   |
-| `fieldName` | `string / undefined` | The name of the field.             |

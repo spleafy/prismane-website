@@ -1,22 +1,72 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { positive } from "@prismane/core/validators";
-
-console.log(positive(1)); // Will return null
-console.log(positive(-1)); // Will return an error`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `positive` validator accepts the following parameters:
+
+| Name        | Type                  | Description                       |
+| ----------- | --------------------- | --------------------------------- |
+| `value`     | _number_              | The value that will be validated. |
+| `fieldName` | _string_, _undefined_ | The name of the field.            |
+
+## Usage
+
+The `positive` validator tests the provided value and checks if it is positive.
+
+```ts
+const value = -10;
+
+const error = positive(value);
+
+console.log(error); // This number must be positive!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = 10;
+
+const error = positive(value);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the second parameter, to customize the error message to make it positive personalized to the given field.
+
+```ts
+const value = -10;
+
+const error = positive(value, "Balance");
+
+console.log(error); // Balance must be positive!
+```
+
+### useForm Example
+
+The `positive` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       number: {
         value: 0,
         validators: {
-          positive: (v: any) => positive(v),
+          positive: (v: string) => positive(v),
         },
       },
     },
@@ -25,13 +75,11 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <NumberField
-        placeholder="Enter number: "
+        placeholder="Enter your number:"
         label="Number:"
         {...register("number")}
       />
@@ -40,12 +88,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name        | Type                 | Description                        |
-| ----------- | -------------------- | ---------------------------------- |
-| `value`     | `number`             | The number that will be validated. |
-| `fieldName` | `string / undefined` | The name of the field.             |
