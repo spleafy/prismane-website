@@ -16,6 +16,8 @@ const getUrl = (navigation: any, slugs: string[]) => {
     url += `/${items[0].slug}`;
 
     if (items[0].items && items[0].items.length > 0) {
+      console.log("Item", items[0], items[0].items);
+
       processDeeper(items[0].items);
     }
   };
@@ -27,7 +29,6 @@ const getUrl = (navigation: any, slugs: string[]) => {
   return url;
 };
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/docs") {
     return NextResponse.redirect(
@@ -35,21 +36,23 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  const splitUrl = request.nextUrl.pathname
-    .replace("/docs", "")
-    .split("/")
-    .filter((item) => item.trim() !== "");
+  const currentUrl = request.nextUrl.pathname.replace("/docs", "");
 
-  if (splitUrl.length > 0 && splitUrl.length < 2) {
+  const splitUrl = currentUrl.split("/").filter((item) => item.trim() !== "");
+
+  if (splitUrl.length > 0) {
     const url = getUrl(content, splitUrl);
 
-    console.log(url);
+    if (currentUrl === url) {
+      return;
+    }
 
     return NextResponse.redirect(new URL(`/docs${url}`, request.url));
   }
+
+  return;
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: "/docs/:path*",
 };

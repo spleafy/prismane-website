@@ -1206,12 +1206,6 @@ const content: any = [
     slug: "hooks",
     items: [
       {
-        slug: "getting-started",
-        title: "Getting Started",
-        description:
-          "Learn about all of Prismane's hooks. Explore all of the hooks, ordered by their type.",
-      },
-      {
         slug: "user-interface",
         title: "User Interface",
         icon: <CursorClick />,
@@ -1394,11 +1388,6 @@ const content: any = [
     title: "Validators",
     slug: "validators",
     items: [
-      {
-        slug: "getting-started",
-        title: "Getting Started",
-        description: "Learn about all about Prismane's form validators.",
-      },
       {
         slug: "date",
         title: "Date",
