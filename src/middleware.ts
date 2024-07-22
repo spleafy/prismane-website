@@ -43,11 +43,9 @@ export function middleware(request: NextRequest) {
   if (splitUrl.length > 0) {
     const url = getUrl(content, splitUrl);
 
-    if (currentUrl === url) {
-      return;
+    if (currentUrl !== url) {
+      return NextResponse.redirect(new URL(`/docs${url}`, request.url));
     }
-
-    return NextResponse.redirect(new URL(`/docs${url}`, request.url));
   }
 
   return;
