@@ -1,18 +1,54 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { required } from "@prismane/core/validators";
-
-console.log(required("Ivan is very cool")); // Will return null
-console.log(required(""));
-// Will return `This field is required!`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `required` validator accepts the following parameters:
+
+| Name    | Type                          | Description                       |
+| ------- | ----------------------------- | --------------------------------- |
+| `value` | _number_, _string_, _boolean_ | The value that will be validated. |
+
+## Usage
+
+The `required` validator tests the provided value and checks if it has a value.
+
+```ts
+const value = "";
+
+const error = required(value);
+
+console.log(error); // This field is required!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = 10;
+
+const error = required(value);
+
+console.log(error); // null
+```
+
+### useForm Example
+
+The `required` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       username: {
         value: "",
@@ -26,13 +62,11 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
-        placeholder="Enter username: "
+        placeholder="Enter your username:"
         label="Username:"
         {...register("username")}
       />
@@ -41,11 +75,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name    | Type               | Description                       |
-| ------- | ------------------ | --------------------------------- |
-| `value` | `string / boolean` | The value that will be validated. |

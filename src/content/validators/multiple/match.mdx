@@ -1,20 +1,74 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { match } from "@prismane/core/validators";
-
-console.log(match("password", "password")); // Will return null
-console.log(match("password", "password1234"));
-// Will return `Fields must match!`
-console.log(match("password", "password1234", "Passwords"));
-// Will return `Passwords must match!`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `match` validator accepts the following parameters:
+
+| Name        | Type                          | Description                           |
+| ----------- | ----------------------------- | ------------------------------------- |
+| `value`     | _number_, _string_, _boolean_ | The value that will be validated.     |
+| `revalue`   | _number_, _string_, _boolean_ | The other value that will be matched. |
+| `fieldName` | _string_, _undefined_         | The name of the field.                |
+
+## Usage
+
+The `match` validator tests the provided value and checks if it matches the other provided value.
+
+```ts
+const value = "something";
+
+const revalue = "other";
+
+const error = match(value, revalue);
+
+console.log(error); // Fields must match!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = 10;
+
+const revalue = 10;
+
+const error = match(value, revalue);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the second parameter, to customize the error message to make it match personalized to the given field.
+
+```ts
+const value = false;
+
+const revalue = true;
+
+const error = match(value, revalue, "Passwords");
+
+console.log(error); // Passwords must match!
+```
+
+### useForm Example
+
+The `match` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register, getValue } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       password: {
         value: "",
@@ -31,10 +85,8 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
         placeholder="Enter password: "
@@ -44,21 +96,11 @@ function Demo() {
       <TextField
         placeholder="Retype password: "
         label="Retype Password:"
-        readOnly
         {...register("repassword")}
+        readOnly
       />
       <Button type="submit">Submit</Button>
     </Form>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name        | Type                        | Description                            |
-| ----------- | --------------------------- | -------------------------------------- |
-| `value`     | `string / number / boolean` | The value that will be matched.        |
-| `boolean`   | `string / number / boolean` | The second value that will be matched. |
-| `fieldName` | `string / undefined`        | The name of the field.                 |
