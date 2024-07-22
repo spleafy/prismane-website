@@ -1,18 +1,69 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { username } from "@prismane/core/validators";
-
-console.log(username("spleafy")); // Will return null
-console.log(username("xd"));
-// Will return `This is not a valid username!`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `username` validator accepts the following parameters:
+
+| Name     | Type                  | Description                               | Default Value |
+| -------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`  | _string_              | The string that will be validated.        | -             |
+| `regExp` | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+
+## Usage
+
+The `username` validator tests the provided value and checks if it is a valid username.
+
+```ts
+const string = "hi";
+
+const error = username(string);
+
+console.log(error); // This is not a valid username!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = "admin";
+
+const error = username(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = "admin";
+
+const regExp = /^[a-z0-9_-]{8,255}$/;
+
+const error = uppercase(string, regExp);
+
+console.log(error); // This is not a valid username!
+```
+
+### useForm Example
+
+The `username` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       username: {
         value: "",
@@ -26,13 +77,11 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
-        placeholder="Enter username: "
+        placeholder="Enter your username:"
         label="Username:"
         {...register("username")}
       />
@@ -41,12 +90,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name     | Type                 | Description                                                                           |
-| -------- | -------------------- | ------------------------------------------------------------------------------------- |
-| `value`  | `string`             | The string that will be validated.                                                    |
-| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |

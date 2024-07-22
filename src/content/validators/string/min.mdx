@@ -1,23 +1,73 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { min } from "@prismane/core/validators";
-
-console.log(min("Ivan is very cool", 2, "Username")); // Will return null
-console.log(min("Ivan is very cool", 100, "Username"));
-// Will return `Username has to be longer than 100 characters!`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `min` validator accepts the following parameters:
+
+| Name        | Type                  | Description                        | Default Value |
+| ----------- | --------------------- | ---------------------------------- | ------------- |
+| `value`     | _string_              | The string that will be validated. | -             |
+| `length`    | _number_              | The minimum length of the string.  | -             |
+| `fieldName` | _string_, _undefined_ | The name of the field.             | -             |
+
+## Usage
+
+The `min` validator tests the provided value and checks if it is longer than the provided length.
+
+```ts
+const string = "1234567890";
+
+const error = min(string, 12);
+
+console.log(error); // This value has to be longer than 12 characters!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = "1234567890";
+
+const error = min(string, 2);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
+
+```ts
+const code = "1234";
+
+const error = min(code, 8, "Code");
+
+console.log(error); // Code has to be longer than 8 characters!
+```
+
+### useForm Example
+
+The `min` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
-      username: {
+      code: {
         value: "",
         validators: {
-          min: (v: string) => min(v, 4, "Username"),
+          min: (v: string) => min(v, 10),
         },
       },
     },
@@ -26,28 +76,16 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
-        placeholder="Enter username: "
-        label="Username:"
-        {...register("username")}
+        placeholder="Enter your code:"
+        label="Code:"
+        {...register("code")}
       />
       <Button type="submit">Submit</Button>
     </Form>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name        | Type                 | Description                        |
-| ----------- | -------------------- | ---------------------------------- |
-| `value`     | `string`             | The string that will be validated. |
-| `length`    | `number`             | The minimum length of the string.  |
-| `fieldName` | `string / undefined` | The name of the field.             |

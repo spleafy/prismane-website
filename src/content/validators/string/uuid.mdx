@@ -1,19 +1,71 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { uuid } from "@prismane/core/validators";
-
-console.log(uuid("1a2b3c4d5e6f7890")); // Will return null
-console.log(uuid("invaliduuid123")); // Will return an error`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `uuid` validator accepts the following parameters:
+
+| Name     | Type                  | Description                               | Default Value |
+| -------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`  | _string_              | The string that will be validated.        | -             |
+| `regExp` | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+
+## Usage
+
+The `uuid` validator tests the provided value and checks if it is a valid ID.
+
+```ts
+const string = "invaliduuid123";
+
+const error = uuid(string);
+
+console.log(error); // This is not a valid ID!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = "1a2b3c4d5e6f7890";
+
+const error = uuid(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = "invaliduuid123";
+
+const regExp = /^[a-fA-F0-9]{8}$/;
+
+const error = uppercase(string, regExp);
+
+console.log(error); // This is not a valid ID!
+```
+
+### useForm Example
+
+The `uuid` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
-      id: {
+      uuid: {
         value: "",
         validators: {
           uuid: (v: string) => uuid(v),
@@ -25,27 +77,16 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
-        placeholder="eg. 1a2b3c4d5e6f7890"
-        label="ID:"
-        {...register("id")}
+        placeholder="Enter your uuid:"
+        label="Username:"
+        {...register("uuid")}
       />
       <Button type="submit">Submit</Button>
     </Form>
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name     | Type                 | Description                                                                           |
-| -------- | -------------------- | ------------------------------------------------------------------------------------- |
-| `value`  | `string`             | The string that will be validated.                                                    |
-| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the default regex used to match the string. |

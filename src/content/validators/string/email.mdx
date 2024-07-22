@@ -1,18 +1,67 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { email } from "@prismane/core/validators";
-
-console.log(email("martinpetrov404@gmail.com")); // Will return null
-console.log(email("Ivan is cool"));
-// Will return `This is not a valid email!`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `email` validator accepts the following parameters:
+
+| Name     | Type                  | Description                               | Default Value |
+| -------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`  | _string_              | The string that will be validated.        | -             |
+| `regExp` | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+
+## Usage
+
+The `email` validator checks if the provided value is a valid email.
+
+```ts
+const string = "johndoe@domain";
+
+const error = email(string);
+
+console.log(error); // This is not a valid email!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = "johndoe@domain.com";
+
+const error = email(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = "johndoe@domain.com";
+
+const error = email(string, /^[a-zA-Z0-9._-]+@prismane\.io$/);
+
+console.log(error); // This is not a valid email!
+```
+
+### useForm Example
+
+The `email` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       email: {
         value: "",
@@ -26,14 +75,12 @@ function Demo() {
   return (
     <Form
       onSubmit={(e: any) => {
-        handleSubmit(e, (v: any) => console.log(v));
+        handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <TextField
-        placeholder="Enter email: "
-        label="Username:"
+        placeholder="Enter your email:"
+        label="Email:"
         {...register("email")}
       />
       <Button type="submit">Submit</Button>
@@ -41,12 +88,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name     | Type                 | Description                                                                          |
-| -------- | -------------------- | ------------------------------------------------------------------------------------ |
-| `value`  | `string`             | The string that will be validated.                                                   |
-| `regExp` | `RegExp / undefined` | An optional parameter that will overwrite the regex that is used to match the email. |

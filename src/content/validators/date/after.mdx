@@ -1,25 +1,76 @@
-## Basic Usage
+## Import
 
-```tsx
+```js
 import { after } from "@prismane/core/validators";
-
-// new Date(Date.now() + 86400000) - Tommorow
-console.log(after(new Date(Date.now()), new Date(Date.now() + 86400000))); // Will return null
-// new Date(Date.now() - 86400000) - Yesterday
-console.log(after(new Date(Date.now() - 86400000), new Date(Date.now()))); // Will return an error`
 ```
 
-## useForm Hook Usage
+## Parameters
 
-```jsx
+The `after` validator accepts the following parameters:
+
+| Name        | Type                  | Description                      | Default Value |
+| ----------- | --------------------- | -------------------------------- | ------------- |
+| `date`      | _Date_                | The date that will be validated. | -             |
+| `target`    | _Date_                | The target date.                 | -             |
+| `fieldName` | _string_, _undefined_ | The name of the field.           | -             |
+
+## Usage
+
+The `after` validator compares two dates and returns a _string_ error, if the provided date is before the provided target date.
+
+```ts
+const date = new Date("2023-06-05");
+const target = new Date("2024-01-01");
+
+const error = after(date, target);
+
+console.log(error); // This date must be after January 1, 2024!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const date = new Date("2024-06-05");
+const target = new Date("2024-01-01");
+
+const error = after(date, target);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
+
+```ts
+const date = new Date("2023-06-05");
+const target = new Date("2024-01-01");
+
+const error = after(date, target, "Deadline");
+
+console.log(error); // Deadline must be after January 1, 2024!
+```
+
+### useForm Example
+
+The `after` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from "@prismane/core/hooks";
+```
+
+Then do the following:
+
+```jsx preview
 function Demo() {
-  const { handleSubmit, handleReset, register } = useForm({
+  const { handleSubmit, register } = useForm({
     fields: {
       date: {
         value: "",
         validators: {
-          after: (v: string) =>
-            after(new Date(v), new Date(Date.now() - 86400000)),
+          after: (v: string) => after(new Date(v), new Date()),
         },
       },
     },
@@ -30,11 +81,9 @@ function Demo() {
       onSubmit={(e: any) => {
         handleSubmit(e, (v: any) => console.log(v, ""));
       }}
-      onReset={() => handleReset()}
-      maw={300}
     >
       <NativeDateField
-        placeholder="Enter date: "
+        placeholder="Enter date:"
         label="Date:"
         {...register("date")}
       />
@@ -43,13 +92,3 @@ function Demo() {
   );
 }
 ```
-
-## API
-
-### Parameters
-
-| Name        | Type                 | Description                      |
-| ----------- | -------------------- | -------------------------------- |
-| `date`      | `Date`               | The date that will be validated. |
-| `target`    | `Date`               | The target date.                 |
-| `fieldName` | `string / undefined` | The name of the field.           |
