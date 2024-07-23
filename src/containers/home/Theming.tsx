@@ -1,12 +1,12 @@
-import Image from "next/image";
+import Image from 'next/image';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 
 const Theming = () => {
   return (
     <Section className="sm:mb-20">
       <span className="section-heading">
-        Fully customizable{" "}
+        Fully customizable{' '}
         <span className="section-heading text-gradient">theme</span>
       </span>
       <span className="section-subheading mb-14">

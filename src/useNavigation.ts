@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const useNavigation = (array: any[]) => {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -16,7 +16,7 @@ const useNavigation = (array: any[]) => {
         if (item.items && item.items.length > 0) {
           setExpanded((prevExpanded) => ({
             ...prevExpanded,
-            [item.route]: asPath.includes(item.route),
+            [item.route]: asPath.includes(item.route)
           }));
 
           process(item.items, item.route);
@@ -32,7 +32,7 @@ const useNavigation = (array: any[]) => {
   const toggle = (route: string) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [route]: !prevExpanded[route],
+      [route]: !prevExpanded[route]
     }));
   };
 

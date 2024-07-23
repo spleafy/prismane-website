@@ -1,7 +1,7 @@
-import { HTMLAttributes } from "react";
-import { Warning as PhosphorWarning } from "@phosphor-icons/react";
+import { HTMLAttributes } from 'react';
+import { Warning as PhosphorWarning } from '@phosphor-icons/react';
 // Components
-import Note from "./Note";
+import Note from './Note';
 
 const Warning = ({
   children,
@@ -11,8 +11,8 @@ const Warning = ({
   return (
     <Note
       icon={<PhosphorWarning size={32} />}
-      className={`!border-amber-500/20 !bg-amber-50/50 dark:!border-amber-500/30 dark:!bg-amber-500/10 !text-amber-900 dark:!text-amber-200 ${
-        className ? className : ""
+      className={`!border-amber-500/20 !bg-amber-50/50 !text-amber-900 dark:!border-amber-500/30 dark:!bg-amber-500/10 dark:!text-amber-200 ${
+        className ? className : ''
       }`}
       {...props}
     >

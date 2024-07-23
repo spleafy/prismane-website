@@ -1,9 +1,9 @@
-import { HTMLAttributes } from "react";
-import { LivePreview, LiveProvider } from "react-live";
+import { HTMLAttributes } from 'react';
+import { LivePreview, LiveProvider } from 'react-live';
 // Components
-import Code from "./Code/Code";
+import Code from './Code/Code';
 // Config
-import config from "@/config/mdx";
+import config from '@/config/mdx';
 
 interface PreviewCodeProps extends HTMLAttributes<HTMLElement> {
   name?: string;
@@ -35,29 +35,29 @@ const PreviewCode = ({
         code={value.trim()}
         language={language}
       >
-        <div className="flex p-5 mt-2 border dark:border-base-800 dark:bg-[#0F0F0F]/40 border-base-300 bg-base-50/40 rounded-md grow overflow-x-auto sm:overflow-x-visible">
-          <LivePreview className="flex items-center w-full grow gap-5 flex-wrap" />
+        <div className="mt-2 flex grow overflow-x-auto rounded-md border border-base-300 bg-base-50/40 p-5 dark:border-base-800 dark:bg-[#0F0F0F]/40 sm:overflow-x-visible">
+          <LivePreview className="flex w-full grow flex-wrap items-center gap-5" />
         </div>
       </LiveProvider>
       <Code
         files={[
           {
-            name: name ?? "",
+            name: name ?? '',
             icon,
             value,
-            language: language ?? "jsx",
-          },
+            language: language ?? 'jsx'
+          }
         ]}
         classNames={{
-          header: !name ? `hidden ${classNames ? classNames.header : ""}` : "",
+          header: !name ? `hidden ${classNames ? classNames.header : ''}` : '',
           item: `pointer-events-none !bg-transparent ${
-            classNames ? classNames.item : ""
+            classNames ? classNames.item : ''
           }`,
           body: !name
-            ? `rounded-t-md ${classNames ? classNames.body : ""}`
-            : "",
-          root: classNames ? classNames.root : "",
-          button: classNames ? classNames.button : "",
+            ? `rounded-t-md ${classNames ? classNames.body : ''}`
+            : '',
+          root: classNames ? classNames.root : '',
+          button: classNames ? classNames.button : ''
         }}
         {...props}
         preview

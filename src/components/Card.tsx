@@ -4,25 +4,25 @@ type CardProps = {
     wrapper?: string;
     border?: string;
   };
-} & React.ComponentProps<"div">;
+} & React.ComponentProps<'div'>;
 
 const Card = ({ classNames, className, children, ...props }: CardProps) => {
   return (
     <div
-      className={`relative p-[2px] dark:bg-base-800 bg-base-200 hover:!bg-transparent rounded-xl group overflow-hidden transition-all ${
-        classNames?.wrapper ? classNames.wrapper : ""
+      className={`group relative overflow-hidden rounded-xl bg-base-200 p-[2px] transition-all hover:!bg-transparent dark:bg-base-800 ${
+        classNames?.wrapper ? classNames.wrapper : ''
       }`}
       {...props}
     >
       <div
-        className={`absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 bg-gradient-to-tr gradient -z-10 transition-all ${
-          classNames?.border ? classNames.border : ""
+        className={`gradient absolute left-0 top-0 -z-10 h-full w-full bg-gradient-to-tr opacity-0 transition-all group-hover:opacity-100 ${
+          classNames?.border ? classNames.border : ''
         }`}
       ></div>
       <div
-        className={`h-full w-full rounded-[calc(0.75rem-2px)] dark:!bg-base-900 bg-white overflow-hidden transition-colors z-10 ${
-          className ? className : ""
-        } ${classNames?.root ? classNames.root : ""}`}
+        className={`z-10 h-full w-full overflow-hidden rounded-[calc(0.75rem-2px)] bg-white transition-colors dark:!bg-base-900 ${
+          className ? className : ''
+        } ${classNames?.root ? classNames.root : ''}`}
       >
         {children}
       </div>

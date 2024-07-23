@@ -1,4 +1,4 @@
-import { Box, BoxProps } from "@prismane/core";
+import { Box, BoxProps } from '@prismane/core';
 import {
   CodeEditorProps,
   PreviewProps,
@@ -6,9 +6,9 @@ import {
   SandpackLayout,
   SandpackLayoutProps,
   SandpackPreview,
-  SandpackProvider,
-} from "@codesandbox/sandpack-react";
-import { levelUp } from "@codesandbox/sandpack-themes";
+  SandpackProvider
+} from '@codesandbox/sandpack-react';
+import { levelUp } from '@codesandbox/sandpack-themes';
 
 type Props = BoxProps & {
   dependencies?: Record<string, string>;
@@ -29,7 +29,7 @@ const SandpackEmbed = ({
   editorOptions,
   previewOptions,
   files,
-  isHorizontal = false,
+  isHorizontal = false
 }: Props) => {
   return (
     <SandpackProvider
@@ -38,44 +38,44 @@ const SandpackEmbed = ({
       template="react-ts"
       customSetup={{
         dependencies: {
-          "@fontsource/poppins": "^5.0.8",
-          "@phosphor-icons/react": "^2.0.10",
-          "@prismane/core": "^1.0.1",
-          "loader-utils": "3.2.1",
-          react: "18.2.0",
-          "react-dom": "18.2.0",
-          "react-scripts": "5.0.1",
-          ...dependencies,
+          '@fontsource/poppins': '^5.0.8',
+          '@phosphor-icons/react': '^2.0.10',
+          '@prismane/core': '^1.0.1',
+          'loader-utils': '3.2.1',
+          react: '18.2.0',
+          'react-dom': '18.2.0',
+          'react-scripts': '5.0.1',
+          ...dependencies
         },
         devDependencies: {
-          "@babel/runtime": "7.13.8",
-          typescript: "4.1.3",
-          ...devDependencies,
-        },
+          '@babel/runtime': '7.13.8',
+          typescript: '4.1.3',
+          ...devDependencies
+        }
       }}
-      className="!w-full !outline !outline-[1px] !outline-primary-500 !rounded-md !shadow-glow !shadow-primary-500/30 !overflow-hidden"
+      className="!w-full !overflow-hidden !rounded-md !shadow-glow !shadow-primary-500/30 !outline !outline-[1px] !outline-primary-500"
     >
       <Box
         w="100%"
         as={SandpackLayout}
         sx={{
-          "--sp-layout-height": "auto",
+          '--sp-layout-height': 'auto'
         }}
-        style={{ flexDirection: isHorizontal ? "row" : "column-reverse" }}
+        style={{ flexDirection: isHorizontal ? 'row' : 'column-reverse' }}
         {...layoutOptions}
       >
         <SandpackCodeEditor
           showLineNumbers
           style={{
-            height: isHorizontal ? "700px" : "600px",
-            minWidth: "400px",
+            height: isHorizontal ? '700px' : '600px',
+            minWidth: '400px'
           }}
           {...editorOptions}
         />
         <Box
           as={SandpackPreview}
           mih="700px"
-          sx={{ "& iframe": { flex: "initial", flexGrow: 1 } }}
+          sx={{ '& iframe': { flex: 'initial', flexGrow: 1 } }}
           {...previewOptions}
         />
       </Box>

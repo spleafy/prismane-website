@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 
 interface LoaderProps extends HTMLAttributes<HTMLElement> {
   loading: boolean;
@@ -7,9 +7,9 @@ interface LoaderProps extends HTMLAttributes<HTMLElement> {
 const Loader = ({ loading, className, ...props }: LoaderProps) => {
   return (
     <div
-      className={`absolute top-0 left-0 h-[2px] bg-gradient-to-r gradient-stops transition-all duration-75 ${
-        loading ? "w-full" : "w-0"
-      } ${className ? className : ""}`}
+      className={`gradient-stops absolute left-0 top-0 h-[2px] bg-gradient-to-r transition-all duration-75 ${
+        loading ? 'w-full' : 'w-0'
+      } ${className ? className : ''}`}
       {...props}
     ></div>
   );

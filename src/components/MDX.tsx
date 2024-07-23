@@ -1,32 +1,32 @@
-import React, { HTMLAttributes } from "react";
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
-import Link from "next/link";
-import { LinkSimple as LinkIcon } from "@phosphor-icons/react";
+import React, { HTMLAttributes } from 'react';
+import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
+import Link from 'next/link';
+import { LinkSimple as LinkIcon } from '@phosphor-icons/react';
 // Components
-import PreviewCode from "./docs/PreviewCode";
-import SingleCode from "./docs/SingleCode";
-import Code from "./docs/Code/Code";
+import PreviewCode from './docs/PreviewCode';
+import SingleCode from './docs/SingleCode';
+import Code from './docs/Code/Code';
 // Config
-import mdx from "@/config/mdx";
+import mdx from '@/config/mdx';
 
 type MDXComponents =
-  | "pre"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "p"
-  | "code"
-  | "li"
-  | "ul"
-  | "hr"
-  | "table"
-  | "thead"
-  | "tbody"
-  | "tr"
-  | "td"
-  | "th"
-  | "a"
-  | "em";
+  | 'pre'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'p'
+  | 'code'
+  | 'li'
+  | 'ul'
+  | 'hr'
+  | 'table'
+  | 'thead'
+  | 'tbody'
+  | 'tr'
+  | 'td'
+  | 'th'
+  | 'a'
+  | 'em';
 
 interface MDXProps extends MDXRemoteProps {
   classNames?: Partial<Record<MDXComponents, string>>;
@@ -51,7 +51,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
   };
 
   const c = (key: MDXComponents) =>
-    classNames && classNames[key] ? classNames[key] : "";
+    classNames && classNames[key] ? classNames[key] : '';
 
   return (
     <MDXRemote
@@ -60,9 +60,9 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
       components={{
         pre: ({ children, ...props }: any) => {
           const language =
-            children.props.className?.replace("language-", "") || "jsx";
+            children.props.className?.replace('language-', '') || 'jsx';
 
-          const code = (children?.props.children?.trim() as string) || "";
+          const code = (children?.props.children?.trim() as string) || '';
 
           if (props.preview) {
             return t(
@@ -93,8 +93,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         h1: ({ children, ...props }) => {
           return t(
             <h1
-              className={`text-3xl sm:text-4xl font-bold text-base-900 dark:text-white tracking-tight ${c(
-                "h1"
+              className={`text-3xl font-bold tracking-tight text-base-900 dark:text-white sm:text-4xl ${c(
+                'h1'
               )}`}
               {...props}
             >
@@ -105,8 +105,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         h2: ({ children, ...props }) => {
           return t(
             <h2
-              className={`text-xl sm:text-2xl font-bold text-base-900 dark:text-white tracking-tight ${c(
-                "h2"
+              className={`text-xl font-bold tracking-tight text-base-900 dark:text-white sm:text-2xl ${c(
+                'h2'
               )}`}
               {...props}
             >
@@ -117,8 +117,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         h3: ({ children, ...props }) => {
           return t(
             <h3
-              className={`text-lg sm:text-xl font-bold text-base-900 dark:text-white tracking-tight ${c(
-                "h3"
+              className={`text-lg font-bold tracking-tight text-base-900 dark:text-white sm:text-xl ${c(
+                'h3'
               )}`}
               {...props}
             >
@@ -129,8 +129,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         p: ({ children, ...props }) =>
           t(
             <p
-              className={`text-base-700 dark:text-base-200 leading-7 my-2 w-full ${c(
-                "p"
+              className={`my-2 w-full leading-7 text-base-700 dark:text-base-200 ${c(
+                'p'
               )}`}
               {...props}
             >
@@ -140,8 +140,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         em: ({ children, ...props }) =>
           t(
             <em
-              className={`text-primary-500 not-italic h-fit px-1.5 py-0.5 dark:bg-primary-400/10 bg-primary-800/10 rounded-md ${c(
-                "em"
+              className={`h-fit rounded-md bg-primary-800/10 px-1.5 py-0.5 not-italic text-primary-500 dark:bg-primary-400/10 ${c(
+                'em'
               )}`}
               {...props}
             >
@@ -151,8 +151,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         code: ({ children, ...props }) =>
           t(
             <code
-              className={`dark:text-white text-base-900 dark:bg-base-800 bg-base-100 border dark:border-base-700 border-base-300 px-1.5 py-0.5 rounded text-sm ${c(
-                "code"
+              className={`rounded border border-base-300 bg-base-100 px-1.5 py-0.5 text-sm text-base-900 dark:border-base-700 dark:bg-base-800 dark:text-white ${c(
+                'code'
               )}`}
               {...props}
             >
@@ -162,8 +162,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         ul: ({ children, ...props }) =>
           t(
             <ul
-              className={`dark:text-white text-base-800 list-disc list-inside my-2 ${c(
-                "ul"
+              className={`my-2 list-inside list-disc text-base-800 dark:text-white ${c(
+                'ul'
               )}`}
               {...props}
             >
@@ -173,8 +173,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         li: ({ children, ...props }) =>
           t(
             <li
-              className={`dark:text-white text-base-800 my-1 [&>ul]:ml-6 [&>ul]:!list-[circle] ${c(
-                "li"
+              className={`my-1 text-base-800 dark:text-white [&>ul]:ml-6 [&>ul]:!list-[circle] ${c(
+                'li'
               )}`}
               {...props}
             >
@@ -184,8 +184,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         hr: ({ children, ...props }) =>
           t(
             <hr
-              className={`bg-base-700 dark:bg-base-400 border-none h-px ${c(
-                "hr"
+              className={`h-px border-none bg-base-700 dark:bg-base-400 ${c(
+                'hr'
               )}`}
               {...props}
             >
@@ -195,8 +195,8 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         table: ({ children, ...props }) =>
           t(
             <table
-              className={`dark:text-white text-base-800 text-sm mt-4 ${c(
-                "table"
+              className={`mt-4 text-sm text-base-800 dark:text-white ${c(
+                'table'
               )}`}
               {...props}
             >
@@ -206,7 +206,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         thead: ({ children, ...props }) =>
           t(
             <thead
-              className={`dark:border-base-700 border-base-300 ${c("thead")}`}
+              className={`border-base-300 dark:border-base-700 ${c('thead')}`}
               {...props}
             >
               {children}
@@ -215,7 +215,7 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
         tbody: ({ children, ...props }) =>
           t(
             <tbody
-              className={`dark:border-base-800 border-base-200 ${c("tbody")}`}
+              className={`border-base-200 dark:border-base-800 ${c('tbody')}`}
               {...props}
             >
               {children}
@@ -223,21 +223,21 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
           ),
         tr: ({ children, ...props }) =>
           t(
-            <tr className={`border-b border-inherit ${c("tr")}`} {...props}>
+            <tr className={`border-b border-inherit ${c('tr')}`} {...props}>
               {children}
             </tr>
           ),
         td: ({ children, ...props }) =>
           t(
-            <td className={`p-2 first:!pl-0 ${c("td")}`} {...props}>
+            <td className={`p-2 first:!pl-0 ${c('td')}`} {...props}>
               {children}
             </td>
           ),
         th: ({ children, ...props }) =>
           t(
             <th
-              className={`pb-2 px-2 first:!pl-0 text-left font-semibold whitespace-nowrap ${c(
-                "th"
+              className={`whitespace-nowrap px-2 pb-2 text-left font-semibold first:!pl-0 ${c(
+                'th'
               )}`}
               {...props}
             >
@@ -249,15 +249,15 @@ const MDX = ({ components, classNames, transform, ...props }: MDXProps) => {
             <Link
               {...props}
               target="_blank"
-              className={`text-primary-500 [&>code]:!border-dashed hover:[&>code]:!border-solid hover:[&>code]:border-primary-500 [&>code]:underline [&>code]:decoration-primary-500 hover:underline decoration-primary-500 ${c(
-                "a"
+              className={`text-primary-500 decoration-primary-500 hover:underline [&>code]:!border-dashed [&>code]:underline [&>code]:decoration-primary-500 hover:[&>code]:!border-solid hover:[&>code]:border-primary-500 ${c(
+                'a'
               )}`}
             >
               {/* <LinkIcon size={12} /> */}
               {children}
             </Link>
           ),
-        ...components,
+        ...components
       }}
     />
   );

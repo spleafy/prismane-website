@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { File, Info } from "@phosphor-icons/react";
-import { Modal } from "@prismane/core";
+import { useState } from 'react';
+import { File, Info } from '@phosphor-icons/react';
+import { Modal } from '@prismane/core';
 // Components
-import SingleCode from "@/components/docs/SingleCode";
-import InteractiveExample from "@/components/InteractiveExample";
+import SingleCode from '@/components/docs/SingleCode';
+import InteractiveExample from '@/components/InteractiveExample';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 // Example
 import FormHookExample, {
   FormHookExampleSource,
-  FullFormHookExampleSource,
-} from "../examples/FormHookExample";
+  FullFormHookExampleSource
+} from '../examples/FormHookExample';
 
 const FormHook = () => {
   const [shownModal, setShownModal] = useState(false);
@@ -18,7 +18,7 @@ const FormHook = () => {
   return (
     <Section>
       <span className="section-heading">
-        Form building has never <br /> been{" "}
+        Form building has never <br /> been{' '}
         <span className="section-heading text-gradient">easier.</span>
       </span>
       <span className="section-subheading mb-14">
@@ -29,10 +29,10 @@ const FormHook = () => {
           {
             children: <Info />,
             props: {
-              onClick: () => setShownModal(true),
+              onClick: () => setShownModal(true)
             },
-            tooltip: "Show full code",
-          },
+            tooltip: 'Show full code'
+          }
         ]}
         side={
           <SingleCode
@@ -40,8 +40,8 @@ const FormHook = () => {
             name="Form.tsx"
             value={FormHookExampleSource}
             classNames={{
-              root: "h-full !my-0",
-              body: "h-full [&>pre]:h-full",
+              root: 'h-full !my-0',
+              body: 'h-full [&>pre]:h-full'
             }}
           />
         }
@@ -55,7 +55,7 @@ const FormHook = () => {
         closable
       >
         <Modal.Header>
-          <h2 className="dark:text-white text-base-900">
+          <h2 className="text-base-900 dark:text-white">
             Simple useForm Hook Form Example
           </h2>
         </Modal.Header>
@@ -68,7 +68,7 @@ const FormHook = () => {
           icon={<File />}
           name="Example.tsx"
           classNames={{
-            body: "max-h-[440px]",
+            body: 'max-h-[440px]'
           }}
         />
       </Modal>

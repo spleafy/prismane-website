@@ -1,19 +1,19 @@
-import { File } from "@phosphor-icons/react";
+import { File } from '@phosphor-icons/react';
 // Components
-import SingleCode from "@/components/docs/SingleCode";
-import InteractiveExample from "@/components/InteractiveExample";
+import SingleCode from '@/components/docs/SingleCode';
+import InteractiveExample from '@/components/InteractiveExample';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 // Example
 import CustomizationExample, {
-  CustomizationExampleSource,
-} from "../examples/CustomizationExample";
+  CustomizationExampleSource
+} from '../examples/CustomizationExample';
 
 const Customization = () => {
   return (
     <Section>
       <span className="section-heading">
-        Customization has never <br /> been{" "}
+        Customization has never <br /> been{' '}
         <span className="section-heading text-gradient">easier.</span>
       </span>
       <span className="section-subheading mb-14">
@@ -27,13 +27,13 @@ const Customization = () => {
             name="CustomButton.tsx"
             value={CustomizationExampleSource}
             classNames={{
-              root: "h-full !my-0",
+              root: 'h-full !my-0'
             }}
           />
         }
         classNames={{
-          root: "lg:h-96",
-          example: "dark:!bg-base-900 !bg-base-100 !bg-none",
+          root: 'lg:h-96',
+          example: 'dark:!bg-base-900 !bg-base-100 !bg-none'
         }}
         switchOrder
       >

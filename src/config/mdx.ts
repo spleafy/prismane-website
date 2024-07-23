@@ -1,5 +1,5 @@
-import React from "react";
-import * as icons from "@phosphor-icons/react";
+import React from 'react';
+import * as icons from '@phosphor-icons/react';
 import {
   Accordion,
   ActionButton,
@@ -74,8 +74,8 @@ import {
   usePrismaneTheme,
   usePrismaneColor,
   useThemeModeValue,
-  useToast,
-} from "@prismane/core";
+  useToast
+} from '@prismane/core';
 import {
   useAnimation,
   useCounter,
@@ -101,8 +101,8 @@ import {
   useScroll,
   useSearch,
   useSorting,
-  useToggle,
-} from "@prismane/core/hooks";
+  useToggle
+} from '@prismane/core/hooks';
 import {
   min,
   max,
@@ -130,8 +130,8 @@ import {
   substring,
   trimmed,
   uppercase,
-  uuid,
-} from "@prismane/core/validators";
+  uuid
+} from '@prismane/core/validators';
 
 const mdx = {
   ...icons,
@@ -264,7 +264,7 @@ const mdx = {
   useState: React.useState,
   useEffect: React.useEffect,
   useRef: React.useRef,
-  React,
+  React
 };
 
 export default mdx;

@@ -1,25 +1,25 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "@phosphor-icons/react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight } from '@phosphor-icons/react';
 // Components
-import Button from "@/components/Button";
-import SecondaryButton from "@/components/SecondaryButton";
-import Announce from "@/components/Announce";
+import Button from '@/components/Button';
+import SecondaryButton from '@/components/SecondaryButton';
+import Announce from '@/components/Announce';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 
 const Hero = () => {
   return (
     <Section className="section-hero sm:!pt-24">
       <Announce href="/changelog/latest">Prismane v1.6 is out now!</Announce>
       <h1 className="hero-heading">
-        Build exceptional React apps with{" "}
+        Build exceptional React apps with{' '}
         <span className="text-gradient">blazing speed.</span>
       </h1>
       <h2 className="hero-subheading">
         Everything you need to start building your future ventures.
       </h2>
-      <div className="flex w-full items-center justify-center gap-5 flex-col lg:flex-row">
+      <div className="flex w-full flex-col items-center justify-center gap-5 lg:flex-row">
         <Link href="/docs" className="!w-full sm:!w-fit">
           <Button
             className="group !w-full sm:!w-fit"
@@ -47,7 +47,7 @@ const Hero = () => {
                 alt="Github Logo"
                 width={20}
                 height={20}
-                className="filter dark:brightness-[100] brightness-0 min-h-[20px] min-w-[20px]"
+                className="min-h-[20px] min-w-[20px] brightness-0 filter dark:brightness-[100]"
               />
             }
           >

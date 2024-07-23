@@ -1,22 +1,22 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { ArrowLeft, BookBookmark, House } from "@phosphor-icons/react";
-import Button from "@/components/Button";
-import SecondaryButton from "@/components/SecondaryButton";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ArrowLeft, BookBookmark, House } from '@phosphor-icons/react';
+import Button from '@/components/Button';
+import SecondaryButton from '@/components/SecondaryButton';
 // Containers
-import Section from "../containers/Section";
+import Section from '../containers/Section';
 const Error = () => {
   const router = useRouter();
 
   return (
     <Section className="section-hero !items-start !gap-4">
-      <span className="text-gradient text-xl font-semibold mb-2">
+      <span className="text-gradient mb-2 text-xl font-semibold">
         Error 500
       </span>
-      <h1 className="text-5xl dark:text-white text-base-900">
+      <h1 className="text-5xl text-base-900 dark:text-white">
         An error ocurred.
       </h1>
-      <span className="dark:text-base-300 text-base-700">
+      <span className="text-base-700 dark:text-base-300">
         We have hit a roadblock and are working actively to resolve the issue.
       </span>
       <div className="flex items-center gap-4">

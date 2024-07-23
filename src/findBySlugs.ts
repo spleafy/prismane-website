@@ -4,10 +4,10 @@ const findBySlugs = (
   cb?: (item?: any, array?: any) => void
 ): any => {
   if (!slugs.length) {
-    return "";
+    return '';
   }
 
-  slugs = slugs.map((slug) => slug.replace(/[#?].*$/, ""));
+  slugs = slugs.map((slug) => slug.replace(/[#?].*$/, ''));
 
   const currentSlug = slugs[0];
 

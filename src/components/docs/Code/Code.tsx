@@ -1,11 +1,11 @@
-import React, { HTMLAttributes, useState } from "react";
-import { Copy, Check } from "@phosphor-icons/react";
+import React, { HTMLAttributes, useState } from 'react';
+import { Copy, Check } from '@phosphor-icons/react';
 // Components
-import CodeHeader from "./CodeHeader";
-import CodeBody from "./CodeBody";
-import CodeItem from "./CodeItem";
+import CodeHeader from './CodeHeader';
+import CodeBody from './CodeBody';
+import CodeItem from './CodeItem';
 // Context
-import { CodeContextProvider } from "./CodeContext";
+import { CodeContextProvider } from './CodeContext';
 
 interface CodeProps extends HTMLAttributes<HTMLElement> {
   files: {
@@ -33,15 +33,15 @@ const Code = ({
   ...props
 }: CodeProps) => {
   const [active, setActive] = useState<string | null>(
-    typeof files !== "string" ? files[0].name : null
+    typeof files !== 'string' ? files[0].name : null
   );
 
   const [copy, setCopy] = useState(false);
 
   return (
     <div
-      className={`relative [&>div:last-child]:!my-0 [&>div:last-child]:!static my-5 flex flex-col grow w-full ${
-        classNames && classNames.root ? classNames.root : ""
+      className={`relative my-5 flex w-full grow flex-col [&>div:last-child]:!static [&>div:last-child]:!my-0 ${
+        classNames && classNames.root ? classNames.root : ''
       }`}
       {...props}
     >
@@ -49,16 +49,16 @@ const Code = ({
         value={{
           value: active,
           setValue: setActive,
-          files,
+          files
         }}
       >
         <button
-          className={`focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-xs gap-x-1.5 p-1.5 text-base-500 dark:text-base-400 hover:text-base-700 dark:hover:text-base-200 dark:hover:bg-base-900/70 hover:bg-base-500/10 underline-offset-4 hover:underline focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center absolute top-2.5 right-2.5 ${
-            classNames && classNames.button ? classNames.button : ""
+          className={`absolute right-2.5 top-2.5 inline-flex flex-shrink-0 items-center gap-x-1.5 rounded-md p-1.5 text-xs font-medium text-base-500 underline-offset-4 hover:bg-base-500/10 hover:text-base-700 hover:underline focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:opacity-75 dark:text-base-400 dark:hover:bg-base-900/70 dark:hover:text-base-200 dark:focus-visible:ring-primary-400 ${
+            classNames && classNames.button ? classNames.button : ''
           }`}
           onClick={() => {
             navigator.clipboard.writeText(
-              typeof files !== "string"
+              typeof files !== 'string'
                 ? (files.find((x) => x.name === active)?.value as string)
                 : files
             );
@@ -84,7 +84,7 @@ const Code = ({
           <CodeBody
             className={classNames && classNames.body}
             item={file.name}
-            language={file.language ?? "jsx"}
+            language={file.language ?? 'jsx'}
             preview={preview}
             expandable={expandable}
             key={index}

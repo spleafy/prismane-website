@@ -1,42 +1,42 @@
 // Components
-import Counter from "@/components/Counter";
+import Counter from '@/components/Counter';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 
 const Statistics = () => {
   return (
     <Section className="!mt-0">
-      <div className="flex flex-col md:flex-row w-full border rounded-lg overflow-hidden shadow-glow dark:border-base-800 border-base-300">
-        <div className="flex flex-col grow items-center gap-2 py-10 px-12 w-full md:w-1/3 dark:!bg-base-900/40 bg-base-200/10 dark:border-base-800 border-base-300 border-b border-r-0 md:border-b-0 md:border-r">
+      <div className="flex w-full flex-col overflow-hidden rounded-lg border border-base-300 shadow-glow dark:border-base-800 md:flex-row">
+        <div className="flex w-full grow flex-col items-center gap-2 border-b border-r-0 border-base-300 bg-base-200/10 px-12 py-10 dark:border-base-800 dark:!bg-base-900/40 md:w-1/3 md:border-b-0 md:border-r">
           <Counter
             value={111}
-            className="text-6xl bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-transparent font-black"
+            className="bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-6xl font-black text-transparent"
           >
             +
           </Counter>
-          <span className="text-lg dark:text-base-300 text-base-900">
+          <span className="text-lg text-base-900 dark:text-base-300">
             React components
           </span>
         </div>
-        <div className="flex flex-col grow items-center gap-2 py-10 px-12 w-full md:w-1/3 dark:!bg-base-900/40 bg-base-200/10 dark:border-base-800 border-base-300 border-b border-r-0 md:border-b-0 md:border-r">
+        <div className="flex w-full grow flex-col items-center gap-2 border-b border-r-0 border-base-300 bg-base-200/10 px-12 py-10 dark:border-base-800 dark:!bg-base-900/40 md:w-1/3 md:border-b-0 md:border-r">
           <Counter
             value={26}
-            className="text-6xl bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-transparent font-black"
+            className="bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-6xl font-black text-transparent"
           >
             +
           </Counter>
-          <span className="text-lg dark:text-base-300 text-base-900">
+          <span className="text-lg text-base-900 dark:text-base-300">
             React hooks
           </span>
         </div>
-        <div className="flex flex-col grow items-center gap-2 py-10 px-12 w-full md:w-1/3 dark:!bg-base-900/40 bg-base-200/10 dark:border-base-800 border-base-300">
+        <div className="flex w-full grow flex-col items-center gap-2 border-base-300 bg-base-200/10 px-12 py-10 dark:border-base-800 dark:!bg-base-900/40 md:w-1/3">
           <Counter
             value={210}
-            className="text-6xl bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-transparent font-black"
+            className="bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-6xl font-black text-transparent"
           >
             +
           </Counter>
-          <span className="text-lg dark:text-base-300 text-base-900">
+          <span className="text-lg text-base-900 dark:text-base-300">
             Vibrant colors
           </span>
         </div>

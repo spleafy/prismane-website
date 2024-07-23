@@ -1,10 +1,10 @@
-import { DocSearch } from "@docsearch/react";
-import { MagnifyingGlass } from "@phosphor-icons/react";
-import { Key } from "@prismane/core";
+import { DocSearch } from '@docsearch/react';
+import { MagnifyingGlass } from '@phosphor-icons/react';
+import { Key } from '@prismane/core';
 // Components
-import HeaderButton from "./header/HeaderButton";
+import HeaderButton from './header/HeaderButton';
 
-import "@docsearch/css";
+import '@docsearch/css';
 
 const Search = () => {
   return (
@@ -12,11 +12,11 @@ const Search = () => {
       <HeaderButton
         tooltip="Search • Ctrl + K"
         onClick={() => {
-          document.getElementsByClassName("DocSearch-Button")[0].dispatchEvent(
-            new MouseEvent("click", {
+          document.getElementsByClassName('DocSearch-Button')[0].dispatchEvent(
+            new MouseEvent('click', {
               view: window,
               bubbles: true,
-              cancelable: false,
+              cancelable: false
             })
           );
         }}

@@ -8,34 +8,34 @@ import {
   Text,
   Button,
   Link,
-  fr,
-} from "@prismane/core";
-import { useForm } from "@prismane/core/hooks";
-import { required, min, max, email } from "@prismane/core/validators";
+  fr
+} from '@prismane/core';
+import { useForm } from '@prismane/core/hooks';
+import { required, min, max, email } from '@prismane/core/validators';
 
 const FormHookExample = () => {
   const { register, handleSubmit, handleReset } = useForm({
     fields: {
       email: {
-        value: "",
+        value: '',
         validators: {
           required: (v) => required(v),
-          min: (v) => min(v, 4, "Email"),
-          email: (v) => email(v),
-        },
+          min: (v) => min(v, 4, 'Email'),
+          email: (v) => email(v)
+        }
       },
       password: {
-        value: "",
+        value: '',
         validators: {
           required: (v) => required(v),
-          min: (v) => min(v, 4, "Password"),
-          max: (v) => max(v, 16, "Password"),
-        },
+          min: (v) => min(v, 4, 'Password'),
+          max: (v) => max(v, 16, 'Password')
+        }
       },
       checkbox: {
-        value: false,
-      },
-    },
+        value: false
+      }
+    }
   });
 
   return (
@@ -52,28 +52,28 @@ const FormHookExample = () => {
         <Text
           as="h1"
           fs="3xl"
-          cl={(theme) => (theme.mode === "dark" ? "white" : ["base", 900])}
+          cl={(theme) => (theme.mode === 'dark' ? 'white' : ['base', 900])}
         >
           Sign In
         </Text>
         <Text mb={fr(8)}>
-          New to Prismane?{" "}
+          New to Prismane?{' '}
           <Link cl="primary" href="#" dp="inline-block">
             Create an account.
           </Link>
         </Text>
         <TextField
-          {...register("email")}
+          {...register('email')}
           label="Enter email:"
           placeholder="Enter email"
         />
         <PasswordField
-          {...register("password")}
+          {...register('password')}
           label="Enter password:"
           placeholder="Enter password"
         />
         <Flex align="center" justify="between" gap={fr(2)}>
-          <Checkbox {...register("checkbox")} label="Remember me for 30 days" />
+          <Checkbox {...register('checkbox')} label="Remember me for 30 days" />
           <Link href="#" fs="sm" ml="auto" cl="primary">
             Forgot password
           </Link>

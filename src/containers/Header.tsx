@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Sun,
   Moon,
@@ -13,20 +13,20 @@ import {
   Article,
   HandHeart,
   UsersThree,
-  Heart,
-} from "@phosphor-icons/react";
-import { usePrismaneTheme, Field } from "@prismane/core";
+  Heart
+} from '@phosphor-icons/react';
+import { usePrismaneTheme, Field } from '@prismane/core';
 // Components
-import Search from "@/components/Search";
-import HeaderLink from "@/components/header/HeaderLink";
-import HeaderButton from "@/components/header/HeaderButton";
-import SecondaryButton from "@/components/SecondaryButton";
+import Search from '@/components/Search';
+import HeaderLink from '@/components/header/HeaderLink';
+import HeaderButton from '@/components/header/HeaderButton';
+import SecondaryButton from '@/components/SecondaryButton';
 // Content
-import content from "@/content";
+import content from '@/content';
 // Config
-import hidden from "@/config/hidden";
+import hidden from '@/config/hidden';
 // Utils
-import useNavigation from "@/useNavigation";
+import useNavigation from '@/useNavigation';
 
 type NavigationProps = {
   items: any;
@@ -45,24 +45,24 @@ const Navigation = ({
   expanded,
   setShown,
   inner,
-  parentRoute,
+  parentRoute
 }: NavigationProps) => {
   return (
     <div
-      className={`w-full flex flex-col md:flex-row ${
+      className={`flex w-full flex-col md:flex-row ${
         inner
-          ? "ml-2.5 [&_.inner]:!ml-6 mt-3 mb-3 border-l dark:border-base-800 border-base-200 inner"
-          : ""
+          ? 'inner mb-3 ml-2.5 mt-3 border-l border-base-200 dark:border-base-800 [&_.inner]:!ml-6'
+          : ''
       }`}
     >
       {items.map((item: any) => (
         <>
           <Link
             href={parentRoute ? `${parentRoute}/${item.slug}` : `/${item.slug}`}
-            className={`flex items-center justify-between cursor-pointer mb-3 ${
+            className={`mb-3 flex cursor-pointer items-center justify-between ${
               inner
-                ? "pl-3.5 -ml-px border-l border-transparent hover:border-base-500 dark:hover:border-base-400"
-                : ""
+                ? '-ml-px border-l border-transparent pl-3.5 hover:border-base-500 dark:hover:border-base-400'
+                : ''
             }`}
             onClick={(e) => {
               if (!item.items) {
@@ -74,14 +74,14 @@ const Navigation = ({
             }}
           >
             <span
-              className={`text-base font-medium flex whitespace-nowrap items-center gap-3 dark:text-white/60 dark:hover:text-white text-base-600/80 hover:text-base-900 transition-colors ${
+              className={`flex items-center gap-3 whitespace-nowrap text-base font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white ${
                 path.includes(item.route) || expanded[item.route]
-                  ? "dark:!text-white !text-base-900"
-                  : ""
+                  ? '!text-base-900 dark:!text-white'
+                  : ''
               }`}
             >
               {item.icon && (
-                <div className="text-inherit flex items-center justify-center md:hidden text-2xl">
+                <div className="flex items-center justify-center text-2xl text-inherit md:hidden">
                   {item.icon}
                 </div>
               )}
@@ -89,8 +89,8 @@ const Navigation = ({
             </span>
             {item.items && item.items.length > 0 && (
               <CaretRight
-                className={`block md:hidden transition-all ${
-                  expanded[item.route] ? "rotate-90" : "rotate-0"
+                className={`block transition-all md:hidden ${
+                  expanded[item.route] ? 'rotate-90' : 'rotate-0'
                 }`}
               />
             )}
@@ -125,30 +125,30 @@ const Header = () => {
 
   const tree = [
     {
-      title: "Docs",
-      slug: "docs",
-      route: "/docs",
+      title: 'Docs',
+      slug: 'docs',
+      route: '/docs',
       icon: <BookBookmark />,
-      items: content,
+      items: content
     },
     {
-      title: "Changelog",
-      slug: "changelog",
-      route: "/changelog",
-      icon: <ClockCounterClockwise />,
+      title: 'Changelog',
+      slug: 'changelog',
+      route: '/changelog',
+      icon: <ClockCounterClockwise />
     },
     {
-      title: "Blog",
-      slug: "blog",
-      route: "/blog",
-      icon: <Article />,
+      title: 'Blog',
+      slug: 'blog',
+      route: '/blog',
+      icon: <Article />
     },
     {
-      title: "About Us",
-      slug: "about-us",
-      route: "/about-us",
-      icon: <UsersThree />,
-    },
+      title: 'About Us',
+      slug: 'about-us',
+      route: '/about-us',
+      icon: <UsersThree />
+    }
   ];
 
   const { navigation, expanded, toggle } = useNavigation(tree);
@@ -160,9 +160,9 @@ const Header = () => {
       setSticky(scrollTop !== 0);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -176,42 +176,42 @@ const Header = () => {
 
   return (
     <header
-      className={`flex items-center justify-center z-50 sticky left-0 top-0 transition-colors duration-150 px-5 sm:px-10 py-3 ${
+      className={`sticky left-0 top-0 z-50 flex items-center justify-center px-5 py-3 transition-colors duration-150 sm:px-10 ${
         sticky
-          ? "dark:bg-base-950/50 bg-white/50 backdrop-blur-xl"
-          : "bg-transparent"
-      } ${shown ? "[&+main]:overflow-hidden md:[&+main]:overflow-auto" : ""}`}
+          ? 'bg-white/50 backdrop-blur-xl dark:bg-base-950/50'
+          : 'bg-transparent'
+      } ${shown ? '[&+main]:overflow-hidden md:[&+main]:overflow-auto' : ''}`}
     >
-      <div className="flex max-w-[1280px] w-full items-center justify-between">
-        <div className="flex items-center lg:w-1/3 z-10">
+      <div className="flex w-full max-w-[1280px] items-center justify-between">
+        <div className="z-10 flex items-center lg:w-1/3">
           <Link
             href="/"
-            className="flex items-center gap-2 w-fit"
+            className="flex w-fit items-center gap-2"
             onClick={() => setShown(false)}
           >
             <Image src="/logo.svg" alt="Logo" width={36} height={36} />
-            <span className="inline-block text-xl whitespace-nowrap dark:text-white text-base-900 font-bold">
+            <span className="inline-block whitespace-nowrap text-xl font-bold text-base-900 dark:text-white">
               Prismane
             </span>
           </Link>
         </div>
         <div
-          className={`absolute left-0 top-0 md:static h-screen dark:shadow-base-500/5 shadow-base-900/5 md:shadow-none flex items-center gap-4 flex-col md:flex-row w-full md:w-fit md:h-fit bg-white dark:bg-base-950 md:bg-transparent md:dark:bg-transparent px-5 sm:px-10 md:!p-0 ${
-            shown ? "flex pt-20 md:pt-0" : "hidden md:!flex"
+          className={`absolute left-0 top-0 flex h-screen w-full flex-col items-center gap-4 bg-white px-5 shadow-base-900/5 dark:bg-base-950 dark:shadow-base-500/5 sm:px-10 md:static md:h-fit md:w-fit md:flex-row md:bg-transparent md:!p-0 md:shadow-none md:dark:bg-transparent ${
+            shown ? 'flex pt-20 md:pt-0' : 'hidden md:!flex'
           }`}
         >
-          <div className="hidden md:flex items-center justify-center w-full gap-8">
+          <div className="hidden w-full items-center justify-center gap-8 md:flex">
             {navigation.map((item, index) => (
               <Link
                 key={index}
                 href={`/${item.slug}`}
-                className="flex items-center justify-between cursor-pointer"
+                className="flex cursor-pointer items-center justify-between"
               >
                 <span
-                  className={`text-sm/6 font-medium flex whitespace-nowrap items-center dark:text-white/60 dark:hover:text-white text-base-600/80 hover:text-base-900 transition-colors ${
+                  className={`flex items-center whitespace-nowrap text-sm/6 font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white ${
                     router.asPath.includes(`/${item.slug}`)
-                      ? "dark:!text-white !text-base-900"
-                      : ""
+                      ? '!text-base-900 dark:!text-white'
+                      : ''
                   }`}
                 >
                   {item.title}
@@ -220,8 +220,8 @@ const Header = () => {
             ))}
           </div>
           <div
-            className={`md:hidden flex w-full items-center justify-center gap-2 ${
-              shown ? "flex-col !items-start" : ""
+            className={`flex w-full items-center justify-center gap-2 md:hidden ${
+              shown ? 'flex-col !items-start' : ''
             }`}
           >
             <Navigation
@@ -233,11 +233,11 @@ const Header = () => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-3 z-10 lg:w-1/3 justify-end">
+        <div className="z-10 flex items-center justify-end gap-3 lg:w-1/3">
           <Search />
           <HeaderLink
             classNames={{
-              link: "hidden lg:flex",
+              link: 'hidden lg:flex'
             }}
             href="https://twitter.com/prismaneui"
             target="_blank"
@@ -248,12 +248,12 @@ const Header = () => {
               alt="Twitter Logo"
               width={18}
               height={18}
-              className="filter dark:brightness-[100] brightness-0"
+              className="brightness-0 filter dark:brightness-[100]"
             />
           </HeaderLink>
           <HeaderLink
             classNames={{
-              link: "hidden lg:flex",
+              link: 'hidden lg:flex'
             }}
             href="https://discord.gg/gFvcmdpKeb"
             target="_blank"
@@ -264,12 +264,12 @@ const Header = () => {
               alt="Discord Logo"
               width={18}
               height={18}
-              className="filter dark:brightness-[100] brightness-0"
+              className="brightness-0 filter dark:brightness-[100]"
             />
           </HeaderLink>
           <HeaderLink
             classNames={{
-              link: "hidden lg:flex",
+              link: 'hidden lg:flex'
             }}
             href="https://www.reddit.com/r/prismane"
             target="_blank"
@@ -280,12 +280,12 @@ const Header = () => {
               alt="Reddit Logo"
               width={18}
               height={18}
-              className="filter dark:brightness-[100] brightness-0 scale-125"
+              className="scale-125 brightness-0 filter dark:brightness-[100]"
             />
           </HeaderLink>
           <HeaderLink
             classNames={{
-              link: "hidden lg:flex",
+              link: 'hidden lg:flex'
             }}
             href="https://github.com/prismaneui/prismane"
             target="_blank"
@@ -296,36 +296,36 @@ const Header = () => {
               alt="Github Logo"
               width={20}
               height={20}
-              className="filter dark:brightness-[100] brightness-0 min-h-[20px] min-w-[20px]"
+              className="min-h-[20px] min-w-[20px] brightness-0 filter dark:brightness-[100]"
             />
           </HeaderLink>
           <HeaderButton
             tooltip={
-              theme.mode === "dark"
-                ? "Switch to light mode"
-                : "Switch to dark mode"
+              theme.mode === 'dark'
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
             }
             onClick={() => {
               document.documentElement.classList.remove(
-                theme.mode === "dark" ? "dark" : "light"
+                theme.mode === 'dark' ? 'dark' : 'light'
               );
               document.documentElement.classList.add(
-                theme.mode === "dark" ? "light" : "dark"
+                theme.mode === 'dark' ? 'light' : 'dark'
               );
               toggleThemeMode();
             }}
           >
-            {theme.mode === "dark" ? (
+            {theme.mode === 'dark' ? (
               <Sun
                 size={20}
                 weight="fill"
-                className="dark:!text-white !text-base-900"
+                className="!text-base-900 dark:!text-white"
               />
             ) : (
               <Moon
                 size={20}
                 weight="fill"
-                className="dark:!text-white !text-base-900"
+                className="!text-base-900 dark:!text-white"
               />
             )}
           </HeaderButton>
@@ -344,7 +344,7 @@ const Header = () => {
               icon={
                 <Heart size={20} weight="fill" className="text-primary-500" />
               }
-              className="h-8 !px-4 !pl-3 text-sm rounded"
+              className="h-8 rounded !px-4 !pl-3 text-sm"
             >
               Sponsor
             </SecondaryButton>

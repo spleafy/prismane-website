@@ -1,11 +1,11 @@
-import { HTMLAttributes, useEffect, useRef, useState } from "react";
-import { LiveProvider, LiveEditor } from "react-live";
-import { themes } from "prism-react-renderer";
-import { usePrismaneTheme } from "@prismane/core";
+import { HTMLAttributes, useEffect, useRef, useState } from 'react';
+import { LiveProvider, LiveEditor } from 'react-live';
+import { themes } from 'prism-react-renderer';
+import { usePrismaneTheme } from '@prismane/core';
 // Components
-import SecondaryButton from "@/components/SecondaryButton";
+import SecondaryButton from '@/components/SecondaryButton';
 // Context
-import { useCodeContext } from "./CodeContext";
+import { useCodeContext } from './CodeContext';
 
 interface CodeBodyProps extends HTMLAttributes<HTMLElement> {
   item?: string;
@@ -29,7 +29,7 @@ const CodeBodyElement = ({
   mode,
   ...props
 }: CodeBodyElementProps) => {
-  const code = (children?.toString().trim() as string) || "";
+  const code = (children?.toString().trim() as string) || '';
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -48,16 +48,16 @@ const CodeBodyElement = ({
   return (
     <LiveProvider disabled code={code} {...props}>
       <div
-        className={`relative rounded-b-md overflow-auto border dark:border-base-700/50 dark:bg-base-900/50 border-base-300 bg-base-50/50 ${
-          overflowing ? "!overflow-hidden" : ""
-        } ${className ? className : ""}`}
+        className={`relative overflow-auto rounded-b-md border border-base-300 bg-base-50/50 dark:border-base-700/50 dark:bg-base-900/50 ${
+          overflowing ? '!overflow-hidden' : ''
+        } ${className ? className : ''}`}
         ref={ref}
       >
         {overflowing && (
-          <div className="absolute w-full h-full bg-gradient-to-b from-transparent dark:to-base-900 to-base-50">
+          <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-base-50 dark:to-base-900">
             <button
               onClick={() => setOverflowing(false)}
-              className="!absolute bottom-4 left-1/2 -translate-x-1/2 rounded-md overflow-hidden px-3 py-2 border dark:bg-base-800/50 dark:hover:bg-base-800 bg-base-50 hover:bg-base-100/50 dark:border-base-800 border-base-300 text-sm font-medium transition-colors"
+              className="!absolute bottom-4 left-1/2 -translate-x-1/2 overflow-hidden rounded-md border border-base-300 bg-base-50 px-3 py-2 text-sm font-medium transition-colors hover:bg-base-100/50 dark:border-base-800 dark:bg-base-800/50 dark:hover:bg-base-800"
             >
               Show Full Code
             </button>
@@ -65,23 +65,23 @@ const CodeBodyElement = ({
         )}
         <LiveEditor
           style={{
-            fontFamily: "monospace",
-            fontSize: "1rem",
+            fontFamily: 'monospace',
+            fontSize: '1rem'
           }}
-          className={`${className ? className : ""}`}
+          className={`${className ? className : ''}`}
           theme={
-            mode === "dark"
+            mode === 'dark'
               ? {
                   ...themes.nightOwl,
                   plain: {
-                    background: "transparent",
-                  },
+                    background: 'transparent'
+                  }
                 }
               : {
                   ...themes.oneLight,
                   plain: {
-                    background: "transparent",
-                  },
+                    background: 'transparent'
+                  }
                 }
           }
         />

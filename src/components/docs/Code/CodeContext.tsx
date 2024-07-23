@@ -1,4 +1,4 @@
-import { createContext, useContext, Dispatch } from "react";
+import { createContext, useContext, Dispatch } from 'react';
 
 export interface CodeContextValue {
   files:
@@ -16,7 +16,7 @@ export interface CodeContextValue {
 const CodeContext = createContext<CodeContextValue>({
   value: null,
   setValue: () => {},
-  files: "",
+  files: ''
 });
 
 export const CodeContextProvider = CodeContext.Provider;

@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { File, Sun, Moon, Info } from "@phosphor-icons/react";
-import { Modal, usePrismaneTheme } from "@prismane/core";
+import { useState } from 'react';
+import { File, Sun, Moon, Info } from '@phosphor-icons/react';
+import { Modal, usePrismaneTheme } from '@prismane/core';
 // Components
-import SingleCode from "@/components/docs/SingleCode";
-import InteractiveExample from "@/components/InteractiveExample";
+import SingleCode from '@/components/docs/SingleCode';
+import InteractiveExample from '@/components/InteractiveExample';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 // Example
 import DarkThemeExample, {
-  DarkThemeExampleSource,
-} from "../examples/DarkThemeExample";
+  DarkThemeExampleSource
+} from '../examples/DarkThemeExample';
 
 const codeContentDark = `
 import { PrismaneProvider } from "@prismane/core";
@@ -51,7 +51,7 @@ const DarkTheme = () => {
   return (
     <Section>
       <span className="section-heading">
-        Out of the box support <br /> for{" "}
+        Out of the box support <br /> for{' '}
         <span className="section-heading text-gradient">dark mode</span>
       </span>
       <span className="section-subheading mb-14">
@@ -62,29 +62,29 @@ const DarkTheme = () => {
           {
             children: <Info />,
             props: {
-              onClick: () => setShownModal(true),
+              onClick: () => setShownModal(true)
             },
-            tooltip: "Show code",
+            tooltip: 'Show code'
           },
           {
             children:
-              theme.mode === "dark" ? (
+              theme.mode === 'dark' ? (
                 <Sun weight="fill" />
               ) : (
                 <Moon weight="fill" />
               ),
             props: {
-              onClick: () => toggleThemeMode(),
-            },
-          },
+              onClick: () => toggleThemeMode()
+            }
+          }
         ]}
         side={
           <SingleCode
             icon={<File />}
             name="App.tsx"
-            value={theme.mode === "dark" ? codeContentDark : codeContentLight}
+            value={theme.mode === 'dark' ? codeContentDark : codeContentLight}
             classNames={{
-              root: "h-full !my-0",
+              root: 'h-full !my-0'
             }}
           />
         }
@@ -98,7 +98,7 @@ const DarkTheme = () => {
         closable
       >
         <Modal.Header>
-          <h2 className="dark:text-white text-base-900">Simple Card code</h2>
+          <h2 className="text-base-900 dark:text-white">Simple Card code</h2>
         </Modal.Header>
         <span className="text-base-700 dark:text-base-300">
           This is the code of a simple card that is built using Prismane.
@@ -108,7 +108,7 @@ const DarkTheme = () => {
           icon={<File />}
           name="Example.tsx"
           classNames={{
-            body: "max-h-[440px]",
+            body: 'max-h-[440px]'
           }}
         />
       </Modal>

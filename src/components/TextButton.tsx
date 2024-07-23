@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 type TextButtonProps = {
   icon?: ReactNode;
-  iconPosition?: "right" | "left";
+  iconPosition?: 'right' | 'left';
   full?: boolean;
-} & React.ComponentPropsWithoutRef<"button">;
+} & React.ComponentPropsWithoutRef<'button'>;
 
 const TextButton = ({
   icon,
-  iconPosition = "left",
+  iconPosition = 'left',
   full,
   children,
   className,
@@ -16,13 +16,13 @@ const TextButton = ({
 }: TextButtonProps) => {
   return (
     <button
-      className={`flex items-center justify-center gap-2 !px-6 !py-2.5 !w-full sm:!w-fit !text-base !text-primary-500 font-semibold rounded-md transition-all duration-300 ${
-        full ? "w-full" : "w-fit"
-      } ${className ? className : ""}`}
+      className={`flex !w-full items-center justify-center gap-2 rounded-md !px-6 !py-2.5 !text-base font-semibold !text-primary-500 transition-all duration-300 sm:!w-fit ${
+        full ? 'w-full' : 'w-fit'
+      } ${className ? className : ''}`}
       {...props}
     >
       {icon && (
-        <div className={iconPosition === "left" ? "-order-1" : "order-1"}>
+        <div className={iconPosition === 'left' ? '-order-1' : 'order-1'}>
           {icon}
         </div>
       )}

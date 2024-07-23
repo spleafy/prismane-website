@@ -1,6 +1,6 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from 'react';
 // Context
-import { useCodeContext } from "./CodeContext";
+import { useCodeContext } from './CodeContext';
 
 interface CodeItemProps extends HTMLAttributes<HTMLElement> {
   item: string;
@@ -18,10 +18,10 @@ const CodeItem = ({
 
   return (
     <button
-      className={`px-2 py-1.5 focus:outline-none text-sm rounded-md flex items-center gap-1.5 transition-colors ${
+      className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm transition-colors focus:outline-none ${
         item === value
-          ? "text-base-700 dark:text-base-200 bg-base-100 dark:bg-base-900 code-item-active"
-          : "hover:bg-base-50 dark:hover:bg-base-900/50 code-item-inactive"
+          ? 'code-item-active bg-base-100 text-base-700 dark:bg-base-900 dark:text-base-200'
+          : 'code-item-inactive hover:bg-base-50 dark:hover:bg-base-900/50'
       } ${className ? className : className}`}
       onClick={() => item !== value && setValue(item)}
       {...props}

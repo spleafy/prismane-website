@@ -1,6 +1,6 @@
 const hidden = {
-  header: ["/playground"],
-  footer: ["/playground"],
+  header: ['/playground'],
+  footer: ['/playground']
 };
 
 export default hidden;

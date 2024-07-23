@@ -1,5 +1,5 @@
-import { Heart } from "@phosphor-icons/react";
-import { Button } from "@prismane/core";
+import { Heart } from '@phosphor-icons/react';
+import { Button } from '@prismane/core';
 
 const CustomizationExample = () => {
   return (

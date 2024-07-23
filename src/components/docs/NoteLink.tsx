@@ -1,7 +1,7 @@
-import { HTMLAttributes } from "react";
-import Link from "next/link";
+import { HTMLAttributes } from 'react';
+import Link from 'next/link';
 // Components
-import Note from "./Note";
+import Note from './Note';
 
 interface NoteLinkProps extends HTMLAttributes<HTMLElement> {
   icon?: React.ReactNode;
@@ -22,7 +22,7 @@ const NoteLink = ({
       <Note
         icon={icon}
         className={`!border-dashed hover:!border-solid hover:!border-primary-500 ${
-          className ? className : ""
+          className ? className : ''
         }`}
         {...props}
       >

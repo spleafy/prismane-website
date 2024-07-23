@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const ImageBanner = () => {
   return (
-    <div className="relative flex grow aspect-[2/1] sm:aspect-[5/2] rounded-lg overflow-clip">
+    <div className="relative flex aspect-[2/1] grow overflow-clip rounded-lg sm:aspect-[5/2]">
       <Image
         src="/banner_2.png"
         alt="Prismane Logo Banner"

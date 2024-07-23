@@ -1,17 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
+import Head from 'next/head';
+import Image from 'next/image';
 // Containers
-import Hero from "../containers/home/Hero";
-import Statistics from "../containers/home/Statistics";
-import Theming from "@/containers/home/Theming";
-import DarkTheme from "@/containers/home/DarkTheme";
-import Customization from "@/containers/home/Customization";
-import FormHook from "@/containers/home/FormHook";
-import Features from "../containers/home/Features";
-import Examples from "../containers/home/Examples";
-import Preview from "../containers/home/Preview";
-import Socials from "@/containers/Socials";
-import Start from "../containers/Start";
+import Hero from '../containers/home/Hero';
+import Statistics from '../containers/home/Statistics';
+import Theming from '@/containers/home/Theming';
+import DarkTheme from '@/containers/home/DarkTheme';
+import Customization from '@/containers/home/Customization';
+import FormHook from '@/containers/home/FormHook';
+import Features from '../containers/home/Features';
+import Examples from '../containers/home/Examples';
+import Preview from '../containers/home/Preview';
+import Socials from '@/containers/Socials';
+import Start from '../containers/Start';
 
 export default function Home() {
   return (

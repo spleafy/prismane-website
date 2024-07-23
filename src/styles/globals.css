@@ -25,8 +25,12 @@
 
 .mask {
   inset: 0;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: add, add;
   mask-composite: xor;
   -webkit-mask-composite: xor;
@@ -43,11 +47,11 @@
   }
 
   * {
-    @apply m-0 p-0 dark:border-base-600 border-base-700/20 scroll-smooth;
+    @apply m-0 scroll-smooth border-base-700/20 p-0 dark:border-base-600;
   }
 
   body {
-    @apply !font-["Inter"] dark:bg-base-950 bg-white dark:text-base-300 text-base-700;
+    @apply bg-white !font-["Inter"] text-base-700 dark:bg-base-950 dark:text-base-300;
   }
 
   h1 {
@@ -86,27 +90,27 @@
 
 @layer components {
   .gradient {
-    @apply bg-gradient-to-tr gradient-stops;
+    @apply gradient-stops bg-gradient-to-tr;
   }
 
   .section-hero {
-    @apply !py-12 sm:!py-24 md:!py-32 lg:!py-40 !justify-start !items-center flex flex-col !gap-10;
+    @apply flex flex-col !items-center !justify-start !gap-10 !py-12 sm:!py-24 md:!py-32 lg:!py-40;
   }
 
   .hero-heading {
-    @apply dark:text-white text-base-900 text-center text-4xl sm:text-5xl lg:text-6xl font-black sm:max-w-[80%];
+    @apply text-center text-4xl font-black text-base-900 dark:text-white sm:max-w-[80%] sm:text-5xl lg:text-6xl;
   }
 
   .hero-subheading {
-    @apply dark:text-base-300 text-base-700 text-center text-lg sm:text-xl font-medium sm:max-w-[50%] mb-4 -mt-4;
+    @apply -mt-4 mb-4 text-center text-lg font-medium text-base-700 dark:text-base-300 sm:max-w-[50%] sm:text-xl;
   }
 
   .section-heading {
-    @apply text-center text-4xl lg:text-5xl font-extrabold dark:text-white text-base-900 max-w-3xl;
+    @apply max-w-3xl text-center text-4xl font-extrabold text-base-900 dark:text-white lg:text-5xl;
   }
 
   .section-subheading {
-    @apply text-center text-xl leading-6 dark:text-base-400 text-base-700 max-w-2xl;
+    @apply max-w-2xl text-center text-xl leading-6 text-base-700 dark:text-base-400;
   }
 
   .text-gradient {
@@ -118,7 +122,7 @@
   }
 
   .header-logo path {
-    @apply dark:!fill-white !fill-base-900;
+    @apply !fill-base-900 dark:!fill-white;
   }
 
   .gradient-stops {

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 
 const Tooltip = ({
   children,
@@ -7,8 +7,8 @@ const Tooltip = ({
 }: HTMLAttributes<HTMLElement>) => {
   return (
     <div
-      className={`invisible text-xs inline-flex whitespace-nowrap group-hover:visible opacity-0 group-hover:opacity-100 mt-2 group-hover:mt-0 transition-all absolute top-10 px-1.5 py-1 rounded bg-base-50 dark:bg-base-900 text-base-900 dark:text-white border border-base-200 dark:border-base-800 ${
-        className ? className : ""
+      className={`invisible absolute top-10 mt-2 inline-flex whitespace-nowrap rounded border border-base-200 bg-base-50 px-1.5 py-1 text-xs text-base-900 opacity-0 transition-all group-hover:visible group-hover:mt-0 group-hover:opacity-100 dark:border-base-800 dark:bg-base-900 dark:text-white ${
+        className ? className : ''
       }`}
       {...props}
     >

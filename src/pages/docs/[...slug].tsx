@@ -1,38 +1,38 @@
-import React from "react";
-import Head from "next/head";
-import NextImage from "next/image";
-import { useRouter } from "next/router";
-import { serialize } from "next-mdx-remote/serialize";
-import { File, TerminalWindow, Browser } from "@phosphor-icons/react";
-import fs from "fs";
+import React from 'react';
+import Head from 'next/head';
+import NextImage from 'next/image';
+import { useRouter } from 'next/router';
+import { serialize } from 'next-mdx-remote/serialize';
+import { File, TerminalWindow, Browser } from '@phosphor-icons/react';
+import fs from 'fs';
 // MDX Parsing Plugins
-import remarkGfm from "remark-gfm";
-import rehypeMdxCodeProps from "rehype-mdx-code-props";
+import remarkGfm from 'remark-gfm';
+import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 // Logos
-import Yarn from "../../../public/yarn_logo.svg";
-import Npm from "../../../public/npm_logo.svg";
-import Pnpm from "../../../public/pnpm_logo.svg";
+import Yarn from '../../../public/yarn_logo.svg';
+import Npm from '../../../public/npm_logo.svg';
+import Pnpm from '../../../public/pnpm_logo.svg';
 // Content
-import content from "@/content";
+import content from '@/content';
 // Containers
-import Docs from "@/containers/docs/Docs";
+import Docs from '@/containers/docs/Docs';
 // MDX
-import MDX from "@/components/MDX";
+import MDX from '@/components/MDX';
 // Utils
-import findBySlugs from "@/findBySlugs";
+import findBySlugs from '@/findBySlugs';
 // Docs Components
-import HeadingLink from "@/components/docs/HeadingLink";
-import Code from "@/components/docs/Code";
-import SingleCode from "@/components/docs/SingleCode";
-import PreviewCode from "@/components/docs/PreviewCode";
-import Details from "@/components/docs/Details";
-import Note from "@/components/docs/Note";
-import NoteLink from "@/components/docs/NoteLink";
-import Warning from "@/components/docs/Warning";
-import GettingStarted from "@/components/docs/GettingStarted";
-import ColorPalette from "@/components/docs/ColorPalette";
-import ImageBanner from "@/components/docs/ImageBanner";
-import Community from "@/components/Community";
+import HeadingLink from '@/components/docs/HeadingLink';
+import Code from '@/components/docs/Code';
+import SingleCode from '@/components/docs/SingleCode';
+import PreviewCode from '@/components/docs/PreviewCode';
+import Details from '@/components/docs/Details';
+import Note from '@/components/docs/Note';
+import NoteLink from '@/components/docs/NoteLink';
+import Warning from '@/components/docs/Warning';
+import GettingStarted from '@/components/docs/GettingStarted';
+import ColorPalette from '@/components/docs/ColorPalette';
+import ImageBanner from '@/components/docs/ImageBanner';
+import Community from '@/components/Community';
 
 export async function getStaticPaths() {
   const paths: { params: { slug: string[] } }[] = [];
@@ -49,8 +49,8 @@ export async function getStaticPaths() {
 
       paths.push({
         params: {
-          slug: itemRoutes,
-        },
+          slug: itemRoutes
+        }
       });
     });
   };
@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
 
@@ -67,28 +67,28 @@ export async function getStaticProps({ params }: any) {
   try {
     const { slug } = params;
 
-    const data = fs.readFileSync(`src/content/${slug.join("/")}.mdx`, "utf-8");
+    const data = fs.readFileSync(`src/content/${slug.join('/')}.mdx`, 'utf-8');
 
     const source = await serialize(data, {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeMdxCodeProps as any],
+        rehypePlugins: [rehypeMdxCodeProps as any]
       },
-      parseFrontmatter: true,
+      parseFrontmatter: true
     });
 
     return {
       props: {
         source,
-        slug,
-      },
+        slug
+      }
     };
   } catch (err) {
     return {
       props: {
-        source: "",
-        slug: "",
-      },
+        source: '',
+        slug: ''
+      }
     };
   }
 }
@@ -99,7 +99,7 @@ export default function Page(params: any) {
   return (
     <>
       <Head>
-        <title>Prismane / {title.toString() || "Docs"} </title>
+        <title>Prismane / {title.toString() || 'Docs'} </title>
         <meta
           name="description"
           content={`Explore the customizable ${title} component of Prismane. Discover the power of Prismane's ${title} component today.`}
@@ -113,7 +113,7 @@ export default function Page(params: any) {
             transform={{
               h1: (el) => <HeadingLink>{el}</HeadingLink>,
               h2: (el) => <HeadingLink>{el}</HeadingLink>,
-              h3: (el) => <HeadingLink>{el}</HeadingLink>,
+              h3: (el) => <HeadingLink>{el}</HeadingLink>
             }}
             components={{
               ColorPalette,
@@ -145,8 +145,8 @@ export default function Page(params: any) {
                   width="100%"
                   height="auto"
                   style={{
-                    aspectRatio: "16/9",
-                    marginTop: 12,
+                    aspectRatio: '16/9',
+                    marginTop: 12
                   }}
                   src={src}
                   title="YouTube video player"
@@ -154,7 +154,7 @@ export default function Page(params: any) {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
-              ),
+              )
             }}
           />
         }

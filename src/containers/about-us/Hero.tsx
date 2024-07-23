@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { GithubLogo } from "@phosphor-icons/react";
+import Link from 'next/link';
+import { GithubLogo } from '@phosphor-icons/react';
 // Components
-import Button from "@/components/Button";
+import Button from '@/components/Button';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 
 const Hero = () => {
   return (
-    <Section className="section-hero sm:!pt-24 !pb-16 !h-fit !gap-0 !items-start">
-      <div className="flex flex-col w-full lg:w-1/2">
+    <Section className="section-hero !h-fit !items-start !gap-0 !pb-16 sm:!pt-24">
+      <div className="flex w-full flex-col lg:w-1/2">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
           About Us
         </h1>

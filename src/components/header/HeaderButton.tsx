@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 // Components
-import Tooltip from "../Tooltip";
+import Tooltip from '../Tooltip';
 
 interface HeaderButtonProps extends HTMLAttributes<HTMLElement> {
   tooltip?: React.ReactNode;
@@ -14,8 +14,8 @@ const HeaderButton = ({
 }: HeaderButtonProps) => {
   return (
     <div
-      className={`gap-2 h-8 relative group aspect-square focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-md text-sm gap-x-1.5 p-1.5 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center dark:text-base-300 text-base-700 dark:hover:text-white hover:text-base-900 group-hover:text-base-300 cursor-pointer justify-center dark:hover:bg-base-500/20 hover:bg-base-400/10 ${
-        className ? className : ""
+      className={`group relative inline-flex aspect-square h-8 flex-shrink-0 cursor-pointer items-center justify-center gap-2 gap-x-1.5 rounded-md p-1.5 text-sm font-medium text-base-700 hover:bg-base-400/10 hover:text-base-900 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:opacity-75 group-hover:text-base-300 dark:text-base-300 dark:hover:bg-base-500/20 dark:hover:text-white dark:focus-visible:ring-primary-400 ${
+        className ? className : ''
       }`}
       {...props}
     >

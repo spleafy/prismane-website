@@ -1,8 +1,8 @@
-import { HTMLAttributes, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { HTMLAttributes, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 // Components
-import Separator from "@/components/Separator";
+import Separator from '@/components/Separator';
 
 const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
   const router = useRouter();
@@ -11,26 +11,26 @@ const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
 
   const [tableOfContents, setTableOfContents] = useState([]);
 
-  const [visible, setVisible] = useState("");
+  const [visible, setVisible] = useState('');
 
   useEffect(() => {
-    const headings = document.querySelectorAll(".docs-anchor");
+    const headings = document.querySelectorAll('.docs-anchor');
     const toc: any = [];
 
     let currentHeading: any = null;
 
     headings.forEach((element) => {
-      if (element.children[0].tagName === "H2") {
+      if (element.children[0].tagName === 'H2') {
         currentHeading = {
           title: element.children[0].textContent,
           id: element.id,
-          subheadings: [],
+          subheadings: []
         };
         toc.push(currentHeading);
-      } else if (element.children[0].tagName === "H3" && currentHeading) {
+      } else if (element.children[0].tagName === 'H3' && currentHeading) {
         currentHeading.subheadings.push({
           title: element.children[0].textContent,
-          id: element.id,
+          id: element.id
         });
       }
     });
@@ -43,7 +43,7 @@ const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
       item.id,
       ...(item.subheadings
         ? item.subheadings.map((subheading: any) => subheading.id)
-        : []),
+        : [])
     ]);
 
     const observer = new IntersectionObserver((entries) => {
@@ -69,8 +69,8 @@ const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
   return (
     <>
       {tableOfContents.length > 0 && (
-        <div className="hidden lg:flex flex-col self-start w-72 min-w-[240px] p-5 !px-3 xl:!px-0 sticky top-[88px] left-0 max-h-[84vh] gap-2 overflow-y-auto">
-          <span className="dark:text-white text-base-900 font-semibold text-sm">
+        <div className="sticky left-0 top-[88px] hidden max-h-[84vh] w-72 min-w-[240px] flex-col gap-2 self-start overflow-y-auto p-5 !px-3 lg:flex xl:!px-0">
+          <span className="text-sm font-semibold text-base-900 dark:text-white">
             Table Of Contents
           </span>
           <ul>
@@ -79,11 +79,10 @@ const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
                 <Link
                   className={`line-clamp-1 ${
                     visible === section.title
-                      ? "text-primary-500"
-                      : "dark:hover:text-base-100"
-                  }
-                  `}
-                  href={`${router.asPath.replace(/[#?].*$/, "")}#${section.id}`}
+                      ? 'text-primary-500'
+                      : 'dark:hover:text-base-100'
+                  } `}
+                  href={`${router.asPath.replace(/[#?].*$/, '')}#${section.id}`}
                 >
                   {section.title}
                 </Link>
@@ -95,10 +94,10 @@ const TableOfContents = ({ children }: HTMLAttributes<HTMLElement>) => {
                           key={subIndex}
                           className={`line-clamp-1 ${
                             visible === subheading.title
-                              ? "text-primary-500"
-                              : "dark:hover:text-base-100"
+                              ? 'text-primary-500'
+                              : 'dark:hover:text-base-100'
                           }`}
-                          href={`${router.asPath.replace(/[#?].*$/, "")}#${
+                          href={`${router.asPath.replace(/[#?].*$/, '')}#${
                             subheading.id
                           }`}
                         >

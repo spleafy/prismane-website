@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 type SecondaryButtonProps = {
   icon?: ReactNode;
-  iconPosition?: "right" | "left";
+  iconPosition?: 'right' | 'left';
   full?: boolean;
-} & React.ComponentPropsWithoutRef<"button">;
+} & React.ComponentPropsWithoutRef<'button'>;
 
 const SecondaryButton = ({
   icon,
-  iconPosition = "left",
+  iconPosition = 'left',
   full,
   children,
   className,
@@ -16,19 +16,19 @@ const SecondaryButton = ({
 }: SecondaryButtonProps) => {
   return (
     <button
-      className={`relative rounded-lg bg-gradient-to-b dark:from-base-700/0 dark:to-base-700/10 from-base-300/0 to-base-300/10 overflow-hidden group flex justify-center items-center gap-4 px-5 py-[10px] border dark:border-base-900 border-base-200 font-medium ${
-        full ? "!w-full" : ""
-      } ${className ? className : ""}`}
+      className={`group relative flex items-center justify-center gap-4 overflow-hidden rounded-lg border border-base-200 bg-gradient-to-b from-base-300/0 to-base-300/10 px-5 py-[10px] font-medium dark:border-base-900 dark:from-base-700/0 dark:to-base-700/10 ${
+        full ? '!w-full' : ''
+      } ${className ? className : ''}`}
       {...props}
     >
       {icon && (
-        <div className={iconPosition === "left" ? "-order-1" : "order-1"}>
+        <div className={iconPosition === 'left' ? '-order-1' : 'order-1'}>
           {icon}
         </div>
       )}
       {children}
-      <div className="absolute top-0 left-0 w-full h-full rounded-inherit transition-colors shadow-secondary-button-inset z-10 mask"></div>
-      <div className="absolute top-0 left-0 w-full h-full rounded-inherit dark:bg-white bg-base-400 opacity-0 dark:group-hover:opacity-[0.01] group-hover:opacity-[0.05] transition-opacity"></div>
+      <div className="rounded-inherit mask absolute left-0 top-0 z-10 h-full w-full shadow-secondary-button-inset transition-colors"></div>
+      <div className="rounded-inherit absolute left-0 top-0 h-full w-full bg-base-400 opacity-0 transition-opacity group-hover:opacity-[0.05] dark:bg-white dark:group-hover:opacity-[0.01]"></div>
     </button>
   );
 };

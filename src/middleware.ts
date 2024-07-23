@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 // Content
-import content from "./content";
+import content from './content';
 // Utils
-import findBySlugs from "./findBySlugs";
+import findBySlugs from './findBySlugs';
 
 const getUrl = (navigation: any, slugs: string[]) => {
-  let url = "";
+  let url = '';
 
   const found = findBySlugs(navigation, slugs, (item) => {
     url += `/${item.slug}`;
@@ -16,7 +16,7 @@ const getUrl = (navigation: any, slugs: string[]) => {
     url += `/${items[0].slug}`;
 
     if (items[0].items && items[0].items.length > 0) {
-      console.log("Item", items[0], items[0].items);
+      console.log('Item', items[0], items[0].items);
 
       processDeeper(items[0].items);
     }
@@ -30,15 +30,15 @@ const getUrl = (navigation: any, slugs: string[]) => {
 };
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/docs") {
+  if (request.nextUrl.pathname === '/docs') {
     return NextResponse.redirect(
       new URL(`/docs/${content[0].slug}`, request.url)
     );
   }
 
-  const currentUrl = request.nextUrl.pathname.replace("/docs", "");
+  const currentUrl = request.nextUrl.pathname.replace('/docs', '');
 
-  const splitUrl = currentUrl.split("/").filter((item) => item.trim() !== "");
+  const splitUrl = currentUrl.split('/').filter((item) => item.trim() !== '');
 
   if (splitUrl.length > 0) {
     const url = getUrl(content, splitUrl);
@@ -52,5 +52,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/docs/:path*",
+  matcher: '/docs/:path*'
 };

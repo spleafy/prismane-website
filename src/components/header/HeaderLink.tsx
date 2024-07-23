@@ -1,9 +1,9 @@
-import Link, { LinkProps } from "next/link";
+import Link, { LinkProps } from 'next/link';
 // Components
-import HeaderButton from "../header/HeaderButton";
+import HeaderButton from '../header/HeaderButton';
 
 type HeaderLinkProps = LinkProps &
-  React.ComponentPropsWithoutRef<"a"> & {
+  React.ComponentPropsWithoutRef<'a'> & {
     tooltip?: React.ReactNode;
     classNames?: {
       link?: string;
@@ -19,10 +19,10 @@ const HeaderLink = ({
   ...props
 }: HeaderLinkProps) => {
   return (
-    <Link className={classNames?.link ? classNames.link : ""} {...props}>
+    <Link className={classNames?.link ? classNames.link : ''} {...props}>
       <HeaderButton
-        className={`${className ? className : ""} ${
-          classNames?.button ? classNames.button : ""
+        className={`${className ? className : ''} ${
+          classNames?.button ? classNames.button : ''
         }`}
         tooltip={tooltip}
       >
