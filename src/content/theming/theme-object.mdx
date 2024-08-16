@@ -1,9 +1,47 @@
-The theme object is the object with which you would define your custom theme.
+## Theming in Prismane
 
+Theming is a fundamental capability in building great user interfaces.
+It makes it possible to apply a unified style throughout your application, improving the user experience and preserving visual coherence.
+
+Prismane is placing strong emphasis on powerful theming capabilities.
+By defining a single theme object, you can control the overall look and feel of all your application's components, allowing you to craft beautiful and cohesive user interfaces.
+
+## Why using a theme?
+
+A theme is a design blueprint for your application. It's a collection of colors, spacing, and other visual styles that create a unified look and feel. By using a theme, you can maintain consistency throughout your app, enhance the user experience, and streamline design updates.
+The theme object allows you to specify and control core visual elements like:
+
+- `Mode` - You can control whether the theme is in dark or light mode.
+- `Colors` - Establish a rich and balanced color palette, including primary and base colors, along with
+their corresponding shades.
+- `Spacing` - Define consistent values for margins, paddings, and gutters, ensuring a clean and organized UI layout.
+- `Border Radius` - Set the global border radius for a unified aesthetic, or adjust it for specific components to add
+visual distinction.
+- `Font` - Set the global font family to be used across the whole interface of your application.
+
+By managing these core visual elements, you can effortlessly create themes that perfectly align with your brand identity or tailor the user experience for different target audiences.
+Prismane empowers you to build flexible and adaptable user interfaces that resonate with your users.
+
+## Defining the theme object
+
+The theme object is the object of type `PrismaneTheme` which you can use to define your custom theme.
+The object can hold some or all fields following this logic:
+
+
+| Name        | Type                  | Description                       | Default Value |
+| ----------- | --------------------- | --------------------------------- | ------------- |
+| `mode`      | _Enum_ `light` or `dark`     | Controlling the mode of the theme | `light`       |
+| `colors`    | _Object_                 | Holds information about `primary` and `base` colors with their respected shades                 | -             |
+| `spacing` | _string_ | Controls spacing/padding/margins between and within the components          |  `4px`            |
+| `borderRadius` | _Object_ | Sets border radius of components in all the different sizes          | -          |
+| `fontFamily` | _string_ | Font family that will be used across the whole application          |  `4px`            |
+
+
+Here is the types
 ```ts
 export interface PrismaneTheme {
   // The theme mode "dark" or "light"
-  mode: "light" | "dark";
+  mode: "light" | "dark",
 
   // The theme colors
   colors: {
@@ -18,7 +56,7 @@ export interface PrismaneTheme {
       700: string;
       800: string;
       900: string;
-    };
+    },
     base: {
       50: string;
       100: string;
@@ -30,11 +68,27 @@ export interface PrismaneTheme {
       700: string;
       800: string;
       900: string;
-    };
-  };
+    },
+  },
 
-  // The theme spacing, changing it will scale up or down the size of your components
+  // The theme spacing, changing it will scale up or down the size of
+  // your components
   spacing: string;
+
+  // The border radius to be used in the components
+  borderRadius: {
+    xs: string;
+    sm: string;
+    base: string;
+    md: string;
+    lg: string;
+    xl: string;
+    "2xl": string;
+  },
+
+  // the font family that should be used across the whole interface
+  fontFamily: string;
+
 }
 ```
 
@@ -74,7 +128,20 @@ const base: PrismaneTheme = {
     },
   },
   spacing: "4px",
+  borderRadius: {
+    xs: fr(0.75),
+    sm: fr(1),
+    base: fr(1.5),
+    md: fr(2),
+    lg: fr(2.5),
+    xl: fr(3),
+    "2xl": fr(3.5),
+  },
+  fontFamily: "Poppins",
 };
 
 export default base;
 ```
+
+Now that we know what the theme object is, let's see how we can use it in practice invoking the
+[PrismaneProvider](/docs/theming/prismane-provider)
