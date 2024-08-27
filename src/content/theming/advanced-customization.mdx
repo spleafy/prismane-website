@@ -2,17 +2,20 @@ Prismane offers a set of tools that can help you customize your app even more. D
 
 ## usePrismaneTheme Hook
 
-Prismane exports a `usePrismaneTheme` hook from the hooks entry of the package, meaning `@prismane/core/hooks`. The hook exports a set of helper functions that can manipulate the context's value as well as direct access to the context's value
+The `usePrismaneTheme` hook exports a set of helper functions that can manipulate the theme context's value as well as direct access to the context's value.
+
+```tsx
+import { usePrismaneTheme } from '@prismane/core';
+```
 
 ## Access The Theme Object
 
-If you want to get the latest theme object, you can use the `usePrismaneTheme` hook and take the `theme` object from it.
-
+If you want to get the latest theme object, you can use the `usePrismaneTheme` hook and take the _theme_ object from it.
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 // Import usePrismaneTheme from the core package
-import { usePrismaneTheme } from "@prismane/core";
+import { usePrismaneTheme } from '@prismane/core';
 
 const Page = () => {
   // Get the latest theme object in the first <PrismaneProvider />
@@ -29,14 +32,13 @@ export default Page;
 ## Toggle The Theme Mode
 
 One very widely used functionality of theming is toggling between light and dark modes.
-The `usePrismaneTheme` hook provides such function called `toggleThemeMode` that does exactly this.
-Here is how to can easily use it in your code.
 
+The `usePrismaneTheme` hook provides such function called _toggleThemeMode_ that does exactly this.
 
 ```tsx
-import { Button } from "@prismane/core";
+import { Button } from '@prismane/core';
 // Import usePrismaneTheme from the core package
-import { usePrismaneTheme } from "@prismane/core";
+import { usePrismaneTheme } from '@prismane/core';
 
 const Page = () => {
   // Get the toggleThemeMode function from the hook
@@ -59,14 +61,14 @@ export default Page;
 
 ## Update The Theme Value
 
-If you want to change some values of the current theme on the fly, you aca do that by using the `setTheme` function
+If you want to change some values of the current theme on the fly, you aca do that by using the _setTheme_ function
 from the `usePrismaneTheme` hook.
 
 ```tsx
 // Import the PRISMANE_COLORS palette from Prismane
-import { Button, PRISMANE_COLORS } from "@prismane/core";
+import { Button, PRISMANE_COLORS } from '@prismane/core';
 // Import usePrismaneTheme from the core package
-import { usePrismaneTheme } from "@prismane/core";
+import { usePrismaneTheme } from '@prismane/core';
 
 const Page = () => {
   // Get the setTheme function from the hook
@@ -76,8 +78,8 @@ const Page = () => {
   const theme = {
     colors: {
       primary: { ...PRISMANE_COLORS.red },
-      base: { ...PRISMANE_COLORS.sepia },
-    },
+      base: { ...PRISMANE_COLORS.sepia }
+    }
   };
 
   return (
@@ -94,7 +96,3 @@ const Page = () => {
 
 export default Page;
 ```
-
-Now that you know the advanced theming capabilities of Prismane, you can check the additional [Theming Utils](/docs/theming/theming-utils)
-functions that can come in handy in your application.
-

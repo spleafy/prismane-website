@@ -1,17 +1,23 @@
 To enable Prismane's theming capabilities in your application, wrap your app with the `<PrismaneProvider/>`
-component This component is imported from  `@prismane/core/themes`.
+component
+
+We can import the `PrismaneProvider` component from the `@prismane/core` library.
+
+```tsx
+import { PrismaneProvider } from '@prismane/core';
+```
 
 ## Basic Usage
 
-If you just want to use the  `base` theme in your application, simply wrap your app's main component with the
+If you just want to use the [`base`](/docs/theming/theme-object#base-theme-object) theme in your application, simply wrap your app's main component with the
 `<PrismaneProvider/>` component.
 No additional configuration is required like in this simple example.
 
 ```tsx
-import React from "react";
-import Application from "../somewhere";
+import React from 'react';
+import Application from '../somewhere';
 // Importing PrismaneProvider component
-import { PrismaneProvider } from "@prismane/core";
+import { PrismaneProvider } from '@prismane/core';
 
 const App = () => {
   return (
@@ -26,10 +32,11 @@ const App = () => {
 export default App;
 ```
 
-<Note>
-    Importing and wrapping your application with the `<PrismaneProvider/>` is a requirement in order to provide the
-    theming functionality across your application.
-</Note>
+<Warning>
+  Importing and wrapping your application with the `<PrismaneProvider />` is a
+  requirement in order to provide the theming functionality across your
+  application.
+</Warning>
 
 ## Custom Theming Usage
 
@@ -39,20 +46,20 @@ Prismane is coming with a huge [color palette](docs/styling/color-palette) that 
 The color palette is being exported at `@prismane/core` as a constant named `PRISMANE_COLORS`. In this example we gonna use it to form the colors of our theme object.
 
 ```tsx
-import React from "react";
-import Application from "../somewhere";
+import React from 'react';
+import Application from '../somewhere';
 
 // Importing PRISMANE_COLORS from Prismane
-import { PRISMANE_COLORS, PrismaneProvider } from "@prismane/core";
+import { PRISMANE_COLORS, PrismaneProvider } from '@prismane/core';
 
 const App = () => {
   const theme = {
-    mode: "dark",
+    mode: 'dark',
     colors: {
       primary: { ...PRISMANE_COLORS.ruby }, // Setting the primary colors
-      base: { ...PRISMANE_COLORS.slate }, // Setting the base colors
+      base: { ...PRISMANE_COLORS.slate } // Setting the base colors
     },
-    spacing: "5px",
+    spacing: '5px'
   };
 
   return (
@@ -65,6 +72,3 @@ const App = () => {
 
 export default App;
 ```
-Now we know how to create own own custom theme and use it in our PrismaneProvider.
-Let's see how we can apply some more advanced theming capabilities in our [Advanced Customization](/docs/theming/advanced-customization).
-
