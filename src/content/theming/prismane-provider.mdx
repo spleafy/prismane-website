@@ -1,16 +1,28 @@
-The `<PrismaneProvider/>` component exported at `@prismane/core/themes` is a theme provider used for Prismane's theming functionality.
+To enable Prismane's theming capabilities in your application, wrap your app with the `<PrismaneProvider/>`
+component
 
-## Basic Usage:
-
-Just wrapping your app in `<PrismaneProvider/>` component will use the `base` theme.
+We can import the `PrismaneProvider` component from the `@prismane/core` library.
 
 ```tsx
-import React from "react";
-import Application from "../somewhere";
-import { PrismaneProvider } from "@prismane/core";
+import { PrismaneProvider } from '@prismane/core';
+```
+
+## Basic Usage
+
+If you just want to use the [`base`](/docs/theming/theme-object#base-theme-object) theme in your application, simply wrap your app's main component with the
+`<PrismaneProvider/>` component.
+No additional configuration is required like in this simple example.
+
+```tsx
+import React from 'react';
+import Application from '../somewhere';
+// Importing PrismaneProvider component
+import { PrismaneProvider } from '@prismane/core';
 
 const App = () => {
   return (
+    /* Wrapping the Application component
+    with the PrismaneProvider */
     <PrismaneProvider>
       <Application />
     </PrismaneProvider>
@@ -20,24 +32,38 @@ const App = () => {
 export default App;
 ```
 
-## Full Theming Usage:
+<Warning>
+  Importing and wrapping your application with the `<PrismaneProvider />` is a
+  requirement in order to provide the theming functionality across your
+  application.
+</Warning>
+
+## Custom Theming Usage
+
+If you want to customize some or all properties of the theme, you can do it by creating your own theme object and provide it as a _theme_ prop to the `<PrismaneProvider/>`.
+Prismane is coming with a huge [color palette](docs/styling/color-palette) that you can use to form your own theme object.
+
+The color palette is being exported at `@prismane/core` as a constant named `PRISMANE_COLORS`. In this example we gonna use it to form the colors of our theme object.
 
 ```tsx
-import React from "react";
-import Application from "../somewhere";
-import { PRISMANE_COLORS, PrismaneProvider } from "@prismane/core";
+import React from 'react';
+import Application from '../somewhere';
+
+// Importing PRISMANE_COLORS from Prismane
+import { PRISMANE_COLORS, PrismaneProvider } from '@prismane/core';
 
 const App = () => {
   const theme = {
-    mode: "dark",
+    mode: 'dark',
     colors: {
-      primary: { ...PRISMANE_COLORS.ruby },
-      base: { ...PRISMANE_COLORS.slate },
+      primary: { ...PRISMANE_COLORS.ruby }, // Setting the primary colors
+      base: { ...PRISMANE_COLORS.slate } // Setting the base colors
     },
-    spacing: "5px",
+    spacing: '5px'
   };
 
   return (
+    /* Provide the theme object as a theme prop */
     <PrismaneProvider theme={theme}>
       <Application />
     </PrismaneProvider>

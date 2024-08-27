@@ -1,23 +1,29 @@
-Prismane offers a set of helper functions that help in the creation of themes
+Prismane offers a set of helper functions that will help you in the creation of themes
 
 ## createTheme Function
 
-The `createTheme` functions gets a theme overwriting object and overwrites the base theme.
+The `createTheme` function produces a theme object using the base theme of Prismane, merging it with the theme object provided as parameter.
+
+The provided object could have some or all of the theme properties, depending on your needs.
 
 ```tsx
-import { Box } from "@prismane/core";
-import { createTheme } from "@prismane/core/themes";
+import { Box } from '@prismane/core';
+// Import createTheme helper function from the core/themes package
+import { createTheme } from '@prismane/core/themes';
 
 const Page = () => {
+  // Creating a new theme object
   const theme = createTheme({
     colors: {
       primary: {
-        100: "#ffffff",
-      },
-    },
+        // Overwriting the primary color with shade of 100
+        100: '#ffffff'
+      }
+    }
   });
 
-  console.log(theme); // Will output a theme that is deeply merged with base theme.
+  // Will output a theme that is deeply merged with base theme.
+  console.log(theme);
 
   return <Box>Hello, world</Box>;
 };
@@ -27,21 +33,25 @@ export default Page;
 
 ## applyTheme Function
 
-The `applyTheme` functions maps a theme into CSS variables and sets them to the root element.
+The `applyTheme` function is applying the provided theme object to the theme context. It maps the provided theme into CSS variables and sets them to the root element.
 
 ```tsx
-import { Box } from "@prismane/core";
-import { applyTheme, createTheme } from "@prismane/core/themes";
+import { Box } from '@prismane/core';
+// Import applyTheme and createTheme helper functions
+import { applyTheme, createTheme } from '@prismane/core/themes';
 
 const Page = () => {
+  // Creating a new theme object
   const theme = createTheme({
     colors: {
       primary: {
-        100: "#ffffff",
-      },
-    },
+        // Overwriting the primary color with shade of 100
+        100: '#ffffff'
+      }
+    }
   });
 
+  // Apply the generated theme object
   applyTheme(theme);
 
   return <Box>Hello, world</Box>;
@@ -52,30 +62,35 @@ export default Page;
 
 ## extendTheme Function
 
-The `extendTheme` functions deeply merges two themes.
+The `extendTheme` function deeply merges two themes.
 
 ```tsx
-import { Box } from "@prismane/core";
-import { extendTheme, createTheme } from "@prismane/core/themes";
+import { Box } from '@prismane/core';
+// Import extendTheme and createTheme helper functions
+import { extendTheme, createTheme } from '@prismane/core/themes';
 
 const Page = () => {
+  // Creating the first theme object
   const first = createTheme({
     colors: {
       primary: {
-        100: "#ffffff",
-      },
-    },
+        100: '#ffffff'
+      }
+    }
   });
 
+  // Creating the second theme object
   const second = createTheme({
     colors: {
       primary: {
-        200: "#000000",
-      },
-    },
+        200: '#000000'
+      }
+    }
   });
 
-  const merged = extendTheme(first, second); //  Will result in a deeply merged theme
+  // The merged theme object will be a deeply merged between
+  // first and second theme objects
+  const merged = extendTheme(first, second);
 
   return <Box>Hello, world</Box>;
 };
@@ -87,9 +102,12 @@ export default Page;
 
 The `base` theme object represents the base Prismane theme.
 
+You can use it in case you want to reset any theming back to Prismane's base theme.
+
 ```tsx
-import { Box } from "@prismane/core";
-import { base, applyTheme } from "@prismane/core/themes";
+import { Box } from '@prismane/core';
+// Import base theme and applyTheme helper function
+import { base, applyTheme } from '@prismane/core/themes';
 
 const Page = () => {
   applyTheme(base); // This will apply the base theme to the root element
