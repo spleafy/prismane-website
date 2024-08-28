@@ -2,26 +2,49 @@ usePrismaneColor hook provides a simple way to handle colors and custom color st
 
 ## Import
 
+You can import the hook from the core entry of the package.
 ```js
 import { usePrismaneColor } from "@prismane/core";
 ```
 
 ## Usage
 
+One of the functions this hook exports is the _getColor_ function.
+You can use it to get the value of a color (and its shade) from the theme object.
+
 ```jsx
 function Demo() {
+  // Get the getColor function from the hook
   const { getColor } = usePrismaneColor();
 
   return (
     <>
+      /* provide the primary color (shade of 500) to the background prop */
       <Box w={fr(20)} h={fr(20)} bg={getColor("primary")} />
+      /* provide the primary color in its shade of 200 */
       <Box w={fr(20)} h={fr(20)} bg={getColor("primary", 200)} />
     </>
   );
 }
 ```
 
-### Parsing Custom Color Styles
+### getColor Parameters
+
+| Name    | Type     | Description                                  | Default Value |
+| ------- | -------- | -------------------------------------------- | ------------- |
+| `color` | `string` | The color that is wanted.                    | -             |
+| `shade` | `number` | The shade of the given color that is wanted. | `500`         |
+
+### getColor Return Value
+
+| Name    | Type     | Description       |
+| ------- | -------- | ----------------- |
+| `color` | `string` | The parsed color. |
+
+
+## Parsing Custom Color Styles
+
+You can use the _getColorStyle_ function to get a specific color and style from the theme object.
 
 ```jsx
 function Demo() {
@@ -40,24 +63,14 @@ function Demo() {
 }
 ```
 
-## API
-
-### Return Value
+### getColorStyle Return Value
 
 | Name            | Type           | Description                                         |
 | --------------- | -------------- | --------------------------------------------------- |
-| `getColor`      | `() => string` | A function that parses the color into a hex code.   |
 | `getColorStyle` | `() => string` | A function that parses the color for the `sx` prop. |
 
-### getColor's Parameters
+### getColorStyle Parameters
 
 | Name    | Type     | Description                                  | Default Value |
 | ------- | -------- | -------------------------------------------- | ------------- |
-| `color` | `string` | The color that is wanted.                    | -             |
-| `shade` | `number` | The shade of the given color that is wanted. | `500`         |
-
-### getColor's Return Value
-
-| Name    | Type     | Description       |
-| ------- | -------- | ----------------- |
-| `color` | `string` | The parsed color. |
+| `?????` | `??????` | The color that is wanted.                    | -             |

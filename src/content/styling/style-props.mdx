@@ -1,4 +1,10 @@
-All of Prismane's components have a set of props that help with faster development speeds and ease of use.
+Prismane's components offer a streamlined development experience with a rich set of customizable props.
+These shorthand props provide a flexible way to apply various styles, from simple adjustments to complex configurations,
+allowing you to tailor your components to your exact needs.
+<br/>
+In the following example you can see how we are using props for width `w`, height `h`, background `bg`, opacity `op`
+and cursor `cr`. You can find simple usage like number or string (`h` and `cs`) as well as more complicated like
+functions (_fr_ for `w`), shades (for `bg`) or function with theme object (for `op`).
 
 ```tsx
 import { Box, fr } from "@prismane/core";
@@ -22,9 +28,12 @@ export default Page;
 
 ## Style Prop Structure
 
-Our style props are able to be provided pseudo class support or just a single value. All of our props have access to the current theme object, by providing them as a function:
+Our style props are able to be provided pseudo class support or just a single value.
+All of our props have access to the current theme object, by providing them as a function:
 
 **Single Value:**
+
+Here we will use a simple number value provided for the width prop `w`.
 
 ```tsx
 import { Box } from "@prismane/core";
@@ -38,6 +47,8 @@ export default Page;
 
 **Pseudo Class:**
 
+TODO: We need to write a description here!!!
+
 ```tsx
 import { Box } from "@prismane/core";
 
@@ -49,6 +60,10 @@ export default Page;
 ```
 
 **With Theme Object:**
+
+You can provide a function with a theme parameter and set some logic based on the theme object currently in use in
+Prismane. In this small example, we are providing the function and if the theme mode is _dark_ we will make the
+width of the box 20 pixels, if not we will use 40 pixels.
 
 ```tsx
 import { Box } from "@prismane/core";
@@ -146,7 +161,9 @@ This is a list of all of Prismane's supported style props and their custom value
 
 ## Prismane Colors and Shades
 
-Every style prop that supports the Prismane Colors and Shades has the ability to use Prismane's colors as well as theme colors and their respective shades:
+Every style prop that supports the [Prismane Colors and Shades](docs/styling/color-palette), has the ability to use
+[Prismane's Colors](docs/styling/color-palette) as well as
+theme colors and their respective shades. Here is an example of how you can use them in your code:
 
 **Single Value:**
 
@@ -171,13 +188,14 @@ export default Page;
 ```
 
 <Warning>
-  When providing only the name of the color, without a specific shade, by
-  default we get the `500` shade, unless it is a custom color!
+    When providing only the name of the color, without a specific shade, by
+    default we get the `500` shade, unless it is a custom color!
 </Warning>
 
 **With Shade:**
 
-When providing a color with a specific shade, we provide an array. The first cell of the array is the color name and the second is the shade.
+If you want to provide a color with a specific shade, you should provide an array. <br />
+The first element of the array is the color name and the second is the shade.
 
 ```tsx
 import { Box } from "@prismane/core";
@@ -185,8 +203,8 @@ import { Box } from "@prismane/core";
 const Page = () => {
   return (
     <>
-      <Box bg={["diamond", 300]}>Hello, world</Box> // Prismane Color
-      <Box bg={["primary", 300]}>Hello, world</Box> // Theme Color
+      <Box bg={["diamond", 300]}>Hello, world</Box> // Providing Prismane Color of 'diamond' with it's shade of 300
+      <Box bg={["primary", 400]}>Hello, world</Box> // Theme Color with it's share of 400
       <Box
         bg={(theme) => (theme.mode === "dark" ? ["red", 300] : ["red", 600])} // With Theme Object
       >
