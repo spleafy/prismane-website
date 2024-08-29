@@ -1,5 +1,10 @@
-Our package exports prop types for each of our components. They can be found useful by some developers. To access them just add `Props` to the component's name. They are exported at `@prismane/core`.
-
+Our package exports prop types for each of our components. They can be found useful by some developers.
+There is a naming convention about forming the name of the component props.
+The convention is to add `Props` as a suffix to the component's name.<br />
+For example, the `<Button/>` component's prop types are named as `ButtonProps`.
+<br/>
+All the component props are exported at `@prismane/core`.
+<br/>
 For example, the `<Chip/>` component's prop types can be imported by doing the following:
 
 ```tsx
@@ -28,7 +33,9 @@ function Demo() {
 
 ### Versatile Components Prop Types
 
-Versatile components' prop types are generic prop types that have to have a value passed to them, so that you get the right type.
+Versatile components' prop types are generic prop types that have to have a value passed to them, so that you get the right type. <br />
+In the following example, we are passing the "button" value to the `ButtonProps` in order to get proper props for the button versatile component. <br />
+The versatile components prop types are available for all the [versatile components](docs/getting-started/versatile-components) in Prismane.
 
 ```tsx
 import { ButtonProps } from "@prismane/core";

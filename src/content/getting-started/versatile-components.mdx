@@ -1,10 +1,19 @@
-Some of our components are versatile, meaning that they have the ability to change their root element for an element that you have passed. They have an additional `as` prop. By default versatile components render as a `<div/>` element.
+Some of our components are versatile, meaning that they have the ability to change their root element for an element
+that you have passed instead of the default one. By default versatile components render as a `<div/>` element.
+
+They have an additional `as` prop, which is used to accept the desired component we want them to use.
+
+In the following example, we are using the `Flex` component, but we want to render it as an anchor `<a>` element.
+For that reason, we are passing `"a"` to the `as` prop of `Flex` component. This will tell Prismane to render an
+anchor tag that has display property as flex.
+
 
 ```tsx
 import { Flex } from "@prismane/core";
 
 const Page = () => {
   return (
+    // Passing "a" to the as property of the Flex component
     <Flex as="a" href="#">
       Hello, world
     </Flex>
@@ -14,4 +23,5 @@ const Page = () => {
 export default Page;
 ```
 
-This code snippet will render an anchor tag that has display property of flex.
+Here is a list of all the versatile components Prismane provides
+<VersatileComponents/>
