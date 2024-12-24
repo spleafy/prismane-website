@@ -33,6 +33,7 @@ import GettingStarted from '@/components/docs/GettingStarted';
 import ColorPalette from '@/components/docs/ColorPalette';
 import ImageBanner from '@/components/docs/ImageBanner';
 import Community from '@/components/Community';
+import VersatileComponents from '@/components/docs/VersatileComponents';
 
 export async function getStaticPaths() {
   const paths: { params: { slug: string[] } }[] = [];
@@ -128,6 +129,7 @@ export default function Page(params: any) {
               Note,
               NoteLink,
               Warning,
+              VersatileComponents,
               Yarn: () => (
                 <NextImage width={16} height={16} src={Yarn} alt="yarn Logo" />
               ),

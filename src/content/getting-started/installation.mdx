@@ -8,14 +8,16 @@ In your React project, install Prismane by running one of the following commands
 
 ## Provider Setup
 
-Once Prismane is installed, you have set up the `PrismaneProvider` component. This can be done by navigating to `index.tsx` or `index.tsx` and then wrap the `PrismaneProvider` component around `App`:
+Once Prismane is installed, you have set up the `PrismaneProvider` component. This component will provide the context to all the wrapped components in order to have them working properly.
+This can be done by navigating to `index.tsx` or `index.jsx` and then wrap the `PrismaneProvider` component around your application component (usually `App`):
 
 ```jsx name="App.tsx" icon={<File />}
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { PrismaneProvider } from "@prismane/core";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+// Import PrismaneProvider component
+import { PrismaneProvider } from '@prismane/core';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <PrismaneProvider>
@@ -25,49 +27,33 @@ ReactDOM.createRoot(rootElement).render(
 );
 ```
 
-## Install Icons (Optional)
+## Customize Theme (Optional)
 
-<Warning>
-  Prismane does not include the icons that are used in examples!
-</Warning>
+By default Prismane comes with a default theme out of the box, but if you want to use a custom one with specific colors, shades, spacing and more,
+you need to extend it by passing a theme object to the `PrismaneProvider`.
 
-If you want to use the icons that are used in the examples, you will have to take some additional steps:
-
-<Details summary="Additional steps to include the icons used in the examples">
-To install the icons used in the examples you have to install the `@phosphor-icon/react` package.
-
-This can be done by running the following command:
-
-```json files={[ { name: "npm", value: "npm i @phopshor-icons/react", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @phosphor-icons/react", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @phosphor-icons/react", language: "json", icon: <Pnpm />, }, ]}
-
-```
-
-</Details>
-
-### Customize Theme (Optional)
-
-If you want to use a custom theme, with custom colors, spacing and more, you need to extend the `theme`.
-
-The `PrismaneProvider` component automatically extends the passed `theme` object with the current one. By default, this is the [`base`](/docs/theming/theme-object#base-theme-object) theme.
+The `PrismaneProvider` component automatically extends the passed `theme` object with the current one.
+By default, this is the [`base`](/docs/theming/theme-object#base-theme-object) theme.
 
 You have to provide your theme object to the `theme` prop of the `PrismaneProvider` component.
 
 ```jsx name="App.tsx" icon={<File />}
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { PrismaneProvider } from "@prismane/core";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { PrismaneProvider } from '@prismane/core';
 
+// Defining your custom theme only with the extended values
 const theme = {
   colors: {
     primary: {
-      500: "#64748b",
-      600: "#4b5563",
-      700: "#374151",
-    },
-  },
+      500: '#64748b',
+      600: '#4b5563',
+      700: '#374151'
+    }
+  }
 };
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <PrismaneProvider theme={theme}>
@@ -76,3 +62,24 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 ```
+
+You can read more detailed documentation about the theming in Prismane [here](docs/theming/theme-object).
+
+## Install Icons (Optional)
+
+<Warning>
+  Prismane's examples use icons that are not part of the core library.
+</Warning>
+
+If you want to use the icons that are used in the examples, you will have to take some additional steps:
+
+<Details summary="Additional steps to include the icons used in the examples">
+To install the icons you have to install the `@phosphor-icon/react` package.
+
+This can be done by running the following command:
+
+```json files={[ { name: "npm", value: "npm i @phopshor-icons/react", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @phosphor-icons/react", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @phosphor-icons/react", language: "json", icon: <Pnpm />, }, ]}
+
+```
+
+</Details>

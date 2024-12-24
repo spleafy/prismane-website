@@ -1,8 +1,10 @@
-All of our components use the `forwardRef` function, so that you can easily pass a ref to the component by using the `ref` prop.
+All the components in Prismane use the _forwardRef_ function, so that you can easily pass a ref to the component by using the `ref` prop.
+
+Here is an example of passing a custom ref to the [`Flex`](/docs/components/layout/flex) component:
 
 ```tsx
-import { useRef } from "react";
-import { Flex } from "@prismane/core";
+import { useRef } from 'react';
+import { Flex } from '@prismane/core';
 
 const Page = () => {
   const ref = useRef(null);

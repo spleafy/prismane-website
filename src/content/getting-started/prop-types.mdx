@@ -1,17 +1,26 @@
-Our package exports prop types for each of our components. They can be found useful by some developers. To access them just add `Props` to the component's name. They are exported at `@prismane/core`.
+Prismane exports the prop types for each of our components.
 
-For example, the `<Chip/>` component's prop types can be imported by doing the following:
+The naming convention is to add a _Props_ as a suffix after the component's name.
+
+For example, the [`Button`](/docs/components/inputs/button) component's prop types are called `ButtonProps`.
+
+<br />
+
+All of the prop types can be imported from the `@prismane/core` entry.
+
+For example, the [`Chip`](/docs/components/data-display/chip) component's prop
+types can be imported by doing the following:
 
 ```tsx
-import { ChipProps } from "@prismane/core";
+import { ChipProps } from '@prismane/core';
 ```
 
 ## Usage
 
-The main usage of prop types is to still keep the TypeScript support when creating custom components built on top of Prismane's components
+The main usage of prop types is to ensure the TypeScript support when creating custom components built on top of Prismane's components.
 
 ```tsx
-import { ChipProps } from "@prismane/core";
+import { ChipProps } from '@prismane/core';
 
 function CustomChip({ children, ...props }: ChipProps) {
   return (
@@ -28,12 +37,14 @@ function Demo() {
 
 ### Versatile Components Prop Types
 
-Versatile components' prop types are generic prop types that have to have a value passed to them, so that you get the right type.
+Versatile components' prop types are generic prop types that have to have a value passed to them, so that you get the right type. <br />
+In the following example, we are passing the "button" value to the `ButtonProps` in order to get proper props for the button versatile component. <br />
+The versatile components prop types are available for all the [versatile components](docs/getting-started/versatile-components) in Prismane.
 
 ```tsx
-import { ButtonProps } from "@prismane/core";
+import { ButtonProps } from '@prismane/core';
 
-function CustomButton({ children, ...props }: ButtonProps<"button">) {
+function CustomButton({ children, ...props }: ButtonProps<'button'>) {
   return (
     <Button color="white" br="full" {...props}>
       {children}

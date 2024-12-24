@@ -1,18 +1,21 @@
-Our package exports a set of global types and props that are used throughout components and can be useful during development. They are all exported from the `@prismane/core` entry.
+Prismane package exports a set of global types and enums that are used throughout components, hooks and helper functions
+and can be useful during development.
+
+They are all exported from the `@prismane/core` entry.
 
 ## Global Types
 
 ### PrismaneBreakpoints
 
-PrismaneBreakpoints is a type that is used to provide a predefined set of sizes for our components.
+_PrismaneBreakpoints_ is a type that is used to provide a predefined set of sizes for our components.
 
 ```tsx
-type PrismaneBreakpoints = "xs" | "sm" | "base" | "md" | "lg";
+type PrismaneBreakpoints = 'xs' | 'sm' | 'base' | 'md' | 'lg';
 ```
 
 ### PrismaneShades
 
-PrismaneShades is a type that is used to provide a predefined set of shades for every color in our color pallete.
+_PrismaneShades_ is a type that is used to provide a predefined set of shades for every color in Prismane's color pallete.
 
 ```tsx
 type PrismaneShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
@@ -20,96 +23,96 @@ type PrismaneShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 ### PrismaneColors
 
-PrismaneColors is a type that is used to provide a predefined set of colors that is used in our color pallete.
+_PrismaneColors_ is a type that is used to provide a predefined set of colors that is used in our color pallete.
 
 ```tsx
 type PrismaneColors =
-  | "primary"
-  | "base"
-  | "slate"
-  | "gray"
-  | "coal"
-  | "sepia"
-  | "red"
-  | "orange"
-  | "copper"
-  | "yellow"
-  | "lime"
-  | "green"
-  | "emerald"
-  | "teal"
-  | "cyan"
-  | "diamond"
-  | "blue"
-  | "amethyst"
-  | "violet"
-  | "purple"
-  | "magenta"
-  | "pink"
-  | "ruby";
+  | 'primary'
+  | 'base'
+  | 'slate'
+  | 'gray'
+  | 'coal'
+  | 'sepia'
+  | 'red'
+  | 'orange'
+  | 'copper'
+  | 'yellow'
+  | 'lime'
+  | 'green'
+  | 'emerald'
+  | 'teal'
+  | 'cyan'
+  | 'diamond'
+  | 'blue'
+  | 'amethyst'
+  | 'violet'
+  | 'purple'
+  | 'magenta'
+  | 'pink'
+  | 'ruby';
 ```
 
 ### PrismaneAnimations
 
-PrismaneAnimations is a type that is used to provide a predefined set of animations each of which is a valid prop to the `Animation` component.
+_PrismaneAnimations_ is a type that is used to provide a predefined set of animations each of which is a valid prop to the [`Animation` component](docs/components/miscellaneous/animation).
 
 ```tsx
 type PrismaneAnimations =
-  | "fade"
-  | "scale"
-  | "scale-y"
-  | "scale-x"
-  | "skew-up"
-  | "skew-down"
-  | "rotate-left"
-  | "rotate-right"
-  | "slide-down"
-  | "slide-up"
-  | "slide-left"
-  | "slide-right"
-  | "roll"
-  | "pulse"
-  | "shake"
-  | "bounce"
-  | "flip";
+  | 'fade'
+  | 'scale'
+  | 'scale-y'
+  | 'scale-x'
+  | 'skew-up'
+  | 'skew-down'
+  | 'rotate-left'
+  | 'rotate-right'
+  | 'slide-down'
+  | 'slide-up'
+  | 'slide-left'
+  | 'slide-right'
+  | 'roll'
+  | 'pulse'
+  | 'shake'
+  | 'bounce'
+  | 'flip';
 ```
 
 ### PrismanePositions
 
-PrismanePositions is a type that is used to provide a predefined set of positions each of which is a valid value to every `size` prop of our components.
+_PrismanePositions_ is a type that is used to provide a predefined set of positions each of which is a valid value to every `size` prop of our components.
 
 ```tsx
 type PrismanePositions =
-  | "top-start"
-  | "top"
-  | "top-end"
-  | "right-start"
-  | "right"
-  | "right-end"
-  | "bottom-end"
-  | "bottom"
-  | "bottom-start"
-  | "left-end"
-  | "left"
-  | "left-start";
+  | 'top-start'
+  | 'top'
+  | 'top-end'
+  | 'right-start'
+  | 'right'
+  | 'right-end'
+  | 'bottom-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'left-end'
+  | 'left'
+  | 'left-start';
 ```
 
 ### PrismaneTransitions
 
-PrismaneTransitions is a type that is used to provide a predefined set of transitions each of which is a valid value to the `transition` prop of our `Transition` component.
+_PrismaneTransitions_ is a type that is used to provide a predefined set of transitions each of which is a valid value to the `transition` prop of our [`Transition` component](docs/components/miscellaneous/transition).
 
 ```tsx
 type PrismaneTransitions =
-  | "all"
-  | "colors"
-  | "opacity"
-  | "shadow"
-  | "transform";
+  | 'all'
+  | 'colors'
+  | 'opacity'
+  | 'shadow'
+  | 'transform';
 ```
 
 ### PrismaneFieldComponent
 
-PrismaneFieldComponent is a type that is used to provide a set of props to each of our field components.
+_PrismaneFieldComponent_ is a type that is used to provide a set of props to each of our [field components](docs/components/getting-started#inputs).
 
 ```tsx
 interface PrismaneFieldComponent {
@@ -120,19 +123,23 @@ interface PrismaneFieldComponent {
   value?: string | number;
   defaultValue?: string | number;
   size?: PrismaneBreakpoints;
-  variant?: "outlined" | "filled" | "underlined" | "unstyled";
+  variant?: 'outlined' | 'filled' | 'underlined' | 'unstyled';
   addons?: React.ReactNode;
 }
 ```
 
 ## Global Constants
 
+Prismane also exports some global constants that can be used across your project.
+
+They are all exported from the `@prismane/core` entry.
+
 ### PRISMANE_COLORS
 
 A constant that contains all of Prismane's pre-baked colors.
 
 ```tsx
-import { PRISMANE_COLORS } from "@prismane/core";
+import { PRISMANE_COLORS } from '@prismane/core';
 ```
 
 ### PRISMANE_DEFAULT_COLORS_MAP
@@ -140,7 +147,7 @@ import { PRISMANE_COLORS } from "@prismane/core";
 A constant that contains a map of Prismane's color names, meaning that it **does not** include **primary** or **base** colors.
 
 ```tsx
-import { PRISMANE_DEFAULT_COLORS_MAP } from "@prismane/core";
+import { PRISMANE_DEFAULT_COLORS_MAP } from '@prismane/core';
 ```
 
 ### PRISMANE_COLORS_MAP
@@ -148,7 +155,7 @@ import { PRISMANE_DEFAULT_COLORS_MAP } from "@prismane/core";
 A constant that extends the `PRISMANE_DEFAULT_COLORS_MAP` and adds the values of **primary** and **base**.
 
 ```tsx
-import { PRISMANE_COLORS_MAP } from "@prismane/core";
+import { PRISMANE_COLORS_MAP } from '@prismane/core';
 ```
 
 ### PRISMANE_SHADES_MAP
@@ -156,5 +163,5 @@ import { PRISMANE_COLORS_MAP } from "@prismane/core";
 A map of all of Prismane's color shades.
 
 ```tsx
-import { PRISMANE_SHADES_MAP } from "@prismane/core";
+import { PRISMANE_SHADES_MAP } from '@prismane/core';
 ```
