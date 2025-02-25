@@ -2,26 +2,68 @@ usePrismaneColor hook provides a simple way to handle colors and custom color st
 
 ## Import
 
+You can import the hook from the core entry of the package.
+
 ```js
-import { usePrismaneColor } from "@prismane/core";
+import { usePrismaneColor } from '@prismane/core';
 ```
 
 ## Usage
 
+The `usePrismaneColor` returns an object with two utility functions - _getColor_ and _getColorStyle_.
+
+```jsx
+const { getColor, getColorStyle } = usePrismaneColor();
+```
+
+## getColor Function
+
+The _getColor_ function is used to get the HEX value of a color (and its shade) from the theme object.
+
+### getColor Parameters
+
+| Name    | Type             | Description                                  | Default Value |
+| ------- | ---------------- | -------------------------------------------- | ------------- |
+| `cl`    | _PrismaneColors_ | The color that is wanted.                    | -             |
+| `shade` | _PrismaneShades_ | The shade of the given color that is wanted. | _500_         |
+
+### getColor Return Value
+
+| Name    | Type     | Description                        |
+| ------- | -------- | ---------------------------------- |
+| `color` | _string_ | The parsed HEX value of the color. |
+
 ```jsx
 function Demo() {
+  // Get the getColor function from the hook
   const { getColor } = usePrismaneColor();
 
   return (
     <>
-      <Box w={fr(20)} h={fr(20)} bg={getColor("primary")} />
-      <Box w={fr(20)} h={fr(20)} bg={getColor("primary", 200)} />
+      /* provide the primary color (shade of 500) to the background prop */
+      <Box w={fr(20)} h={fr(20)} bg={getColor('primary')} />
+      /* provide the primary color in its shade of 200 */
+      <Box w={fr(20)} h={fr(20)} bg={getColor('primary', 200)} />
     </>
   );
 }
 ```
 
-### Parsing Custom Color Styles
+## getColorStyle Function
+
+The _getColorStyle_ function is used to add the functionality of a shorthand style prop (like _cl_ for example) to a regular CSS style property.
+
+### getColorStyle Parameters
+
+| Name | Type                          | Description                                       | Default Value |
+| ---- | ----------------------------- | ------------------------------------------------- | ------------- |
+| `cl` | _ClProp \| (theme) => ClProp_ | The color style array that is going to be parsed. | -             |
+
+### getColorStyle Return Value
+
+| Name    | Type  | Description                                |
+| ------- | ----- | ------------------------------------------ |
+| `style` | _any_ | The parsed style that is currently active. |
 
 ```jsx
 function Demo() {
@@ -33,31 +75,9 @@ function Demo() {
       h={fr(20)}
       bdw={1}
       sx={{
-        borderColor: getColorStyle(["base", { hover: "primary" }]),
+        borderColor: getColorStyle(['base', { hover: 'primary' }])
       }}
     />
   );
 }
 ```
-
-## API
-
-### Return Value
-
-| Name            | Type           | Description                                         |
-| --------------- | -------------- | --------------------------------------------------- |
-| `getColor`      | `() => string` | A function that parses the color into a hex code.   |
-| `getColorStyle` | `() => string` | A function that parses the color for the `sx` prop. |
-
-### getColor's Parameters
-
-| Name    | Type     | Description                                  | Default Value |
-| ------- | -------- | -------------------------------------------- | ------------- |
-| `color` | `string` | The color that is wanted.                    | -             |
-| `shade` | `number` | The shade of the given color that is wanted. | `500`         |
-
-### getColor's Return Value
-
-| Name    | Type     | Description       |
-| ------- | -------- | ----------------- |
-| `color` | `string` | The parsed color. |

@@ -1,4 +1,5 @@
-Prismane exports a set of helper functions and hooks that can help you achieve the desired responsiveness.
+Prismane exports a set of helper functions and hooks that can help you achieve the desired responsiveness of your
+application.
 
 ## The fr Function:
 
@@ -30,7 +31,7 @@ import { Flex } from "@prismane/core";
 import { useMediaQuery } from "@prismane/core/hooks";
 
 const Page = () => {
-  const isTable = useMediaQuery("(min-width: 768px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
 
   return <Flex w={isTablet ? 20 : 40}>Hello, world</Flex>;
 };
@@ -40,7 +41,7 @@ export default Page;
 
 ## Using The sx Prop:
 
-The `sx` prop was already covered and as you know, you can use it to write media-queries in inline style.
+The `sx` prop was already covered [here](docs/styling/sx-prop) and as you know, you can use it to write media-queries in inline style.
 
 ```tsx
 import { Box } from "@prismane/core";
