@@ -10,10 +10,12 @@ import {
   Chats,
   HandHeart,
   Note,
-  Video
+  Video,
+  Flask
 } from '@phosphor-icons/react';
 // Components
 import Separator from '@/components/Separator';
+import Warning from '@/components/docs/Warning';
 // Containers
 import Breadcrumbs from './Breadcrumbs';
 import TableOfContents from './TableOfContents';
@@ -243,6 +245,11 @@ export const Docs: FC<DocsProps> = ({ children }) => {
                   </Link>
                 </div>
               )}
+            {currentItem && ['components-api'].includes(current.slug) && (
+              <Warning className="!mb-0">
+                This section of the documentation is currently being updated!
+              </Warning>
+            )}
             <Separator className="my-8" />
           </div>
         )}
