@@ -241,7 +241,7 @@ const Footer = () => {
       <div className="flex w-full justify-center border-t border-base-200 dark:border-base-900">
         <div className="z-10 flex w-full max-w-[1280px] flex-col items-center justify-between gap-4 px-5 py-6 md:flex-row xl:px-0">
           <span className="text-sm text-base-700 dark:text-base-500">
-            Copyright © 2022 - 2024 Prismane - MIT License
+            Copyright © 2022 - 2025 Prismane - MIT License
           </span>
           <span className="text-sm text-base-700 dark:text-base-500">
             Made in <span className="mx-1">&#127463;&#127468;</span> by{' '}
