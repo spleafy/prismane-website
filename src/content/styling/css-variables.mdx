@@ -2,7 +2,7 @@ Prismane provides a set of global CSS variables that facilitate seamless theme i
 With Prismane's global CSS variables, you can achieve consistent theming across your entire application,
 making it effortless to create a cohesive and personalized user experience.
 
-## How Are The CSS Variables Generated
+## How Are The CSS Variables Generated?
 
 When you provide a theme to `<PrismaneProvider/>`, it will automatically transpile the passed object and generate a set of CSS variables, which would then be applied to the root element.
 
@@ -33,11 +33,12 @@ Will be transpiled into this:
 }
 ```
 
-
+<br/>
 
 # Using CSS Variables
 
 Prismane's CSS variables can be used in CSS stylesheet files, as well as in components.
+This allows you to be flexible in their usage.
 
 ## Inside CSS Stylesheet
 
@@ -48,7 +49,7 @@ the css variable.
 // index.css
 
 .some-component-class {
-  background-color: var(--prismane-colors-primary-500);
+  background-color: var(--prismane-colors-primary-100);
 }
 
 .some-other-component-class {
@@ -77,6 +78,7 @@ const Page = () => {
 
 export default Page;
 ```
+<br/>
 
 # All CSS Variables
 

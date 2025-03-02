@@ -1,7 +1,10 @@
 Prismane's components offer a streamlined development experience with a rich set of customizable props.
 These shorthand props provide a flexible way to apply various styles, from simple adjustments to complex configurations,
 allowing you to tailor your components to your exact needs.
+
+You can see the full list of the shorthanded styling props <a href="#custom-id">below</a>.
 <br/>
+
 In the following example you can see how we are using props for width `w`, height `h`, background `bg`, opacity `op`
 and cursor `cr`. You can find simple usage like number or string (`h` and `cs`) as well as more complicated like
 functions (_fr_ for `w`), shades (for `bg`) or function with theme object (for `op`).
@@ -26,24 +29,33 @@ const Page = () => {
 export default Page;
 ```
 
+Below you can see in depth the usage of the style prop with variety of cases: from simple values to pseudo classes
+and the theme object.
+
 ## Style Prop Structure
 
-Our style props are able to be provided pseudo class support or just a single value.
+TODO: Better phrasing: Our style props are able to be provided pseudo class support or just a single value.
 All of our props have access to the current theme object, by providing them as a function:
 
 **Single Value:**
 
-Here we will use a simple number value provided for the width prop `w`.
+The basic usage of the style props are by providing them with a single value. Although this usage is simple, it is
+yet very powerful as for the value you can use one of the following cases:
+
+_Number/String value_
+
+Here we will use a simple number value provided for the width prop `w` and a string value for the cursor prop `cs`.
 
 ```tsx
 import { Box } from "@prismane/core";
 
 const Page = () => {
-  return <Box w={20}>Hello, world</Box>;
+  return <Box w={20} cs="pointer">Hello, world</Box>;
 };
 
 export default Page;
 ```
+Note: In the next sections you can read in more details about the [_fr_ function](docs/styling/responsive-styles#the-fr-function) and the [theme object](docs/theming/theme-object).
 
 **Pseudo Class:**
 
@@ -76,7 +88,7 @@ const Page = () => {
 
 export default Page;
 ```
-
+<div id="custom-id"/>
 ## Supported Props
 
 This is a list of all of Prismane's supported style props and their custom values, provided they have any:

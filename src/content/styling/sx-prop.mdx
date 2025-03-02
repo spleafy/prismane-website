@@ -29,7 +29,8 @@ export default Page;
 ## Theme Object
 
 As a value of any of the CSS rules you want to overwrite, you can use a function with the theme object as a parameter and use it in your logic.
-Let's see how we can set the `overflow-y` value based on the theme's mode.
+Let's use the theme's mode value to set the `overflow-y` value to either _scroll_ or _auto_.
+
 
 ```tsx
 import { Box } from "@prismane/core";
@@ -51,7 +52,7 @@ export default Page;
 
 ## Class Names
 
-If you want to overwrite a CSS rule inside a CSS class that is being used inside the component, you can set a key woth the class name to the object you provide.
+If you want to overwrite a CSS rule inside a CSS class that is being used inside the component, you can set a key with the class name to the object you provide.
 In this example we will set the background to _red_ of element(s) that has a class name of `Box-root` within the Box component.
 
 ```tsx
@@ -73,6 +74,10 @@ const Page = () => {
 
 export default Page;
 ```
+
+<Note>
+    You can read more about the Prismane's dedicated component class names [here](styling/global-style-overwriting)
+</Note>
 
 ## Nesting Styles
 
@@ -124,7 +129,7 @@ export default Page;
 ## Pseudo Classes
 
 You can also use pseudo classes in the CSS rules you want to overwrite.
-In this small example we are using the :hover state of the component and we are setting it to be _display:none_.
+In this small example we are using the :hover state of the component and we are setting the _text-decoration: underline_.
 
 ```tsx
 import { Box } from "@prismane/core";
@@ -134,7 +139,7 @@ const Page = () => {
     <Box
       sx={{
         ":hover": {
-          display: "none",
+          textDecoration: "underline",
         },
       }}
     >
