@@ -110,9 +110,7 @@ interface DocsProps {
 }
 
 export const Docs: FC<DocsProps> = ({ children }) => {
-  const router = useRouter();
-
-  const { asPath } = router;
+  const { asPath } = useRouter();
 
   const path = asPath.replace('/docs', '');
 

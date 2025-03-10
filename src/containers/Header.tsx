@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -11,11 +11,10 @@ import {
   BookBookmark,
   ClockCounterClockwise,
   Article,
-  HandHeart,
   UsersThree,
   Heart
 } from '@phosphor-icons/react';
-import { usePrismaneTheme, Field } from '@prismane/core';
+import { usePrismaneTheme } from '@prismane/core';
 // Components
 import Search from '@/components/Search';
 import HeaderLink from '@/components/header/HeaderLink';
@@ -27,6 +26,99 @@ import content from '@/content';
 import hidden from '@/config/hidden';
 // Utils
 import useNavigation from '@/useNavigation';
+import cn from '@/cn';
+
+type NavigationItemProps = {
+  item: any;
+  toggle: (item: any) => void;
+  path: string;
+  expanded: any;
+  setShown: any;
+  inner?: boolean;
+  parentRoute?: string;
+};
+
+const NavigationItem = memo(
+  ({
+    item,
+    toggle,
+    path,
+    expanded,
+    setShown,
+    inner,
+    parentRoute
+  }: NavigationItemProps) => {
+    const currentRoute = parentRoute
+      ? `${parentRoute}/${item.slug}`
+      : `/${item.slug}`;
+
+    const hasItems = item.items && item.items.length > 0;
+
+    const isActive = path.includes(item.route) || expanded[item.route];
+
+    const handleItemClick = useCallback(
+      (e: any) => {
+        if (!hasItems) {
+          setShown(false);
+        } else {
+          e.preventDefault();
+          toggle(item.route);
+        }
+      },
+      [hasItems, item.route, setShown, toggle]
+    );
+
+    return (
+      <>
+        <Link
+          href={currentRoute}
+          className={`mb-3 flex w-full cursor-pointer items-center justify-between ${
+            inner &&
+            '-ml-px border-l border-transparent pl-3.5 hover:border-base-500 dark:hover:border-base-400'
+          }`}
+          onClick={handleItemClick}
+        >
+          <span
+            className={cn(
+              `flex items-center gap-3 whitespace-nowrap text-base font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white ${
+                isActive && '!text-base-900 dark:!text-white'
+              }`
+            )}
+          >
+            {item.icon && (
+              <div className="flex items-center justify-center text-2xl text-inherit md:hidden">
+                {item.icon}
+              </div>
+            )}
+            {item.title}
+          </span>
+          {hasItems && (
+            <CaretRight
+              className={cn(
+                `block transition-all md:hidden ${
+                  expanded[item.route] ? 'rotate-90' : 'rotate-0'
+                }`
+              )}
+            />
+          )}
+        </Link>
+        {hasItems && expanded[item.route] && (
+          <Navigation
+            items={item.items}
+            path={path}
+            toggle={toggle}
+            expanded={expanded}
+            setShown={setShown}
+            parentRoute={currentRoute}
+            inner
+          />
+        )}
+      </>
+    );
+  }
+);
+
+NavigationItem.displayName = 'NavigationItem';
 
 type NavigationProps = {
   items: any;
@@ -38,81 +130,43 @@ type NavigationProps = {
   parentRoute?: string;
 };
 
-const Navigation = ({
-  items,
-  toggle,
-  path,
-  expanded,
-  setShown,
-  inner,
-  parentRoute
-}: NavigationProps) => {
-  return (
-    <div
-      className={`flex w-full flex-col md:flex-row ${
-        inner
-          ? 'inner mb-3 ml-2.5 mt-3 border-l border-base-200 dark:border-base-800 [&_.inner]:!ml-6'
-          : ''
-      }`}
-    >
-      {items.map((item: any) => (
-        <>
-          <Link
-            href={parentRoute ? `${parentRoute}/${item.slug}` : `/${item.slug}`}
-            className={`mb-3 flex cursor-pointer items-center justify-between ${
-              inner
-                ? '-ml-px border-l border-transparent pl-3.5 hover:border-base-500 dark:hover:border-base-400'
-                : ''
-            }`}
-            onClick={(e) => {
-              if (!item.items) {
-                setShown(false);
-              } else {
-                e.preventDefault();
-                toggle(item.route);
-              }
-            }}
-          >
-            <span
-              className={`flex items-center gap-3 whitespace-nowrap text-base font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white ${
-                path.includes(item.route) || expanded[item.route]
-                  ? '!text-base-900 dark:!text-white'
-                  : ''
-              }`}
-            >
-              {item.icon && (
-                <div className="flex items-center justify-center text-2xl text-inherit md:hidden">
-                  {item.icon}
-                </div>
-              )}
-              {item.title}
-            </span>
-            {item.items && item.items.length > 0 && (
-              <CaretRight
-                className={`block transition-all md:hidden ${
-                  expanded[item.route] ? 'rotate-90' : 'rotate-0'
-                }`}
-              />
-            )}
-          </Link>
-          {item.items && expanded[item.route] && (
-            <Navigation
-              items={item.items}
-              path={path}
-              toggle={toggle}
-              expanded={expanded}
-              setShown={setShown}
-              inner
-              parentRoute={
-                parentRoute ? `${parentRoute}/${item.slug}` : `/${item.slug}`
-              }
-            />
-          )}
-        </>
-      ))}
-    </div>
-  );
-};
+const Navigation = memo(
+  ({
+    items,
+    toggle,
+    path,
+    expanded,
+    setShown,
+    inner,
+    parentRoute
+  }: NavigationProps) => {
+    return (
+      <div
+        className={cn(
+          `flex flex-col md:flex-row ${
+            inner &&
+            'inner mb-3 ml-2.5 mt-3 border-l border-base-200 dark:border-base-800 [&_.inner]:!ml-6'
+          }`
+        )}
+      >
+        {items.map((item: any) => (
+          <NavigationItem
+            key={item.route}
+            item={item}
+            toggle={toggle}
+            path={path}
+            expanded={expanded}
+            setShown={setShown}
+            inner={inner}
+            parentRoute={parentRoute}
+          />
+        ))}
+      </div>
+    );
+  }
+);
+
+Navigation.displayName = 'Navigation';
 
 const Header = () => {
   const router = useRouter();
@@ -160,7 +214,8 @@ const Header = () => {
       setSticky(scrollTop !== 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -170,17 +225,28 @@ const Header = () => {
     setShown(false);
   }, [router.asPath]);
 
+  const handleThemeToggle = useCallback(() => {
+    toggleThemeMode();
+  }, [toggleThemeMode]);
+
+  useEffect(() => {
+    document.documentElement.classList.remove(
+      theme.mode === 'dark' ? 'light' : 'dark'
+    );
+    document.documentElement.classList.add(theme.mode);
+  }, [theme.mode]);
+
   if (hidden.header.some((link) => router.asPath.includes(link))) {
-    return <></>;
+    return null;
   }
 
   return (
     <header
-      className={`sticky left-0 top-0 z-50 flex items-center justify-center px-5 py-3 transition-colors duration-150 sm:px-10 ${
-        sticky
-          ? 'bg-white/50 backdrop-blur-xl dark:bg-base-950/50'
-          : 'bg-transparent'
-      } ${shown ? '[&+main]:overflow-hidden md:[&+main]:overflow-auto' : ''}`}
+      className={cn(
+        `sticky left-0 top-0 z-50 flex items-center justify-center px-5 py-3 transition-colors duration-150 sm:px-10`,
+        sticky && 'bg-white/50 backdrop-blur-xl dark:bg-base-950/50',
+        shown && '[&+main]:overflow-hidden md:[&+main]:overflow-auto'
+      )}
     >
       <div className="flex w-full max-w-[1280px] items-center justify-between">
         <div className="z-10 flex items-center lg:w-1/3">
@@ -196,9 +262,10 @@ const Header = () => {
           </Link>
         </div>
         <div
-          className={`absolute left-0 top-0 flex h-screen w-full flex-col items-center gap-4 bg-white px-5 shadow-base-900/5 dark:bg-base-950 dark:shadow-base-500/5 sm:px-10 md:static md:h-fit md:w-fit md:flex-row md:bg-transparent md:!p-0 md:shadow-none md:dark:bg-transparent ${
+          className={cn(
+            'absolute left-0 top-0 flex h-screen w-full flex-col items-center gap-4 bg-white px-5 shadow-base-900/5 dark:bg-base-950 dark:shadow-base-500/5 sm:px-10 md:static md:h-fit md:w-fit md:flex-row md:bg-transparent md:!p-0 md:shadow-none md:dark:bg-transparent',
             shown ? 'flex pt-20 md:pt-0' : 'hidden md:!flex'
-          }`}
+          )}
         >
           <div className="hidden w-full items-center justify-center gap-8 md:flex">
             {navigation.map((item, index) => (
@@ -208,11 +275,11 @@ const Header = () => {
                 className="flex cursor-pointer items-center justify-between"
               >
                 <span
-                  className={`flex items-center whitespace-nowrap text-sm/6 font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white ${
-                    router.asPath.includes(`/${item.slug}`)
-                      ? '!text-base-900 dark:!text-white'
-                      : ''
-                  }`}
+                  className={cn(
+                    'flex items-center whitespace-nowrap text-sm/6 font-medium text-base-600/80 transition-colors hover:text-base-900 dark:text-white/60 dark:hover:text-white',
+                    router.asPath.includes(`/${item.slug}`) &&
+                      '!text-base-900 dark:!text-white'
+                  )}
                 >
                   {item.title}
                 </span>
@@ -220,9 +287,12 @@ const Header = () => {
             ))}
           </div>
           <div
-            className={`flex w-full items-center justify-center gap-2 md:hidden ${
-              shown ? 'flex-col !items-start' : ''
-            }`}
+            className={cn(
+              'flex w-full gap-2 md:hidden',
+              shown
+                ? 'h-screen flex-col overflow-y-auto'
+                : 'items-center justify-center'
+            )}
           >
             <Navigation
               items={navigation}
@@ -305,15 +375,7 @@ const Header = () => {
                 ? 'Switch to light mode'
                 : 'Switch to dark mode'
             }
-            onClick={() => {
-              document.documentElement.classList.remove(
-                theme.mode === 'dark' ? 'dark' : 'light'
-              );
-              document.documentElement.classList.add(
-                theme.mode === 'dark' ? 'light' : 'dark'
-              );
-              toggleThemeMode();
-            }}
+            onClick={handleThemeToggle}
           >
             {theme.mode === 'dark' ? (
               <Sun
