@@ -131,7 +131,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
   const { navigation, expanded, toggle } = useNavigation(content);
 
   return (
-    <div className="mx-auto flex max-w-[1280px] items-center gap-5 pt-5">
+    <div className="mx-auto flex w-full max-w-[1280px] items-center gap-5 pt-5">
       <nav className="sticky left-0 top-[88px] hidden max-h-[calc(100vh-100px)] min-w-[240px] flex-col items-stretch gap-5 self-start overflow-y-auto p-5 pl-0 md:flex">
         {content.map((nav: any, index: number) => (
           <Link
@@ -175,7 +175,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
           />
         </div>
       </nav>
-      <div className="flex max-w-[1040px] grow flex-col self-start p-5 [&:has(.docs-anchor)]:!max-w-[800px]">
+      <div className="flex w-full max-w-[1040px] flex-col self-start p-5 [&:has(.docs-anchor)]:!max-w-[800px]">
         <Breadcrumbs
           items={{
             parent: {
