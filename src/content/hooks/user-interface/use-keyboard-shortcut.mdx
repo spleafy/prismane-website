@@ -1,7 +1,12 @@
+---
+title: 'useKeyboardShortcut'
+description: 'useKeyboardShortcut hook provides a simple way to handle key combinations.'
+---
+
 ## Import
 
 ```js
-import { useKeyboardShortcut } from "@prismane/core/hooks";
+import { useKeyboardShortcut } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -20,13 +25,13 @@ The `useKeyboardShortcut` hook accepts the following parameters:
 function Demo() {
   const [registered, setRegistered] = useState(false);
 
-  useKeyboardShortcut(["shift", "k"], () => {
+  useKeyboardShortcut(['shift', 'k'], () => {
     setRegistered(true);
   });
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Hold: Shift + K <br />
       Registered: {registered.toString()}
@@ -46,7 +51,7 @@ function Demo() {
   const [registered, setRegistered] = useState(false);
 
   useKeyboardShortcut(
-    ["shift", "k"],
+    ['shift', 'k'],
     () => {
       setRegistered(true);
     },
@@ -56,10 +61,10 @@ function Demo() {
   return (
     <Stack>
       <Button onClick={() => setEnabled(true)}>
-        {enabled ? "Enabled" : "Enable Register"}
+        {enabled ? 'Enabled' : 'Enable Register'}
       </Button>
       <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+        cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
       >
         Hold: Shift + K <br />
         Registered: {registered.toString()}

@@ -1,3 +1,7 @@
+---
+title: 'Responsive Styles'
+---
+
 Prismane exports a set of helper functions and hooks that can help you achieve the desired responsiveness of your
 application.
 
@@ -6,7 +10,7 @@ application.
 The `fr` function can be imported from the root entry of the package, meaning `@prismane/core`. What the `fr` function achieves is a fractional styling, similar to the way TailwindCSS does their sizing, meaning a `4x` fraction. When passing a size to the fr function, it will return a size in `rem`, which will then output a value based on the `font-size`:
 
 ```tsx
-import { Flex, fr } from "@prismane/core";
+import { Flex, fr } from '@prismane/core';
 
 const Page = () => {
   return (
@@ -27,11 +31,11 @@ export default Page;
 The `useMediaQuery` hook can be imported from the hooks entry of the package, meaning `@prismane/core/hooks`. What the `useMediaQuery` hook does is check if a given media-query is true or false. It returns a state, which is updated on window resize, achieving inline media-query styling.
 
 ```tsx
-import { Flex } from "@prismane/core";
-import { useMediaQuery } from "@prismane/core/hooks";
+import { Flex } from '@prismane/core';
+import { useMediaQuery } from '@prismane/core/hooks';
 
 const Page = () => {
-  const isTablet = useMediaQuery("(min-width: 768px)");
+  const isTablet = useMediaQuery('(min-width: 768px)');
 
   return <Flex w={isTablet ? 20 : 40}>Hello, world</Flex>;
 };
@@ -44,15 +48,15 @@ export default Page;
 The `sx` prop was already covered [here](docs/styling/sx-prop) and as you know, you can use it to write media-queries in inline style.
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return (
     <Box
       sx={{
-        "@media (min-width:320px)": {
-          width: "50%",
-        },
+        '@media (min-width:320px)': {
+          width: '50%'
+        }
       }}
     >
       Hello, world

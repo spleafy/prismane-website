@@ -1,7 +1,13 @@
+---
+title: 'TextField'
+description: 'TextField displays a field that handles toggling between multiple values.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { TextField } from "@prismane/core";
+import { TextField } from '@prismane/core';
 ```
 
 ## Usage
@@ -12,7 +18,7 @@ This page does not include all of the features that are supported by the field. 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <TextField
@@ -31,7 +37,7 @@ Use the _prefix_ prop to add a prefix section to the left side of the field.
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <TextField
@@ -51,7 +57,7 @@ Use the _suffix_ prop to add a suffix section to the right side of the field.
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <TextField
@@ -71,7 +77,7 @@ Like the [`Field`](/docs/components/field) component, you can make the field rea
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("I am read only!");
+  const [value, setValue] = useState('I am read only!');
 
   return (
     <TextField
@@ -91,7 +97,7 @@ Like the [`Field`](/docs/components/field) component, you can disable the field 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("I am disabled!");
+  const [value, setValue] = useState('I am disabled!');
 
   return (
     <TextField
@@ -112,7 +118,7 @@ The `TextField` component, like all other field components of Prismane, has a gr
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -122,16 +128,16 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_text: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
   return (
     <TextField
       label="Controlled TextField"
       placeholder="Controlled Field"
-      {...register("hook_text")}
+      {...register('hook_text')}
     />
   );
 }
@@ -142,8 +148,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { TextField } from "@prismane/core";
+import { useRef } from 'react';
+import { TextField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -157,7 +163,7 @@ function Demo() {
 If you want to use the `TextField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { TextField } from "@prismane/core";
+import { TextField } from '@prismane/core';
 
 function Demo() {
   return <TextField aria-label="TextField's Input" />;
@@ -167,7 +173,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { TextField } from "@prismane/core";
+import { TextField } from '@prismane/core';
 
 function Demo() {
   return <TextField label="TextField's Input" />;

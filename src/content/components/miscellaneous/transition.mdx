@@ -1,7 +1,13 @@
+---
+title: 'Transition'
+description: "Transition display a container that can transition it's CSS properties."
+versatile: true
+---
+
 ## Import
 
 ```js
-import { Transition } from "@prismane/core";
+import { Transition } from '@prismane/core';
 ```
 
 ## Usage
@@ -15,8 +21,8 @@ function Demo() {
       <Transition
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "full" : "lg"}
-        bg={toggled ? "base" : "primary"}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
         ml={toggled ? fr(16) : 0}
       />
       <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
@@ -39,8 +45,8 @@ function Demo() {
         delay={500}
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "full" : "lg"}
-        bg={toggled ? "base" : "primary"}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
         ml={toggled ? fr(16) : 0}
       />
       <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
@@ -63,8 +69,8 @@ function Demo() {
         duration={1000}
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "full" : "lg"}
-        bg={toggled ? "base" : "primary"}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
         ml={toggled ? fr(16) : 0}
       />
       <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
@@ -87,8 +93,8 @@ function Demo() {
         timing="linear"
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "full" : "lg"}
-        bg={toggled ? "base" : "primary"}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
         ml={toggled ? fr(16) : 0}
       />
       <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
@@ -115,7 +121,7 @@ By default, a value of _all_ is used.
 function Demo() {
   const [toggled, setToggled] = useState(false);
 
-  const [transition, setTransition] = useState("all");
+  const [transition, setTransition] = useState('all');
 
   return (
     <Stack gap={fr(4)}>
@@ -124,10 +130,10 @@ function Demo() {
         duration={1000}
         w={fr(30)}
         h={fr(30)}
-        br={toggled ? "base" : "lg"}
-        bg={toggled ? "base" : "primary"}
+        br={toggled ? 'base' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
         op={toggled ? 0.5 : 1}
-        bsh={toggled ? "sm" : "lg"}
+        bsh={toggled ? 'sm' : 'lg'}
       />
       <Radio.Group
         value={transition}
@@ -150,7 +156,7 @@ function Demo() {
 `Transition` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Transition } from "@prismane/core";
+import { Transition } from '@prismane/core';
 
 function Demo() {
   <Transition as="button">Transition Button</Transition>;

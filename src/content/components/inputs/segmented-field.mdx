@@ -1,7 +1,13 @@
+---
+title: 'SegmentedField'
+description: 'SegmentedField displays a field that handles toggling between multiple values.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { SegmentedField } from "@prismane/core";
+import { SegmentedField } from '@prismane/core';
 ```
 
 ## Usage
@@ -17,7 +23,7 @@ Use the _options_ prop to add options to the field. The structure of each option
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("star");
+  const [value, setValue] = useState('star');
 
   return (
     <SegmentedField
@@ -25,9 +31,9 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { element: 'Star', value: 'star' },
+        { element: 'Circle', value: 'circle' },
+        { element: 'Square', value: 'square' }
       ]}
     />
   );
@@ -40,7 +46,7 @@ Like the [`Field`](/docs/components/field) component, you can make the field rea
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("star");
+  const [value, setValue] = useState('star');
 
   return (
     <SegmentedField
@@ -48,9 +54,9 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { element: 'Star', value: 'star' },
+        { element: 'Circle', value: 'circle' },
+        { element: 'Square', value: 'square' }
       ]}
       readOnly
     />
@@ -64,7 +70,7 @@ Like the [`Field`](/docs/components/field) component, you can disable the field 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("star");
+  const [value, setValue] = useState('star');
 
   return (
     <SegmentedField
@@ -72,9 +78,9 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { element: 'Star', value: 'star' },
+        { element: 'Circle', value: 'circle' },
+        { element: 'Square', value: 'square' }
       ]}
       disabled
     />
@@ -89,7 +95,7 @@ The `SegmentedField` component, like all other field components of Prismane, has
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -99,9 +105,9 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_segmented: {
-        value: "star",
-      },
-    },
+        value: 'star'
+      }
+    }
   });
 
   return (
@@ -109,11 +115,11 @@ function Demo() {
       label="Controlled SegmentedField"
       placeholder="Controlled Field"
       options={[
-        { element: "Star", value: "star" },
-        { element: "Circle", value: "circle" },
-        { element: "Square", value: "square" },
+        { element: 'Star', value: 'star' },
+        { element: 'Circle', value: 'circle' },
+        { element: 'Square', value: 'square' }
       ]}
-      {...register("hook_segmented")}
+      {...register('hook_segmented')}
     />
   );
 }
@@ -124,8 +130,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { SegmentedField } from "@prismane/core";
+import { useRef } from 'react';
+import { SegmentedField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -139,7 +145,7 @@ function Demo() {
 If you want to use the `SegmentedField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { SegmentedField } from "@prismane/core";
+import { SegmentedField } from '@prismane/core';
 
 function Demo() {
   return <SegmentedField aria-label="SegmentedField's Input" />;
@@ -149,7 +155,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { SegmentedField } from "@prismane/core";
+import { SegmentedField } from '@prismane/core';
 
 function Demo() {
   return <SegmentedField label="SegmentedField's Input" />;

@@ -1,7 +1,12 @@
+---
+title: 'lowercase'
+description: 'This validator checks if a string has only lowercase characters.'
+---
+
 ## Import
 
 ```js
-import { lowercase } from "@prismane/core/validators";
+import { lowercase } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,7 +24,7 @@ The `lowercase` validator accepts the following parameters:
 The `lowercase` validator tests the provided value and checks if it contains only lowercase characters.
 
 ```ts
-const string = "HelloWorld";
+const string = 'HelloWorld';
 
 const error = lowercase(string);
 
@@ -29,7 +34,7 @@ console.log(error); // This value must contain only lowercase characters!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "helloworld";
+const string = 'helloworld';
 
 const error = lowercase(string);
 
@@ -41,7 +46,7 @@ console.log(error); // null
 Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
 
 ```ts
-const string = "HelloWorld0123";
+const string = 'HelloWorld0123';
 
 const regExp = /^[a-z0-9]+$/;
 
@@ -55,11 +60,11 @@ console.log(error); // This value must contain only lowercase characters!
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "domain.com";
+const string = 'domain.com';
 
 const regExp = /^[a-zA-Z1-9]+$/;
 
-const error = lowercase(string, regExp, "Domain");
+const error = lowercase(string, regExp, 'Domain');
 
 console.log(error); // Domain must contain only lowercase characters!
 ```
@@ -71,7 +76,7 @@ The `lowercase` validator, like all other validators of Prismane, has a great in
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

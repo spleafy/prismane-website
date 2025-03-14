@@ -1,7 +1,12 @@
+---
+title: 'uuid'
+description: 'This validator checks if a string is a valid ID.'
+---
+
 ## Import
 
 ```js
-import { uuid } from "@prismane/core/validators";
+import { uuid } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -18,7 +23,7 @@ The `uuid` validator accepts the following parameters:
 The `uuid` validator tests the provided value and checks if it is a valid ID.
 
 ```ts
-const string = "invaliduuid123";
+const string = 'invaliduuid123';
 
 const error = uuid(string);
 
@@ -28,7 +33,7 @@ console.log(error); // This is not a valid ID!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "1a2b3c4d5e6f7890";
+const string = '1a2b3c4d5e6f7890';
 
 const error = uuid(string);
 
@@ -40,7 +45,7 @@ console.log(error); // null
 Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
 
 ```ts
-const string = "invaliduuid123";
+const string = 'invaliduuid123';
 
 const regExp = /^[a-fA-F0-9]{8}$/;
 
@@ -56,7 +61,7 @@ The `uuid` validator, like all other validators of Prismane, has a great integra
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

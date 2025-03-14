@@ -1,7 +1,13 @@
+---
+title: 'Paper'
+description: 'Paper displays a container with background and shadow.'
+versatile: true
+---
+
 ## Import
 
 ```js
-import { Paper } from "@prismane/core";
+import { Paper } from '@prismane/core';
 ```
 
 ## Usage
@@ -43,7 +49,7 @@ To use [shades](/docs/getting-started/globals#prismaneshades) with the colors, p
 `Paper` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Paper } from "@prismane/core";
+import { Paper } from '@prismane/core';
 
 function Demo() {
   <Paper as="a">Link Paper</Paper>;
@@ -53,8 +59,8 @@ function Demo() {
 You can also use components for the _as_ prop, for example NextJS's `Link` component:
 
 ```jsx
-import { Paper } from "@prismane/core";
-import Link from "next/link";
+import { Paper } from '@prismane/core';
+import Link from 'next/link';
 
 function Demo() {
   <Paper as={Link}>NextJS Link Paper</Paper>;

@@ -1,7 +1,12 @@
+---
+title: 'useLocalStorage'
+description: 'useLocalStorage hook provides a simple way to handle saving data to the localStorage.'
+---
+
 ## Import
 
 ```js
-import { useLocalStorage } from "@prismane/core/hooks";
+import { useLocalStorage } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -26,11 +31,11 @@ The `useInterval` hook returns an array containing the following properties:
 
 ```jsx preview
 function Demo() {
-  const [secret, setSecret] = useLocalStorage("secret", "defaultSecret");
+  const [secret, setSecret] = useLocalStorage('secret', 'defaultSecret');
   return (
     <Stack>
       <Text>Current secret: {secret}</Text>
-      <Button onClick={() => setSecret("supersecret")}>Update secret</Button>
+      <Button onClick={() => setSecret('supersecret')}>Update secret</Button>
     </Stack>
   );
 }

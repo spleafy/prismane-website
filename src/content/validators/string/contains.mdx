@@ -1,7 +1,12 @@
+---
+title: 'contains'
+description: 'This validator checks if a string contains a given substring.'
+---
+
 ## Import
 
 ```js
-import { contains } from "@prismane/core/validators";
+import { contains } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,9 +24,9 @@ The `contains` validator accepts the following parameters:
 The `contains` validator checks if the provided value contains the provided substring.
 
 ```ts
-const string = "website.com";
+const string = 'website.com';
 
-const substring = "https";
+const substring = 'https';
 
 const error = contains(string, substring);
 
@@ -31,9 +36,9 @@ console.log(error); // This value must contain https!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "https://www.website.com";
+const string = 'https://www.website.com';
 
-const substring = "https";
+const substring = 'https';
 
 const error = contains(string, substring);
 
@@ -45,11 +50,11 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "website.com";
+const string = 'website.com';
 
-const substring = "https";
+const substring = 'https';
 
-const error = contains(string, substring, "Website");
+const error = contains(string, substring, 'Website');
 
 console.log(error); // Website must contain https!
 ```
@@ -61,7 +66,7 @@ The `contains` validator, like all other validators of Prismane, has a great int
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

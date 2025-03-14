@@ -1,7 +1,12 @@
+---
+title: 'negative'
+description: 'This validator checks if a number is negative.'
+---
+
 ## Import
 
 ```js
-import { negative } from "@prismane/core/validators";
+import { negative } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -42,7 +47,7 @@ Pass the _fieldName_ parameter to the validator, which is the second parameter, 
 ```ts
 const value = 10;
 
-const error = negative(value, "Debt");
+const error = negative(value, 'Debt');
 
 console.log(error); // Debt must be negative!
 ```
@@ -54,7 +59,7 @@ The `negative` validator, like all other validators of Prismane, has a great int
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

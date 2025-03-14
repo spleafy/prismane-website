@@ -1,7 +1,12 @@
+---
+title: 'ends'
+description: 'This validator checks if a string ends with a given substring.'
+---
+
 ## Import
 
 ```js
-import { ends } from "@prismane/core/validators";
+import { ends } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,9 +24,9 @@ The `ends` validator accepts the following parameters:
 The `ends` validator checks if the provided value ends with the provided suffix.
 
 ```ts
-const string = "www.prismane.com";
+const string = 'www.prismane.com';
 
-const suffix = ".io";
+const suffix = '.io';
 
 const error = ends(string, suffix);
 
@@ -31,9 +36,9 @@ console.log(error); // This value must end with '.io'!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "www.prismane.io";
+const string = 'www.prismane.io';
 
-const suffix = ".io";
+const suffix = '.io';
 
 const error = ends(string, suffix);
 
@@ -45,11 +50,11 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "www.prismane.com";
+const string = 'www.prismane.com';
 
-const suffix = ".io";
+const suffix = '.io';
 
-const error = ends(string, suffix, "Website");
+const error = ends(string, suffix, 'Website');
 
 console.log(error); // Website must end with '.io'!
 ```
@@ -61,7 +66,7 @@ The `ends` validator, like all other validators of Prismane, has a great integra
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

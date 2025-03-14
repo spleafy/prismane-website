@@ -1,7 +1,13 @@
+---
+title: 'Animation'
+description: 'Animation display a container that can animate between CSS properties.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Animation } from "@prismane/core";
+import { Animation } from '@prismane/core';
 ```
 
 ## Usage
@@ -37,7 +43,7 @@ By default, a value of _fade_ is used.
 function Demo() {
   const [animated, setAnimated] = useState(true);
 
-  const [animation, setAnimation] = useState("fade");
+  const [animation, setAnimation] = useState('fade');
 
   return (
     <Stack gap={fr(4)}>
@@ -92,10 +98,10 @@ function Demo() {
         animated={animated}
         animation={{
           in: {
-            transform: "translateX(120px)",
-            borderRadius: "50%",
+            transform: 'translateX(120px)',
+            borderRadius: '50%'
           },
-          out: { transform: "translateX(0px)", borderRadius: "0px" },
+          out: { transform: 'translateX(0px)', borderRadius: '0px' }
         }}
       />
       <Button onClick={() => setAnimated(!animated)}>Toggle Animation</Button>
@@ -178,7 +184,7 @@ function Demo() {
 `Animation` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Animation } from "@prismane/core";
+import { Animation } from '@prismane/core';
 
 function Demo() {
   <Animation as="p">Animated Paragraph</Animation>;

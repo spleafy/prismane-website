@@ -1,16 +1,21 @@
+---
+title: 'Vite Setup'
+---
+
 To use Prismane inside your website or app, you should install it first, by running one of the following commands:
 
 ```json files={[ { name: "npm", value: "npm i @prismane/core", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @prismane/core", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @prismane/core", language: "json", icon: <Pnpm />, }, ]}
+
 ```
 
 After installing the `@prismane/core` package, you have to wrap your application with our custom `PrismaneProvider` component. This can be either in your `index.jsx/tsx` or your `App.jsx/tsx`.
 
 ```tsx name="index.tsx" icon={<File />}
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { PrismaneProvider } from "@prismane/core";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { PrismaneProvider } from '@prismane/core';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <PrismaneProvider>
@@ -45,20 +50,20 @@ If you want to use a custom theme, with custom colors, spacing and more, you can
 You can achieve that functionality by importing the `createTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
 
 ```tsx name="index.tsx" icon={<File />}
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { PrismaneProvider } from "@prismane/core";
-import { createTheme } from "@prismane/core/themes";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { PrismaneProvider } from '@prismane/core';
+import { createTheme } from '@prismane/core/themes';
 
 const theme = createTheme({
   colors: {
     primary: {
-      100: "#ffffff",
-    },
-  },
+      100: '#ffffff'
+    }
+  }
 });
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <PrismaneProvider theme={theme}>

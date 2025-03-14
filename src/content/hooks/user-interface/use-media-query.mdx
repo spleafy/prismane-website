@@ -1,7 +1,12 @@
+---
+title: 'useMediaQuery'
+description: 'useMediaQuery hook provides a simple way to handle media queries.'
+---
+
 ## Import
 
 ```js
-import { useMediaQuery } from "@prismane/core/hooks";
+import { useMediaQuery } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -24,14 +29,14 @@ The `useMediaQuery` hook returns the following variable:
 
 ```jsx preview
 function Demo() {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Resize screen to change <br />
-      Current View: {isMobile ? "Mobile" : "Desktop"}
+      Current View: {isMobile ? 'Mobile' : 'Desktop'}
     </Text>
   );
 }

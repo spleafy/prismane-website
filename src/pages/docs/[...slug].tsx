@@ -85,11 +85,11 @@ export async function getStaticProps({ params }: any) {
       }
     };
   } catch (err) {
+    console.error('Error fetching MDX content:', err);
+
     return {
-      props: {
-        source: '',
-        slug: ''
-      }
+      props: {},
+      notFound: true
     };
   }
 }
@@ -98,6 +98,8 @@ export default function Page(params: any) {
   const itemTitle = findBySlugs(content, params.slug).title;
 
   const title = `Prismane / ${itemTitle}`;
+
+  console.log(params.source.frontmatter);
 
   return (
     <>

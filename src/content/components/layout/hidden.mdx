@@ -1,7 +1,13 @@
+---
+title: 'Hidden'
+description: "Hidden displays a container that hides it's content."
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Hidden } from "@prismane/core";
+import { Hidden } from '@prismane/core';
 ```
 
 ## Usage
@@ -38,7 +44,7 @@ function Demo() {
         gap={fr(2)}
         cs="pointer"
       >
-        <Box h={fr(6)} w={fr(6)} bg={checked ? "primary" : "base"} br="sm" />
+        <Box h={fr(6)} w={fr(6)} bg={checked ? 'primary' : 'base'} br="sm" />
         Click to check
         <Hidden>
           <input
@@ -52,7 +58,7 @@ function Demo() {
         </Hidden>
       </Flex>
       <Text
-        cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+        cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
       >
         Checked: {checked.toString()}
       </Text>

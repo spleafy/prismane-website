@@ -1,7 +1,13 @@
+---
+title: 'Checkbox'
+description: 'Checkbox displays a field that has a set of options, which can be filtered.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Checkbox } from "@prismane/core";
+import { Checkbox } from '@prismane/core';
 ```
 
 ## Usage
@@ -43,7 +49,7 @@ Use the _size_ prop to change the checkbox's size. Values can be either _xs_, _s
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <>
@@ -127,13 +133,13 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_checkbox: {
-        value: false,
-      },
-    },
+        value: false
+      }
+    }
   });
 
   return (
-    <Checkbox label="Controlled Checkbox" {...register("hook_checkbox")} />
+    <Checkbox label="Controlled Checkbox" {...register('hook_checkbox')} />
   );
 }
 ```
@@ -143,8 +149,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { Checkbox } from "@prismane/core";
+import { useRef } from 'react';
+import { Checkbox } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -158,7 +164,7 @@ function Demo() {
 If you want to use the `Checkbox` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { Checkbox } from "@prismane/core";
+import { Checkbox } from '@prismane/core';
 
 function Demo() {
   return <Checkbox aria-label="Checkbox's Input" />;
@@ -168,7 +174,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { Checkbox } from "@prismane/core";
+import { Checkbox } from '@prismane/core';
 
 function Demo() {
   return <Checkbox label="Checkbox's Input" />;

@@ -1,3 +1,9 @@
+---
+title: 'Grid'
+description: 'Grid displays a container that has a display of grid.'
+versatile: false
+---
+
 ## Import
 
 Prismane's `Grid` component has 1 additional inner component:
@@ -5,7 +11,7 @@ Prismane's `Grid` component has 1 additional inner component:
 - _Grid.Item_: The container that is used as the child of the grid container to control the span and positions within the grid.
 
 ```js
-import { Grid } from "@prismane/core";
+import { Grid } from '@prismane/core';
 ```
 
 ## Usage
@@ -88,23 +94,23 @@ Use the _area_ prop fo the `Grid.Item` component to reference the area that you 
   templateAreas={`"header header header"
                   "nav main main"
                   "nav footer footer"`}
-  templateRows={"40px 1fr 40px"}
-  templateColumns={"120px 1fr"}
+  templateRows={'40px 1fr 40px'}
+  templateColumns={'120px 1fr'}
   h={fr(60)}
   w="100%"
   gap={fr(1)}
   cl="white"
 >
-  <Grid.Item pl="8px" bg="orange" area={"header"}>
+  <Grid.Item pl="8px" bg="orange" area={'header'}>
     Header
   </Grid.Item>
-  <Grid.Item pl="8px" bg="pink" area={"nav"}>
+  <Grid.Item pl="8px" bg="pink" area={'nav'}>
     Nav
   </Grid.Item>
-  <Grid.Item pl="8px" bg="green" area={"main"}>
+  <Grid.Item pl="8px" bg="green" area={'main'}>
     Main
   </Grid.Item>
-  <Grid.Item pl="8px" bg="blue" area={"footer"}>
+  <Grid.Item pl="8px" bg="blue" area={'footer'}>
     Footer
   </Grid.Item>
 </Grid>

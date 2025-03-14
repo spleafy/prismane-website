@@ -1,7 +1,12 @@
+---
+title: 'useToggle'
+description: 'useToggle hook provides a simple way to handle toggling between a set of values.'
+---
+
 ## Import
 
 ```js
-import { useToggle } from "@prismane/core/hooks";
+import { useToggle } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -25,7 +30,7 @@ The `useToggle` hook returns an array containing the following properties:
 
 ```jsx preview
 function Demo() {
-  const [status, toggleStatus] = useToggle(["Active", "Inactive", "Sleep"]);
+  const [status, toggleStatus] = useToggle(['Active', 'Inactive', 'Sleep']);
 
   return (
     <Stack>

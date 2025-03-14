@@ -1,3 +1,9 @@
+---
+title: 'Radio'
+description: 'Radio displays a group of fields that handles toggling between multiple values.'
+versatile: false
+---
+
 ## Import
 
 Prismane's `Radio` component has 1 additional inner component:
@@ -5,7 +11,7 @@ Prismane's `Radio` component has 1 additional inner component:
 - _Radio.Group_: The container that wraps and groups the radio fields.
 
 ```js
-import { Radio } from "@prismane/core";
+import { Radio } from '@prismane/core';
 ```
 
 ## Usage
@@ -34,7 +40,7 @@ The `Radio.Group` component accepts most of the props that are valid for the [`F
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("yes");
+  const [value, setValue] = useState('yes');
 
   return (
     <Radio.Group
@@ -73,7 +79,7 @@ The `Radio` component, like all other field components of Prismane, has a great 
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -83,13 +89,13 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_radio: {
-        value: "yes",
-      },
-    },
+        value: 'yes'
+      }
+    }
   });
 
   return (
-    <Radio.Group label="Choose an answer:" {...register("hook_radio")}>
+    <Radio.Group label="Choose an answer:" {...register('hook_radio')}>
       <Radio label="Yes" value="yes" />
       <Radio label="No" value="no" />
     </Radio.Group>
@@ -102,8 +108,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { Radio } from "@prismane/core";
+import { useRef } from 'react';
+import { Radio } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -117,7 +123,7 @@ function Demo() {
 If you want to use the `Radio` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { Radio } from "@prismane/core";
+import { Radio } from '@prismane/core';
 
 function Demo() {
   return <Radio aria-label="Radio's Input" />;
@@ -127,7 +133,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { Radio } from "@prismane/core";
+import { Radio } from '@prismane/core';
 
 function Demo() {
   return <Radio label="Radio's Input" />;

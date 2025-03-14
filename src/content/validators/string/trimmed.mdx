@@ -1,7 +1,12 @@
+---
+title: 'trimmed'
+description: 'This validator checks if a string has no more than one consecutive space.'
+---
+
 ## Import
 
 ```js
-import { trimmed } from "@prismane/core/validators";
+import { trimmed } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,7 +24,7 @@ The `trimmed` validator accepts the following parameters:
 The `trimmed` validator checks if the provided value has no more than 1 consecutive spaces.
 
 ```ts
-const string = "John         Doe";
+const string = 'John         Doe';
 
 const error = trimmed(string);
 
@@ -29,7 +34,7 @@ console.log(error); // This value contains more than one consecutive space!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "John Doe";
+const string = 'John Doe';
 
 const error = trimmed(string);
 
@@ -41,7 +46,7 @@ console.log(error); // null
 Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
 
 ```ts
-const string = "John        Doe        123";
+const string = 'John        Doe        123';
 
 const error = email(string, /^(?!.*\s{2,})[a-zA-Z\s]*$/);
 
@@ -53,9 +58,9 @@ console.log(error); // This value contains more than one consecutive space!
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "John         Doe";
+const string = 'John         Doe';
 
-const error = trimmed(string, /^(?!.*\s{2,})[a-zA-Z\s]*$/, "Name");
+const error = trimmed(string, /^(?!.*\s{2,})[a-zA-Z\s]*$/, 'Name');
 
 console.log(error); // Name contains more than one consecutive space!
 ```
@@ -67,7 +72,7 @@ The `trimmed` validator, like all other validators of Prismane, has a great inte
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

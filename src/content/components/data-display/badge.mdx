@@ -1,7 +1,13 @@
+---
+title: 'Badge'
+description: 'Badge displays a small badge with short information to its children.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Badge } from "@prismane/core";
+import { Badge } from '@prismane/core';
 ```
 
 ## Usage
@@ -18,9 +24,9 @@ You can change the position of the badge by using the _position_ prop. You can c
 
 ```jsx preview
 function Demo() {
-  const [position, setPosition] = useState("top");
+  const [position, setPosition] = useState('top');
 
-  const [point, setPoint] = useState("end");
+  const [point, setPoint] = useState('end');
 
   return (
     <Stack gap={fr(8)} align="center">
@@ -40,7 +46,7 @@ function Demo() {
       </Radio.Group>
       <Badge
         label="4"
-        position={point !== "none" ? `${position}-${point}` : position}
+        position={point !== 'none' ? `${position}-${point}` : position}
       >
         <ActionButton icon={<Bell />} variant="secondary" color="base" />
       </Badge>

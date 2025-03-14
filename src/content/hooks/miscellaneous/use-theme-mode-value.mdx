@@ -1,7 +1,12 @@
+---
+title: 'useThemeModeValue'
+description: 'useThemeModeValue hook simplifies the logic for using two style properties for dark and light modes.'
+---
+
 ## Import
 
 ```js
-import { useThemeModeValue } from "@prismane/core";
+import { useThemeModeValue } from '@prismane/core';
 ```
 
 The `useThemeModeValue` hook accepts the following parameters:
@@ -25,7 +30,7 @@ The `useThemeModeValue` hook returns the following variable:
 function Demo() {
   const { toggleThemeMode } = usePrismaneTheme();
 
-  const background = useThemeModeValue(["base", 300], ["base", 900]);
+  const background = useThemeModeValue(['base', 300], ['base', 900]);
 
   return (
     <Center w="100%" h={fr(72)} bg={background}>

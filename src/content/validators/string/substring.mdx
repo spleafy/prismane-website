@@ -1,7 +1,12 @@
+---
+title: 'substring'
+description: 'This validator checks if a string is a substring of a given string.'
+---
+
 ## Import
 
 ```js
-import { substring } from "@prismane/core/validators";
+import { substring } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,9 +24,9 @@ The `substring` validator accepts the following parameters:
 The `substring` validator checks if the provided value contains the provided substring.
 
 ```ts
-const string = "Prismane is the greatest!";
+const string = 'Prismane is the greatest!';
 
-const substring = "Others";
+const substring = 'Others';
 
 const error = substring(string, substring);
 
@@ -31,9 +36,9 @@ console.log(error); // This value must be a substring of 'Prismane is the greate
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "Prismane is the greatest!";
+const string = 'Prismane is the greatest!';
 
-const substring = "Prismane";
+const substring = 'Prismane';
 
 const error = substring(string, substring);
 
@@ -45,11 +50,11 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "Prismane is the greatest!";
+const string = 'Prismane is the greatest!';
 
-const substring = "Others";
+const substring = 'Others';
 
-const error = substring(string, substring, "Name");
+const error = substring(string, substring, 'Name');
 
 console.log(error); // Name must be a substring of 'Prismane is the greatest!'!
 ```
@@ -61,7 +66,7 @@ The `substring` validator, like all other validators of Prismane, has a great in
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

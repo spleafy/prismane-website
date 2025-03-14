@@ -1,7 +1,12 @@
+---
+title: 'between'
+description: 'This validator checks if a number is between an interval of two numbers.'
+---
+
 ## Import
 
 ```js
-import { between } from "@prismane/core/validators";
+import { between } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -56,7 +61,7 @@ const min = 20;
 
 const max = 70;
 
-const error = between(number, min, max, "Age");
+const error = between(number, min, max, 'Age');
 
 console.log(error); // Age must be between 20 and 70!
 ```
@@ -68,7 +73,7 @@ The `between` validator, like all other validators of Prismane, has a great inte
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

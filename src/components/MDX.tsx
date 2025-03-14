@@ -1,7 +1,7 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
-import { LinkSimple as LinkIcon } from '@phosphor-icons/react';
+// import { LinkSimple as LinkIcon } from '@phosphor-icons/react';
 // Components
 import PreviewCode from './docs/PreviewCode';
 import SingleCode from './docs/SingleCode';

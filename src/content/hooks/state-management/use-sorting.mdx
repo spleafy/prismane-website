@@ -1,7 +1,12 @@
+---
+title: 'useSorting'
+description: 'useSorting hook provides a simple way of sorting big chunks of data by key and direction.'
+---
+
 ## Import
 
 ```js
-import { useSorting } from "@prismane/core/hooks";
+import { useSorting } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -37,10 +42,10 @@ By default, a value of _null_ is used, which means that the data will not be sor
 ```jsx preview
 function Demo() {
   const items = [
-    { name: "Banana", quantity: 5 },
-    { name: "Apple", quantity: 10 },
-    { name: "Cherry", quantity: 15 },
-    { name: "Date", quantity: 8 },
+    { name: 'Banana', quantity: 5 },
+    { name: 'Apple', quantity: 10 },
+    { name: 'Cherry', quantity: 15 },
+    { name: 'Date', quantity: 8 }
   ];
 
   const { sorted, key, setKey } = useSorting(items);
@@ -48,8 +53,8 @@ function Demo() {
   return (
     <Stack>
       <Flex gap={fr(2)} wrap="wrap">
-        <Button onClick={() => setKey("name")}>Sort by name</Button>
-        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+        <Button onClick={() => setKey('name')}>Sort by name</Button>
+        <Button onClick={() => setKey('quantity')}>Sort by quantity</Button>
       </Flex>
       <Stack>
         {sorted.map((item, index) => (
@@ -73,19 +78,19 @@ Pass the _initialKey_ parameter, which is the second parameter, to change the in
 ```jsx preview
 function Demo() {
   const items = [
-    { name: "Banana", quantity: 5 },
-    { name: "Apple", quantity: 10 },
-    { name: "Cherry", quantity: 15 },
-    { name: "Date", quantity: 8 },
+    { name: 'Banana', quantity: 5 },
+    { name: 'Apple', quantity: 10 },
+    { name: 'Cherry', quantity: 15 },
+    { name: 'Date', quantity: 8 }
   ];
 
-  const { sorted, key, setKey } = useSorting(items, "name");
+  const { sorted, key, setKey } = useSorting(items, 'name');
 
   return (
     <Stack>
       <Flex gap={fr(2)} wrap="wrap">
-        <Button onClick={() => setKey("name")}>Sort by name</Button>
-        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+        <Button onClick={() => setKey('name')}>Sort by name</Button>
+        <Button onClick={() => setKey('quantity')}>Sort by quantity</Button>
       </Flex>
       <Stack>
         {sorted.map((item, index) => (
@@ -111,22 +116,22 @@ Use the _direction_ property returned by the hook to keep track of the current s
 ```jsx preview
 function Demo() {
   const items = [
-    { name: "Banana", quantity: 5 },
-    { name: "Apple", quantity: 10 },
-    { name: "Cherry", quantity: 15 },
-    { name: "Date", quantity: 8 },
+    { name: 'Banana', quantity: 5 },
+    { name: 'Apple', quantity: 10 },
+    { name: 'Cherry', quantity: 15 },
+    { name: 'Date', quantity: 8 }
   ];
 
   const { sorted, direction, setDirection, toggleDirection } = useSorting(
     items,
-    "name"
+    'name'
   );
 
   return (
     <Stack>
       <Flex gap={fr(2)} wrap="wrap">
-        <Button onClick={() => setDirection("asc")}>Ascending order</Button>
-        <Button onClick={() => setDirection("desc")}>Descending order</Button>
+        <Button onClick={() => setDirection('asc')}>Ascending order</Button>
+        <Button onClick={() => setDirection('desc')}>Descending order</Button>
         <Button onClick={toggleDirection}>Toggle order</Button>
       </Flex>
       <Stack>
@@ -151,16 +156,16 @@ Pass the _initialDirection_ parameter, which is the third parameter, to change t
 ```jsx preview
 function Demo() {
   const items = [
-    { name: "Banana", quantity: 5 },
-    { name: "Apple", quantity: 10 },
-    { name: "Cherry", quantity: 15 },
-    { name: "Date", quantity: 8 },
+    { name: 'Banana', quantity: 5 },
+    { name: 'Apple', quantity: 10 },
+    { name: 'Cherry', quantity: 15 },
+    { name: 'Date', quantity: 8 }
   ];
 
   const { sorted, direction, setDirection, toggleDirection } = useSorting(
     items,
-    "name",
-    "desc"
+    'name',
+    'desc'
   );
 
   return (
@@ -186,14 +191,14 @@ Pass the _resetDirectionOnKeyChange_ to the _options_ parameter object, to toggl
 ```jsx preview
 function Demo() {
   const items = [
-    { name: "Banana", quantity: 5 },
-    { name: "Apple", quantity: 10 },
-    { name: "Cherry", quantity: 15 },
-    { name: "Date", quantity: 8 },
+    { name: 'Banana', quantity: 5 },
+    { name: 'Apple', quantity: 10 },
+    { name: 'Cherry', quantity: 15 },
+    { name: 'Date', quantity: 8 }
   ];
 
-  const { sorted, key, setKey } = useSorting(items, "name", "desc", {
-    resetDirectionOnKeyChange: false,
+  const { sorted, key, setKey } = useSorting(items, 'name', 'desc', {
+    resetDirectionOnKeyChange: false
   });
 
   return (
@@ -203,8 +208,8 @@ function Demo() {
         sorting keys will not change the sorting direction.
       </Text>
       <Flex gap={fr(2)} wrap="wrap">
-        <Button onClick={() => setKey("name")}>Sort by name</Button>
-        <Button onClick={() => setKey("quantity")}>Sort by quantity</Button>
+        <Button onClick={() => setKey('name')}>Sort by name</Button>
+        <Button onClick={() => setKey('quantity')}>Sort by quantity</Button>
       </Flex>
       <Stack>
         {sorted.map((item, index) => (

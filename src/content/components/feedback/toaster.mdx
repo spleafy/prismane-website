@@ -1,7 +1,13 @@
+---
+title: 'Toaster'
+description: 'Toaster displays a container that renders elements for a given time and then removes them from the DOM.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Toaster, useToast } from "@prismane/core";
+import { Toaster, useToast } from '@prismane/core';
 ```
 
 ## Usage
@@ -11,11 +17,11 @@ To use toasts globally throughout your application, you have to wrap the root of
 If you are using `create-react-app`, you can do the following:
 
 ```jsx name="App.tsx" icon={<File />}
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { PrismaneProvider } from "@prismane/core";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { PrismaneProvider } from '@prismane/core';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <PrismaneProvider>
@@ -37,7 +43,7 @@ function Demo() {
     <Button
       onClick={() => {
         toast({
-          element: <Alert>Hello, World!</Alert>,
+          element: <Alert>Hello, World!</Alert>
         });
       }}
     >
@@ -58,7 +64,7 @@ function Demo() {
       <Button
         onClick={() => {
           toast({
-            element: <Alert>Hello, World!</Alert>,
+            element: <Alert>Hello, World!</Alert>
           });
         }}
       >
@@ -90,7 +96,7 @@ function Demo() {
       <Button
         onClick={() => {
           toast({
-            element: <Alert>Toast with changed position!</Alert>,
+            element: <Alert>Toast with changed position!</Alert>
           });
         }}
       >
@@ -123,7 +129,7 @@ function Demo() {
             element: (
               <Alert>I am being shown for 6 seconds, instead of 3!</Alert>
             ),
-            timeout: 6000,
+            timeout: 6000
           });
         }}
       >
@@ -155,13 +161,13 @@ function Demo() {
       <Button
         onClick={() => {
           toast({
-            element: "I am a toast with custom props!",
+            element: 'I am a toast with custom props!',
             duration: 1000,
-            bg: "red",
-            cl: "white",
-            br: "full",
+            bg: 'red',
+            cl: 'white',
+            br: 'full',
             px: 16,
-            py: 12,
+            py: 12
           });
         }}
       >

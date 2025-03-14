@@ -1,3 +1,9 @@
+---
+title: 'Popover'
+description: 'Popover displays a dialog container that is shown around a control.'
+versatile: false
+---
+
 ## Import
 
 Prismane's `Popover` component has 2 additional inner components:
@@ -6,7 +12,7 @@ Prismane's `Popover` component has 2 additional inner components:
 - _Popover.Panel_: The container that wraps the content of the popover.
 
 ```js
-import { Popover } from "@prismane/core";
+import { Popover } from '@prismane/core';
 ```
 
 ## Usage
@@ -18,7 +24,7 @@ import { Popover } from "@prismane/core";
   </Popover.Control>
   <Popover.Panel>
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       JavaScript was developed in 10 days by Brendan Eich.
     </Text>
@@ -32,9 +38,9 @@ You can change the position of the popover by using the _position_ prop. You can
 
 ```jsx preview
 function Demo() {
-  const [position, setPosition] = useState("bottom");
+  const [position, setPosition] = useState('bottom');
 
-  const [point, setPoint] = useState("middle");
+  const [point, setPoint] = useState('middle');
 
   return (
     <Stack gap={fr(4)} align="center">
@@ -52,14 +58,14 @@ function Demo() {
         <Radio label="None (e.g. right, left)" value="none" />
         <Radio label="End" value="end" />
       </Radio.Group>
-      <Popover position={point !== "none" ? `${position}-${point}` : position}>
+      <Popover position={point !== 'none' ? `${position}-${point}` : position}>
         <Popover.Control>
           <Button>Toggle</Button>
         </Popover.Control>
         <Popover.Panel>
           <Text
             cl={(theme) =>
-              theme.mode === "dark" ? ["base", 200] : ["base", 700]
+              theme.mode === 'dark' ? ['base', 200] : ['base', 700]
             }
           >
             This is the content of the popover!

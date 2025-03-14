@@ -1,7 +1,12 @@
+---
+title: 'usePresence'
+description: 'usePresence hook provides a way to animate an element, before removing it from the DOM.'
+---
+
 ## Import
 
 ```js
-import { usePresence } from "@prismane/core/hooks";
+import { usePresence } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -79,7 +84,7 @@ function Demo() {
   const [shown, setShown] = useState(true);
 
   const present = usePresence(shown, 500, () => {
-    console.log("Animation has finished!");
+    console.log('Animation has finished!');
   });
 
   return (

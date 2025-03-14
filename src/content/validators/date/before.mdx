@@ -1,7 +1,12 @@
+---
+title: 'before'
+description: 'This validator checks if a date is before a given date.'
+---
+
 ## Import
 
 ```js
-import { before } from "@prismane/core/validators";
+import { before } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,8 +24,8 @@ The `before` validator accepts the following parameters:
 The `before` validator compares two dates and returns a _string_ error, if the provided date is before the provided target date.
 
 ```ts
-const date = new Date("2024-02-02");
-const target = new Date("2024-01-01");
+const date = new Date('2024-02-02');
+const target = new Date('2024-01-01');
 
 const error = before(date, target);
 
@@ -30,8 +35,8 @@ console.log(error); // This date must be before January 1, 2024!
 If there is no error, _null_ is returned.
 
 ```ts
-const date = new Date("2023-06-05");
-const target = new Date("2024-01-01");
+const date = new Date('2023-06-05');
+const target = new Date('2024-01-01');
 
 const error = before(date, target);
 
@@ -43,10 +48,10 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const date = new Date("2024-02-02");
-const target = new Date("2024-01-01");
+const date = new Date('2024-02-02');
+const target = new Date('2024-01-01');
 
-const error = before(date, target, "Deadline");
+const error = before(date, target, 'Deadline');
 
 console.log(error); // Deadline must be before January 1, 2024!
 ```
@@ -58,7 +63,7 @@ The `before` validator, like all other validators of Prismane, has a great integ
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

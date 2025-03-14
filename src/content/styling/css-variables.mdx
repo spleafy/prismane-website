@@ -1,3 +1,7 @@
+---
+title: 'CSS Variables'
+---
+
 Prismane provides a set of global CSS variables that facilitate seamless theme integration into your applications.
 With Prismane's global CSS variables, you can achieve consistent theming across your entire application,
 making it effortless to create a cohesive and personalized user experience.
@@ -7,7 +11,8 @@ making it effortless to create a cohesive and personalized user experience.
 When you provide a theme to `<PrismaneProvider/>`, it will automatically transpile the passed object and generate a set of CSS variables, which would then be applied to the root element.
 
 <Warning>
-    If no theme object is passed to the provider, the base theme will be used instead.
+  If no theme object is passed to the provider, the base theme will be used
+  instead.
 </Warning>
 
 For example:
@@ -16,10 +21,10 @@ For example:
 const theme = {
   colors: {
     primary: {
-      50: "#fafafa",
-      100: "#f7f7f7",
-    },
-  },
+      50: '#fafafa',
+      100: '#f7f7f7'
+    }
+  }
 };
 ```
 
@@ -32,8 +37,6 @@ Will be transpiled into this:
   --prismane-colors-primary-100: "#f7f7f7";
 }
 ```
-
-
 
 # Using CSS Variables
 
@@ -59,15 +62,16 @@ the css variable.
 ## Inside Components
 
 You can use the CSS variables inside the styling of the components as well.
+
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return (
     <Box
       style={{
         // Use the Prismane's CSS variable
-        backgroundColor: "var(--primane-colors-primary-500)",
+        backgroundColor: 'var(--primane-colors-primary-500)'
       }}
     >
       Hello, world
@@ -113,4 +117,3 @@ This is a list of all CSS variables that Prismane adds to your application:
 | `--prismane-border-radius-xl`   | theme.borderRadius.xl     |
 | `--prismane-border-radius-2xl`  | theme.borderRadius["2xl"] |
 | `--prismane-font-family`        | theme.fontFamily          |
-

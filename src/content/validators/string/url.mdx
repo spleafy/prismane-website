@@ -1,7 +1,12 @@
+---
+title: 'url'
+description: 'This validator checks if a string is a valid URL.'
+---
+
 ## Import
 
 ```js
-import { url } from "@prismane/core/validators";
+import { url } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -18,7 +23,7 @@ The `url` validator accepts the following parameters:
 The `url` validator tests the provided value and checks if it is a valid URL.
 
 ```ts
-const string = "1234567890";
+const string = '1234567890';
 
 const error = url(string);
 
@@ -28,7 +33,7 @@ console.log(error); // This is not a valid URL!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "https://www.prismane.io";
+const string = 'https://www.prismane.io';
 
 const error = url(string);
 
@@ -40,7 +45,7 @@ console.log(error); // null
 Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
 
 ```ts
-const string = "ftp://127.0.0.1";
+const string = 'ftp://127.0.0.1';
 
 const regExp = /^(http|https):\/\/[^ "]+$/;
 
@@ -56,7 +61,7 @@ The `url` validator, like all other validators of Prismane, has a great integrat
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

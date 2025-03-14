@@ -1,7 +1,12 @@
+---
+title: 'more'
+description: 'This validator checks if a number is more than a given number.'
+---
+
 ## Import
 
 ```js
-import { more } from "@prismane/core/validators";
+import { more } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -49,7 +54,7 @@ const value = 10;
 
 const number = 20;
 
-const error = more(value, number, "Age");
+const error = more(value, number, 'Age');
 
 console.log(error); // Age must be more than 20!
 ```
@@ -61,7 +66,7 @@ The `more` validator, like all other validators of Prismane, has a great integra
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

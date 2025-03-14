@@ -1,7 +1,12 @@
+---
+title: 'multiple'
+description: 'This validator checks if a number is a multiple of a given number.'
+---
+
 ## Import
 
 ```js
-import { multiple } from "@prismane/core/validators";
+import { multiple } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -49,7 +54,7 @@ const value = 15;
 
 const number = 10;
 
-const error = multiple(value, number, "Count");
+const error = multiple(value, number, 'Count');
 
 console.log(error); // Count must be multiple of 10!
 ```
@@ -61,7 +66,7 @@ The `multiple` validator, like all other validators of Prismane, has a great int
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

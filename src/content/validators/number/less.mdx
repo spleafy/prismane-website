@@ -1,7 +1,12 @@
+---
+title: 'less'
+description: 'This validator checks if a number is less than a given number.'
+---
+
 ## Import
 
 ```js
-import { less } from "@prismane/core/validators";
+import { less } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -49,7 +54,7 @@ const value = 90;
 
 const number = 70;
 
-const error = less(value, number, "Age");
+const error = less(value, number, 'Age');
 
 console.log(error); // Age must be less than 70!
 ```
@@ -61,7 +66,7 @@ The `less` validator, like all other validators of Prismane, has a great integra
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

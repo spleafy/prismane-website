@@ -1,7 +1,13 @@
+---
+title: 'Tooltip'
+description: 'Tooltip display a container that shows additional information on hover.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Tooltip } from "@prismane/core";
+import { Tooltip } from '@prismane/core';
 ```
 
 ## Usage
@@ -28,9 +34,9 @@ You can change the position of the tooltip by using the _position_ prop. You can
 
 ```jsx preview
 function Demo() {
-  const [position, setPosition] = useState("right");
+  const [position, setPosition] = useState('right');
 
-  const [point, setPoint] = useState("middle");
+  const [point, setPoint] = useState('middle');
 
   return (
     <Stack gap={fr(4)} align="center">
@@ -50,7 +56,7 @@ function Demo() {
       </Radio.Group>
       <Tooltip
         label="Fire!"
-        position={point !== "none" ? `${position}-${point}` : position}
+        position={point !== 'none' ? `${position}-${point}` : position}
       >
         <Button>Hover me</Button>
       </Tooltip>

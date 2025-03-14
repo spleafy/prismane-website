@@ -1,7 +1,12 @@
+---
+title: 'positive'
+description: 'This validator checks if a number is positive.'
+---
+
 ## Import
 
 ```js
-import { positive } from "@prismane/core/validators";
+import { positive } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -42,7 +47,7 @@ Pass the _fieldName_ parameter to the validator, which is the second parameter, 
 ```ts
 const value = -10;
 
-const error = positive(value, "Balance");
+const error = positive(value, 'Balance');
 
 console.log(error); // Balance must be positive!
 ```
@@ -54,7 +59,7 @@ The `positive` validator, like all other validators of Prismane, has a great int
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

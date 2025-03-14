@@ -1,7 +1,12 @@
+---
+title: 'useEmulatedFieldChange'
+description: 'useEmulatedFieldChange hook provides a simple way to emulate field change events.'
+---
+
 ## Import
 
 ```js
-import { useEmulatedFieldChange } from "@prismane/core/hooks";
+import { useEmulatedFieldChange } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -27,7 +32,7 @@ The `useEmulatedFieldChange` hook is used to programmatically simulate a change 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const ref = useRef(null);
 
@@ -43,7 +48,7 @@ function Demo() {
         placeholder="Emulated Value"
         ref={ref}
       />
-      <Button onClick={() => emulateFieldChange("Custom Value")}>
+      <Button onClick={() => emulateFieldChange('Custom Value')}>
         Emulate Change Event
       </Button>
     </Stack>

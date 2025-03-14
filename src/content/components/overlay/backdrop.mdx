@@ -1,7 +1,13 @@
+---
+title: 'Backdrop'
+description: "Backdrop displays a container that is used to limit the user's actions and make them focus on it's content."
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Backdrop } from "@prismane/core";
+import { Backdrop } from '@prismane/core';
 ```
 
 ## Usage
@@ -25,7 +31,7 @@ function Demo() {
 
 ### Remove blur effect
 
-You can remove the blur effect by using the *bft* prop, which will will overwrite the *backdrop-filter* property.
+You can remove the blur effect by using the _bft_ prop, which will will overwrite the _backdrop-filter_ property.
 
 ```jsx preview
 function Demo() {
@@ -48,7 +54,7 @@ function Demo() {
 
 ### Change the background color
 
-To change the background color, you can use the *bg* prop.
+To change the background color, you can use the _bg_ prop.
 
 ```jsx preview
 function Demo() {
@@ -58,7 +64,7 @@ function Demo() {
     <>
       <Button onClick={() => setShown(true)}>Show Backdrop</Button>
       {shown && (
-        <Backdrop onClick={() => setShown(false)} bg={["diamond", 500, 0.1]}>
+        <Backdrop onClick={() => setShown(false)} bg={['diamond', 500, 0.1]}>
           <Text>
             This backdrop has a different color! Click on the backdrop to close
             it!

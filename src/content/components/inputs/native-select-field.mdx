@@ -1,7 +1,13 @@
+---
+title: 'NativeSelectField'
+description: 'NativeSelectField displays a native select field.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { NativeSelectField } from "@prismane/core";
+import { NativeSelectField } from '@prismane/core';
 ```
 
 ## Usage
@@ -21,9 +27,9 @@ Use the _options_ prop to add options to the field. The structure of each option
   label="Choose a framework:"
   placeholder="Choose your favorite framework"
   options={[
-    { value: "react", label: "React" },
-    { value: "angular", label: "Angular" },
-    { value: "vue", label: "Vue" },
+    { value: 'react', label: 'React' },
+    { value: 'angular', label: 'Angular' },
+    { value: 'vue', label: 'Vue' }
   ]}
 />
 ```
@@ -32,7 +38,7 @@ Use the _options_ prop to add options to the field. The structure of each option
 
 ```jsx
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <NativeSelectField
@@ -40,9 +46,9 @@ function Demo() {
       label="Choose a framework:"
       placeholder="Choose your favorite framework"
       options={[
-        { value: "react", label: "React" },
-        { value: "angular", label: "Angular" },
-        { value: "vue", label: "Vue" },
+        { value: 'react', label: 'React' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'vue', label: 'Vue' }
       ]}
       value={value}
       onChange={(e) => setValue(e.target.value)}
@@ -57,7 +63,7 @@ Like the [`Field`](/docs/components/field) component, you can make the field rea
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <NativeSelectField
@@ -65,9 +71,9 @@ function Demo() {
       label="Choose a framework:"
       placeholder="Choose your favorite framework"
       options={[
-        { value: "react", label: "React" },
-        { value: "angular", label: "Angular" },
-        { value: "vue", label: "Vue" },
+        { value: 'react', label: 'React' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'vue', label: 'Vue' }
       ]}
       value={value}
       onChange={(e) => setValue(e.target.value)}
@@ -83,7 +89,7 @@ Like the [`Field`](/docs/components/field) component, you can disable the field 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <NativeSelectField
@@ -91,9 +97,9 @@ function Demo() {
       label="Choose a framework:"
       placeholder="Choose your favorite framework"
       options={[
-        { value: "react", label: "React" },
-        { value: "angular", label: "Angular" },
-        { value: "vue", label: "Vue" },
+        { value: 'react', label: 'React' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'vue', label: 'Vue' }
       ]}
       value={value}
       onChange={(e) => setValue(e.target.value)}
@@ -110,7 +116,7 @@ The `NativeSelectField` component, like all other field components of Prismane, 
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -120,9 +126,9 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_native_select: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
   return (
@@ -130,11 +136,11 @@ function Demo() {
       label="Controlled NativeSelectField"
       placeholder="Controlled Field"
       options={[
-        { value: "react", label: "React" },
-        { value: "angular", label: "Angular" },
-        { value: "vue", label: "Vue" },
+        { value: 'react', label: 'React' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'vue', label: 'Vue' }
       ]}
-      {...register("hook_native_select")}
+      {...register('hook_native_select')}
     />
   );
 }
@@ -145,8 +151,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { NativeSelectField } from "@prismane/core";
+import { useRef } from 'react';
+import { NativeSelectField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -160,7 +166,7 @@ function Demo() {
 If you want to use the `NativeSelectField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { NativeSelectField } from "@prismane/core";
+import { NativeSelectField } from '@prismane/core';
 
 function Demo() {
   return <NativeSelectField aria-label="NativeSelectField's Input" />;
@@ -170,7 +176,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { NativeSelectField } from "@prismane/core";
+import { NativeSelectField } from '@prismane/core';
 
 function Demo() {
   return <NativeSelectField label="NativeSelectField's Input" />;

@@ -1,7 +1,13 @@
+---
+title: 'Form'
+description: 'Form displays a form container that groups a given set of fields.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Form } from "@prismane/core";
+import { Form } from '@prismane/core';
 ```
 
 ## Usage
@@ -10,7 +16,7 @@ The `Form` component ultimately renders a `form` element and can be treated as o
 
 ```jsx preview
 function Demo() {
-  const [values, setValues] = useState("");
+  const [values, setValues] = useState('');
 
   return (
     <Form
@@ -25,7 +31,7 @@ function Demo() {
 
         setValues(JSON.stringify(Object.fromEntries(data)));
       }}
-      onReset={() => setValues("")}
+      onReset={() => setValues('')}
     >
       <TextField
         name="username"
@@ -51,15 +57,15 @@ function Demo() {
   const { handleSubmit, handleReset, setValue, register } = useForm({
     fields: {
       username: {
-        value: "",
+        value: ''
       },
       password: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
-  const [values, setValues] = useState("");
+  const [values, setValues] = useState('');
 
   return (
     <Form
@@ -73,12 +79,12 @@ function Demo() {
       <TextField
         placeholder="Enter Username"
         label="Username:"
-        {...register("username")}
+        {...register('username')}
       />
       <PasswordField
         placeholder="Enter Password"
         label="Password:"
-        {...register("password")}
+        {...register('password')}
       />
       <Flex gap={fr(2)}>
         <Button type="submit">Submit</Button>
@@ -100,16 +106,16 @@ function Demo() {
     useForm({
       fields: {
         fullname: {
-          value: "",
+          value: '',
           validators: {
             required: (v) => required(v),
-            min: (v) => min(v, 4),
-          },
-        },
-      },
+            min: (v) => min(v, 4)
+          }
+        }
+      }
     });
 
-  const [values, setValues] = useState("");
+  const [values, setValues] = useState('');
 
   return (
     <Form
@@ -123,7 +129,7 @@ function Demo() {
       <TextField
         placeholder="John Doe"
         label="Full name:"
-        {...register("fullname")}
+        {...register('fullname')}
       />
       <Flex gap={fr(2)}>
         <Button type="submit">Submit</Button>

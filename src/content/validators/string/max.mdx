@@ -1,7 +1,12 @@
+---
+title: 'max'
+description: "This validator checks if a given string's length is less than a given maximum."
+---
+
 ## Import
 
 ```js
-import { max } from "@prismane/core/validators";
+import { max } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,7 +24,7 @@ The `max` validator accepts the following parameters:
 The `max` validator tests the provided value and checks if it is shorter than the provided length.
 
 ```ts
-const string = "1234567890";
+const string = '1234567890';
 
 const error = max(string, 2);
 
@@ -29,7 +34,7 @@ console.log(error); // This value has to be shorter than 2 characters!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "1234567890";
+const string = '1234567890';
 
 const error = max(string, 11);
 
@@ -41,9 +46,9 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const code = "1234567890";
+const code = '1234567890';
 
-const error = max(code, 4, "Code");
+const error = max(code, 4, 'Code');
 
 console.log(error); // Code has to be shorter than 4 characters!
 ```
@@ -55,7 +60,7 @@ The `max` validator, like all other validators of Prismane, has a great integrat
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

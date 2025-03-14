@@ -1,7 +1,13 @@
+---
+title: 'Switch'
+description: 'Switch displays a field that handles toggling between true or false.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { Switch } from "@prismane/core";
+import { Switch } from '@prismane/core';
 ```
 
 ## Usage
@@ -43,7 +49,7 @@ Use the _size_ prop to change the switch's size. Values can be either _xs_, _sm_
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <>
@@ -89,7 +95,7 @@ The `Switch` component, like all other field components of Prismane, has a great
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -99,12 +105,12 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_switch: {
-        value: false,
-      },
-    },
+        value: false
+      }
+    }
   });
 
-  return <Switch label="Controlled Switch" {...register("hook_switch")} />;
+  return <Switch label="Controlled Switch" {...register('hook_switch')} />;
 }
 ```
 
@@ -117,12 +123,12 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_switch: {
-        value: false,
-      },
-    },
+        value: false
+      }
+    }
   });
 
-  return <Switch label="Controlled Switch" {...register("hook_switch")} />;
+  return <Switch label="Controlled Switch" {...register('hook_switch')} />;
 }
 ```
 
@@ -131,8 +137,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { Switch } from "@prismane/core";
+import { useRef } from 'react';
+import { Switch } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -146,7 +152,7 @@ function Demo() {
 If you want to use the `Switch` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { Switch } from "@prismane/core";
+import { Switch } from '@prismane/core';
 
 function Demo() {
   return <Switch aria-label="Switch's Input" />;
@@ -156,7 +162,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { Switch } from "@prismane/core";
+import { Switch } from '@prismane/core';
 
 function Demo() {
   return <Switch label="Switch's Input" />;

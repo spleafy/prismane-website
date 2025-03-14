@@ -1,7 +1,13 @@
+---
+title: 'Text'
+description: 'Text displays a text container used to display text and easily style it.'
+versatile: true
+---
+
 ## Import
 
 ```js
-import { Text } from "@prismane/core";
+import { Text } from '@prismane/core';
 ```
 
 ## Usage
@@ -43,7 +49,7 @@ To use a specific shade of the theme color, you must provide an array of this ki
 ```jsx preview
 <Stack>
   <Text cl="primary">Text with primary color.</Text>
-  <Text cl={["base", 400]}>Text with base color, shade 400.</Text>
+  <Text cl={['base', 400]}>Text with base color, shade 400.</Text>
 </Stack>
 ```
 
@@ -52,7 +58,7 @@ To use a specific shade of the theme color, you must provide an array of this ki
 `Text` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _span_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Text } from "@prismane/core";
+import { Text } from '@prismane/core';
 
 function Demo() {
   <Text as="p">Paragraph Text</Text>;

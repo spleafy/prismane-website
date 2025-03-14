@@ -1,7 +1,12 @@
+---
+title: 'username'
+description: 'This validator checks if a string is a valid username.'
+---
+
 ## Import
 
 ```js
-import { username } from "@prismane/core/validators";
+import { username } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -18,7 +23,7 @@ The `username` validator accepts the following parameters:
 The `username` validator tests the provided value and checks if it is a valid username.
 
 ```ts
-const string = "hi";
+const string = 'hi';
 
 const error = username(string);
 
@@ -28,7 +33,7 @@ console.log(error); // This is not a valid username!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "admin";
+const string = 'admin';
 
 const error = username(string);
 
@@ -40,7 +45,7 @@ console.log(error); // null
 Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
 
 ```ts
-const string = "admin";
+const string = 'admin';
 
 const regExp = /^[a-z0-9_-]{8,255}$/;
 
@@ -56,7 +61,7 @@ The `username` validator, like all other validators of Prismane, has a great int
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

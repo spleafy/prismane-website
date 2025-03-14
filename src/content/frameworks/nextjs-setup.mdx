@@ -1,6 +1,11 @@
+---
+title: 'Next.js Setup'
+---
+
 To use Prismane inside your website or app, you should install it first, by running one of the following commands:
 
 ```json files={[ { name: "npm", value: "npm i @prismane/core", language: "json", icon: <Npm />, }, { name: "yarn", value: "yarn add @prismane/core", language: "json", icon: <Yarn />, }, { name: "pnpm", value: "pnpm add @prismane/core", language: "json", icon: <Pnpm />, }, ]}
+
 ```
 
 After installing the `@prismane/core` package, you have to wrap your application with our custom `PrismaneProvider` component. This can be either in your `_app.jsx/tsx`.
@@ -42,16 +47,16 @@ If you want to use a custom theme, with custom colors, spacing and more, you can
 You can achieve that functionality by importing the `createTheme` function from `@prismane/core/themes`. This function allows you to extend the Prismanebase theme with your custom options.
 
 ```tsx name="App.tsx" icon={<File />}
-import { PrismaneProvider } from "@prismane/core";
-import { createTheme } from "@prismane/core/themes";
+import { PrismaneProvider } from '@prismane/core';
+import { createTheme } from '@prismane/core/themes';
 
 function App({ Component, pageProps }) {
   const theme = createTheme({
     colors: {
       primary: {
-        100: "#ffffff",
-      },
-    },
+        100: '#ffffff'
+      }
+    }
   });
 
   return (

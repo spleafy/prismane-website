@@ -1,21 +1,28 @@
+---
+title: 'Style Props'
+---
+
 Prismane's components offer a streamlined development experience with a rich set of customizable props.
 These shorthand props provide a flexible way to apply various styles, from simple adjustments to complex configurations,
 allowing you to tailor your components to your exact needs.
-<br/>
-In the following example you can see how we are using props for width `w`, height `h`, background `bg`, opacity `op`
-and cursor `cr`. You can find simple usage like number or string (`h` and `cs`) as well as more complicated like
-functions (_fr_ for `w`), shades (for `bg`) or function with theme object (for `op`).
+
+<br />
+In the following example you can see how we are using props for width `w`,
+height `h`, background `bg`, opacity `op` and cursor `cr`. You can find simple
+usage like number or string (`h` and `cs`) as well as more complicated like
+functions (_fr_ for `w`), shades (for `bg`) or function with theme object (for
+`op`).
 
 ```tsx
-import { Box, fr } from "@prismane/core";
+import { Box, fr } from '@prismane/core';
 
 const Page = () => {
   return (
     <Box
       w={fr(5)}
       h={40}
-      bg={[["primary", 600], { hover: "base", active: ["primary", 700] }]}
-      op={(theme) => (theme.mode === "dark" ? 0.2 : 0.5)}
+      bg={[['primary', 600], { hover: 'base', active: ['primary', 700] }]}
+      op={(theme) => (theme.mode === 'dark' ? 0.2 : 0.5)}
       cs="pointer"
     >
       Hello, world
@@ -36,7 +43,7 @@ All of our props have access to the current theme object, by providing them as a
 Here we will use a simple number value provided for the width prop `w`.
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return <Box w={20}>Hello, world</Box>;
@@ -50,7 +57,7 @@ export default Page;
 TODO: We need to write a description here!!!
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return <Box w={[20, { hover: 40 }]}>Hello, world</Box>;
@@ -66,11 +73,11 @@ Prismane. In this small example, we are providing the function and if the theme 
 width of the box 20 pixels, if not we will use 40 pixels.
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return (
-    <Box w={(theme) => (theme.mode === "dark" ? 20 : 40)}>Hello, world</Box>
+    <Box w={(theme) => (theme.mode === 'dark' ? 20 : 40)}>Hello, world</Box>
   );
 };
 
@@ -168,17 +175,18 @@ theme colors and their respective shades. Here is an example of how you can use 
 **Single Value:**
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return (
     <>
       <Box bg="diamond">Hello, world</Box> // Prismane Color
       <Box bg="primary">Hello, world</Box> // Theme Color
-      <Box bg={(theme) => (theme.mode === "dark" ? "primary" : "base")}>
+      <Box bg={(theme) => (theme.mode === 'dark' ? 'primary' : 'base')}>
         Hello, world
       </Box>
-      <Box bg={["primary", { hover: "base" }]}>Hello, world</Box> // Pseudo Class
+      <Box bg={['primary', { hover: 'base' }]}>Hello, world</Box> // Pseudo
+      Class
       <Box bg="#ffffff">Hello, world</Box> // Custom Color
     </>
   );
@@ -188,8 +196,8 @@ export default Page;
 ```
 
 <Warning>
-    When providing only the name of the color, without a specific shade, by
-    default we get the `500` shade, unless it is a custom color!
+  When providing only the name of the color, without a specific shade, by
+  default we get the `500` shade, unless it is a custom color!
 </Warning>
 
 **With Shade:**
@@ -198,19 +206,21 @@ If you want to provide a color with a specific shade, you should provide an arra
 The first element of the array is the color name and the second is the shade.
 
 ```tsx
-import { Box } from "@prismane/core";
+import { Box } from '@prismane/core';
 
 const Page = () => {
   return (
     <>
-      <Box bg={["diamond", 300]}>Hello, world</Box> // Providing Prismane Color of 'diamond' with it's shade of 300
-      <Box bg={["primary", 400]}>Hello, world</Box> // Theme Color with it's share of 400
+      <Box bg={['diamond', 300]}>Hello, world</Box> // Providing Prismane Color
+      of 'diamond' with it's shade of 300
+      <Box bg={['primary', 400]}>Hello, world</Box> // Theme Color with it's
+      share of 400
       <Box
-        bg={(theme) => (theme.mode === "dark" ? ["red", 300] : ["red", 600])} // With Theme Object
+        bg={(theme) => (theme.mode === 'dark' ? ['red', 300] : ['red', 600])} // With Theme Object
       >
         Hello, world
       </Box>
-      <Box bg={[["primary", 600], { hover: ["base", 700] }]}>Hello, world</Box>
+      <Box bg={[['primary', 600], { hover: ['base', 700] }]}>Hello, world</Box>
     </>
   );
 };

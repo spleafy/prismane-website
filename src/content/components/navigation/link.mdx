@@ -1,7 +1,13 @@
+---
+title: 'Link'
+description: "Link displays an anchor and leverages it's functionality by having the ability to execute functions before redirect."
+versatile: true
+---
+
 ## Import
 
 ```js
-import { Link } from "@prismane/core";
+import { Link } from '@prismane/core';
 ```
 
 ## Usage
@@ -45,7 +51,7 @@ Pass a function to the _before_ prop to execute an action before redirecting. Th
 ```jsx preview
 <Link
   before={async () => {
-    console.log("Redirecting...");
+    console.log('Redirecting...');
   }}
   href="https://www.google.com"
   foreign
@@ -86,7 +92,7 @@ Use the _sx_ prop and pass a value to the _textDecorationColor_ property to chan
 <Link
   href="#"
   sx={{
-    textDecorationColor: "lime",
+    textDecorationColor: 'lime'
   }}
 >
   I have a different underline color
@@ -101,7 +107,7 @@ Use the _sx_ prop and pass a value to the _textDecorationThickness_ property to 
 <Link
   href="#"
   sx={{
-    textDecorationThickness: "4px",
+    textDecorationThickness: '4px'
   }}
 >
   I have a thicker underline
@@ -116,7 +122,7 @@ Use the _sx_ prop and pass a value to the _textDecorationStyle_ property to chan
 <Link
   href="#"
   sx={{
-    textDecorationStyle: "wavy",
+    textDecorationStyle: 'wavy'
   }}
 >
   I have a wavy underline
@@ -128,8 +134,8 @@ Use the _sx_ prop and pass a value to the _textDecorationStyle_ property to chan
 `Link` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _a_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Link } from "@prismane/core";
-import Link from "next/link";
+import { Link } from '@prismane/core';
+import Link from 'next/link';
 
 function Demo() {
   <Link href="#" as={Link}>

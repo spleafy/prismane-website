@@ -1,7 +1,12 @@
+---
+title: 'useDimensions'
+description: 'useDimensions hook provides a simple way to get the dimensions of an element.'
+---
+
 ## Import
 
 ```js
-import { useDimensions } from "@prismane/core/hooks";
+import { useDimensions } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -46,8 +51,8 @@ function Demo() {
         {dimensions &&
           Object.entries(dimensions).map(([key, value]) => (
             <List.Item key={key}>
-              <Text as="strong">{key}:</Text>{" "}
-              {typeof value === "object" ? JSON.stringify(value) : value}
+              <Text as="strong">{key}:</Text>{' '}
+              {typeof value === 'object' ? JSON.stringify(value) : value}
             </List.Item>
           ))}
       </List>

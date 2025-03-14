@@ -1,7 +1,12 @@
+---
+title: 'useLocalization'
+description: 'useLocalization hook provides a simple way to handle localization and dynamic translation.'
+---
+
 ## Import
 
 ```js
-import { useLocalization } from "@prismane/core/hooks";
+import { useLocalization } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -27,16 +32,16 @@ The `useLocalization` hook returns an object containing the following properties
 
 ```jsx preview
 function Demo() {
-  const { locale, text, changeLocale } = useLocalization("en", {
-    en: "Hello from Bulgaria!",
-    de: "Hallo aus Bulgarien!",
+  const { locale, text, changeLocale } = useLocalization('en', {
+    en: 'Hello from Bulgaria!',
+    de: 'Hallo aus Bulgarien!'
   });
 
   return (
     <Stack>
       <Text>Locale: {locale}</Text>
       <Text>{text}</Text>
-      <Button onClick={() => changeLocale("de")}>Change Locale</Button>
+      <Button onClick={() => changeLocale('de')}>Change Locale</Button>
     </Stack>
   );
 }

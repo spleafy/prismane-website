@@ -1,7 +1,12 @@
+---
+title: 'starts'
+description: 'This validator checks if a string starts with a given substring.'
+---
+
 ## Import
 
 ```js
-import { starts } from "@prismane/core/validators";
+import { starts } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,9 +24,9 @@ The `starts` validator accepts the following parameters:
 The `starts` validator checks if the provided value starts with the provided prefix.
 
 ```ts
-const string = "prismane.com";
+const string = 'prismane.com';
 
-const prefix = "www.";
+const prefix = 'www.';
 
 const error = starts(string, prefix);
 
@@ -31,9 +36,9 @@ console.log(error); // This value must start with 'www.'!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "www.prismane.io";
+const string = 'www.prismane.io';
 
-const prefix = "www.";
+const prefix = 'www.';
 
 const error = starts(string, prefix);
 
@@ -45,11 +50,11 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "prismane.com";
+const string = 'prismane.com';
 
-const prefix = "www.";
+const prefix = 'www.';
 
-const error = starts(string, prefix, "Website");
+const error = starts(string, prefix, 'Website');
 
 console.log(error); // Website must start with 'www.'!
 ```
@@ -61,7 +66,7 @@ The `starts` validator, like all other validators of Prismane, has a great integ
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

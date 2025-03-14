@@ -1,7 +1,12 @@
+---
+title: 'useIdle'
+description: 'useIdle hook provides a simple way to handle when a client is active and idle.'
+---
+
 ## Import
 
 ```js
-import { useIdle } from "@prismane/core/hooks";
+import { useIdle } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -30,7 +35,7 @@ function Demo() {
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Idle: {isIdle.toString()}
     </Text>
@@ -48,7 +53,7 @@ function Demo() {
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Idle: {isIdle.toString()}
     </Text>
@@ -62,11 +67,11 @@ Pass the _events_ parameter, which is the second parameter, to change the events
 
 ```jsx preview
 function Demo() {
-  const isIdle = useIdle(1000, ["mousedown"]);
+  const isIdle = useIdle(1000, ['mousedown']);
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Idle: {isIdle.toString()}
     </Text>
@@ -80,11 +85,11 @@ Pass the _initial_ parameter, which is the third parameter, to change the defaul
 
 ```jsx preview
 function Demo() {
-  const isIdle = useIdle(1000, ["mousedown"]);
+  const isIdle = useIdle(1000, ['mousedown']);
 
   return (
     <Text
-      cl={(theme) => (theme.mode === "dark" ? ["base", 200] : ["base", 700])}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
     >
       Idle: {isIdle.toString()}
     </Text>

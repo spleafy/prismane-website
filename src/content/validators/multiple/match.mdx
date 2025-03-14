@@ -1,7 +1,12 @@
+---
+title: 'match'
+description: 'This validator checks if a given set of variables are the same.'
+---
+
 ## Import
 
 ```js
-import { match } from "@prismane/core/validators";
+import { match } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,9 +24,9 @@ The `match` validator accepts the following parameters:
 The `match` validator tests the provided value and checks if it matches the other provided value.
 
 ```ts
-const value = "something";
+const value = 'something';
 
-const revalue = "other";
+const revalue = 'other';
 
 const error = match(value, revalue);
 
@@ -49,7 +54,7 @@ const value = false;
 
 const revalue = true;
 
-const error = match(value, revalue, "Passwords");
+const error = match(value, revalue, 'Passwords');
 
 console.log(error); // Passwords must match!
 ```
@@ -61,7 +66,7 @@ The `match` validator, like all other validators of Prismane, has a great integr
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

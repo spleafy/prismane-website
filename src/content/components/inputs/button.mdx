@@ -1,7 +1,13 @@
+---
+title: 'Button'
+description: 'Button displays a styled button.'
+versatile: true
+---
+
 ## Import
 
 ```js
-import { Button } from "@prismane/core";
+import { Button } from '@prismane/core';
 ```
 
 ## Usage
@@ -154,7 +160,7 @@ Combined with all of the [Prismane's Style Props](/docs/styling/style-props) and
 `Button` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _button_, but it can be changed to any other element or component with the _as_ prop:
 
 ```jsx
-import { Button } from "@prismane/core";
+import { Button } from '@prismane/core';
 
 function Demo() {
   <Button as="a">Link Button</Button>;
@@ -164,8 +170,8 @@ function Demo() {
 You can also use components for the _as_ prop, for example NextJS's `Link` component:
 
 ```jsx
-import { Button } from "@prismane/core";
-import Link from "next/link";
+import { Button } from '@prismane/core';
+import Link from 'next/link';
 
 function Demo() {
   <Button as={Link}>Link Button</Button>;

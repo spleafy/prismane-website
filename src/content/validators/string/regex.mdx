@@ -1,7 +1,12 @@
+---
+title: 'regex'
+description: 'This validator checks if a string matches a regular expression pattern.'
+---
+
 ## Import
 
 ```js
-import { regex } from "@prismane/core/validators";
+import { regex } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -19,7 +24,7 @@ The `regex` validator accepts the following parameters:
 The `regex` validator tests the provided value using the provided regular expression.
 
 ```ts
-const string = "PRISMANE";
+const string = 'PRISMANE';
 
 const regExp = /^[a-z]+$/;
 
@@ -31,7 +36,7 @@ console.log(error); // This value does not match the given pattern!
 If there is no error, _null_ is returned.
 
 ```ts
-const string = "prismane";
+const string = 'prismane';
 
 const regExp = /^[a-z]+$/;
 
@@ -45,11 +50,11 @@ console.log(error); // null
 Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
 
 ```ts
-const string = "PRISMANE";
+const string = 'PRISMANE';
 
 const regExp = /^[a-z]+$/;
 
-const error = regex(string, regExp, "Handle");
+const error = regex(string, regExp, 'Handle');
 
 console.log(error); // Handle does not match the given pattern!
 ```
@@ -61,7 +66,7 @@ The `min` validator, like all other validators of Prismane, has a great integrat
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

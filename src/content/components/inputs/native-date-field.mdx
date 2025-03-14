@@ -1,7 +1,13 @@
+---
+title: 'NativeDateField'
+description: 'NativeDateField displays a native date field.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { NativeDateField } from "@prismane/core";
+import { NativeDateField } from '@prismane/core';
 ```
 
 ## Usage
@@ -18,7 +24,7 @@ This page does not include all of the features that are supported by the field. 
 
 ```jsx
 function Demo() {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
 
   return (
     <NativeDateField
@@ -36,7 +42,7 @@ Like the [`Field`](/docs/components/field) component, you can make the field rea
 
 ```jsx preview
 function Demo() {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
 
   return (
     <NativeDateField
@@ -56,7 +62,7 @@ Like the [`Field`](/docs/components/field) component, you can disable the field 
 
 ```jsx preview
 function Demo() {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
 
   return (
     <NativeDateField
@@ -77,7 +83,7 @@ The `NativeDateField` component, like all other field components of Prismane, ha
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -87,16 +93,16 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_native_date: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
   return (
     <NativeDateField
       label="Controlled NativeDateField"
       placeholder="Controlled Field"
-      {...register("hook_native_date")}
+      {...register('hook_native_date')}
     />
   );
 }
@@ -107,8 +113,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { NativeDateField } from "@prismane/core";
+import { useRef } from 'react';
+import { NativeDateField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -122,7 +128,7 @@ function Demo() {
 If you want to use the `NativeDateField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { NativeDateField } from "@prismane/core";
+import { NativeDateField } from '@prismane/core';
 
 function Demo() {
   return <NativeDateField aria-label="NativeDateField's Input" />;
@@ -132,7 +138,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { NativeDateField } from "@prismane/core";
+import { NativeDateField } from '@prismane/core';
 
 function Demo() {
   return <NativeDateField label="NativeDateField's Input" />;

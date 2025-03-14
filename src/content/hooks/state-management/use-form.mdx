@@ -1,7 +1,12 @@
+---
+title: 'useForm'
+description: 'useForm hook provides a simple way to handle forms.'
+---
+
 ## Import
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 ## Usage
@@ -57,7 +62,7 @@ function Demo() {
 ```ts
 type InitialFormState = {
   fields?: InitialFields;
-  validateOn?: "change" | "blur" | "all";
+  validateOn?: 'change' | 'blur' | 'all';
   resetOptions?: {
     keepDirty?: boolean;
     keepTouched?: boolean;

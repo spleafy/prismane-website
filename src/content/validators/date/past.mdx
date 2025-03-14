@@ -1,7 +1,12 @@
+---
+title: 'past'
+description: 'This validator checks if a date is in the past.'
+---
+
 ## Import
 
 ```js
-import { past } from "@prismane/core/validators";
+import { past } from '@prismane/core/validators';
 ```
 
 ## Parameters
@@ -42,7 +47,7 @@ Pass the _fieldName_ parameter to the validator, which is the second parameter, 
 ```ts
 const date = new Date(Date.now() + 1);
 
-const error = past(date, "Deadline");
+const error = past(date, 'Deadline');
 
 console.log(error); // Deadline must be in the past!
 ```
@@ -54,7 +59,7 @@ The `past` validator, like all other validators of Prismane, has a great integra
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:

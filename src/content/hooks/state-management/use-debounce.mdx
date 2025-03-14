@@ -1,7 +1,12 @@
+---
+title: 'useDebounce'
+description: 'useDebounce hook provides a simple way to debounce heavy calculations.'
+---
+
 ## Import
 
 ```js
-import { useDebounce } from "@prismane/core/hooks";
+import { useDebounce } from '@prismane/core/hooks';
 ```
 
 ## Parameters
@@ -25,7 +30,7 @@ The `useDebounce` hook returns the following variable:
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const debounced = useDebounce(value);
 
@@ -49,7 +54,7 @@ Pass the _delay_ parameter, which is the second parameter, to change the delay a
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const debounced = useDebounce(value, 1000);
 

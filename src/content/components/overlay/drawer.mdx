@@ -1,3 +1,9 @@
+---
+title: 'Drawer'
+description: 'Drawer displays a container that slides from the side and occupies the users attention.'
+versatile: false
+---
+
 ## Import
 
 Prismane's `Drawer` component has 2 additional inner components:
@@ -6,7 +12,7 @@ Prismane's `Drawer` component has 2 additional inner components:
 - _Drawer.Footer_: The wrapper that contains the drawer's footer.
 
 ```js
-import { Drawer } from "@prismane/core";
+import { Drawer } from '@prismane/core';
 ```
 
 ## Usage
@@ -131,7 +137,7 @@ You can change the position of the drawer by using the _position_ prop. You can 
 ```jsx preview
 function Demo() {
   const [open, setOpen] = useState(false);
-  const [position, setPosition] = useState("left");
+  const [position, setPosition] = useState('left');
 
   return (
     <Stack gap={fr(4)}>
@@ -161,7 +167,7 @@ Use the _size_ prop to change the size of the drawer. You can set the value to e
 
 ```jsx preview
 function Demo() {
-  const [size, setSize] = useState("base");
+  const [size, setSize] = useState('base');
   const [open, setOpen] = useState(false);
 
   return (

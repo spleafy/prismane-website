@@ -1,7 +1,12 @@
+---
+title: 'useCopyToClipboard'
+description: 'useCopyToClipboard hook provides a copyToClipboard method to save a string in the clipboard and the copiedValue value (default: null).'
+---
+
 ## Import
 
 ```js
-import { useCopyToClipboard } from "@prismane/core/hooks";
+import { useCopyToClipboard } from '@prismane/core/hooks';
 ```
 
 ### Return Value
@@ -22,14 +27,14 @@ function Demo() {
   return (
     <Stack gap={fr(4)}>
       <Flex gap={fr(2)}>
-        <Button onClick={() => copyToClipboard("Prismane")}>
+        <Button onClick={() => copyToClipboard('Prismane')}>
           Copy "Prismane"
         </Button>
-        <Button onClick={() => copyToClipboard("Is the best!")}>
+        <Button onClick={() => copyToClipboard('Is the best!')}>
           Copy "Is the best!"
         </Button>
       </Flex>
-      <Text>Copied value: {copiedValue || "Nothing is copied yet!"}</Text>
+      <Text>Copied value: {copiedValue || 'Nothing is copied yet!'}</Text>
     </Stack>
   );
 }

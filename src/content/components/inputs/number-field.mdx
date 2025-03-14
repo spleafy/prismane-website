@@ -1,7 +1,13 @@
+---
+title: 'NumberField'
+description: 'NumberField displays a field that handles numbers, allowing incrementing and decrementing the value.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { NumberField } from "@prismane/core";
+import { NumberField } from '@prismane/core';
 ```
 
 ## Usage
@@ -107,7 +113,7 @@ The `NumberField` component, like all other field components of Prismane, has a 
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -117,16 +123,16 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_number: {
-        value: 0,
-      },
-    },
+        value: 0
+      }
+    }
   });
 
   return (
     <NumberField
       label="Controlled NumberField"
       placeholder="Controlled Field"
-      {...register("hook_number")}
+      {...register('hook_number')}
     />
   );
 }
@@ -137,8 +143,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { NumberField } from "@prismane/core";
+import { useRef } from 'react';
+import { NumberField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -152,7 +158,7 @@ function Demo() {
 If you want to use the `NumberField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { NumberField } from "@prismane/core";
+import { NumberField } from '@prismane/core';
 
 function Demo() {
   return <NumberField aria-label="NumberField's Input" />;
@@ -162,7 +168,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { NumberField } from "@prismane/core";
+import { NumberField } from '@prismane/core';
 
 function Demo() {
   return <NumberField label="NumberField's Input" />;

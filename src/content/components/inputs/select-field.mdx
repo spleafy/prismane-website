@@ -1,7 +1,13 @@
+---
+title: 'SelectField'
+description: 'SelectField displays a field that handles choosing a value from a set values.'
+versatile: false
+---
+
 ## Import
 
 ```js
-import { SelectField } from "@prismane/core";
+import { SelectField } from '@prismane/core';
 ```
 
 ## Usage
@@ -19,7 +25,7 @@ Use the _options_ prop to add options to the field. The structure of each option
 
 ```jsx preview
 function Demo() {
-  const [framework, setFramework] = useState("");
+  const [framework, setFramework] = useState('');
 
   return (
     <SelectField
@@ -28,9 +34,9 @@ function Demo() {
       value={framework}
       onChange={(e) => setFramework(e.target.value)}
       options={[
-        { value: "react", element: "React" },
-        { value: "olivia", element: "Angular" },
-        { value: "vue", element: "Vue" },
+        { value: 'react', element: 'React' },
+        { value: 'olivia', element: 'Angular' },
+        { value: 'vue', element: 'Vue' }
       ]}
     />
   );
@@ -43,7 +49,7 @@ By default, the dropdown of the `SelectField` has a max height of _260px_ after 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <SelectField
@@ -52,26 +58,26 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
-        { value: "isabella", element: "Isabella" },
-        { value: "sophia", element: "Sophia" },
-        { value: "michael", element: "Michael" },
-        { value: "william", element: "William" },
-        { value: "james", element: "James" },
-        { value: "benjamin", element: "Benjamin" },
-        { value: "elijah", element: "Elijah" },
-        { value: "lucas", element: "Lucas" },
-        { value: "alexander", element: "Alexander" },
-        { value: "oliver", element: "Oliver" },
-        { value: "ethan", element: "Ethan" },
-        { value: "david", element: "David" },
-        { value: "jackson", element: "Jackson" },
-        { value: "mason", element: "Mason" },
-        { value: "sebastian", element: "Sebastian" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' },
+        { value: 'isabella', element: 'Isabella' },
+        { value: 'sophia', element: 'Sophia' },
+        { value: 'michael', element: 'Michael' },
+        { value: 'william', element: 'William' },
+        { value: 'james', element: 'James' },
+        { value: 'benjamin', element: 'Benjamin' },
+        { value: 'elijah', element: 'Elijah' },
+        { value: 'lucas', element: 'Lucas' },
+        { value: 'alexander', element: 'Alexander' },
+        { value: 'oliver', element: 'Oliver' },
+        { value: 'ethan', element: 'Ethan' },
+        { value: 'david', element: 'David' },
+        { value: 'jackson', element: 'Jackson' },
+        { value: 'mason', element: 'Mason' },
+        { value: 'sebastian', element: 'Sebastian' }
       ]}
     />
   );
@@ -89,7 +95,7 @@ Use the _item_ prop to customize each item of the dropdown. The _item_ prop acce
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <SelectField
@@ -98,11 +104,11 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' }
       ]}
       item={(chosen, value, element, active) => (
         <Flex
@@ -110,14 +116,14 @@ function Demo() {
           py={fr(2)}
           fs="sm"
           cl={(theme) =>
-            chosen ? "primary" : theme.mode === "dark" ? "white" : ["base", 900]
+            chosen ? 'primary' : theme.mode === 'dark' ? 'white' : ['base', 900]
           }
           bg={(theme) =>
             active
-              ? theme.mode === "dark"
-                ? ["base", 900, 0.2]
-                : ["base", 100, 0.2]
-              : "transparent"
+              ? theme.mode === 'dark'
+                ? ['base', 900, 0.2]
+                : ['base', 100, 0.2]
+              : 'transparent'
           }
         >
           {element}
@@ -134,7 +140,7 @@ The `SelectField` component's options can be navigated using the _Arrow_ keys on
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <SelectField
@@ -143,11 +149,11 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' }
       ]}
     />
   );
@@ -160,7 +166,7 @@ Like the [`Field`](/docs/components/field) component, you can make the field rea
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <SelectField
@@ -169,11 +175,11 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' }
       ]}
       readOnly
     />
@@ -187,7 +193,7 @@ Like the [`Field`](/docs/components/field) component, you can disable the field 
 
 ```jsx preview
 function Demo() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <SelectField
@@ -196,11 +202,11 @@ function Demo() {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' }
       ]}
       disabled
     />
@@ -215,7 +221,7 @@ The `SelectField` component, like all other field components of Prismane, has a 
 Firstly, import the `useForm` hook like so:
 
 ```js
-import { useForm } from "@prismane/core/hooks";
+import { useForm } from '@prismane/core/hooks';
 ```
 
 Then do the following:
@@ -225,9 +231,9 @@ function Demo() {
   const { register } = useForm({
     fields: {
       hook_select: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
   return (
@@ -235,13 +241,13 @@ function Demo() {
       label="Controlled SelectField"
       placeholder="Controlled Field"
       options={[
-        { value: "liam", element: "Liam" },
-        { value: "olivia", element: "Olivia" },
-        { value: "noah", element: "Noah" },
-        { value: "emma", element: "Emma" },
-        { value: "ava", element: "Ava" },
+        { value: 'liam', element: 'Liam' },
+        { value: 'olivia', element: 'Olivia' },
+        { value: 'noah', element: 'Noah' },
+        { value: 'emma', element: 'Emma' },
+        { value: 'ava', element: 'Ava' }
       ]}
-      {...register("hook_select")}
+      {...register('hook_select')}
     />
   );
 }
@@ -252,8 +258,8 @@ function Demo() {
 Use the _ref_ prop to get the ref of the input element.
 
 ```jsx
-import { useRef } from "react";
-import { SelectField } from "@prismane/core";
+import { useRef } from 'react';
+import { SelectField } from '@prismane/core';
 
 function Demo() {
   const ref = useRef(null);
@@ -267,7 +273,7 @@ function Demo() {
 If you want to use the `SelectField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
 
 ```jsx
-import { SelectField } from "@prismane/core";
+import { SelectField } from '@prismane/core';
 
 function Demo() {
   return <SelectField aria-label="SelectField's Input" />;
@@ -277,7 +283,7 @@ function Demo() {
 If you use the _label_ prop, the field will be accessible by screen readers.
 
 ```jsx
-import { SelectField } from "@prismane/core";
+import { SelectField } from '@prismane/core';
 
 function Demo() {
   return <SelectField label="SelectField's Input" />;
