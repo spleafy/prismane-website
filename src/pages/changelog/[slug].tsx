@@ -98,10 +98,12 @@ export async function getStaticProps({ params }: any) {
 }
 
 const Page = ({ version }: any) => {
+  const title = `Prismane / ${version.version}`;
+
   return (
     <>
       <Head>
-        <title>Prismane / {version.version}</title>
+        <title>{title}</title>
         <meta
           name="description"
           content="Stay updated with the latest changes and enhancements in Prismane UI library. Discover new features, improvements, and bug fixes in our detailed changelog."

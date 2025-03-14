@@ -95,15 +95,17 @@ export async function getStaticProps({ params }: any) {
 }
 
 export default function Page(params: any) {
-  const title = findBySlugs(content, params.slug).title;
+  const itemTitle = findBySlugs(content, params.slug).title;
+
+  const title = `Prismane / ${itemTitle}`;
 
   return (
     <>
       <Head>
-        <title>Prismane / {title.toString() || 'Docs'} </title>
+        <title>{title}</title>
         <meta
           name="description"
-          content={`Explore the customizable ${title} component of Prismane. Discover the power of Prismane's ${title} component today.`}
+          content={`Explore the customizable ${itemTitle} component of Prismane. Discover the power of Prismane's ${itemTitle} component today.`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>

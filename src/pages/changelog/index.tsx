@@ -27,26 +27,26 @@ export async function getStaticProps() {
     })
     .sort((a, b) => semver.compare(b.version, a.version));
 
-  const versions: any[] = [];
+  const versions = await Promise.all(
+    sorted.map(async (version) => {
+      const filePath = path.join(directoryPath, version.fileName);
 
-  sorted.forEach(async (version) => {
-    const filePath = path.join(directoryPath, version.fileName);
+      const data = fs.readFileSync(filePath, 'utf-8');
 
-    const data = fs.readFileSync(filePath, 'utf-8');
+      const source = await serialize(data, {
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [rehypeMdxCodeProps as any]
+        },
+        parseFrontmatter: true
+      });
 
-    const source = await serialize(data, {
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeMdxCodeProps as any]
-      },
-      parseFrontmatter: true
-    });
-
-    versions.push({
-      version: version.fileName.replace('.mdx', ''),
-      source
-    });
-  });
+      return {
+        version: version.fileName.replace('.mdx', ''),
+        source
+      };
+    })
+  );
 
   return {
     props: {
@@ -65,18 +65,6 @@ export default function Changelog({ versions }: any) {
           content="Stay updated with the latest changes and enhancements in Prismane UI library. Discover new features, improvements, and bug fixes in our detailed changelog."
         />
       </Head>
-      {/* <Image
-        src="/mesh_grid.png"
-        alt="Grid Mesh Background"
-        className="object-contain opacity-10 blend-to-bottom"
-        fill
-      />
-      <Image
-        src="/mesh_gradient_11.png"
-        alt="Mesh Gradient Background"
-        className="object-cover dark:opacity-20 opacity-30 blend-to-top rotate-180"
-        fill
-      /> */}
       <Hero />
       {versions.map((version: any, index: number) => (
         <Version key={index} {...version} />
