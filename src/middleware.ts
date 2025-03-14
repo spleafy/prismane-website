@@ -16,8 +16,6 @@ const getUrl = (navigation: any, slugs: string[]) => {
     url += `/${items[0].slug}`;
 
     if (items[0].items && items[0].items.length > 0) {
-      console.log('Item', items[0], items[0].items);
-
       processDeeper(items[0].items);
     }
   };

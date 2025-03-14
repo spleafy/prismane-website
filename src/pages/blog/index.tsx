@@ -15,16 +15,12 @@ import Card from '@/components/Card';
 // Authors
 import authors from '@/authors';
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const directoryPath = path.join(process.cwd(), 'src/content/blog/');
-
   const fileNames = fs.readdirSync(directoryPath);
 
-  const files: any[] = [];
-
-  fileNames.forEach(async (fileName) => {
+  const filePromises = fileNames.map(async (fileName) => {
     const filePath = path.join(directoryPath, fileName);
-
     const data = fs.readFileSync(filePath, 'utf-8');
 
     const source: any = await serialize(data, {
@@ -44,15 +40,16 @@ export function getStaticProps() {
     );
 
     source.frontmatter.name = fileName.replace('.mdx', '');
-
-    files.push(source);
-
-    files.sort(
-      (a, b) =>
-        new Date(b.frontmatter.release).getTime() -
-        new Date(a.frontmatter.release).getTime()
-    );
+    return source;
   });
+
+  const files = await Promise.all(filePromises);
+
+  files.sort(
+    (a, b) =>
+      new Date(b.frontmatter.release).getTime() -
+      new Date(a.frontmatter.release).getTime()
+  );
 
   return {
     props: {
@@ -92,8 +89,17 @@ export default function Blog({ blogs }: any) {
                 />
               </div>
               <div className="flex flex-col gap-1 px-4 py-5 sm:p-6">
-                <div className="mb-6 inline-flex w-fit items-center rounded-md bg-primary-50 px-2 py-1 text-xs font-medium text-primary-500 ring-1 ring-inset ring-primary-500 ring-opacity-25 dark:bg-primary-400 dark:bg-opacity-10 dark:text-primary-400 dark:ring-primary-400 dark:ring-opacity-25">
-                  {blog.frontmatter.tag}
+                <div className="flex flex-wrap items-center gap-2">
+                  {blog.frontmatter && blog.frontmatter.tag && (
+                    <div className="mb-6 inline-flex w-fit items-center rounded-md bg-primary-50 px-2 py-1 text-xs font-medium text-primary-500 ring-1 ring-inset ring-primary-500 ring-opacity-25 dark:bg-primary-400 dark:bg-opacity-10 dark:text-primary-400 dark:ring-primary-400 dark:ring-opacity-25">
+                      {blog.frontmatter.tag}
+                    </div>
+                  )}
+                  {blog.frontmatter && blog.frontmatter.version && (
+                    <div className="mb-6 inline-flex w-fit items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500 ring-opacity-25 dark:bg-green-400 dark:bg-opacity-10 dark:text-green-400 dark:ring-green-400 dark:ring-opacity-25">
+                      {blog.frontmatter.version}
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-col gap-1">
                   <p className="flex items-center gap-1.5 truncate text-lg font-semibold text-base-900 dark:text-white">

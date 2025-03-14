@@ -1,10 +1,12 @@
 ---
 release: December 2, 2023
-tag: "Tutorial"
-title: "Advanced Styling with Prismane"
+tag: 'Tutorial'
+version: 'v1'
+title: 'Advanced Styling with Prismane'
 description: "Learn how to style Prismane's component and tailor them to your taste"
-authors: ["1"]
+authors: ['1']
 ---
+
 ## Introduction
 
 Hello, everyone! Welcome to this advanced tutorial on Styling with Prismane. In this tutorial, you will understand how powerful and versatile Prismane’s styling system really is.
@@ -24,8 +26,8 @@ Instead of lengthy CSS rules, use the shorthand props to effortlessly customize 
 ```css name="index.css" icon={<File />}
 .PrismaneBox-root {
   padding: 16px !important;
-	background: red;
-	color: white;
+  background: red;
+  color: white;
 }
 ```
 
@@ -42,7 +44,9 @@ The `bg` prop sets the background of the button to `red`
 The `cl` prop sets the color property of the button to `white`
 
 <Note>
-💡 All of Prismane’s components support these shorthand props. To learn more about the full list of shorthand props, you can check out this [documentation](https://www.prismane.io/docs/styling/style-props#supported-props).
+  💡 All of Prismane’s components support these shorthand props. To learn more
+  about the full list of shorthand props, you can check out this
+  [documentation](https://www.prismane.io/docs/styling/style-props#supported-props).
 </Note>
 
 ### Customizing A Button Component
@@ -50,7 +54,7 @@ The `cl` prop sets the color property of the button to `white`
 Using the shorthand props that Prismane exposes, you can craft a new component, tailor the Button component to your preferences, and reuse it by following these steps:
 
 ```tsx name="NewButton.tsx" icon={<File />}
-import { Button, ButtonProps } from "@prismane/core";
+import { Button, ButtonProps } from '@prismane/core';
 
 const NewButton = ({ children, ...props }: ButtonProps) => {
   return (
@@ -70,7 +74,8 @@ The `py` prop sets the vertical padding of the button to `12px`
 The `br` prop sets the border-radius property of the button to `0`
 
 <Note>
-💡 We are using the `ButtonProps` type from Prismane’s `Button` component. This way we are ensuring that the new component still has TypeScript support.
+  💡 We are using the `ButtonProps` type from Prismane’s `Button` component.
+  This way we are ensuring that the new component still has TypeScript support.
 </Note>
 
 Following these steps, you have created a fully customized `NewButton` component that still has all of the functionality of the `Button` component.
@@ -83,12 +88,12 @@ Let’s see the result
 
 All of Prismane’s shorthand props have support for pseudo-classes. To fully understand all of Prismane’s shorthand props’ features, check out this [tutorial](https://www.prismane.io/docs/styling/style-props).
 
-To add a pseudo-class value, we need to pass an array to the shorthand prop. The first value of the array is the normal value, the second value of the array is an object whose keys are the names of the pseudo-classes, and it’s values are the respected values when the pseudo-class is active. 
+To add a pseudo-class value, we need to pass an array to the shorthand prop. The first value of the array is the normal value, the second value of the array is an object whose keys are the names of the pseudo-classes, and it’s values are the respected values when the pseudo-class is active.
 
 To easily understand how they work, let’s change the background of our button and change it once again on hover. This can be done as follows:
 
 ```tsx name="NewButton.tsx" icon={<File />}
-import { Button, ButtonProps } from "@prismane/core";
+import { Button, ButtonProps } from '@prismane/core';
 
 const NewButton = ({ children, ...props }: ButtonProps) => {
   return (
@@ -96,7 +101,7 @@ const NewButton = ({ children, ...props }: ButtonProps) => {
       px={18}
       py={12}
       br={0}
-      bg={["#40e495", { hover: "#2bb673" }]}
+      bg={['#40e495', { hover: '#2bb673' }]}
       {...props}
     >
       {children}
@@ -118,13 +123,15 @@ All of Prismane's components have CSS classes for each of their layers, classes 
 Let’s use this `App.tsx` starter code and work our way through customizing our buttons globally.
 
 ```tsx name="App.tsx" icon={<File />}
-import { Center, Button } from "@prismane/core";
+import { Center, Button } from '@prismane/core';
 
 function App() {
   return (
     <Center w="100vw" h="100vh" direction="column" gap={8}>
       <Button>Primary Button</Button>
-      <Button variant="secondary" color="base">Secondary Button</Button>
+      <Button variant="secondary" color="base">
+        Secondary Button
+      </Button>
     </Center>
   );
 }
@@ -139,10 +146,12 @@ This will render the following:
 Now, we are going to use the `Button` component’s prebuilt classes to style our two buttons. You can find the full list of CSS classes that the `Button` component has in the [Button API page](https://www.prismane.io/docs/components-api/button-api).
 
 <Note>
-💡 You can find the full list of CSS classes of any component by choosing the component from the [Overview page](https://www.prismane.io/docs/components-api/getting-started).
+  💡 You can find the full list of CSS classes of any component by choosing the
+  component from the [Overview
+  page](https://www.prismane.io/docs/components-api/getting-started).
 </Note>
 
-Let’s make our buttons round by default. To do that, we can use the  `.PrismaneButton-root` class that every Button component has. This class targets the root element of our `Button` which is the `button` element.
+Let’s make our buttons round by default. To do that, we can use the `.PrismaneButton-root` class that every Button component has. This class targets the root element of our `Button` which is the `button` element.
 
 ```css name="index.css" icon={<File />}
 .PrismaneButton-root {
@@ -174,7 +183,7 @@ Prismane converts the Theme Object to CSS variables, which enables you to integr
 
 Primary Colors:
 
-`—prismane-colors-primary-50`, 
+`—prismane-colors-primary-50`,
 
 `—prismane-colors-primary-100`,
 
@@ -200,7 +209,7 @@ Base Colors:
 
 `—prismane-colors-base-100`,
 
-`—prismane-colors-base-200`, 
+`—prismane-colors-base-200`,
 
 `—prismane-colors-base-300`,
 

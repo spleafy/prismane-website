@@ -76,8 +76,6 @@ export async function getStaticProps({ params }: any) {
 }
 
 const Page = ({ blog }: any) => {
-  console.log(blog);
-
   return (
     <>
       <Head>

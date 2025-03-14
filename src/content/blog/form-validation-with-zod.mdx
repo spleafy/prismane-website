@@ -1,13 +1,15 @@
 ---
 release: December 13, 2023
-tag: "Tutorial"
-title: "Form Validation With Zod"
+tag: 'Tutorial'
+version: 'v1'
+title: 'Form Validation With Zod'
 description: "Learn how to integrate Zod into Prismane's useForm hook and easily build complex forms"
-authors: ["1"]
+authors: ['1']
 ---
+
 # Introduction
 
-Greetings, everyone! Welcome to our tutorial on form validation in Prismane using the Zod library. 
+Greetings, everyone! Welcome to our tutorial on form validation in Prismane using the Zod library.
 
 Zod is a TypeScript-first schema declaration and validation library. It allows developers to define data structures (schemas) in a type-safe manner and provides validation functions to ensure that data adheres to the specified structure.
 
@@ -40,29 +42,29 @@ import {
   Form,
   Button,
   TextField,
-  PasswordField,
-} from "@prismane/core";
-import { useForm } from "@prismane/core/hooks";
-import { z } from "zod";
+  PasswordField
+} from '@prismane/core';
+import { useForm } from '@prismane/core/hooks';
+import { z } from 'zod';
 
 function App() {
   const { handleSubmit, handleReset, register } = useForm({
     fields: {
       username: {
-        value: "",
+        value: '',
         validators: {
           required: (v) => p(v, z.string()),
-          min: (v) => p(v, z.string().min(5)),
-        },
+          min: (v) => p(v, z.string().min(5))
+        }
       },
       password: {
-        value: "",
+        value: '',
         validators: {
           required: (v) => p(v, z.string()),
-          min: (v) => p(v, z.string().min(5)),
-        },
-      },
-    },
+          min: (v) => p(v, z.string().min(5))
+        }
+      }
+    }
   });
 
   return (
@@ -77,12 +79,12 @@ function App() {
           <TextField
             placeholder="Enter username: "
             label="Username:"
-            {...register("username")}
+            {...register('username')}
           />
           <PasswordField
             placeholder="Enter password: "
             label="Password:"
-            {...register("password")}
+            {...register('password')}
           />
           <Button variant="primary" type="submit">
             Submit
@@ -96,7 +98,10 @@ function App() {
 export default App;
 ```
 
-<Note>💡 This application creates a form using the `useForm` hook, creates a form and registers two fields - `username` and `password`.</Note>
+<Note>
+  💡 This application creates a form using the `useForm` hook, creates a form
+  and registers two fields - `username` and `password`.
+</Note>
 
 ## Adapt Zod to Prismane Validators
 
@@ -126,7 +131,10 @@ export default p;
 
 We are going to name it `p` so it can be shorter and not visually blocking when we use it.
 
-<Note>The `p` function executes Zod's validator and provides the error message if there's one, or `null` if there are no errors.</Note>
+<Note>
+  The `p` function executes Zod's validator and provides the error message if
+  there's one, or `null` if there are no errors.
+</Note>
 
 ## Add Validators
 
@@ -160,13 +168,16 @@ const { handleSubmit, handleReset, register } = useForm({
 ```
 
 <Note>
-💡 We are adding two validators to each of our fields - required and min.
+  💡 We are adding two validators to each of our fields - required and min.
 </Note>
 <Note>
-The `required` validator isn’t directly supported by Zod, so we will have to check if the length of the value is at least 1 using the `.min()` property of the `z.string()` validator.
+  The `required` validator isn’t directly supported by Zod, so we will have to
+  check if the length of the value is at least 1 using the `.min()` property of
+  the `z.string()` validator.
 </Note>
 <Note>
-The `min` validator can be created by using the `.min()` property of the `z.string()` validator.
+  The `min` validator can be created by using the `.min()` property of the
+  `z.string()` validator.
 </Note>
 
 Let’s see the current result:

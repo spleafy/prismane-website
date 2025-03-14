@@ -1,10 +1,12 @@
 ---
 release: December 16, 2023
-tag: "Tutorial"
-title: "Custom Components with Prismane"
+tag: 'Tutorial'
+version: 'v1'
+title: 'Custom Components with Prismane'
 description: "Learn how to extend Prismane's components and create custom ones"
-authors: ["1"]
+authors: ['1']
 ---
+
 Hello, and welcome to our tutorial on creating custom components with Prismane.
 
 In this guide, we will explore the process of building custom components that not only enhance the visual appeal of your UI but also provide a higher degree of versatility and reusability in your projects.
@@ -16,18 +18,18 @@ Feel free to explore the code examples provided throughout this tutorial, which 
 Before we delve into building custom components with Prismane, it's essential to have a basic understanding of Prismane and its fundamental concepts. If you're new to Prismane, here are some resources to help you get started:
 
 1. **Installation Guide:**
-    - Make sure you have Prismane installed in your project. Follow the installation guide in the [official Prismane documentation](https://www.prismane.io/docs/getting-started/installation).
+   - Make sure you have Prismane installed in your project. Follow the installation guide in the [official Prismane documentation](https://www.prismane.io/docs/getting-started/installation).
 2. **Introduction to Prismane:**
-    - Familiarize yourself with the core concepts of Prismane. The [Prismane documentation](https://www.prismane.io/docs/getting-started/introduction) provides a comprehensive introduction to its features and usage.
+   - Familiarize yourself with the core concepts of Prismane. The [Prismane documentation](https://www.prismane.io/docs/getting-started/introduction) provides a comprehensive introduction to its features and usage.
 3. **Prismane Core Concepts:**
-    - Have a grasp of key styling concepts. Refer to the [Styling section](https://www.prismane.io/docs/styling/style-props) for a deeper understanding.
+   - Have a grasp of key styling concepts. Refer to the [Styling section](https://www.prismane.io/docs/styling/style-props) for a deeper understanding.
 
 ## Initial Component
 
 Start by creating a new component called `StyledButton`. This code creates an unstyled button component that we are going to use as a base on which we are going to build further into the tutorial.
 
 ```tsx
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from 'react';
 
 const StyledButton = ({ children, ...props }: HTMLAttributes<HTMLElement>) => {
   return <button {...props}>{children}</button>;
@@ -67,7 +69,7 @@ In this section, we'll explore the creation of custom components by extending an
 
 ### Understanding the Prismane Button Component
 
-Before creating a custom component, familiarize yourself with the 
+Before creating a custom component, familiarize yourself with the
 Prismane Button and its styling. The official Prismane documentation on [Buttons](https://www.prismane.io/docs/components/button) provides insights into the default styles and available variations.
 
 ### Integrating the Button Component from Prismane
@@ -75,7 +77,7 @@ Prismane Button and its styling. The official Prismane documentation on [Buttons
 To integrate the Button component, we will need to replace the `button` element with the `Button` component that we will import from `@prismane/core` and change the prop types to the `ButtonProps` .
 
 ```tsx
-import { Button, ButtonProps } from "@prismane/core";
+import { Button, ButtonProps } from '@prismane/core';
 
 const StyledButton = ({ children, ...props }: ButtonProps) => {
   return <Button {...props}>{children}</Button>;
@@ -89,7 +91,7 @@ export default StyledButton;
 Now, you can use `PrimaryButton` wherever you need a consistent styled button:
 
 ```tsx
-import StyledButton from "./components/StyledButton";
+import StyledButton from './components/StyledButton';
 
 function App() {
   return <StyledButton>Custom Button</StyledButton>;
@@ -109,7 +111,7 @@ This allows for seamless integration of your custom button while maintaining the
 After integrating the `Button` component from Prismane and it’s prop types, now we can use all of the props that `Button` supports.
 
 ```tsx
-import { Button, ButtonProps } from "@prismane/core";
+import { Button, ButtonProps } from '@prismane/core';
 
 const StyledButton = ({ children, ...props }: ButtonProps) => {
   return (
@@ -180,12 +182,10 @@ By leveraging prop extension, you've seamlessly integrated a new customization o
 And if we now set `heavy` to true in our `App.tsx`
 
 ```tsx
-import StyledButton from "./components/StyledButton";
+import StyledButton from './components/StyledButton';
 
 function App() {
-  return (
-    <StyledButton heavy>Custom Button</StyledButton>
-  );
+  return <StyledButton heavy>Custom Button</StyledButton>;
 }
 
 export default App;

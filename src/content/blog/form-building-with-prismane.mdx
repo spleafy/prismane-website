@@ -1,10 +1,12 @@
 ---
 release: December 7, 2023
-tag: "Tutorial"
-title: "Form Building with Prismane"
-description: "Learn how to create powerful forms using Prismane"
-authors: ["1"]
+tag: 'Tutorial'
+version: 'v1'
+title: 'Form Building with Prismane'
+description: 'Learn how to create powerful forms using Prismane'
+authors: ['1']
 ---
+
 # Introduction
 
 Greetings, everyone! Welcome to our tutorial on form building with Prismane. Throughout this guide, we'll explore the process of constructing forms using Prismane and dive into the utilization of our built-in validators. Let's embark on this journey together!
@@ -20,7 +22,7 @@ Prismane makes form building straightforward. By leveraging the useForm hook, yo
 We can import the `useForm` hook from the `@prismane/core/hooks` entry.
 
 ```tsx
-import { useForm } from "@prismane/core/hooks"
+import { useForm } from '@prismane/core/hooks';
 ```
 
 ## Initialize the hook
@@ -34,7 +36,7 @@ The `handleSubmit` function handles the form submit, and provides the state valu
 The `register` function simplifies field registration, ensuring proper and necessary props are assigned.
 
 ```tsx
-const { handleReset, handleSubmit, register } = useForm({})
+const { handleReset, handleSubmit, register } = useForm({});
 ```
 
 ## Add fields to the hook
@@ -49,15 +51,15 @@ In our case we are going to have a `username` and a `password` fields.
 
 ```tsx
 const { handleReset, handleSubmit, register } = useForm({
-	fields: {
-		username: {
-			value: ""	
-		},
-		password: {
-			value: ""
-		}	
-	}
-})
+  fields: {
+    username: {
+      value: ''
+    },
+    password: {
+      value: ''
+    }
+  }
+});
 ```
 
 ## Add Form
@@ -65,19 +67,19 @@ const { handleReset, handleSubmit, register } = useForm({
 Now, we need to add our `Form` and pass the `onSubmit` and `onReset` props.
 
 ```tsx
-import { Center, Card, Form } from "@prismane/core";
-import { useForm } from "@prismane/core/hooks";
+import { Center, Card, Form } from '@prismane/core';
+import { useForm } from '@prismane/core/hooks';
 
 function App() {
   const { handleReset, handleSubmit, register } = useForm({
     fields: {
       username: {
-        value: "",
+        value: ''
       },
       password: {
-        value: "",
-      },
-    },
+        value: ''
+      }
+    }
   });
 
   return (
@@ -85,7 +87,7 @@ function App() {
       <Card>
         <Form
           onSubmit={(e: SubmitEvent) => handleSubmit(e, (v) => console.log(v))}
-					onReset={handleReset}
+          onReset={handleReset}
         ></Form>
       </Card>
     </Center>
@@ -125,7 +127,11 @@ Great! Now, lets register our fields. To do that, we are going to use the `regis
 
 We need to pass a single parameter to the `register` function, which is the name of the field undergoing registration.
 
-<Note>💡Make sure to provide the same name to the `register` function, as the one that you provided in the `fields` object, otherwise the field will not register correctly!</Note>
+<Note>
+  💡Make sure to provide the same name to the `register` function, as the one
+  that you provided in the `fields` object, otherwise the field will not
+  register correctly!
+</Note>
 
 The `register` function returns an object that contains essential field properties. Because of that, we must spread this function across the component. The `register` function returns properties such as `onChange`, `onBlur`, `onFocus`, `value`, `name`, and `id`.
 
@@ -165,7 +171,7 @@ The `min` validator checks if the provided value’s length is more than a given
 Firstly, we have to import our validators from the `@prismane/core/validators` entry.
 
 ```tsx
-import { required, username, min } from "@prismane/core/validators";
+import { required, username, min } from '@prismane/core/validators';
 ```
 
 ## Add validators to fields in useForm hook
@@ -195,7 +201,10 @@ Great! Now, let’s see the final result
 
 ![Recording-2023-12-07-170324.gif](GIF_2.gif)
 
-<Note>💡 As you can see, form submission is unavailable until all of the fields are error-free.</Note>
+<Note>
+  💡 As you can see, form submission is unavailable until all of the fields are
+  error-free.
+</Note>
 
 Fantastic job! You now can successfully create forms and handle them using Prismane!
 
