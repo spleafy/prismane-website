@@ -86,14 +86,14 @@ const Page = ({ blog }: any) => {
         />
       </Head>
       <div className="relative mx-auto flex max-w-[1280px] items-center gap-5 px-5 pt-5 xl:px-0">
-        <div className="flex grow flex-col">
+        <div className="flex w-full grow flex-col">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 text-sm font-semibold text-base-500 dark:text-base-400">
               <span className="text-primary-500">{blog.frontmatter.tag}</span>
               <span>•</span>
               <span>{blog.frontmatter.release}</span>
             </div>
-            <h1 className="relative text-3xl font-bold tracking-tight text-base-900 dark:text-white sm:text-4xl">
+            <h1 className="relative text-xl font-bold tracking-tight text-base-900 dark:text-white sm:text-3xl sm:text-4xl">
               {blog.frontmatter.title}
               <div className="group relative hidden xl:flex">
                 <Link href="/blog">
@@ -106,7 +106,7 @@ const Page = ({ blog }: any) => {
                 </Tooltip>
               </div>
             </h1>
-            <p className="text-lg text-base-500 dark:text-base-400">
+            <p className="text-base-500 dark:text-base-400 sm:text-lg">
               {blog.frontmatter.description}
             </p>
             <div className="flex items-center gap-2">

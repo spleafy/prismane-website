@@ -1,4 +1,11 @@
-const authors = [
+export interface AuthorType {
+  id: number;
+  name: string;
+  handle: string;
+  picture: string;
+}
+
+const authors: AuthorType[] = [
   {
     id: 1,
     name: 'Martin Petrov',
