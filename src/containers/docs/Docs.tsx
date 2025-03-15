@@ -26,7 +26,7 @@ import useNavigation from '@/useNavigation';
 import content from '@/content';
 import findBySlugs from '@/findBySlugs';
 // Types
-import { DocsFrontmatter } from '@/types';
+import { DocsFrontmatter } from '@/types/docs';
 
 type SideNavigationProps = {
   items: any;

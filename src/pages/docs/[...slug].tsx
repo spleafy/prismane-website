@@ -36,8 +36,10 @@ import ColorPalette from '@/components/docs/ColorPalette';
 import ImageBanner from '@/components/docs/ImageBanner';
 import Community from '@/components/Community';
 import VersatileComponents from '@/components/docs/VersatileComponents';
+// Lib
+import { getAllDocFiles, buildDocsTree, findDocBySlug } from '@/lib/docs';
 // Types
-import { DocsFrontmatter } from '@/types';
+import { DocsFrontmatter, DocFile, DocDirectory } from '@/types/docs';
 
 interface PageProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>, DocsFrontmatter>;
@@ -45,42 +47,13 @@ interface PageProps {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const contentDir = path.join(process.cwd(), 'src/content/docs');
-
-  const paths: { params: { slug: string[] } }[] = [];
-
-  const getMdxFiles = (dir: string, baseDir: string): string[] => {
-    if (!fs.existsSync(dir)) {
-      return [];
-    }
-
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-    return entries.flatMap((entry) => {
-      const fullPath = path.join(dir, entry.name);
-      const result: string[] = [];
-
-      if (entry.isDirectory()) {
-        result.push(...getMdxFiles(fullPath, baseDir));
-      } else if (entry.name.endsWith('.mdx')) {
-        const relativePath = path.relative(baseDir, fullPath);
-
-        result.push(relativePath.replace(/\.mdx$/, ''));
-      }
-
-      return result;
-    });
-  };
-
-  const mdxPaths = getMdxFiles(contentDir, contentDir);
-
-  paths.push(
-    ...mdxPaths.map((filePath) => ({
-      params: {
-        slug: filePath.split(/[\/\\]/)
-      }
-    }))
+  const docsTree = await buildDocsTree(
+    path.join(process.cwd(), 'src/content/docs')
   );
+
+  const paths = getAllDocFiles(docsTree).map((file) => ({
+    params: { slug: file.slug.split('/') }
+  }));
 
   return {
     paths,
