@@ -25,6 +25,8 @@ import useNavigation from '@/useNavigation';
 // Content
 import content from '@/content';
 import findBySlugs from '@/findBySlugs';
+// Types
+import { DocsFrontmatter } from '@/types';
 
 type SideNavigationProps = {
   items: any;
@@ -106,27 +108,15 @@ const SideNavigation = ({
 );
 
 interface DocsProps {
+  slugs: string[];
+  frontmatter: DocsFrontmatter;
   children?: ReactNode;
 }
 
-export const Docs: FC<DocsProps> = ({ children }) => {
-  const { asPath } = useRouter();
+export const Docs: FC<DocsProps> = ({ slugs, frontmatter, children }) => {
+  const path = '/' + slugs.join('/');
 
-  const path = asPath.replace('/docs', '');
-
-  const splitRoutes = path.split('/');
-
-  splitRoutes.shift();
-
-  const routes = splitRoutes.map((route) => {
-    return route.replace(/[#?].*$/, '');
-  });
-
-  const current = content.find((nav: any) => nav.slug === routes[0]);
-
-  const currentItem = findBySlugs(content, routes);
-
-  const currentCategory = findBySlugs(content, routes.slice(0, -1));
+  const category = slugs[slugs.length - 2];
 
   const { navigation, expanded, toggle } = useNavigation(content);
 
@@ -145,7 +135,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
             <div className="group flex cursor-pointer items-center gap-4">
               <div
                 className={`flex h-6 w-6 items-center justify-center rounded ${
-                  routes[0] === nav.slug
+                  slugs[0] === nav.slug
                     ? 'gradient text-white'
                     : 'group-hover:gradient border border-base-300 bg-base-100 text-base-500 group-hover:border-none group-hover:text-white dark:border-base-700 dark:bg-base-900 dark:text-base-400'
                 }`}
@@ -154,7 +144,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
               </div>
               <span
                 className={`text-sm font-medium transition-colors ${
-                  routes[0] === nav.slug
+                  slugs[0] === nav.slug
                     ? 'text-primary-500'
                     : 'text-base-500 group-hover:text-base-700 dark:text-base-400 dark:group-hover:text-white'
                 }`}
@@ -167,11 +157,11 @@ export const Docs: FC<DocsProps> = ({ children }) => {
         <Separator className="mt-2" />
         <div className="flex h-full max-h-full flex-col gap-0.5 px-3 xl:px-0">
           <SideNavigation
-            items={navigation.find((nav: any) => nav.slug === routes[0]).items}
+            items={navigation.find((nav: any) => nav.slug === slugs[0]).items}
             expanded={expanded}
             toggle={toggle}
             path={path}
-            parentRoute={routes[0]}
+            parentRoute={slugs[0]}
           />
         </div>
       </nav>
@@ -179,30 +169,35 @@ export const Docs: FC<DocsProps> = ({ children }) => {
         <Breadcrumbs
           items={{
             parent: {
-              title: current.title,
-              slug: current.slug
+              title: slugs[0]
+                .split('-')
+                .map(
+                  (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
+                )
+                .join(' '),
+              slug: slugs[0]
             },
             child: {
-              title: currentItem.title,
-              slug: currentItem.slug
+              title: frontmatter.title,
+              slug: slugs[slugs.length - 1]
             }
           }}
         />
-        {currentItem && (
+        {frontmatter && (
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold tracking-tight text-base-900 dark:text-white sm:text-4xl">
-              {currentItem.title}
+              {frontmatter.title}
             </h1>
-            {currentItem.description && (
+            {frontmatter.description && (
               <span className="mt-4 text-lg text-base-500 dark:text-base-400">
-                {currentItem.description}
+                {frontmatter.description}
               </span>
             )}
-            {currentItem &&
-              ['components', 'hooks'].includes(current.slug) &&
-              routes.length >= 3 && (
+            {frontmatter &&
+              ['components', 'hooks'].includes(slugs[0]) &&
+              slugs.length >= 3 && (
                 <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center">
-                  {currentItem.versatile && (
+                  {frontmatter.versatile && (
                     <Link
                       href="/docs/getting-started/versatile-components"
                       className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-primary-900 shadow-sm ring-1 ring-inset ring-primary-300 transition-colors hover:bg-primary-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-primary-900/30 dark:text-white dark:ring-primary-700 dark:hover:bg-primary-700/30 dark:focus-visible:ring-primary-400 dark:disabled:bg-primary-900"
@@ -211,11 +206,11 @@ export const Docs: FC<DocsProps> = ({ children }) => {
                     </Link>
                   )}
                   <Link
-                    href={`/docs/${current.slug}/getting-started#${currentCategory.slug}`}
+                    href={`/docs/${slugs[0]}/getting-started#${category}`}
                     className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-base-900 shadow-sm ring-1 ring-inset ring-base-300 transition-colors hover:bg-base-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-base-900 dark:text-white dark:ring-base-700 dark:hover:bg-base-700/50 dark:focus-visible:ring-primary-400 dark:disabled:bg-base-900"
                   >
                     <Tag size={18} /> Category:{' '}
-                    {currentCategory.slug
+                    {category
                       .split('-')
                       .map(
                         (word: any) =>
@@ -225,9 +220,9 @@ export const Docs: FC<DocsProps> = ({ children }) => {
                   </Link>
                   <Link
                     href={
-                      current.slug === 'components'
-                        ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
-                        : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.ts`
+                      slugs[0] === 'components'
+                        ? `https://github.com/prismaneui/prismane/tree/master/src/${slugs[0]}/${frontmatter.title}/${frontmatter.title}.tsx`
+                        : `https://github.com/prismaneui/prismane/tree/master/src/${slugs[0]}/${frontmatter.title}/${frontmatter.title}.ts`
                     }
                     target="_blank"
                     className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-base-900 shadow-sm ring-1 ring-inset ring-base-300 hover:bg-base-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-base-900 dark:text-white dark:ring-base-700 dark:hover:bg-base-700/50 dark:focus-visible:ring-primary-400 dark:disabled:bg-base-900"
@@ -243,7 +238,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
                   </Link>
                 </div>
               )}
-            {currentItem && ['components-api'].includes(current.slug) && (
+            {frontmatter && ['components-api'].includes(slugs[0]) && (
               <Warning className="!mb-0">
                 This section of the documentation is currently being updated!
               </Warning>
@@ -252,9 +247,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
           </div>
         )}
         <div className="flex grow flex-col">{children}</div>
-        {currentItem.slug !== 'getting-started' && (
-          <Navigation slugs={routes} />
-        )}
+        {frontmatter.slug !== 'getting-started' && <Navigation slugs={slugs} />}
       </div>
       <TableOfContents>
         <Separator className="my-4" />
@@ -262,7 +255,7 @@ export const Docs: FC<DocsProps> = ({ children }) => {
           Community
         </span>
         <Link
-          href={`https://github.com/spleafy/prismane-website/tree/main/src/content/${routes.join(
+          href={`https://github.com/spleafy/prismane-website/tree/main/src/content/docs/${slugs.join(
             '/'
           )}.mdx`}
           target="_blank"

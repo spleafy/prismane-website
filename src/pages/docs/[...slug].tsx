@@ -1,10 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import NextImage from 'next/image';
-import { useRouter } from 'next/router';
-import { serialize } from 'next-mdx-remote/serialize';
-import { File, TerminalWindow, Browser } from '@phosphor-icons/react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
+import path from 'path';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { File, TerminalWindow, Browser } from '@phosphor-icons/react';
 // MDX Parsing Plugins
 import remarkGfm from 'remark-gfm';
 import rehypeMdxCodeProps from 'rehype-mdx-code-props';
@@ -34,72 +36,98 @@ import ColorPalette from '@/components/docs/ColorPalette';
 import ImageBanner from '@/components/docs/ImageBanner';
 import Community from '@/components/Community';
 import VersatileComponents from '@/components/docs/VersatileComponents';
+// Types
+import { DocsFrontmatter } from '@/types';
 
-export async function getStaticPaths() {
+interface PageProps {
+  source: MDXRemoteSerializeResult<Record<string, unknown>, DocsFrontmatter>;
+  slugs: string[];
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const contentDir = path.join(process.cwd(), 'src/content/docs');
+
   const paths: { params: { slug: string[] } }[] = [];
 
-  const process = (items: any, parentRoutes?: string[]) => {
-    items.forEach((item: any) => {
-      const itemRoutes = parentRoutes
-        ? [...parentRoutes, item.slug]
-        : [item.slug];
+  const getMdxFiles = (dir: string, baseDir: string): string[] => {
+    if (!fs.existsSync(dir)) {
+      return [];
+    }
 
-      if (item.items && item.items.length > 0) {
-        process(item.items, itemRoutes);
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    return entries.flatMap((entry) => {
+      const fullPath = path.join(dir, entry.name);
+      const result: string[] = [];
+
+      if (entry.isDirectory()) {
+        result.push(...getMdxFiles(fullPath, baseDir));
+      } else if (entry.name.endsWith('.mdx')) {
+        const relativePath = path.relative(baseDir, fullPath);
+
+        result.push(relativePath.replace(/\.mdx$/, ''));
       }
 
-      paths.push({
-        params: {
-          slug: itemRoutes
-        }
-      });
+      return result;
     });
   };
 
-  process(content);
+  const mdxPaths = getMdxFiles(contentDir, contentDir);
+
+  paths.push(
+    ...mdxPaths.map((filePath) => ({
+      params: {
+        slug: filePath.split(/[\/\\]/)
+      }
+    }))
+  );
 
   return {
     paths,
     fallback: false
   };
-}
+};
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   try {
-    const { slug } = params;
+    const slugs = params?.slug as string[];
 
-    const data = fs.readFileSync(`src/content/${slug.join('/')}.mdx`, 'utf-8');
+    if (!slugs) {
+      return { notFound: true };
+    }
 
-    const source = await serialize(data, {
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeMdxCodeProps as any]
-      },
-      parseFrontmatter: true
-    });
+    const filePath = `src/content/docs/${slugs.join('/')}.mdx`;
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+
+    const source = await serialize<Record<string, unknown>, DocsFrontmatter>(
+      fileContent,
+      {
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [rehypeMdxCodeProps as any]
+        },
+        parseFrontmatter: true
+      }
+    );
 
     return {
       props: {
         source,
-        slug
+        slugs
       }
     };
-  } catch (err) {
-    console.error('Error fetching MDX content:', err);
+  } catch (error) {
+    console.error('Error fetching MDX content:', error);
 
-    return {
-      props: {},
-      notFound: true
-    };
+    return { notFound: true };
   }
-}
+};
 
-export default function Page(params: any) {
-  const itemTitle = findBySlugs(content, params.slug).title;
+export default function Page({ source, slugs }: PageProps) {
+  const itemTitle = source.frontmatter.title;
 
   const title = `Prismane / ${itemTitle}`;
-
-  console.log(params.source.frontmatter);
 
   return (
     <>
@@ -111,10 +139,10 @@ export default function Page(params: any) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Docs>
+      <Docs slugs={slugs} frontmatter={source.frontmatter}>
         {
           <MDX
-            {...params.source}
+            {...source}
             transform={{
               h1: (el) => <HeadingLink>{el}</HeadingLink>,
               h2: (el) => <HeadingLink>{el}</HeadingLink>,
