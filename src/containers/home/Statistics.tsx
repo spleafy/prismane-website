@@ -31,13 +31,13 @@ const Statistics = () => {
         </div>
         <div className="flex w-full grow flex-col items-center gap-2 border-base-300 bg-base-200/10 px-12 py-10 dark:border-base-800 dark:!bg-base-900/40 md:w-1/3">
           <Counter
-            value={210}
+            value={30}
             className="bg-gradient-to-b from-primary-500 to-secondary-500 bg-clip-text text-6xl font-black text-transparent"
           >
             +
           </Counter>
           <span className="text-lg text-base-900 dark:text-base-300">
-            Vibrant colors
+            Form validators
           </span>
         </div>
       </div>
