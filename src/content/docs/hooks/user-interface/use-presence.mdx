@@ -3,6 +3,9 @@ title: 'usePresence'
 description: 'usePresence hook provides a way to animate an element, before removing it from the DOM.'
 ---
 
+## Overview
+The usePresence hook elegantly handles the coordination between animation state and DOM presence, solving the common problem of elements disappearing before their exit animations complete. It takes a boolean to control when an element should appear or disappear and returns a separate presence boolean that delays the actual DOM removal until after your animation has finished playing. This hook is particularly valuable for creating smooth transitions when components enter or exit the page, ensuring that users see the complete animation sequence without abrupt disappearances.
+
 ## Import
 
 ```js

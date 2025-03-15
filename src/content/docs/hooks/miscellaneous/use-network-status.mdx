@@ -2,6 +2,8 @@
 title: 'useNetworkStatus'
 description: 'useNetworkStatus hook provides a simple way of handling changes in the internet connection.'
 ---
+## Overview
+The useNetworkStatus hook provides a simple and effective way to track changes in the user's internet connection. It returns a boolean value, isOnline, which dynamically reflects whether the user is currently online or offline. This hook allows developers to easily implement features that respond to network connectivity changes, such as displaying informative messages or adjusting application functionality. Integrating useNetworkStatus enhances the user experience by making applications more aware of their network environment.
 
 ## Import
 
@@ -23,11 +25,11 @@ To test this hook, you can try turning on or off your internet connection.
 
 ```jsx preview
 function Demo() {
-  const online = useNetworkStatus();
+  const isOnline = useNetworkStatus();
 
   return (
     <Stack>
-      <Text>You network is: {online ? 'online' : 'offline'}</Text>
+      <Text>You network is: {isOnline ? 'online' : 'offline'}</Text>
     </Stack>
   );
 }
