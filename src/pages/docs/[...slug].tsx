@@ -35,6 +35,7 @@ import GettingStarted from '@/components/docs/GettingStarted';
 import ColorPalette from '@/components/docs/ColorPalette';
 import ImageBanner from '@/components/docs/ImageBanner';
 import Community from '@/components/Community';
+import ThemeSelector from '@/components/docs/ThemeSelector';
 import VersatileComponents from '@/components/docs/VersatileComponents';
 // Lib
 import { getAllDocFiles, buildDocsTree, findDocBySlug } from '@/lib/docs';
@@ -133,6 +134,7 @@ export default function Page({ source, slugs }: PageProps) {
               Details,
               Note,
               NoteLink,
+              ThemeSelector,
               Warning,
               VersatileComponents,
               Yarn: () => (

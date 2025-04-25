@@ -106,6 +106,7 @@ const content: any = [
     title: 'Theming',
     slug: 'theming',
     items: [
+      { slug: 'introduction', title: 'Introduction' },
       { slug: 'theme-object', title: 'Theme Object' },
       { slug: 'prismane-provider', title: 'PrismaneProvider' },
       { slug: 'advanced-customization', title: 'Advanced Customization' },

@@ -1,0 +1,319 @@
+import React, { HTMLAttributes, useMemo } from 'react';
+import { DownloadSimple } from '@phosphor-icons/react';
+import { LivePreview, LiveProvider } from 'react-live';
+import config from '@/config/mdx';
+import Code from '@/components/docs/Code/Code';
+import {
+  PrismaneProvider as LocalPrismaneProvider,
+  PRISMANE_COLORS
+} from '@prismane/core';
+import type { PrismaneInputTheme } from '@prismane/core/dist/src/types';
+
+type Theme = {
+  name: string;
+  description: string;
+  filename?: string;
+  code?: string;
+  // Add the actual theme configuration object
+  config: PrismaneInputTheme;
+  preview: string;
+};
+
+const defaultPreview = `
+<Card w={420} gap={fr(2)} style={{fontFamily:'|fontFamily|'}}>
+  <Image
+    src="https://i.pinimg.com/originals/c0/1f/4c/c01f4c611c6ecaa688d25ddf1259b4aa.jpg"
+    br="base"
+    fit="cover"
+    mb={fr(2)}
+    h={236}
+  />
+  <Flex gap={fr(2)} mt={fr(4)}>
+    <Chip icon={<Fire />}>On Sale</Chip>
+    <Chip icon={<Tag />} color="teal">
+      New
+    </Chip>
+  </Flex>
+  <Flex direction="column" gap={fr(2)}>
+    <Text
+      fs="2xl"
+      fw="bold"
+      mt={fr(3)}
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
+      style={{fontFamily:'|fontFamily|'}}
+    >
+      |title|
+    </Text>
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 300] : ['base', 700])}
+      style={{fontFamily:'|fontFamily|'}}
+    >
+      Experience the ultimate comfort and style with our luxurious sofa,
+      designed to elevate your living space.
+    </Text>
+  </Flex>
+  <Text fw="bold" fs="2xl" cl="primary" style={{fontFamily:'|fontFamily|'}}>
+    $500
+  </Text>
+  <Tooltip label="Button tooltip information" aria-label="A tooltip">
+  <Alert mt={fr(4)} mb={fr(2)} w={'full'} variant="warning" closable>Review Your Order</Alert>
+  </Tooltip>
+  <Field mb={fr(2)} icon={<EnvelopeSimple />} placeholder="Enter your email" />
+  <Flex gap={fr(4)}>
+    <Button full>Buy Now</Button>
+    <Button variant="secondary" color="base" full>
+      Add To Cart
+    </Button>
+  </Flex>
+</Card>`;
+const THEMES: Theme[] = [
+  {
+    name: 'Meridian',
+    description:
+      'A precise, structured theme characterized by clean lines and professional spacing for business-critical applications. Its neutral color palette with subtle accents maintains focus on content while projecting authority and reliability',
+    filename: 'theme_meridian.json',
+    code: `// Create a custom theme object
+const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.blue },
+      base: {
+        100: '#333333', // Title
+        300: '#454545', // Text
+        700: '#1111ff', // Secondary button
+        800: '#fafafa' // Card
+      }
+    },
+    borderRadius: {
+      xs: '0px',
+      sm: '0px',
+      base: '0px',
+      md: '0px',
+      lg: '0px',
+      xl: '0px',
+      '2xl': '0px'
+    },
+    fontFamily: 'Inter'
+};`,
+    // Placeholder config for Loom
+    config: {
+      colors: {
+        primary: { ...PRISMANE_COLORS.blue },
+        base: {
+          100: '#333333', // Title
+          300: '#454545', // Text
+          700: '#1111ff', // Secondary button
+          800: '#fafafa' // Card
+        }
+      },
+      borderRadius: {
+        xs: '0px',
+        sm: '0px',
+        base: '0px',
+        md: '0px',
+        lg: '0px',
+        xl: '0px',
+        '2xl': '0px'
+      },
+      fontFamily: 'Inter'
+    },
+    preview: defaultPreview
+      .replaceAll('|title|', 'Meridian Sofa')
+      .replaceAll('|fontFamily|', 'Inter')
+  },
+  {
+    name: 'Flux',
+    description:
+      'An adaptable theme with smooth transitions and a fluid design system that easily transforms between different states and layouts. Its versatile component styling combines contemporary aesthetics with practical usability, making it suitable for a wide range of modern applications.',
+    code: `// Create a custom theme object
+const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.green },
+      base: { ...PRISMANE_COLORS.sepia }
+    },
+    borderRadius: {
+      xs: '8px',
+      sm: '12px',
+      base: '16px',
+      md: '24px',
+      lg: '32px',
+      xl: '48px',
+      '2xl': '64px'
+    }
+    fontFamily: 'Poppins'
+};`,
+    config: {
+      colors: {
+        primary: { ...PRISMANE_COLORS.green },
+        base: { ...PRISMANE_COLORS.sepia }
+      },
+      borderRadius: {
+        xs: '8px',
+        sm: '12px',
+        base: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '48px',
+        '2xl': '64px'
+      }
+    },
+    preview: defaultPreview
+      .replaceAll('|title|', 'Flux Sofa')
+      .replaceAll('|fontFamily|', 'Poppins')
+  },
+  {
+    name: 'Loom',
+    description:
+      'A playful theme featuring soft rounded corners, friendly button styles, and a vibrant color scheme that creates an approachable feel. Loom weaves together engaging animations and generous spacing to create interfaces that feel both fun and intuitive.',
+    code: `// Create a custom theme object
+const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.green },
+      base: { ...PRISMANE_COLORS.emerald }
+    },
+    borderRadius: {
+      xs: '4px',
+      sm: '6px',
+      base: '8px',
+      md: '12px',
+      lg: '16px',
+      xl: '24px',
+      '2xl': '32px'
+    }
+    fontFamily: 'Annie Use Your Telescope'
+};`,
+    // Actual theme config for Meridian
+    config: {
+      colors: {
+        primary: { ...PRISMANE_COLORS.green },
+        base: { ...PRISMANE_COLORS.emerald }
+      },
+      borderRadius: {
+        xs: '4px',
+        sm: '6px',
+        base: '8px',
+        md: '12px',
+        lg: '16px',
+        xl: '24px',
+        '2xl': '32px'
+      }
+    },
+    preview: defaultPreview
+      .replaceAll('|title|', 'Loom Sofa')
+      .replaceAll('|fontFamily|', 'Annie Use Your Telescope')
+  },
+  {
+    name: 'Ember',
+    description:
+      'A warm, inviting theme with subtle gradients and soft shadows that create depth without overwhelming the user. Its thoughtfully balanced typography and glowing accent highlights provide just enough visual energy while maintaining readability and a sense of calm confidence.',
+    code: `// Create a custom theme object
+const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.orange },
+      base: { ...PRISMANE_COLORS.amethyst }
+    },
+    borderRadius: {
+      xs: '8px',
+      sm: '12px',
+      base: '16px',
+      md: '24px',
+      lg: '32px',
+      xl: '48px',
+      '2xl': '64px'
+    }
+    fontFamily: 'Poppins'
+};`,
+    // Placeholder config for Ember
+    config: {
+      colors: {
+        primary: { ...PRISMANE_COLORS.orange },
+        base: { ...PRISMANE_COLORS.amethyst }
+      },
+      borderRadius: {
+        xs: '8px',
+        sm: '12px',
+        base: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '48px',
+        '2xl': '64px'
+      }
+    },
+    preview: defaultPreview
+      .replaceAll('|title|', 'Ember Sofa')
+      .replaceAll('|fontFamily|', 'Poppins')
+  }
+];
+
+interface ThemeSelectorProps extends HTMLAttributes<HTMLElement> {
+  icon?: React.ReactNode;
+}
+
+const ThemeSelector = ({
+  icon,
+  children,
+  className,
+  ...props
+}: ThemeSelectorProps) => {
+  const [selectedThemeIndex, setSelectedThemeIndex] = React.useState<number>(0);
+
+  const selectedTheme = useMemo(
+    () => THEMES[selectedThemeIndex],
+    [selectedThemeIndex]
+  );
+
+  return (
+    <div
+      className={`group relative my-5 flex flex-col items-center gap-2 rounded-md border border-base-200 bg-base-50 py-3 pl-4 pr-4 text-sm font-normal text-base-700 last:mb-0 dark:border-base-700 dark:bg-base-800 dark:text-base-300 [&>p]:!m-0 [&_code]:!bg-white dark:[&_code]:!bg-base-900 ${
+        className ? className : ''
+      }`}
+      {...props}
+    >
+      <div className="flex w-full items-start gap-2">
+        {THEMES.map((theme, index) => (
+          <button
+            className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm transition-colors focus:outline-none ${
+              index === selectedThemeIndex
+                ? 'code-item-active bg-base-100 text-base-700 dark:bg-base-900 dark:text-base-200'
+                : 'code-item-inactive hover:bg-base-50 dark:hover:bg-base-900/50'
+            }`}
+            onClick={() => {
+              setSelectedThemeIndex(index);
+            }}
+            key={index}
+          >
+            {theme.name}
+          </button>
+        ))}
+      </div>
+      <div className="text-sm text-base-500">{selectedTheme.description}</div>
+      <div className="mt-4 h-[610px] w-full flex-grow">
+        <LiveProvider
+          disabled
+          scope={config} // Use the memoized scope
+          code={selectedTheme.preview.trim()}
+          language={'jsx'}
+        >
+          <LocalPrismaneProvider theme={selectedTheme.config}>
+            <LivePreview className="flex w-full grow flex-wrap items-center gap-5" />
+          </LocalPrismaneProvider>
+        </LiveProvider>
+      </div>
+      <div className="mb-2 mt-8 w-full [&>div>div]:rounded-md [&>div]:my-0">
+        <Code
+          files={[
+            {
+              name: selectedTheme.filename || '',
+              icon,
+              value: selectedTheme.code || '',
+              language: 'jsx'
+            }
+          ]}
+          preview
+          noHeader
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ThemeSelector;
