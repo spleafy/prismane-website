@@ -3,6 +3,8 @@ import { DownloadSimple } from '@phosphor-icons/react';
 import { LivePreview, LiveProvider } from 'react-live';
 import config from '@/config/mdx';
 import Code from '@/components/docs/Code/Code';
+import { File, Sun, Moon, Info } from '@phosphor-icons/react';
+import InteractiveExample from '@/components/InteractiveExample';
 import {
   PrismaneProvider as LocalPrismaneProvider,
   PRISMANE_COLORS
@@ -262,13 +264,8 @@ const ThemeSelector = ({
   );
 
   return (
-    <div
-      className={`group relative my-5 flex flex-col items-center gap-2 rounded-md border border-base-200 bg-base-50 py-3 pl-4 pr-4 text-sm font-normal text-base-700 last:mb-0 dark:border-base-700 dark:bg-base-800 dark:text-base-300 [&>p]:!m-0 [&_code]:!bg-white dark:[&_code]:!bg-base-900 ${
-        className ? className : ''
-      }`}
-      {...props}
-    >
-      <div className="flex w-full items-start gap-2">
+    <div className="flex flex-col gap-2">
+      <div className="flex w-full justify-start gap-2">
         {THEMES.map((theme, index) => (
           <button
             className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm transition-colors focus:outline-none ${
@@ -285,8 +282,53 @@ const ThemeSelector = ({
           </button>
         ))}
       </div>
-      <div className="text-sm text-base-500">{selectedTheme.description}</div>
-      <div className="mt-4 h-[610px] w-full flex-grow">
+      <div className="mb-2 max-w-[50%] text-sm text-base-500">
+        {selectedTheme.description}
+      </div>
+      <InteractiveExample
+        actions={[
+          {
+            children: <Info />,
+            props: {
+              onClick: () => {}
+            },
+            tooltip: 'Show code'
+          },
+          {
+            children: (
+              // theme.mode === 'dark' ? (
+              <Sun weight="fill" />
+            ),
+            // ) : (
+            // <Moon weight="fill" />
+            // ),
+            props: {
+              onClick: () => {}
+            }
+          }
+        ]}
+        side={
+          <Code
+            files={[
+              {
+                name: selectedTheme.filename || '',
+                icon,
+                value: selectedTheme.code || '',
+                language: 'jsx'
+              }
+            ]}
+            className="relative mt-0 flex h-full w-full flex-col !rounded-md [&_button]:z-10 [&_div]:w-full [&_pre]:h-full [&_pre]:w-full"
+            preview
+            // noHeader
+          />
+        }
+        classNames={{
+          root: 'h-[790px]',
+          example:
+            '!py-14 dark:!bg-base-900 !bg-base-100 !bg-none flex items-center justify-center'
+        }}
+        switchOrder
+      >
         <LiveProvider
           disabled
           scope={config} // Use the memoized scope
@@ -294,24 +336,10 @@ const ThemeSelector = ({
           language={'jsx'}
         >
           <LocalPrismaneProvider theme={selectedTheme.config}>
-            <LivePreview className="flex w-full grow flex-wrap items-center gap-5" />
+            <LivePreview className="flex w-full grow flex-wrap items-center justify-center [&_*]:transition-all [&_*]:duration-700" />
           </LocalPrismaneProvider>
         </LiveProvider>
-      </div>
-      <div className="mb-2 mt-8 w-full [&>div>div]:rounded-md [&>div]:my-0">
-        <Code
-          files={[
-            {
-              name: selectedTheme.filename || '',
-              icon,
-              value: selectedTheme.code || '',
-              language: 'jsx'
-            }
-          ]}
-          preview
-          noHeader
-        />
-      </div>
+      </InteractiveExample>
     </div>
   );
 };
