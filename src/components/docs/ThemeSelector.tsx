@@ -1,9 +1,7 @@
 import React, { HTMLAttributes, useMemo } from 'react';
-import { DownloadSimple } from '@phosphor-icons/react';
 import { LivePreview, LiveProvider } from 'react-live';
 import config from '@/config/mdx';
 import Code from '@/components/docs/Code/Code';
-import { File, Sun, Moon, Info } from '@phosphor-icons/react';
 import InteractiveExample from '@/components/InteractiveExample';
 import {
   PrismaneProvider as LocalPrismaneProvider,
@@ -126,6 +124,7 @@ const theme = {
     name: 'Flux',
     description:
       'An adaptable theme with smooth transitions and a fluid design system that easily transforms between different states and layouts. Its versatile component styling combines contemporary aesthetics with practical usability, making it suitable for a wide range of modern applications.',
+    filename: 'theme_flux.json',
     code: `// Create a custom theme object
 const theme = {
     colors: {
@@ -166,6 +165,7 @@ const theme = {
     name: 'Loom',
     description:
       'A playful theme featuring soft rounded corners, friendly button styles, and a vibrant color scheme that creates an approachable feel. Loom weaves together engaging animations and generous spacing to create interfaces that feel both fun and intuitive.',
+    filename: 'theme_loom.json',
     code: `// Create a custom theme object
 const theme = {
     colors: {
@@ -207,6 +207,7 @@ const theme = {
     name: 'Ember',
     description:
       'A warm, inviting theme with subtle gradients and soft shadows that create depth without overwhelming the user. Its thoughtfully balanced typography and glowing accent highlights provide just enough visual energy while maintaining readability and a sense of calm confidence.',
+    filename: 'theme_ember.json',
     code: `// Create a custom theme object
 const theme = {
     colors: {
@@ -286,27 +287,6 @@ const ThemeSelector = ({
         {selectedTheme.description}
       </div>
       <InteractiveExample
-        actions={[
-          {
-            children: <Info />,
-            props: {
-              onClick: () => {}
-            },
-            tooltip: 'Show code'
-          },
-          {
-            children: (
-              // theme.mode === 'dark' ? (
-              <Sun weight="fill" />
-            ),
-            // ) : (
-            // <Moon weight="fill" />
-            // ),
-            props: {
-              onClick: () => {}
-            }
-          }
-        ]}
         side={
           <Code
             files={[
@@ -319,7 +299,6 @@ const ThemeSelector = ({
             ]}
             className="relative mt-0 flex h-full w-full flex-col !rounded-md [&_button]:z-10 [&_div]:w-full [&_pre]:h-full [&_pre]:w-full"
             preview
-            // noHeader
           />
         }
         classNames={{

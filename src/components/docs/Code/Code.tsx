@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { Copy, Check } from '@phosphor-icons/react';
 // Components
 import CodeHeader from './CodeHeader';
@@ -23,7 +23,6 @@ interface CodeProps extends HTMLAttributes<HTMLElement> {
   };
   preview?: boolean;
   expandable?: boolean;
-  noHeader?: boolean;
 }
 
 const Code = ({
@@ -31,12 +30,15 @@ const Code = ({
   classNames,
   preview = false,
   expandable = false,
-  noHeader = false,
   ...props
 }: CodeProps) => {
   const [active, setActive] = useState<string | null>(
     typeof files !== 'string' ? files[0].name : null
   );
+
+  useEffect(() => {
+    setActive(typeof files !== 'string' ? files[0].name : null);
+  }, [files]);
 
   const [copy, setCopy] = useState(false);
 
@@ -72,7 +74,7 @@ const Code = ({
         >
           {!copy ? <Copy size={16} /> : <Check size={16} />}
         </button>
-        {!noHeader && <CodeHeader className={classNames && classNames.header}>
+        <CodeHeader className={classNames && classNames.header}>
           {files.map((file, index) => (
             <CodeItem
               item={file.name}
@@ -81,7 +83,7 @@ const Code = ({
               key={index}
             />
           ))}
-        </CodeHeader>}
+        </CodeHeader>
         {files.map((file, index) => (
           <CodeBody
             className={classNames && classNames.body}
