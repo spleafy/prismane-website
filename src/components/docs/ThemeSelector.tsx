@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useMemo } from 'react';
+import React, { HTMLAttributes, useEffect, useMemo } from 'react';
 import { LivePreview, LiveProvider } from 'react-live';
 import config from '@/config/mdx';
 import Code from '@/components/docs/Code/Code';
@@ -9,18 +9,41 @@ import {
 } from '@prismane/core';
 import type { PrismaneInputTheme } from '@prismane/core/dist/src/types';
 
+type CSSProperties = React.CSSProperties;
+type SelectorStyles = CSSProperties;
+type StyleDefinition = Record<
+  string,
+  SelectorStyles | Record<string, SelectorStyles>
+>;
+
+function applyStyles(styles: StyleDefinition): void {
+  const styleEl = document.createElement('style');
+  document.head.appendChild(styleEl);
+
+  let cssText = '';
+  Object.entries(styles).forEach(([selector, properties]) => {
+    cssText += `${selector} {\n`;
+    Object.entries(properties).forEach(([prop, value]) => {
+      const cssProp = prop.replace(/([A-Z])/g, '-$1').toLowerCase();
+      cssText += `  ${cssProp}: ${value};\n`;
+    });
+    cssText += '}\n';
+  });
+
+  styleEl.textContent = cssText;
+}
+
 type Theme = {
   name: string;
   description: string;
   filename?: string;
   code?: string;
-  // Add the actual theme configuration object
   config: PrismaneInputTheme;
-  preview: string;
+  styles?: StyleDefinition;
 };
 
 const defaultPreview = `
-<Card w={420} gap={fr(2)} style={{fontFamily:'|fontFamily|'}}>
+<Card w={420} gap={fr(2)}>
   <Image
     src="https://i.pinimg.com/originals/c0/1f/4c/c01f4c611c6ecaa688d25ddf1259b4aa.jpg"
     br="base"
@@ -40,19 +63,20 @@ const defaultPreview = `
       fw="bold"
       mt={fr(3)}
       cl={(theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
-      style={{fontFamily:'|fontFamily|'}}
+      className="prismane_preview_custom_fontFamily"
     >
-      |title|
+      Ciello Collection Sofa
     </Text>
     <Text
       cl={(theme) => (theme.mode === 'dark' ? ['base', 300] : ['base', 700])}
-      style={{fontFamily:'|fontFamily|'}}
+      className="prismane_preview_custom_fontFamily"
+      style={{lineHeight: "1.5em", height: "calc(1.5em * 3)"}}
     >
       Experience the ultimate comfort and style with our luxurious sofa,
       designed to elevate your living space.
     </Text>
   </Flex>
-  <Text fw="bold" fs="2xl" cl="primary" style={{fontFamily:'|fontFamily|'}}>
+  <Text fw="bold" fs="2xl" cl="primary" className="prismane_preview_custom_fontFamily">
     $500
   </Text>
   <Tooltip label="Button tooltip information" aria-label="A tooltip">
@@ -116,9 +140,14 @@ const theme = {
       },
       fontFamily: 'Inter'
     },
-    preview: defaultPreview
-      .replaceAll('|title|', 'Meridian Sofa')
-      .replaceAll('|fontFamily|', 'Inter')
+    styles: {
+      '#prismane_livePreview > .PrismaneCard-root': {
+        border: '2px solid transparent'
+      },
+      '.prismane_preview_custom_fontFamily': {
+        fontFamily: 'Inter !important'
+      }
+    }
   },
   {
     name: 'Flux',
@@ -140,7 +169,7 @@ const theme = {
       xl: '48px',
       '2xl': '64px'
     }
-    fontFamily: 'Poppins'
+    fontFamily: 'Annie Use Your Telescope'
 };`,
     config: {
       colors: {
@@ -157,9 +186,14 @@ const theme = {
         '2xl': '64px'
       }
     },
-    preview: defaultPreview
-      .replaceAll('|title|', 'Flux Sofa')
-      .replaceAll('|fontFamily|', 'Poppins')
+    styles: {
+      '#prismane_livePreview > .PrismaneCard-root': {
+        border: '2px solid green'
+      },
+      '.prismane_preview_custom_fontFamily': {
+        fontFamily: 'Annie Use Your Telescope !important'
+      }
+    }
   },
   {
     name: 'Loom',
@@ -181,7 +215,7 @@ const theme = {
       xl: '24px',
       '2xl': '32px'
     }
-    fontFamily: 'Annie Use Your Telescope'
+    fontFamily: 'Poppins'
 };`,
     // Actual theme config for Meridian
     config: {
@@ -199,9 +233,14 @@ const theme = {
         '2xl': '32px'
       }
     },
-    preview: defaultPreview
-      .replaceAll('|title|', 'Loom Sofa')
-      .replaceAll('|fontFamily|', 'Annie Use Your Telescope')
+    styles: {
+      '#prismane_livePreview > .PrismaneCard-root': {
+        border: '2px solid transparent'
+      },
+      '.prismane_preview_custom_fontFamily': {
+        fontFamily: 'Poppins !important'
+      }
+    }
   },
   {
     name: 'Ember',
@@ -223,7 +262,7 @@ const theme = {
       xl: '48px',
       '2xl': '64px'
     }
-    fontFamily: 'Poppins'
+    fontFamily: 'Roboto'
 };`,
     // Placeholder config for Ember
     config: {
@@ -241,9 +280,14 @@ const theme = {
         '2xl': '64px'
       }
     },
-    preview: defaultPreview
-      .replaceAll('|title|', 'Ember Sofa')
-      .replaceAll('|fontFamily|', 'Poppins')
+    styles: {
+      '#prismane_livePreview > .PrismaneCard-root': {
+        border: '2px solid transparent'
+      },
+      '.prismane_preview_custom_fontFamily': {
+        fontFamily: 'Roboto !important'
+      }
+    }
   }
 ];
 
@@ -264,8 +308,14 @@ const ThemeSelector = ({
     [selectedThemeIndex]
   );
 
+  useEffect(() => {
+    if (selectedTheme.styles) {
+      applyStyles(selectedTheme.styles);
+    }
+  }, [selectedThemeIndex, selectedTheme.styles]);
+
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex w-full max-w-full flex-col gap-2">
       <div className="flex w-full justify-start gap-2">
         {THEMES.map((theme, index) => (
           <button
@@ -283,7 +333,7 @@ const ThemeSelector = ({
           </button>
         ))}
       </div>
-      <div className="mb-2 max-w-[50%] text-sm text-base-500">
+      <div className="mb-2 h-[120px] text-sm text-base-500 lg:h-auto lg:max-w-[50%]">
         {selectedTheme.description}
       </div>
       <InteractiveExample
@@ -302,20 +352,24 @@ const ThemeSelector = ({
           />
         }
         classNames={{
-          root: 'h-[790px]',
+          root: 'lg:h-[790px]',
+          side: '[&>div>div:last-child]:h-full',
           example:
-            '!py-14 dark:!bg-base-900 !bg-base-100 !bg-none flex items-center justify-center'
+            '!py-0 lg:!py-14 dark:!bg-base-900 !bg-base-100 !bg-none flex items-center justify-center'
         }}
         switchOrder
       >
         <LiveProvider
           disabled
           scope={config} // Use the memoized scope
-          code={selectedTheme.preview.trim()}
+          code={defaultPreview.trim()}
           language={'jsx'}
         >
           <LocalPrismaneProvider theme={selectedTheme.config}>
-            <LivePreview className="flex w-full grow flex-wrap items-center justify-center [&_*]:transition-all [&_*]:duration-700" />
+            <LivePreview
+              id="prismane_livePreview"
+              className="flex w-full grow flex-wrap items-center justify-center [&_*]:transition-all [&_*]:duration-700"
+            />
           </LocalPrismaneProvider>
         </LiveProvider>
       </InteractiveExample>
