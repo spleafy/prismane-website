@@ -1,6 +1,7 @@
 import Image from 'next/image';
 // Containers
 import Section from '../Section';
+import ThemeSelector from '@/components/docs/ThemeSelector';
 
 const Theming = () => {
   return (
@@ -13,6 +14,7 @@ const Theming = () => {
         Prismane provides a simple way to overwrite and customize the default
         theme allowing you to have endless possibilities.
       </span>
+      <ThemeSelector />
     </Section>
   );
 };
