@@ -26,7 +26,15 @@ import GoogleAnalytics from './GoogleAnalytics';
 import Layout from '@/containers/Layout';
 import Loader from '@/components/Loader';
 // Theme
-import { PrismaneProvider, PRISMANE_COLORS } from '@prismane/core';
+import { PRISMANE_COLORS } from '@prismane/core';
+
+import dynamic from "next/dynamic";
+
+const PrismaneProvider = dynamic(
+  () => import("@prismane/core").then(mod => mod.PrismaneProvider),
+  { ssr: false }
+);
+
 
 export default function App({ Component, pageProps }: any) {
   const [loading, setLoading] = useState(false);
