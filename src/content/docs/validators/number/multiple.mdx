@@ -1,0 +1,102 @@
+---
+title: 'multiple'
+description: 'This validator checks if a number is a multiple of a given number.'
+---
+
+## Import
+
+```js
+import { multiple } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `multiple` validator accepts the following parameters:
+
+| Name        | Type                  | Description                       |
+| ----------- | --------------------- | --------------------------------- |
+| `value`     | _number_              | The value that will be validated. |
+| `of`        | _number_              | The number that will be compared. |
+| `fieldName` | _string_, _undefined_ | The name of the field.            |
+
+## Usage
+
+The `multiple` validator tests the provided value and checks if it is multiple of the provided number.
+
+```ts
+const value = 15;
+
+const number = 10;
+
+const error = multiple(value, number);
+
+console.log(error); // This number must be multiple of 10!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = 20;
+
+const number = 10;
+
+const error = multiple(value, number);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it multiple personalized to the given field.
+
+```ts
+const value = 15;
+
+const number = 10;
+
+const error = multiple(value, number, 'Count');
+
+console.log(error); // Count must be multiple of 10!
+```
+
+### useForm Example
+
+The `multiple` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      number: {
+        value: 0,
+        validators: {
+          multiple: (v: string) => multiple(v, 5),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <NumberField
+        placeholder="Enter your number:"
+        label="Number:"
+        {...register("number")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

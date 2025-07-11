@@ -1,0 +1,147 @@
+---
+title: 'useCounter'
+description: 'useCounter hook provides a simple way to manage a stateful counter.'
+---
+
+## Overview
+The useCounter hook simplifies numeric state management in React components with a clean, intuitive API. It provides essential counter functionality with optional min/max boundaries to prevent values from exceeding desired ranges. With customizable increment and decrement steps, this hook offers flexibility for implementing various UI elements like quantity selectors, pagination controls, and rating systems.
+
+## Import
+
+```js
+import { useCounter } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useCounter` hook accepts the following parameters:
+
+| Name           | Type     | Description                       | Default Value             |
+| -------------- | -------- | --------------------------------- | ------------------------- |
+| `initialValue` | _number_ | The initial value of the counter. | _0_                       |
+| `minValue`     | _number_ | The minimum value of the counter  | _Number.MIN_SAFE_INTEGER_ |
+| `maxValue`     | _number_ | The maximum value of the counter. | _Number.MAX_SAFE_INTEGER_ |
+
+## Return Value
+
+The `useCounter` hook returns an object containing the following properties:
+
+| Name        | Type                         | Description                               |
+| ----------- | ---------------------------- | ----------------------------------------- |
+| `increment` | _(step: number = 1) => void_ | A function that increments the counter.   |
+| `decrement` | _(step: number = 1) => void_ | A function that decrements the counter.   |
+| `set`       | _() => void_                 | A function to set a value to the counter. |
+| `counter`   | _number_                     | The current value of the counter.         |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const { counter, increment, decrement, set } = useCounter();
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>
+        Current Count: {counter}
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => increment()}>Increment</Button>
+        <Button onClick={() => decrement()}>Decrement</Button>
+        <Button onClick={() => set(20)}>Set Value To 20</Button>
+      </Flex>
+    </Flex>
+  );
+}
+```
+
+### Initial Value
+
+Pass the _initialValue_ parameter, which is the first parameter, to set the initial value of the counter.
+
+```jsx preview
+function Demo() {
+  const { counter, increment, decrement } = useCounter(5);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>
+        Current Count: {counter}
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => increment()}>Increment</Button>
+        <Button onClick={() => decrement()}>Decrement</Button>
+      </Flex>
+    </Flex>
+  );
+}
+```
+
+### Min Value
+
+Pass the _minValue_ parameter, which is the first parameter, to set the minimum value of the counter.
+
+```jsx preview
+function Demo() {
+  const { counter, decrement } = useCounter(5, 0);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>
+        Current Count: {counter}
+      </Text>
+      <Text>
+        Minimum Value - 0
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => decrement()}>Decrement</Button>
+      </Flex>
+    </Flex>
+  );
+}
+```
+
+### Max Value
+
+Pass the _maxValue_ parameter, which is the first parameter, to set the maximum value of the counter.
+
+```jsx preview
+function Demo() {
+  const { counter, increment } = useCounter(5, 0, 10);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>
+        Current Count: {counter}
+      </Text>
+      <Text>
+        Maximum Value - 10
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => increment()}>Increment</Button>
+      </Flex>
+    </Flex>
+  );
+}
+```
+
+### Custom Step
+
+Pass the _step_ parameter to the `increment` and `decrement` functions to change the counter value by a custom step.
+
+```jsx preview
+function Demo() {
+  const { counter, increment, decrement } = useCounter();
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>
+        Current Count: {counter}
+      </Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={() => increment(3)}>Increment by 3</Button>
+        <Button onClick={() => decrement(5)}>Decrement by 5</Button>
+      </Flex>
+    </Flex>
+  );
+}
+```

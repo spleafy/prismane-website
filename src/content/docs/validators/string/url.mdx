@@ -1,0 +1,97 @@
+---
+title: 'url'
+description: 'This validator checks if a string is a valid URL.'
+---
+
+## Import
+
+```js
+import { url } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `url` validator accepts the following parameters:
+
+| Name     | Type                  | Description                               | Default Value |
+| -------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`  | _string_              | The string that will be validated.        | -             |
+| `regExp` | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+
+## Usage
+
+The `url` validator tests the provided value and checks if it is a valid URL.
+
+```ts
+const string = '1234567890';
+
+const error = url(string);
+
+console.log(error); // This is not a valid URL!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = 'https://www.prismane.io';
+
+const error = url(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = 'ftp://127.0.0.1';
+
+const regExp = /^(http|https):\/\/[^ "]+$/;
+
+const error = uppercase(string, regExp);
+
+console.log(error); // This is not a valid URL!
+```
+
+### useForm Example
+
+The `url` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      website: {
+        value: "",
+        validators: {
+          url: (v: string) => url(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <TextField
+        placeholder="Enter your website:"
+        label="Website:"
+        {...register("website")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

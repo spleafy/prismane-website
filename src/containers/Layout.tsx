@@ -1,8 +1,8 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 // Containers
-import News from "./News";
-import Header from "./Header";
-import Footer from "./Footer";
+import News from './News';
+import Header from './Header';
+import Footer from './Footer';
 
 interface T {
   children: ReactNode;
@@ -11,7 +11,7 @@ interface T {
 export const Layout: FC<T> = ({ children }) => {
   return (
     <>
-      <News />
+      {/* <News /> */}
       <Header />
       <main>{children}</main>
       <Footer />

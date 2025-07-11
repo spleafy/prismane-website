@@ -1,0 +1,28 @@
+---
+title: 'Gradient API'
+description: "Learn about the Gradient component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { GradientProps } from '@prismane/core';
+```
+
+## Props
+
+`Gradient` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name   | Type     | Description                  | Default          |
+| ------ | -------- | ---------------------------- | ---------------- |
+| `from` | `any`    | The gradient starting color. | ["primary", 500] |
+| `to`   | `any`    | The gradient ending color.   | ["primary", 300] |
+| `deg`  | `number` | The gradient degrees.        | 90               |
+
+## CSS
+
+`Gradient` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class             | Description             |
+| ------ | ------------------------ | ----------------------- |
+| `root` | `.PrismaneGradient-root` | The gradient container. |

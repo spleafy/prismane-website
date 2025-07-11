@@ -1,0 +1,51 @@
+---
+title: 'useLocalization'
+description: 'useLocalization hook provides a simple way to handle localization and dynamic translation.'
+---
+
+## Overview
+The useLocalization hook simplifies the implementation of multi-language support in React applications with minimal configuration. It provides a straightforward mechanism for storing, retrieving, and dynamically switching between translations based on the selected locale. This hook eliminates the need for complex internationalization libraries when basic translation capabilities are required, making it perfect for smaller applications or components that need localized text without the overhead of larger i18n solutions.
+
+## Import
+
+```js
+import { useLocalization } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useLocalization` hook accepts the following parameters:
+
+| Name            | Type                      | Description                                               | Default Value |
+| --------------- | ------------------------- | --------------------------------------------------------- | ------------- |
+| `defaultLocale` | _string_                  | The default locale.                                       | -             |
+| `translations`  | _Record\<string, string>_ | The translations object with all of the translated texts. | -             |
+
+## Return Value
+
+The `useLocalization` hook returns an object containing the following properties:
+
+| Name           | Type                  | Description                                          |
+| -------------- | --------------------- | ---------------------------------------------------- |
+| `locale`       | _string_              | The current locale.                                  |
+| `text`         | _string_, _undefined_ | The translated text or texts.                        |
+| `changeLocale` | _() => void_          | Function that changes the locale to a different one. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const { locale, text, changeLocale } = useLocalization('en', {
+    en: 'Hello from Bulgaria!',
+    de: 'Hallo aus Bulgarien!'
+  });
+
+  return (
+    <Stack>
+      <Text>Locale: {locale}</Text>
+      <Text>{text}</Text>
+      <Button onClick={() => changeLocale('de')}>Change Locale</Button>
+    </Stack>
+  );
+}
+```

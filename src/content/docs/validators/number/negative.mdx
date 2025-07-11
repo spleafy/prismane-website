@@ -1,0 +1,95 @@
+---
+title: 'negative'
+description: 'This validator checks if a number is negative.'
+---
+
+## Import
+
+```js
+import { negative } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `negative` validator accepts the following parameters:
+
+| Name        | Type                  | Description                       |
+| ----------- | --------------------- | --------------------------------- |
+| `value`     | _number_              | The value that will be validated. |
+| `fieldName` | _string_, _undefined_ | The name of the field.            |
+
+## Usage
+
+The `negative` validator tests the provided value and checks if it is negative.
+
+```ts
+const value = 10;
+
+const error = negative(value);
+
+console.log(error); // This number must be negative!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const value = -10;
+
+const error = negative(value);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the second parameter, to customize the error message to make it negative personalized to the given field.
+
+```ts
+const value = 10;
+
+const error = negative(value, 'Debt');
+
+console.log(error); // Debt must be negative!
+```
+
+### useForm Example
+
+The `negative` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      number: {
+        value: 0,
+        validators: {
+          negative: (v: string) => negative(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <NumberField
+        placeholder="Enter your number:"
+        label="Number:"
+        {...register("number")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

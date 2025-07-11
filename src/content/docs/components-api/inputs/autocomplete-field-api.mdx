@@ -1,0 +1,26 @@
+---
+title: 'AutocompleteField API'
+description: "Learn about the AutocompleteField component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { AutocompleteFieldProps } from '@prismane/core';
+```
+
+## Props
+
+`AutocompleteField` extends [SelectField](/docs/components-api/select-field-api) component's props.
+
+| Name     | Type                       | Description                       | Default |
+| -------- | -------------------------- | --------------------------------- | ------- |
+| `filter` | `(value, item) => boolean` | The filter function of the field. | -       |
+
+## CSS
+
+`AutocompleteField` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class                      | Description                                        |
+| ------ | --------------------------------- | -------------------------------------------------- |
+| `root` | `.PrismaneAutocompleteField-root` | The container of the autocomplete field component. |

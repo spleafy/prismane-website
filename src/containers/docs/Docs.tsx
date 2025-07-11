@@ -1,125 +1,152 @@
-import { FC, ReactNode, useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight, GithubLogo, Tag } from "@phosphor-icons/react";
-import { Chip } from "@prismane/core";
+import React, { FC, ReactNode, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Tag,
+  Intersect,
+  Pen,
+  ShootingStar,
+  Chats,
+  HandHeart,
+  Note,
+  Video,
+  Flask
+} from '@phosphor-icons/react';
+// Components
+import Separator from '@/components/Separator';
+import Warning from '@/components/docs/Warning';
+// Containers
+import Breadcrumbs from './Breadcrumbs';
+import TableOfContents from './TableOfContents';
+import Navigation from './Navigation';
+// Hooks
+import useNavigation from '@/useNavigation';
 // Content
-import content from "@/content";
-import categories from "@/categories";
+import content from '@/content';
+import findBySlugs from '@/findBySlugs';
+// Types
+import { DocsFrontmatter } from '@/types/docs';
 
-interface T {
-  children?: ReactNode;
-}
+type SideNavigationProps = {
+  items: any;
+  toggle: (item: any) => void;
+  path: string;
+  expanded: any;
+  inner?: boolean;
+  parentRoute?: string;
+};
 
-const Versatile = ({ children }: any) => (
-  <div className="flex items-center gap-5">
-    <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-      {children}
-    </h1>
-    <Link href="/docs/getting-started/versatile-components">
-      <Chip>Versatile Component</Chip>
-    </Link>
+const SideNavigation = ({
+  items,
+  toggle,
+  path,
+  expanded,
+  inner,
+  parentRoute
+}: SideNavigationProps) => (
+  <div
+    className={`flex flex-col gap-2 ${
+      inner
+        ? 'inner mb-3 ml-2.5 border-l border-base-200 dark:border-base-800 [&_.inner]:!ml-6'
+        : ''
+    }`}
+  >
+    {items.map((item: any, index: number) => (
+      <React.Fragment key={index}>
+        <Link
+          href={
+            parentRoute ? `${parentRoute}/${item.slug}` : `/docs/${item.slug}`
+          }
+          className={`flex cursor-pointer items-center justify-between ${
+            inner
+              ? `-ml-px border-l border-transparent pl-5 hover:border-base-400 dark:hover:border-base-500 ${
+                  path.includes(item.route) ? '!border-primary-500' : ''
+                }`
+              : ''
+          }`}
+          onClick={(e) => {
+            if (item.items) {
+              e.preventDefault();
+            }
+          }}
+        >
+          <span
+            className={`flex w-full items-center gap-3 whitespace-nowrap text-sm font-medium transition-colors ${
+              item.items && item.items.length > 0
+                ? 'mb-2 mt-4 !font-semibold text-base-900 dark:text-base-200'
+                : `py-0.5 text-base-700 hover:text-base-900 dark:text-base-400 dark:hover:text-base-300 ${
+                    path.includes(item.route)
+                      ? '!font-semibold !text-primary-500'
+                      : ''
+                  }`
+            }`}
+          >
+            {item.icon && (
+              <div className="flex items-center justify-center text-xl text-inherit">
+                {item.icon}
+              </div>
+            )}
+            {item.title}
+          </span>
+        </Link>
+        {item.items && (
+          <SideNavigation
+            items={item.items}
+            path={path}
+            toggle={toggle}
+            expanded={expanded}
+            inner
+            parentRoute={
+              parentRoute ? `${parentRoute}/${item.slug}` : `/docs/${item.slug}`
+            }
+          />
+        )}
+      </React.Fragment>
+    ))}
   </div>
 );
 
-export const Docs: FC<T> = ({ children }) => {
-  const router = useRouter();
+interface DocsProps {
+  slugs: string[];
+  frontmatter: DocsFrontmatter;
+  children?: ReactNode;
+}
 
-  const { asPath } = router;
+export const Docs: FC<DocsProps> = ({ slugs, frontmatter, children }) => {
+  const path = '/' + slugs.join('/');
 
-  const path = asPath.replace("/docs", "");
+  const category = slugs[slugs.length - 2];
 
-  const splitRoutes = path.split("/");
-
-  splitRoutes.shift();
-
-  const routes = splitRoutes.map((route) => {
-    return route.replace(/[#?].*$/, "");
-  });
-
-  const current = content.find((nav: any) => nav.slug === routes[0]);
-
-  const currentIndex = current.items.findIndex(
-    (obj: any) => obj.slug === routes[1]
-  );
-
-  const currentItem = current.items[currentIndex];
-
-  const [tableOfContents, setTableOfContents] = useState([]);
-
-  useEffect(() => {
-    const headings = document.querySelectorAll(".docs-anchor");
-    const toc: any = [];
-
-    let currentHeading: any = null;
-
-    headings.forEach((element) => {
-      if (element.children[0].tagName === "H2") {
-        currentHeading = {
-          title: element.children[0].textContent,
-          id: element.id,
-          subheadings: [],
-        };
-        toc.push(currentHeading);
-      } else if (element.children[0].tagName === "H3" && currentHeading) {
-        currentHeading.subheadings.push({
-          title: element.children[0].textContent,
-          id: element.id,
-        });
-      }
-    });
-
-    setTableOfContents(toc);
-  }, [asPath]);
-
-  const [visible, setVisible] = useState<any>("");
-
-  useEffect(() => {
-    const elementIds: string[] = tableOfContents.flatMap((item: any) => [
-      item.id,
-      ...(item.subheadings
-        ? item.subheadings.map((subheading: any) => subheading.id)
-        : []),
-    ]);
-
-    const observer = new IntersectionObserver((entries) => {
-      const active = entries.reduceRight(
-        (acc: any, item: any) =>
-          item.isIntersecting === true && !acc ? item : acc,
-        null
-      );
-
-      setVisible((pv: any) =>
-        active ? active.target.children[0].textContent : pv
-      );
-    });
-
-    elementIds.forEach((id: any) => {
-      const targetElement = document.getElementById(id);
-      if (targetElement) {
-        observer.observe(targetElement);
-      }
-    });
-  }, [tableOfContents]);
+  const { navigation, expanded, toggle } = useNavigation(content);
 
   return (
-    <div className="flex gap-5 items-center mx-auto max-w-[1440px]">
-      <nav className="hidden md:flex flex-col gap-5 min-w-[240px] p-5 pl-0 self-start sticky top-32 left-0 max-h-[84vh]">
+    <div className="mx-auto flex w-full max-w-[1280px] items-center gap-5 pt-5">
+      <nav className="sticky left-0 top-[88px] hidden max-h-[calc(100vh-100px)] min-w-[240px] flex-col items-stretch gap-5 self-start overflow-y-auto p-5 pl-0 md:flex">
         {content.map((nav: any, index: number) => (
           <Link
             key={index}
-            href={`/docs/${nav.slug}/${nav.items[0].slug}`}
-            className="flex flex-col gap-5 px-3 group"
+            href={`/docs/${nav.slug}/${
+              nav.items.length > 0 ? nav.items[0].slug : ''
+            }`}
+            className="group flex flex-col gap-5 px-3 xl:px-0"
+            {...nav.props}
           >
-            <div className="flex items-center gap-4 cursor-pointer group">
-              <div className="flex w-6 h-6 items-center justify-center text-white rounded-sm gradient">
+            <div className="group flex cursor-pointer items-center gap-4">
+              <div
+                className={`flex h-6 w-6 items-center justify-center rounded ${
+                  slugs[0] === nav.slug
+                    ? 'gradient text-white'
+                    : 'group-hover:gradient border border-base-300 bg-base-100 text-base-500 group-hover:border-none group-hover:text-white dark:border-base-700 dark:bg-base-900 dark:text-base-400'
+                }`}
+              >
                 {nav.icon}
               </div>
               <span
-                className={`font-medium text-sm transition-colors ${
-                  routes[0] === nav.slug
-                    ? "dark:text-primary-500 text-primary-700"
-                    : "dark:text-white text-base-900 dark:group-hover:text-base-300 group-hover:text-base-700"
+                className={`text-sm font-medium transition-colors ${
+                  slugs[0] === nav.slug
+                    ? 'text-primary-500'
+                    : 'text-base-500 group-hover:text-base-700 dark:text-base-400 dark:group-hover:text-white'
                 }`}
               >
                 {nav.title}
@@ -127,156 +154,161 @@ export const Docs: FC<T> = ({ children }) => {
             </div>
           </Link>
         ))}
-        <div className="mt-5 flex flex-col gap-2 overflow-y-auto h-full">
-          {current.items.map((item: any, index: number) => (
-            <Link
-              key={index}
-              href={`/docs/${
-                content.find((nav: any) => nav.slug === routes[0]).slug
-              }/${item.slug}`}
-              className={`text-sm px-3 py-1 rounded-md font-medium ${
-                path.split("/")[path.split("/").length - 1] === item.slug
-                  ? "dark:text-primary-500 text-primary-700 bg-primary-700/20"
-                  : "dark:text-white text-base-900"
-              }`}
-            >
-              {item.title}
-            </Link>
-          ))}
+        <Separator className="mt-2" />
+        <div className="flex h-full max-h-full flex-col gap-0.5 px-3 xl:px-0">
+          <SideNavigation
+            items={navigation.find((nav: any) => nav.slug === slugs[0]).items}
+            expanded={expanded}
+            toggle={toggle}
+            path={path}
+            parentRoute={slugs[0]}
+          />
         </div>
       </nav>
-      <div className="flex flex-col grow gap-4 p-5 w-full self-start">
-        {currentItem && (
-          <>
-            {currentItem.versatile ? (
-              <Versatile>{currentItem.title}</Versatile>
-            ) : (
-              <h1 className="text-base-900 dark:text-white text-2xl sm:text-4xl font-bold">
-                {currentItem.title}
-              </h1>
+      <div className="flex w-full max-w-[1040px] flex-col self-start p-5 [&:has(.docs-anchor)]:!max-w-[800px]">
+        <Breadcrumbs
+          items={{
+            parent: {
+              title: slugs[0]
+                .split('-')
+                .map(
+                  (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
+                )
+                .join(' '),
+              slug: slugs[0]
+            },
+            child: {
+              title: frontmatter.title,
+              slug: slugs[slugs.length - 1]
+            }
+          }}
+        />
+        {frontmatter && (
+          <div className="flex flex-col">
+            <h1 className="text-3xl font-bold tracking-tight text-base-900 dark:text-white sm:text-4xl">
+              {frontmatter.title}
+            </h1>
+            {frontmatter.description && (
+              <span className="mt-4 text-lg text-base-500 dark:text-base-400">
+                {frontmatter.description}
+              </span>
             )}
-            <span className="text-base-700 dark:text-base-400 leading-7 w-full">
-              {currentItem.description}
-            </span>
-          </>
-        )}
-        {currentItem &&
-          ["components", "hooks"].includes(current.slug) &&
-          currentItem.category && (
-            <div className="flex items-center gap-2 flex-col sm:flex-row">
-              <Link
-                href={`/docs/${current.slug}/getting-started#${currentItem.category}`}
-                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
-              >
-                <Tag size={18} /> Category:{" "}
-                {currentItem.category
-                  .split("-")
-                  .map(
-                    (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
-                  )
-                  .join(" ")}
-              </Link>
-              <Link
-                href={
-                  current.slug === "components"
-                    ? `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.tsx`
-                    : `https://github.com/prismaneui/prismane/tree/master/src/${current.slug}/${currentItem.title}/${currentItem.title}.ts`
-                }
-                target="_blank"
-                className="flex text-sm items-center gap-2 w-full sm:w-fit border rounded-md dark:hover:bg-base-700/10 hover:bg-base-500/10 transition-colors px-4 py-2 cursor-pointer"
-              >
-                <GithubLogo size={18} /> Source
-              </Link>
-            </div>
-          )}
-        {children}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-5">
-          <div className="flex grow w-full md:w-1/2">
-            {currentIndex > 0 && (
-              <Link
-                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
-                href={`/docs/${routes[0]}/${
-                  current.items[currentIndex - 1].slug
-                }`}
-              >
-                <ArrowLeft size={24} weight="bold" />
-                <div className="flex flex-col gap-2">
-                  <span className="font-medium text-lg sm:text-2xl self-end">
-                    Go Back
-                  </span>
-                  <span className="dark:text-white text-base-900 self-end text-sm sm:text-base">
-                    {current.items[currentIndex - 1].title}
-                  </span>
-                </div>
-              </Link>
-            )}
-          </div>
-          <div className="flex grow w-full md:w-1/2">
-            {currentIndex < current.items.length - 1 && (
-              <Link
-                className="flex grow justify-between items-center p-3 sm:p-4 sm:pr-6 rounded-md border border-primary-500 text-primary-500 dark:hover:bg-primary-500/5 hover:bg-primary-500/20 transition-colors"
-                href={`/docs/${routes[0]}/${
-                  current.items[currentIndex + 1].slug
-                }`}
-              >
-                <div className="flex flex-col gap-2">
-                  <span className="font-medium text-lg sm:text-2xl ">
-                    Up Next
-                  </span>
-                  <span className="dark:text-white text-base-900 text-sm sm:text-base">
-                    {current.items[currentIndex + 1].title}
-                  </span>
-                </div>
-                <ArrowRight size={24} weight="bold" />
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
-      {tableOfContents.length > 0 && (
-        <div className="hidden lg:flex flex-col self-start w-72 min-w-[288px] p-5 sticky top-32 left-0 max-h-[84vh] overflow-y-auto">
-          <span className="dark:text-white text-base-900 font-bold">
-            On This Page
-          </span>
-          <ul>
-            {tableOfContents.map((section: any, index) => (
-              <li key={index} className="mt-4 text-sm">
-                <Link
-                  className={
-                    visible === section.title
-                      ? "text-primary-500 font-medium"
-                      : ""
-                  }
-                  href={`${router.asPath.replace(/[#?].*$/, "")}#${section.id}`}
-                >
-                  {section.title}
-                </Link>
-                {section.subheadings.length > 0 && (
-                  <ul className="ml-4">
-                    {section.subheadings.map(
-                      (subheading: any, subIndex: any) => (
-                        <Link
-                          key={subIndex}
-                          className={
-                            visible === subheading.title
-                              ? "text-primary-500 font-medium"
-                              : ""
-                          }
-                          href={`${router.asPath.replace(/[#?].*$/, "")}#${
-                            subheading.id
-                          }`}
-                        >
-                          <li className="mt-2">{subheading.title}</li>
-                        </Link>
+            {frontmatter &&
+              ['components', 'hooks'].includes(slugs[0]) &&
+              slugs.length >= 3 && (
+                <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center">
+                  {frontmatter.versatile && (
+                    <Link
+                      href="/docs/getting-started/versatile-components"
+                      className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-primary-900 shadow-sm ring-1 ring-inset ring-primary-300 transition-colors hover:bg-primary-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-primary-900/30 dark:text-white dark:ring-primary-700 dark:hover:bg-primary-700/30 dark:focus-visible:ring-primary-400 dark:disabled:bg-primary-900"
+                    >
+                      <Intersect size={18} /> Versatile Component
+                    </Link>
+                  )}
+                  <Link
+                    href={`/docs/${slugs[0]}/getting-started#${category}`}
+                    className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-base-900 shadow-sm ring-1 ring-inset ring-base-300 transition-colors hover:bg-base-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-base-900 dark:text-white dark:ring-base-700 dark:hover:bg-base-700/50 dark:focus-visible:ring-primary-400 dark:disabled:bg-base-900"
+                  >
+                    <Tag size={18} /> Category:{' '}
+                    {category
+                      .split('-')
+                      .map(
+                        (word: any) =>
+                          word.charAt(0).toUpperCase() + word.slice(1)
                       )
-                    )}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+                      .join(' ')}
+                  </Link>
+                  <Link
+                    href={
+                      slugs[0] === 'components'
+                        ? `https://github.com/prismaneui/prismane/tree/master/src/${slugs[0]}/${frontmatter.title}/${frontmatter.title}.tsx`
+                        : `https://github.com/prismaneui/prismane/tree/master/src/${slugs[0]}/${frontmatter.title}/${frontmatter.title}.ts`
+                    }
+                    target="_blank"
+                    className="inline-flex h-[30px] flex-shrink-0 items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-xs font-medium text-base-900 shadow-sm ring-1 ring-inset ring-base-300 hover:bg-base-50 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary-500 disabled:cursor-not-allowed disabled:bg-white disabled:opacity-75 dark:bg-base-900 dark:text-white dark:ring-base-700 dark:hover:bg-base-700/50 dark:focus-visible:ring-primary-400 dark:disabled:bg-base-900"
+                  >
+                    <Image
+                      src="/github_logo.svg"
+                      alt="Github Logo"
+                      width={18}
+                      height={18}
+                      className="filter dark:brightness-[100]"
+                    />{' '}
+                    Source
+                  </Link>
+                </div>
+              )}
+            {frontmatter && ['components-api'].includes(slugs[0]) && (
+              <Warning className="!mb-0">
+                This section of the documentation is currently being updated!
+              </Warning>
+            )}
+            <Separator className="my-8" />
+          </div>
+        )}
+        <div className="flex grow flex-col">{children}</div>
+        {frontmatter.slug !== 'getting-started' && <Navigation slugs={slugs} />}
+      </div>
+      <TableOfContents>
+        <Separator className="my-4" />
+        <span className="text-sm font-semibold text-base-900 dark:text-white">
+          Community
+        </span>
+        <Link
+          href={`https://github.com/spleafy/prismane-website/tree/main/src/content/docs/${slugs.join(
+            '/'
+          )}.mdx`}
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <Pen size={20} />
+          <span>Edit this page</span>
+        </Link>
+        <Link
+          href="https://www.github.com/prismaneui/prismane"
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <ShootingStar size={20} />
+          <span>Star on GitHub</span>
+        </Link>
+        <Link
+          href="https://discord.gg/gFvcmdpKeb"
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <Chats size={20} />
+          <span>Chat on Discord</span>
+        </Link>
+        <Link
+          href="https://opencollective.com/prismane"
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <HandHeart size={20} />
+          <span>Become a sponsor</span>
+        </Link>
+        <Separator className="my-4" />
+        <span className="text-sm font-semibold text-base-900 dark:text-white">
+          Ecosystem
+        </span>
+        <Link
+          href="https://medium.com/@prismaneui"
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <Note size={20} />
+          <span>Tutorials</span>
+        </Link>
+        <Link
+          href="https://www.youtube.com/@prismaneui"
+          target="_blank"
+          className="flex items-center gap-1.5 text-sm/6 text-base-500 hover:text-base-700 dark:text-base-400 dark:hover:text-base-200"
+        >
+          <Video size={20} />
+          <span>Video Tutorials</span>
+        </Link>
+      </TableOfContents>
     </div>
   );
 };

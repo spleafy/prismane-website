@@ -1,0 +1,188 @@
+---
+title: 'Checkbox'
+description: 'Checkbox displays a field that has a set of options, which can be filtered.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Checkbox } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <Checkbox
+      label="Checkbox"
+      name="checkbox"
+      value={value}
+      onChange={(e) => setValue(e.target.checked)}
+    />
+  );
+}
+```
+
+### Disabled Checkbox
+
+You can disable the checkbox by passing the _disabled_ prop.
+
+```jsx preview
+<>
+  <Checkbox label="I am disabled" name="disabled" disabled />
+  <Checkbox
+    label="I am checked and disabled"
+    name="checked_disabled"
+    value={true}
+    disabled
+  />
+</>
+```
+
+### Checkbox Sizes
+
+Use the _size_ prop to change the checkbox's size. Values can be either _xs_, _sm_, _base_, _md_ or _lg_.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('');
+
+  return (
+    <>
+      <Checkbox
+        size="xs"
+        label="xs"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="sm"
+        label="sm"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="base"
+        label="base"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="md"
+        label="md"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+      <Checkbox
+        size="lg"
+        label="lg"
+        value={value}
+        onChange={(e) => setValue(e.target.checked)}
+      />
+    </>
+  );
+}
+```
+
+### Indeterminate Checkbox
+
+The `Checkbox` component supports an indeterminate state. When the _indeterminate_ prop is passed, the value is ignored.
+
+```jsx preview
+function Demo() {
+  const [checkedItems, setCheckedItems] = useState([false, false]);
+
+  const checked = checkedItems.every(Boolean);
+  const indeterminate = checkedItems.some(Boolean) && !checked;
+
+  return (
+    <Stack>
+      <Checkbox
+        label="Receive updates about Prismane"
+        value={checked}
+        indeterminate={indeterminate}
+        onChange={(e) => setCheckedItems([!checked, !checked])}
+      />
+      <Stack pl={fr(7)} mt={fr(1)}>
+        <Checkbox
+          label="Receive version updates"
+          value={checkedItems[0]}
+          onChange={(e) => setCheckedItems([!checkedItems[0], checkedItems[1]])}
+        />
+        <Checkbox
+          label="Receive event updates"
+          value={checkedItems[1]}
+          onChange={(e) => setCheckedItems([checkedItems[0], !checkedItems[1]])}
+        />
+      </Stack>
+    </Stack>
+  );
+}
+```
+
+### useForm Example
+
+The `Checkbox` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_checkbox: {
+        value: false
+      }
+    }
+  });
+
+  return (
+    <Checkbox label="Controlled Checkbox" {...register('hook_checkbox')} />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from 'react';
+import { Checkbox } from '@prismane/core';
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <Checkbox ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `Checkbox` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { Checkbox } from '@prismane/core';
+
+function Demo() {
+  return <Checkbox aria-label="Checkbox's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { Checkbox } from '@prismane/core';
+
+function Demo() {
+  return <Checkbox label="Checkbox's Input" />;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Checkbox`](/docs/components-api/checkbox-api)

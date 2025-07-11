@@ -1,0 +1,102 @@
+---
+title: 'substring'
+description: 'This validator checks if a string is a substring of a given string.'
+---
+
+## Import
+
+```js
+import { substring } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `substring` validator accepts the following parameters:
+
+| Name        | Type                  | Description                        | Default Value |
+| ----------- | --------------------- | ---------------------------------- | ------------- |
+| `value`     | _string_              | The string that will be validated. | -             |
+| `substring` | _string_              | The string that will be matched.   | -             |
+| `fieldName` | _string_, _undefined_ | The name of the field.             | -             |
+
+## Usage
+
+The `substring` validator checks if the provided value contains the provided substring.
+
+```ts
+const string = 'Prismane is the greatest!';
+
+const substring = 'Others';
+
+const error = substring(string, substring);
+
+console.log(error); // This value must be a substring of 'Prismane is the greatest!'!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = 'Prismane is the greatest!';
+
+const substring = 'Prismane';
+
+const error = substring(string, substring);
+
+console.log(error); // null
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
+
+```ts
+const string = 'Prismane is the greatest!';
+
+const substring = 'Others';
+
+const error = substring(string, substring, 'Name');
+
+console.log(error); // Name must be a substring of 'Prismane is the greatest!'!
+```
+
+### useForm Example
+
+The `substring` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      library: {
+        value: "",
+        validators: {
+          substring: (v: string) => substring(v, "Prismane is the greatest!"),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <TextField
+        placeholder="Enter your library:"
+        label="Library:"
+        {...register("library")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

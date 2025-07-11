@@ -1,0 +1,108 @@
+---
+title: 'trimmed'
+description: 'This validator checks if a string has no more than one consecutive space.'
+---
+
+## Import
+
+```js
+import { trimmed } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `trimmed` validator accepts the following parameters:
+
+| Name        | Type                  | Description                               | Default Value |
+| ----------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`     | _string_              | The string that will be validated.        | -             |
+| `regExp`    | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+| `fieldName` | _string_, _undefined_ | The name of the field.                    | -             |
+
+## Usage
+
+The `trimmed` validator checks if the provided value has no more than 1 consecutive spaces.
+
+```ts
+const string = 'John         Doe';
+
+const error = trimmed(string);
+
+console.log(error); // This value contains more than one consecutive space!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = 'John Doe';
+
+const error = trimmed(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = 'John        Doe        123';
+
+const error = email(string, /^(?!.*\s{2,})[a-zA-Z\s]*$/);
+
+console.log(error); // This value contains more than one consecutive space!
+```
+
+### Custom Error Message
+
+Pass the _fieldName_ parameter to the validator, which is the third parameter, to customize the error message to make it more personalized to the given field.
+
+```ts
+const string = 'John         Doe';
+
+const error = trimmed(string, /^(?!.*\s{2,})[a-zA-Z\s]*$/, 'Name');
+
+console.log(error); // Name contains more than one consecutive space!
+```
+
+### useForm Example
+
+The `trimmed` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      name: {
+        value: "",
+        validators: {
+          trimmed: (v: string) => trimmed(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <TextField
+        placeholder="Enter your name:"
+        label="Name:"
+        {...register("name")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

@@ -1,0 +1,54 @@
+---
+title: 'useMemoization'
+description: 'useMemoization hook provides a simple way to memoize expensive calculations.'
+---
+
+## Overview
+The useMemoization hook optimizes application performance by caching the results of expensive function calls based on their input parameters. It prevents unnecessary recalculations when functions are called with the same arguments, making it ideal for computationally intensive operations. With built-in cache management functionality, this hook provides a powerful yet simple solution for implementing memoization patterns in React components without complex configuration.
+
+## Import
+
+```js
+import { useMemoization } from '@prismane/core/hooks';
+```
+
+## Return Value
+
+The `useMemoization` hook returns the following variable:
+
+| Name      | Type         | Description                                            |
+| --------- | ------------ | ------------------------------------------------------ |
+| `memoize` | _() => void_ | A function that caches the result of the passed value. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const { memoize, clear } = useMemoization();
+
+  const [value, setValue] = useState("");
+
+  const [timesComputed, setTimesComputer] = useState(0);
+
+  const expensiveFunction = memoize((pk, pv) => {
+    setTimesComputer((pc: number) => pc + 1);
+    return pv + 1;
+  });
+
+  const handleClick = () => {
+    const result = expensiveFunction("number", 5);
+    setValue(result);
+  };
+
+  return (
+    <Stack>
+      <Text>Value from cache: {value}</Text>
+      <Text>Times computed: {timesComputed}</Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={handleClick}>Calculate</Button>
+        <Button onClick={clear}>Clear Cache</Button>
+      </Flex>
+    </Stack>
+  );
+}
+```

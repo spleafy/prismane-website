@@ -1,0 +1,146 @@
+---
+title: 'Theme Object'
+---
+
+## Theming in Prismane
+
+Effective theming is crucial for creating visually appealing and user-friendly applications. Prismane empowers you to achieve this by providing robust theming capabilities.
+
+With a single theme object, you can effortlessly define the look and feel of your entire application, ensuring a cohesive and polished user experience.
+
+## Why use a theme?
+
+A theme is a design blueprint for your application. It's a collection of colors, spacing, and other visual styles that create a unified look and feel. By using a theme, you can maintain consistency throughout your app, enhance the user experience, and streamline design updates.
+The theme object allows you to specify and control core visual elements like:
+
+- `Mode` - Choose between light and dark themes.
+- `Colors` - Establish a rich and balanced color palette, including primary and base colors, along with
+  their corresponding shades.
+- `Spacing` - Define consistent margins, paddings, and gutters, ensuring a clean and organized UI layout.
+- `Border Radius` - Set the global border radius for a unified aesthetic, or adjust it for specific components to add
+  visual distinction.
+- `Font` - Define the primary font for your app.
+
+By managing these core visual elements, you can effortlessly create themes that perfectly align with your brand identity or tailor the user experience for different target audiences.
+Prismane's flexibility lets you build adaptable UIs that resonate with your users.
+
+## Defining the theme object
+
+The theme object is the object of type `PrismaneTheme` which you can use to define your custom theme.
+The object can hold some or all fields following this logic:
+
+| Name           | Type            | Description                                                                     | Default Value |
+| -------------- | --------------- | ------------------------------------------------------------------------------- | ------------- |
+| `mode`         | _light_, _dark_ | Controlling the mode of the theme                                               | `light`       |
+| `colors`       | _Object_        | Holds information about `primary` and `base` colors with their respected shades | -             |
+| `spacing`      | _string_        | Controls spacing/padding/margins between and within the components              | `4px`         |
+| `borderRadius` | _Object_        | Sets border radius of components in all the different sizes                     | -             |
+| `fontFamily`   | _string_        | Font family that will be used across the whole application                      | `4px`         |
+
+## Theme Object Type
+
+Here you can see the type of Prismane's theme object.
+
+```ts
+export interface PrismaneTheme {
+  // The theme mode "dark" or "light"
+  mode: 'light' | 'dark';
+
+  // The theme colors
+  colors: {
+    primary: {
+      50: string;
+      100: string;
+      200: string;
+      300: string;
+      400: string;
+      500: string;
+      600: string;
+      700: string;
+      800: string;
+      900: string;
+    };
+    base: {
+      50: string;
+      100: string;
+      200: string;
+      300: string;
+      400: string;
+      500: string;
+      600: string;
+      700: string;
+      800: string;
+      900: string;
+    };
+  };
+
+  // The theme spacing, changing it will scale up or down the size of
+  // your components
+  spacing: string;
+
+  // The border radius to be used in the components
+  borderRadius: {
+    xs: string;
+    sm: string;
+    base: string;
+    md: string;
+    lg: string;
+    xl: string;
+    '2xl': string;
+  };
+
+  // the font family that should be used across the whole interface
+  fontFamily: string;
+}
+```
+
+## Base Theme Object
+
+By default, Prismane uses it's own default theme object, which looks like this:
+
+```ts
+const base: PrismaneTheme = {
+  mode: 'light',
+  colors: {
+    primary: {
+      // Prismane's diamond colors
+      50: '#f0f9ff',
+      100: '#e0f2fe',
+      200: '#bae6fd',
+      300: '#7dd3fc',
+      400: '#38bdf8',
+      500: '#0ea5e9',
+      600: '#0284c7',
+      700: '#0369a1',
+      800: '#075985',
+      900: '#0c4a6e'
+    },
+    base: {
+      // Prismane's gray colors
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827'
+    }
+  },
+  spacing: '4px',
+  borderRadius: {
+    xs: fr(0.75),
+    sm: fr(1),
+    base: fr(1.5),
+    md: fr(2),
+    lg: fr(2.5),
+    xl: fr(3),
+    '2xl': fr(3.5)
+  },
+  fontFamily: 'Poppins'
+};
+
+export default base;
+```

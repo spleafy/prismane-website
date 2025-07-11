@@ -1,0 +1,41 @@
+---
+title: 'Circle'
+description: "Circle displays a circle that renders it's content in the center."
+versatile: true
+---
+
+## Import
+
+```js
+import { Circle } from '@prismane/core';
+```
+
+## Usage
+
+The `Circle` component extends the [`Center`](/docs/components/layout/center) component and renders a container with fully rounded corners.
+
+Use the _size_ prop to adjust the size of the circle.
+
+```jsx preview
+<Circle size={fr(10)} bg="primary">
+  <Wrench size={24} />
+</Circle>
+```
+
+### Versatile Component
+
+`Circle` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Circle } from '@prismane/core';
+
+function Demo() {
+  <Circle as="button">Circle Button</Circle>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Circle`](/docs/components-api/circle-api)

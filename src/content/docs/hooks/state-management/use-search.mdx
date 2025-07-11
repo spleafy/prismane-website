@@ -1,0 +1,60 @@
+---
+title: 'useSearch'
+description: 'useSearch hook provides a simple way to search through different types of data.'
+---
+
+## Overview
+The useSearch hook streamlines the implementation of search functionality across arrays of data with minimal setup requirements. It automatically filters content based on user queries, handling the search logic internally to eliminate repetitive boilerplate code. Perfect for creating search interfaces for lists, tables, or collections of any data type, this hook provides real-time filtering capabilities while maintaining a clean, declarative API within your React components.
+
+## Import
+
+```js
+import { useSearch } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useSearch` hook accepts the following parameters:
+
+| Name         | Type    | Description                     | Default Value |
+| ------------ | ------- | ------------------------------- | ------------- |
+| `intialData` | _any[]_ | The data that will be searched. | -             |
+
+## Return Value
+
+The `useSearch` hook returns an object containing the following properties:
+
+| Name       | Type                      | Description                                                         |
+| ---------- | ------------------------- | ------------------------------------------------------------------- |
+| `query`    | _string_                  | The query that is searched through the data.                        |
+| `setQuery` | _(query: string) => void_ | The function that sets the new query by which the hook will search. |
+| `filtered` | _any[]_                   | The searched data.                                                  |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const { query, setQuery, filtered } = useSearch([
+    "apple",
+    "banana",
+    "cherry",
+    "date",
+    "fig",
+  ]);
+
+  return (
+    <Stack>
+      <TextField
+        placeholder="Search..."
+        value={query}
+        onChange={(e: any) => setQuery(e.target.value)}
+      />
+      <List>
+        {filtered.map((item, index) => (
+          <List.Item key={index}>{item}</List.Item>
+        ))}
+      </List>
+    </Stack>
+  );
+}
+```

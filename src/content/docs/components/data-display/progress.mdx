@@ -1,0 +1,38 @@
+---
+title: 'Progress'
+description: 'Progress displays a container that shows the progress of a process.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Progress } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Progress value={80} />
+```
+
+### Progress Sizes
+
+Use the _size_ prop to change the size of the button. You can set the value to _xs_, _sm_, _base_, _md_, _lg_ or any other valid custom size. By default, the _base_ value is used.
+
+```jsx preview
+<Stack gap={fr(5)}>
+  <Progress value={30} size="xs" />
+  <Progress value={30} size="sm" />
+  <Progress value={30} size="base" />
+  <Progress value={30} size="md" />
+  <Progress value={30} size="lg" />
+  <Progress value={30} size="20px" />
+</Stack>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Progress`](/docs/components-api/progress-api)

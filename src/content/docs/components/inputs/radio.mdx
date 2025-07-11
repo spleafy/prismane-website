@@ -1,0 +1,147 @@
+---
+title: 'Radio'
+description: 'Radio displays a group of fields that handles toggling between multiple values.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Radio` component has 1 additional inner component:
+
+- _Radio.Group_: The container that wraps and groups the radio fields.
+
+```js
+import { Radio } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Radio label="I am always toggled!" />
+```
+
+### Controlled
+
+```jsx
+function Demo() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Radio value={checked} onChange={(e) => setChecked(e.target.checked)} />
+  );
+}
+```
+
+### Radio Group
+
+Use the `Radio.Group` component to group radio fields together as set of options.
+
+The `Radio.Group` component accepts most of the props that are valid for the [`Field`](/docs/inputs/field) component like: _label_, _error_ and more.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('yes');
+
+  return (
+    <Radio.Group
+      label="Choose an answer:"
+      name="answer"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    >
+      <Radio value="yes" label="Yes" />
+      <Radio value="no" label="No" />
+    </Radio.Group>
+  );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field won't change.
+
+```jsx preview
+<Radio label="I cannot be changed!" readOnly />
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+<Radio label="I am disabled!" disabled />
+```
+
+### useForm Example
+
+The `Radio` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_radio: {
+        value: 'yes'
+      }
+    }
+  });
+
+  return (
+    <Radio.Group label="Choose an answer:" {...register('hook_radio')}>
+      <Radio label="Yes" value="yes" />
+      <Radio label="No" value="no" />
+    </Radio.Group>
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from 'react';
+import { Radio } from '@prismane/core';
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <Radio ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `Radio` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { Radio } from '@prismane/core';
+
+function Demo() {
+  return <Radio aria-label="Radio's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { Radio } from '@prismane/core';
+
+function Demo() {
+  return <Radio label="Radio's Input" />;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Radio`](/docs/components-api/radio-api)

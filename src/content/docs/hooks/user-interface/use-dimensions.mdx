@@ -1,0 +1,65 @@
+---
+title: 'useDimensions'
+description: 'useDimensions hook provides a simple way to get the dimensions of an element.'
+---
+
+## Overview
+The useDimensions hook provides a comprehensive way to track and access the size and position metrics of any React element. By passing a ref to the hook, you'll receive detailed information about the element's dimensions, position, and spacing properties including width, height, coordinates, margins, padding, and borders. This hook is particularly useful for creating responsive layouts, positioning elements dynamically, or implementing custom interactions that depend on an element's physical dimensions in the DOM.
+
+## Import
+
+```js
+import { useDimensions } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useDimensions` hook accepts the following parameters:
+
+| Name  | Type        | Description                      | Default Value |
+| ----- | ----------- | -------------------------------- | ------------- |
+| `ref` | _RefObject_ | The ref of the target container. | -             |
+
+## Return Value
+
+The `useDimensions` hook returns an object containing the following properties:
+
+| Name      | Type                                                          | Description                                              |
+| --------- | ------------------------------------------------------------- | -------------------------------------------------------- |
+| `top`     | _number_                                                      | The top position of the container.                       |
+| `bottom`  | _number_                                                      | The bottom position of the container.                    |
+| `left`    | _number_                                                      | The left position of the container.                      |
+| `right`   | _number_                                                      | The right position of the container.                     |
+| `width`   | _number_                                                      | The width of the container.                              |
+| `height`  | _number_                                                      | The height of the container.                             |
+| `x`       | _number_                                                      | The x position of the container.                         |
+| `y`       | _number_                                                      | The y position of the container.                         |
+| `center`  | _\{x: number, y: number}_                                     | The center point's x and y coordinates of the container. |
+| `margin`  | _\{top: number, right: number, bottom: number, left: number}_ | The margin for each side of the container.               |
+| `padding` | _\{top: number, right: number, bottom: number, left: number}_ | The padding for each side of the container.              |
+| `border`  | _\{top: number, right: number, bottom: number, left: number}_ | The border for each side of the container.               |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const ref = useRef(null);
+
+  const dimensions = useDimensions(ref);
+
+  return (
+    <Flex direction="column" gap={fr(5)}>
+      <Box w={fr(50)} h={fr(40)} p={fr(5)} m={fr(2)} bg="primary" ref={ref} />
+      <List>
+        {dimensions &&
+          Object.entries(dimensions).map(([key, value]) => (
+            <List.Item key={key}>
+              <Text as="strong">{key}:</Text>{' '}
+              {typeof value === 'object' ? JSON.stringify(value) : value}
+            </List.Item>
+          ))}
+      </List>
+    </Flex>
+  );
+}
+```

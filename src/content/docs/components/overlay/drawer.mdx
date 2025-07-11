@@ -1,0 +1,203 @@
+---
+title: 'Drawer'
+description: 'Drawer displays a container that slides from the side and occupies the users attention.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Drawer` component has 2 additional inner components:
+
+- _Drawer.Header_: The wrapper that contains the drawer's header.
+- _Drawer.Footer_: The wrapper that contains the drawer's footer.
+
+```js
+import { Drawer } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        This is a simple drawer. To close it just click the Escape key or simply
+        click the backdrop.
+      </Drawer>
+    </>
+  );
+}
+```
+
+### Advanced Composition
+
+Using the before mentioned `Drawer.Header` and `Drawer.Footer` components we can easily create complex drawers that have evenly spaced out content.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        <Drawer.Header>
+          <Text as="h1">Create Account</Text>
+        </Drawer.Header>
+        <Form>
+          <TextField
+            name="username"
+            label="Username:"
+            placeholder="Enter your username"
+          />
+          <TextField
+            name="email"
+            label="Email:"
+            placeholder="Enter your email"
+          />
+          <PasswordField
+            name="password"
+            label="Password:"
+            placeholder="Enter your password"
+          />
+        </Form>
+        <Drawer.Footer direction="column" gap={fr(2)}>
+          <Button full>Create Account</Button>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="secondary"
+            color="base"
+            full
+          >
+            Cancel
+          </Button>
+        </Drawer.Footer>
+      </Drawer>
+    </>
+  );
+}
+```
+
+### Closable Drawer
+
+You can display a close button in the right corner of the `Drawer.Header` component using the _closable_ prop.
+
+The drawer can now also be closed by clicking the button, instead of only being able to be closed by clicking on the backdrop.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onClose={() => setOpen(false)} closable>
+        <Drawer.Header>
+          <Text as="h1">Settings</Text>
+        </Drawer.Header>
+        <Form>
+          <TextField
+            name="username"
+            label="Username:"
+            placeholder="Enter your username"
+            defaultValue="spleafy"
+          />
+          <TextField
+            name="email"
+            label="Email:"
+            placeholder="Enter your email"
+            defaultValue="martinpetrov@prismane.io"
+          />
+        </Form>
+        <Drawer.Footer direction="column" gap={fr(2)}>
+          <Button full>Save Settings</Button>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="secondary"
+            color="base"
+            full
+          >
+            Cancel
+          </Button>
+        </Drawer.Footer>
+      </Drawer>
+    </>
+  );
+}
+```
+
+### Drawer Positions
+
+You can change the position of the drawer by using the _position_ prop. You can choose from _top_, _bottom_, _left_, _right_. By default, the _left_ position is used.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+  const [position, setPosition] = useState('left');
+
+  return (
+    <Stack gap={fr(4)}>
+      <Text>Drawer Position</Text>
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio value="top" label="Top" />
+        <Radio value="bottom" label="Bottom" />
+        <Radio value="left" label="Left" />
+        <Radio value="right" label="Right" />
+      </Radio.Group>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onClose={() => setOpen(false)} position={position}>
+        This drawer has a position of {position}. To close it just click the
+        Escape key or simply click the backdrop.
+      </Drawer>
+    </Stack>
+  );
+}
+```
+
+### Drawer Sizes
+
+Use the _size_ prop to change the size of the drawer. You can set the value to either _xs_, _sm_, _base_, _md_, _lg_ or to any other valid size. By default, the _base_ value is used.
+
+```jsx preview
+function Demo() {
+  const [size, setSize] = useState('base');
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Flex direction="column" gap={fr(4)}>
+      <Text>Drawer Size</Text>
+      <Radio.Group
+        name="size"
+        value={size}
+        onChange={(e) => setSize(e.target.value)}
+      >
+        <Radio value="xs" label="xs" />
+        <Radio value="sm" label="sm" />
+        <Radio value="base" label="base" />
+        <Radio value="md" label="md" />
+        <Radio value="lg" label="lg" />
+        <Radio value="550px" label="550px" />
+        <Radio value="100%" label="full" />
+      </Radio.Group>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onClose={() => setOpen(false)} size={size}>
+        This drawer has a size of {size}. To close it just click the Escape key
+        or simply click the backdrop.
+      </Drawer>
+    </Flex>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Drawer`](/docs/components-api/drawer-api)

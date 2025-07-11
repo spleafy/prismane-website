@@ -1,0 +1,41 @@
+---
+title: 'Square'
+description: 'Square displays a square container.'
+versatile: true
+---
+
+## Import
+
+```js
+import { Square } from '@prismane/core';
+```
+
+## Usage
+
+The `Square` component extends the [`Center`](/docs/components/layout/center) component and renders a container with sharp corners.
+
+Use the _size_ prop to adjust the size of the square.
+
+```jsx preview
+<Square size={fr(10)} bg="primary">
+  <Wrench size={24} />
+</Square>
+```
+
+### Versatile Component
+
+`Square` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Square } from '@prismane/core';
+
+function Demo() {
+  <Square as="button">Square Button</Square>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Square`](/docs/components-api/square-api)

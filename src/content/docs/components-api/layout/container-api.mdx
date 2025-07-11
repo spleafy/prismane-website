@@ -1,0 +1,27 @@
+---
+title: 'Container API'
+description: "Learn about the Container component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { ContainerProps } from '@prismane/core';
+```
+
+## Props
+
+`Container` extends [Animation](/docs/components-api/animation-api) component's props.
+
+| Name      | Type                                                                          | Description                    | Default |
+| --------- | ----------------------------------------------------------------------------- | ------------------------------ | ------- |
+| `maxSize` | [PrismaneBreakpoints](/docs/getting-started/globals#prismanebreakpoints-type) | The max size of the container. | base    |
+
+## CSS
+
+`Container` extends [Animation](/docs/components-api/animation-api) component's CSS classes.
+
+| Rule   | Global Class                        | Description                                                      |
+| ------ | ----------------------------------- | ---------------------------------------------------------------- |
+| `root` | `.PrismaneContainer-root`           | The container of the container component.                        |
+| `root` | `.PrismaneContainer-root-{maxSize}` | The container of the container component based on it's max size. |

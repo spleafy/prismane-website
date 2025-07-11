@@ -1,0 +1,200 @@
+---
+title: 'ColorField'
+description: 'Color field displays a field that has a set of colors, which can be chosen.'
+versatile: false
+---
+
+## Import
+
+```js
+import { ColorField } from '@prismane/core';
+```
+
+## Usage
+
+The `ColorField` provides a selectable list of colors.
+
+It is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
+
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
+
+By default, the `ColorField` component shows a list of every _500_ shade of each color from the [Prismane Color Palette](/docs/styling/color-palette).
+
+```jsx preview
+function Demo() {
+  const [color, setColor] = useState('');
+
+  return (
+    <ColorField
+      placeholder="No color chosen"
+      label="Choose a color:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+    />
+  );
+}
+```
+
+### Custom Color Options
+
+Use the _options_ prop to provide a custom set of color options that the user can choose from.
+
+You must pass an array of strings. Values can either be colors from the [Prismane Color Palette](/docs/styling/color-palette) or any other valid color.
+
+```jsx preview
+function Demo() {
+  const [color, setColor] = useState('');
+
+  return (
+    <ColorField
+      options={[
+        'teal',
+        'amethyst',
+        'ruby',
+        'diamond',
+        'coal',
+        '#1e1e1e',
+        '#3e3e3e'
+      ]}
+      placeholder="No color chosen"
+      label="Custom color:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+    />
+  );
+}
+```
+
+### Keyboard Navigation
+
+The `ColorField` component's options can be navigated using the _Arrow_ keys on the keyboard and selected using _Enter_. The dropdown can be closed using the _Esc_ key.
+
+```jsx preview
+function Demo() {
+  const [color, setColor] = useState('');
+
+  return (
+    <ColorField
+      placeholder="No color chosen"
+      label="Choose a color:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+    />
+  );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field will not show options and won't change.
+
+```jsx preview
+function Demo() {
+  const [color, setColor] = useState('');
+
+  return (
+    <ColorField
+      placeholder="No color chosen"
+      label="Choose a color:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+      readOnly
+    />
+  );
+}
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+function Demo() {
+  const [color, setColor] = useState('');
+
+  return (
+    <ColorField
+      placeholder="No color chosen"
+      label="Choose a color:"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+      disabled
+    />
+  );
+}
+```
+
+### useForm Example
+
+The `ColorField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_color: {
+        value: ''
+      }
+    }
+  });
+
+  return (
+    <ColorField
+      label="Controlled ColorField"
+      placeholder="Controlled Field"
+      {...register('hook_color')}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from 'react';
+import { ColorField } from '@prismane/core';
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <ColorField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `ColorField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { ColorField } from '@prismane/core';
+
+function Demo() {
+  return <ColorField aria-label="ColorField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { ColorField } from '@prismane/core';
+
+function Demo() {
+  return <ColorField label="ColorField's Input" />;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`ColorField`](/docs/components-api/color-field-api)

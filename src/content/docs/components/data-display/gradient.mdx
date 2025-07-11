@@ -1,0 +1,68 @@
+---
+title: 'Gradient'
+description: 'Gradient displays a container with gradient background.'
+versatile: true
+---
+
+## Import
+
+```js
+import { Gradient } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Gradient w="100%" h={200} />
+```
+
+### Gradient Colors
+
+Use the _from_ and _to_ prop to change the start and end colors of the gradient.
+
+You can use all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_, _base_ colors from the theme.
+
+To use [shades](/docs/getting-started/globals#prismaneshades) with the colors, provide the value as an array of this sort: _[name, shade]_
+
+By default, the _from_ prop uses the _[primary, 500]_ color and the _to_ prop uses the _[primary, 300]_ color.
+
+```jsx preview
+<Gradient w="100%" h={200} from="teal" to="amethyst" />
+```
+
+```jsx preview
+<Gradient w="100%" h={200} from={['ruby', 300]} to={['purple', 400]} />
+```
+
+### Gradient Degrees
+
+Use the _deg_ prop to change the angle of the gradient.
+
+By default, _90_ is used.
+
+```jsx preview
+<Gradient w="100%" h={200} from="orange" to="lime" deg={45} />
+```
+
+### Versatile Component
+
+`Gradient` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx preview
+<Gradient
+  as="a"
+  href="https://www.google.com"
+  target="_blank"
+  w="100%"
+  h={200}
+  from="copper"
+  to="pink"
+  deg={135}
+/>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Gradient`](/docs/components-api/gradient-api)

@@ -1,0 +1,156 @@
+---
+title: 'The sx Prop'
+---
+
+If you want to overwrite the styling of the component, you can do that using the `sx` prop. <br />
+
+<br />
+The `sx` prop is used to add extra styles to components. It can be used to
+overwrite styles for internal layers of the component specifically for that
+instance. The prop accepts the default CSS properties that are available with
+the added functionality of access to the theme object. It has built in media
+query support, pseudo classes, CSS variables and more.
+
+## CSS Property
+
+You can set a CSS property of the component by providing an object with the css rules you want to overwrite.
+In this example we will overwrite the `overflow-y` CSS rule to _scroll_
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        overflowY: 'scroll'
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Theme Object
+
+As a value of any of the CSS rules you want to overwrite, you can use a function with the theme object as a parameter and use it in your logic.
+Let's see how we can set the `overflow-y` value based on the theme's mode.
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        overflowY: (theme) => (theme.mode === 'dark' ? 'scroll' : 'auto')
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Class Names
+
+If you want to overwrite a CSS rule inside a CSS class that is being used inside the component, you can set a key woth the class name to the object you provide.
+In this example we will set the background to _red_ of element(s) that has a class name of `Box-root` within the Box component.
+
+```tsx
+import { Box } from "@prismane/core";
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        ".Box-root" {
+          background: red;
+        }
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Nesting Styles
+
+Another more sophisticated usage is to use the `sx` prop and set a custom CSS variable and then use it in the `cl` prop of the component.
+Here we are defining a custom CSS variable called _--custom-color_ and then use that variable in the color style prop `cl`.
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        '--custom-color': '#ffffff'
+      }}
+    >
+      <Box cl="var(--custom-color)">Hello, world</Box>
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Media Queries
+
+Prismane also provides the ability to use media queries in it's `sx` prop.
+Here you will see how we can set the css rule `display` to _none_ if the width of the viewport is bigger than 320px.
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        '@media (min-width:320px)': {
+          display: 'none'
+        }
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+## Pseudo Classes
+
+You can also use pseudo classes in the CSS rules you want to overwrite.
+In this small example we are using the :hover state of the component and we are setting it to be _display:none_.
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      sx={{
+        ':hover': {
+          display: 'none'
+        }
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```

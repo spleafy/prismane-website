@@ -1,0 +1,132 @@
+---
+title: 'useScroll'
+description: 'useScroll hook provides a simple way to simplify handling scrolling.'
+---
+
+## Overview
+The useScroll hook provides comprehensive scroll management capabilities for React applications with minimal setup. It tracks the current scroll position and direction while offering utility functions for programmatic scrolling to specific locations on the page. This hook simplifies implementing common scrolling features like "back to top" buttons, smooth scrolling navigation, scroll-triggered animations, or position-aware UI elements that respond to user scrolling behavior.
+
+## Import
+
+```js
+import { useScroll } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useScroll` hook accepts the following parameters:
+
+| Name | Type                                                                                                      | Description                             | Default Value |
+| ---- | --------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------- |
+| `cb` | _cb: (position: \{ x: number; y: number }, direction: "up" / "down" / "left" / "right" / "none") => void_ | The media query that should be tracked. | -             |
+
+## Return Value
+
+The `useScroll` hook returns an object containing the following properties:
+
+| Name               | Type                                 | Description                                                |
+| ------------------ | ------------------------------------ | ---------------------------------------------------------- |
+| `position`         | _\{x: number, y: number}_            | The current scroll position.                               |
+| `direction`        | _down_, _up_, _left_ _right_, _none_ | The direction of the current scroll.                       |
+| `scrollToTop`      | _() => void_                         | The function that scrolls to the top of the page.          |
+| `scrollToBottom`   | _() => void_                         | The function that scrolls to the bottom of the page.       |
+| `scrollToLeft`     | _() => void_                         | The function that scrolls to the left of the page.         |
+| `scrollToRight`    | _() => void_                         | The function that scrolls to the right of the page.        |
+| `scrollToPosition` | _(x: number, y: number) => void_     | The function that scrolls to a given position on the page. |
+| `scrollToId`       | _(elementId: string) => void_        | The function that scrolls to a given element.              |
+
+## Usage
+
+Use the _direction_ and _position_ from the object that is returned by the hook to get the scroll direction and scroll position.
+
+```jsx preview
+function Demo() {
+  const { direction, position } = useScroll();
+
+  return (
+    <Stack>
+      <Text>Position: {JSON.stringify(position)}</Text>
+      <Text>Direction: {direction}</Text>
+    </Stack>
+  );
+}
+```
+
+### Scroll To Top
+
+Use the _scrollToTop_ function that is returned by the hook, to automatically scroll to the top of the screen.
+
+```jsx preview
+function Demo() {
+  const { scrollToTop } = useScroll();
+
+  return <Button onClick={scrollToTop}>Scroll To Top</Button>;
+}
+```
+
+### Scroll To Bottom
+
+Use the _scrollToBottom_ function that is returned by the hook, to automatically scroll to the bottom of the screen.
+
+```jsx preview
+function Demo() {
+  const { scrollToBottom } = useScroll();
+
+  return <Button onClick={scrollToBottom}>Scroll To Bottom</Button>;
+}
+```
+
+### Scroll To Left
+
+Use the _scrollToLeft_ function that is returned by the hook, to automatically scroll to the left of the screen.
+
+```jsx preview
+function Demo() {
+  const { scrollToLeft } = useScroll();
+
+  return <Button onClick={scrollToLeft}>Scroll To Left</Button>;
+}
+```
+
+### Scroll To Right
+
+Use the _scrollToRight_ function that is returned by the hook, to automatically scroll to the right of the screen.
+
+```jsx preview
+function Demo() {
+  const { scrollToRight } = useScroll();
+
+  return <Button onClick={scrollToRight}>Scroll To Right</Button>;
+}
+```
+
+### Scroll To Position
+
+Use the _scrollToPosition_ function that is returned by the hook, to scroll to a given coordinate position.
+
+```jsx preview
+function Demo() {
+  const { scrollToPosition } = useScroll();
+
+  return (
+    <Button onClick={() => scrollToPosition(0, 400)}>Scroll To Position</Button>
+  );
+}
+```
+
+### Scroll To Id
+
+Use the _scrollToId_ function that is returned by the hook, to scroll to a specific element based on its _id_.
+
+```jsx preview
+function Demo() {
+  const { scrollToId } = useScroll();
+
+  return (
+    <Stack gap={fr(4)}>
+      <Button onClick={() => scrollToId('card')}>Scroll To Position</Button>
+      <Card id="card">Card Component With Id</Card>
+    </Stack>
+  );
+}
+```

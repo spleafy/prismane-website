@@ -1,0 +1,123 @@
+---
+title: 'Grid'
+description: 'Grid displays a container that has a display of grid.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Grid` component has 1 additional inner component:
+
+- _Grid.Item_: The container that is used as the child of the grid container to control the span and positions within the grid.
+
+```js
+import { Grid } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Grid w="100%" h={fr(40)} gap={fr(2)}>
+  <Grid.Item bg="primary" cl="white">
+    1
+  </Grid.Item>
+  <Grid.Item bg="primary" cl="white">
+    2
+  </Grid.Item>
+  <Grid.Item bg="primary" cl="white">
+    3
+  </Grid.Item>
+  <Grid.Item bg="primary" cl="white">
+    4
+  </Grid.Item>
+</Grid>
+```
+
+### Shorthand props
+
+The `Grid` component supports a few helpful shorthand props:
+
+| Prop              | CSS Property            | Supported Value                                                       |
+| ----------------- | ----------------------- | --------------------------------------------------------------------- |
+| `templateColumns` | `grid-template-columns` | _1_, _2_, _3_, _4_, _5_, _6_, _7_, _8_, _9_, _10_, _11_, _12_, _none_ |
+| `templateRows`    | `grid-template-rows`    | _1_, _2_, _3_, _4_, _5_, _6_, _7_, _8_, _9_, _10_, _11_, _12_, _none_ |
+| `templateAreas`   | `grid-template-areas`   | _string_                                                              |
+| `flow`            | `grid-auto-flow`        | _row_, _column_, _dense_, _row-dense_, _column-dense_                 |
+| `autoColumns`     | `grid-auto-columns`     | _auto_, _min_, _max_, _fr_                                            |
+| `autoRows`        | `grid-auto-rows`        | _auto_, _min_, _max_, _fr_                                            |
+| `gap`             | `gap`                   | _string_, _number_                                                    |
+
+### Template Columns
+
+Use the _templateColumns_ prop on the `Grid` component to define the layout and arrangement of columns within the grid.
+
+```jsx preview
+<Grid templateColumns={3} w="100%" h={fr(20)} gap={fr(2)}>
+  <Grid.Item bg="primary" cl="white" />
+  <Grid.Item bg="primary" cl="white" />
+  <Grid.Item bg="primary" cl="white" />
+</Grid>
+```
+
+### Spanning Layout
+
+In some cases, you need to have some grid items span a given amount of rows or columns. To achieve this, use the _columnSpan_ and _rowSpan_ props of the `Grid.Item` component. You will also need to pass the _templateColumns_ and _templateRows_ props to the `Grid` component.
+
+```jsx preview
+<Grid templateColumns={3} templateRows={4} w="100%" h={fr(50)} gap={fr(2)}>
+  <Grid.Item rowSpan={3} columnSpan={1} bg="lime" />
+  <Grid.Item columnSpan={2} bg="teal" />
+  <Grid.Item columnSpan={2} bg="teal" />
+  <Grid.Item columnSpan={3} bg="lime" />
+</Grid>
+```
+
+### Start and end position
+
+Use the _columnStart_ and _columnEnd_ props to make the element start and end at the _nth_ grid position.
+
+```jsx preview
+<Grid templateColumns={3} w="100%" h={fr(10)} gap={fr(2)}>
+  <Grid.Item columnStart={1} columnEnd={2} bg="lime" />
+  <Grid.Item columnStart={3} columnEnd={4} bg="teal" />
+</Grid>
+```
+
+### Grid Areas
+
+The _templateAreas_ prop of the `Grid` component specifies layout areas within the grid. You can use template literals to name the area.
+
+Use the _area_ prop fo the `Grid.Item` component to reference the area that you want the given item to occupy.
+
+```jsx preview
+<Grid
+  templateAreas={`"header header header"
+                  "nav main main"
+                  "nav footer footer"`}
+  templateRows={'40px 1fr 40px'}
+  templateColumns={'120px 1fr'}
+  h={fr(60)}
+  w="100%"
+  gap={fr(1)}
+  cl="white"
+>
+  <Grid.Item pl="8px" bg="orange" area={'header'}>
+    Header
+  </Grid.Item>
+  <Grid.Item pl="8px" bg="pink" area={'nav'}>
+    Nav
+  </Grid.Item>
+  <Grid.Item pl="8px" bg="green" area={'main'}>
+    Main
+  </Grid.Item>
+  <Grid.Item pl="8px" bg="blue" area={'footer'}>
+    Footer
+  </Grid.Item>
+</Grid>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Grid`](/docs/components-api/grid-api)

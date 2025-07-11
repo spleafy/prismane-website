@@ -1,0 +1,117 @@
+---
+title: 'Tooltip'
+description: 'Tooltip display a container that shows additional information on hover.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Tooltip } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Tooltip label="This is the tooltip information" aria-label="A tooltip">
+  Hover me
+</Tooltip>
+```
+
+### Tooltip With Custom Component
+
+You can pass any element/component as a target of the tooltip.
+
+```jsx preview
+<Tooltip label="Button tooltip information" aria-label="A tooltip">
+  <Button>Button Target</Button>
+</Tooltip>
+```
+
+### Tooltip Positions
+
+You can change the position of the tooltip by using the _position_ prop. You can choose any of [PrismanePositions](/docs/getting-started/globals#prismanepositions) as a value. By default, the _right_ position is used.
+
+```jsx preview
+function Demo() {
+  const [position, setPosition] = useState('right');
+
+  const [point, setPoint] = useState('middle');
+
+  return (
+    <Stack gap={fr(4)} align="center">
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio label="Top" value="top" />
+        <Radio label="Bottom" value="bottom" />
+        <Radio label="Left" value="left" />
+        <Radio label="Right" value="right" />
+      </Radio.Group>
+      <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
+        <Radio label="Start" value="start" />
+        <Radio label="None (e.g. right, left)" value="none" />
+        <Radio label="End" value="end" />
+      </Radio.Group>
+      <Tooltip
+        label="Fire!"
+        position={point !== 'none' ? `${position}-${point}` : position}
+      >
+        <Button>Hover me</Button>
+      </Tooltip>
+    </Stack>
+  );
+}
+```
+
+### Tooltip Colors
+
+Use the _color_ prop to change the background color of the tooltip. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_ and _base_ colors from the theme.
+
+```jsx preview
+<Tooltip label="Tooltip With Custom Color" color="teal">
+  <Button>Teal Color</Button>
+</Tooltip>
+```
+
+### Tooltip Text Color
+
+Use the _cl_ prop to change the color of the tooltip. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette), _primary_, _base_ colors from the theme or any valid color.
+
+```jsx preview
+<Tooltip label="Tooltip With Custom Text Color" cl="lime">
+  <Button>Lime Text Color</Button>
+</Tooltip>
+```
+
+### Tooltip Animation
+
+The `Tooltip` component extends the [`Animation`](/docs/components/animation) component and its respective props.
+
+You can change the default animation using the _animation_ prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
+
+- _in_: Style object with properties for mounted state.
+- _out_: Style object with properties for unmounted state.
+
+```jsx preview
+<Tooltip animation="scale" label="Tooltip With Scale Animation">
+  <Button>Scale Tooltip</Button>
+</Tooltip>
+```
+
+### Tooltip Animation Duration
+
+Like the [`Animation`](/docs/miscellaneous/animation) component, you can change the duration of the animation using the _duration_ prop.
+
+```jsx preview
+<Tooltip duration={500} label="Tooltip With Duration of 500ms">
+  <Button>Hover To Show</Button>
+</Tooltip>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Tooltip`](/docs/components-api/tooltip-api)

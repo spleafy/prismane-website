@@ -1,0 +1,40 @@
+---
+title: 'useOutsideClick'
+description: "useOutsideClick hook provides a simple way to handle a click out of the element's constraints."
+---
+
+## Overview
+The useOutsideClick hook detects clicks that occur outside of a specified DOM element, triggering a callback function when such clicks are detected. It takes a reference to your target element and a callback function that executes whenever a user clicks anywhere outside of that referenced element. This hook is particularly useful for implementing dismissible components like dropdowns, modals, and popups that should close when users click elsewhere on the page, creating intuitive and accessible user interfaces.
+
+## Import
+
+```js
+import { useOutsideClick } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useOutsideClick` hook accepts the following parameters:
+
+| Name       | Type              | Description                                             | Default Value |
+| ---------- | ----------------- | ------------------------------------------------------- | ------------- |
+| `ref`      | _RefObject\<any>_ | The ref of the element that will be tracked.            | -             |
+| `callback` | _() => void_      | The function that will be called when the event occurs. | -             |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const ref = useRef(null);
+
+  const [shown, setShown] = useState(true);
+
+  useOutsideClick(ref, () => setShown(false));
+
+  return (
+    <Stack>
+      {shown && <Card ref={ref}>Click outside of the card to hide it</Card>}
+    </Stack>
+  );
+}
+```

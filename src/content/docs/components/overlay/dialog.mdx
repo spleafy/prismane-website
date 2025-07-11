@@ -1,0 +1,224 @@
+---
+title: 'Dialog'
+description: 'Dialog displays a container that displays a notification.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Dialog` component has 2 additional inner components:
+
+- _Dialog.Header_: The wrapper that contains the dialog's header.
+- _Dialog.Footer_: The wrapper that contains the dialog's footer.
+
+```js
+import { Dialog } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <Stack>
+          <Text>
+            This is a simple dialog. Close it by clicking on the backdrop.
+          </Text>
+        </Stack>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? 'Close Dialog' : 'Open Dialog'}
+      </Button>
+    </>
+  );
+}
+```
+
+### Advanced Composition
+
+Using the before mentioned `Dialog.Header` and `Dialog.Footer` components we can easily create complex dialogs that have evenly spaced out content.
+
+```jsx preview
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog w={fr(96)} open={open} onClose={() => setOpen(false)}>
+        <Dialog.Header>
+          <Text fw="bold">Whoaa, take it easy!</Text>
+        </Dialog.Header>
+        <Text fs="sm">You can only post 1 quiz every 2 mintues!</Text>
+        <Dialog.Footer>
+          <Button onClick={() => setOpen(false)}>Got It</Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button onClick={() => setOpen(!open)}>
+        {open ? 'Close Dialog' : 'Open Dialog'}
+      </Button>
+    </>
+  );
+}
+```
+
+### Closable Dialog
+
+You can display a close button in the right corner of the `Dialog.Header` component using the _closable_ prop.
+
+The dialog can now also be closed by clicking the button, instead of only being able to be closed by clicking on the backdrop.
+
+```jsx preview
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog w={fr(96)} open={open} onClose={() => setOpen(false)} closable>
+        <Dialog.Header>
+          <Text fw="bold">Important Warning!</Text>
+        </Dialog.Header>
+        <Text fs="sm">
+          Violating our terms will result in a permanent ban from our platform!
+        </Text>
+        <Dialog.Footer>
+          <Button onClick={() => setOpen(false)}>Understood</Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button onClick={() => setOpen(!open)}>
+        {open ? 'Close Dialog' : 'Open Dialog'}
+      </Button>
+    </>
+  );
+}
+```
+
+### Dialog Animation
+
+The `Dialog` component extends the [`Animation`](/docs/components/animation) component and its respective props.
+
+You can change the default animation using the _animation_ prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
+
+- _in_: Style object with properties for mounted state.
+- _out_: Style object with properties for unmounted state.
+
+```jsx preview
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Dialog
+        animation="scale"
+        w={fr(96)}
+        open={open}
+        onClose={() => setOpen(false)}
+        closable
+      >
+        <Dialog.Header>
+          <Text as="h2">Account warning</Text>
+        </Dialog.Header>
+        <Text fs="sm">
+          Your account has not been completed yet. Do you want to complete your
+          registration?
+        </Text>
+        <Dialog.Footer gap={fr(2)}>
+          <Button>Complete</Button>
+          <Button
+            variant="secondary"
+            color="base"
+            onClick={() => setOpen(false)}
+          >
+            Cancel
+          </Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? 'Close Dialog' : 'Open Dialog'}
+      </Button>
+    </>
+  );
+}
+```
+
+### Dialog Position
+
+You can change the position of the dialog by using the _position_ prop. You can choose any of [PrismanePositions](/docs/getting-started/globals#prismanepositions) as a value. By default, the _top_ position is used.
+
+```jsx preview
+function Default() {
+  const [open, setOpen] = useState(false);
+
+  const [position, setPosition] = useState('top');
+
+  const [point, setPoint] = useState('end');
+
+  return (
+    <Stack gap={fr(4)} align="center">
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+      >
+        <Radio label="Top" value="top" />
+        <Radio label="Bottom" value="bottom" />
+        <Radio label="Left" value="left" />
+        <Radio label="Right" value="right" />
+      </Radio.Group>
+      <Radio.Group value={point} onChange={(e) => setPoint(e.target.value)}>
+        <Radio label="Start" value="start" />
+        <Radio label="None (e.g. right, left)" value="none" />
+        <Radio label="End" value="end" />
+      </Radio.Group>
+      <Dialog
+        position={point !== 'none' ? `${position}-${point}` : position}
+        w={fr(96)}
+        open={open}
+        onClose={() => setOpen(false)}
+        closable
+      >
+        <Dialog.Header>
+          <Text as="h2">Ooops, an error ocurred!</Text>
+        </Dialog.Header>
+        <Text fs="sm">
+          There was a connection error and your request was not sent. Do you
+          want to try again?
+        </Text>
+        <Dialog.Footer gap={fr(2)}>
+          <Button>Retry</Button>
+          <Button
+            variant="secondary"
+            color="base"
+            onClick={() => setOpen(false)}
+          >
+            Cancel
+          </Button>
+        </Dialog.Footer>
+      </Dialog>
+      <Button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? 'Close Dialog' : 'Open Dialog'}
+      </Button>
+    </Stack>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Dialog`](/docs/components-api/dialog-api)

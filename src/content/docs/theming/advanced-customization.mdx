@@ -1,0 +1,102 @@
+---
+title: 'Advanced Customization'
+---
+
+Prismane offers a set of tools that can help you customize your app even more. Dynamic theme mode toggling, dynamic theme changing, theme hooks and more.
+
+## usePrismaneTheme Hook
+
+The `usePrismaneTheme` hook exports a set of helper functions that can manipulate the theme context's value as well as direct access to the context's value.
+
+```tsx
+import { usePrismaneTheme } from '@prismane/core';
+```
+
+## Access The Theme Object
+
+If you want to get the latest theme object, you can use the `usePrismaneTheme` hook and take the _theme_ object from it.
+
+```tsx
+import { Box } from '@prismane/core';
+// Import usePrismaneTheme from the core package
+import { usePrismaneTheme } from '@prismane/core';
+
+const Page = () => {
+  // Get the latest theme object in the first <PrismaneProvider />
+  const { theme } = usePrismaneTheme();
+
+  console.log(theme); // Log the theme object
+
+  return <Box>Hello, world</Box>;
+};
+
+export default Page;
+```
+
+## Toggle The Theme Mode
+
+One very widely used functionality of theming is toggling between light and dark modes.
+
+The `usePrismaneTheme` hook provides such function called _toggleThemeMode_ that does exactly this.
+
+```tsx
+import { Button } from '@prismane/core';
+// Import usePrismaneTheme from the core package
+import { usePrismaneTheme } from '@prismane/core';
+
+const Page = () => {
+  // Get the toggleThemeMode function from the hook
+  const { toggleThemeMode } = usePrismaneTheme();
+
+  return (
+    <Button
+      onClick={() => {
+        // Use the function to toggle between dark/light modes
+        toggleThemeMode();
+      }}
+    >
+      Hello, world
+    </Button>
+  );
+};
+
+export default Page;
+```
+
+## Update The Theme Value
+
+If you want to change some values of the current theme on the fly, you aca do that by using the _setTheme_ function
+from the `usePrismaneTheme` hook.
+
+```tsx
+// Import the PRISMANE_COLORS palette from Prismane
+import { Button, PRISMANE_COLORS } from '@prismane/core';
+// Import usePrismaneTheme from the core package
+import { usePrismaneTheme } from '@prismane/core';
+
+const Page = () => {
+  // Get the setTheme function from the hook
+  const { setTheme } = usePrismaneTheme();
+
+  // Create a theme object using the PRISMANE_COLORS palette
+  const theme = {
+    colors: {
+      primary: { ...PRISMANE_COLORS.red },
+      base: { ...PRISMANE_COLORS.sepia }
+    }
+  };
+
+  return (
+    <Button
+      onClick={() => {
+        // set the current theme with the new theme object
+        setTheme(theme);
+      }}
+    >
+      Hello, world
+    </Button>
+  );
+};
+
+export default Page;
+```

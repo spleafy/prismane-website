@@ -1,0 +1,191 @@
+---
+title: 'Toaster'
+description: 'Toaster displays a container that renders elements for a given time and then removes them from the DOM.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Toaster, useToast } from '@prismane/core';
+```
+
+## Usage
+
+To use toasts globally throughout your application, you have to wrap the root of your application with the `Toaster` component.
+
+If you are using `create-react-app`, you can do the following:
+
+```jsx name="App.tsx" icon={<File />}
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { PrismaneProvider } from '@prismane/core';
+
+const rootElement = document.getElementById('root');
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <PrismaneProvider>
+      <Toaster>
+        <App />
+      </Toaster>
+    </PrismaneProvider>
+  </React.StrictMode>
+);
+```
+
+Then use the `useToast` hook to add a toast to the queue. Pass the _element_ property to the `toast` function to specify the component that will be showed with the toast.
+
+```jsx
+function Demo() {
+  const toast = useToast();
+
+  return (
+    <Button
+      onClick={() => {
+        toast({
+          element: <Alert>Hello, World!</Alert>
+        });
+      }}
+    >
+      Click to show toast
+    </Button>
+  );
+}
+```
+
+Or, you can wrap a given container with the `Toaster` component and all toasts that will be created in children of that container will show in it's restraints.
+
+```jsx preview
+function Demo() {
+  const Inner = () => {
+    const toast = useToast();
+
+    return (
+      <Button
+        onClick={() => {
+          toast({
+            element: <Alert>Hello, World!</Alert>
+          });
+        }}
+      >
+        Click to show toast
+      </Button>
+    );
+  };
+
+  return (
+    <Toaster>
+      <Inner />
+    </Toaster>
+  );
+}
+```
+
+### Toaster Position
+
+Use the _position_ prop of the `Toaster` component to change the position on the screen where the toasts will be shown.
+
+You can choose any of [PrismanePositions](/docs/getting-started/globals#prismanepositions) as a value. By default, the _right-start_ position is used.
+
+```jsx preview
+function Demo() {
+  const Inner = () => {
+    const toast = useToast();
+
+    return (
+      <Button
+        onClick={() => {
+          toast({
+            element: <Alert>Toast with changed position!</Alert>
+          });
+        }}
+      >
+        Toast with different position
+      </Button>
+    );
+  };
+
+  return (
+    <Toaster mt={64} position="top-right">
+      <Inner />
+    </Toaster>
+  );
+}
+```
+
+### Toast Timeout
+
+Pass the _timeout_ property to the `toast` function to change the duration for which the toast is shown. By default, a value of _3000_ is used.
+
+```jsx preview
+function Demo() {
+  const Inner = () => {
+    const toast = useToast();
+
+    return (
+      <Button
+        onClick={() => {
+          toast({
+            element: (
+              <Alert>I am being shown for 6 seconds, instead of 3!</Alert>
+            ),
+            timeout: 6000
+          });
+        }}
+      >
+        Toast with changed timeout
+      </Button>
+    );
+  };
+
+  return (
+    <Toaster>
+      <Inner />
+    </Toaster>
+  );
+}
+```
+
+### Toast Props
+
+The `Toast` component wraps the element provided as a property to the `toast` function.
+
+It extends the [`Animation`](/docs/components/animation) component and it's props, which means that you can pass any valid prop as a property of the `toast` function.
+
+```jsx preview
+function Demo() {
+  const Inner = () => {
+    const toast = useToast();
+
+    return (
+      <Button
+        onClick={() => {
+          toast({
+            element: 'I am a toast with custom props!',
+            duration: 1000,
+            bg: 'red',
+            cl: 'white',
+            br: 'full',
+            px: 16,
+            py: 12
+          });
+        }}
+      >
+        Toast with custom props
+      </Button>
+    );
+  };
+
+  return (
+    <Toaster>
+      <Inner />
+    </Toaster>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Toaster`](/docs/components-api/toaster-api)

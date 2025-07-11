@@ -1,0 +1,75 @@
+---
+title: 'Menu API'
+description: "Learn about the Menu component's props and CSS classes."
+---
+
+## Import
+
+```js
+import {
+  MenuProps,
+  MenuItemProps,
+  MenuLabelProps,
+  MenuIconProps
+} from '@prismane/core';
+```
+
+## Props
+
+### Menu
+
+`Menu` extends [Animation](/docs/components-api/animation-api) and [Card](/docs/components-api/card-api) components' props.
+
+| Name   | Type      | Description                                                   | Default |
+| ------ | --------- | ------------------------------------------------------------- | ------- |
+| `open` | `boolean` | A function that will be executed before redirecting the user. | false   |
+
+### Menu.Item
+
+`Menu.Item` extends [Flex](/docs/components-api/flex-api) component's props.
+
+| Name    | Type                                                                | Description                  | Default |
+| ------- | ------------------------------------------------------------------- | ---------------------------- | ------- |
+| `color` | [PrismaneColors](/docs/getting-started/globals#prismanecolors-type) | The colors of the menu item. | base    |
+
+### Menu.Label
+
+`Menu.Label` extends [Flex](/docs/components-api/flex-api) component's props.
+
+| Name    | Type                                                                | Description                   | Default |
+| ------- | ------------------------------------------------------------------- | ----------------------------- | ------- |
+| `color` | [PrismaneColors](/docs/getting-started/globals#prismanecolors-type) | The colors of the menu label. | base    |
+
+### Menu.Icon
+
+`Menu.Icon` extends [Icon](/docs/components-api/icon-api) component's props.
+
+## CSS
+
+### Menu
+
+`Menu` extends [Animation](/docs/components-api/animation-api) and [Card](/docs/components-api/card-api) components' CSS classes.
+
+| Rule   | Global Class         | Description                          |
+| ------ | -------------------- | ------------------------------------ |
+| `root` | `.PrismaneMenu-root` | The container of the menu component. |
+
+`Menu.Item` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                     | Description                                                   |
+| ------ | -------------------------------- | ------------------------------------------------------------- |
+| `root` | `.PrismaneMenuItem-root`         | The container of the menu item component.                     |
+| `root` | `.PrismaneMenuItem-root-{color}` | The container of the menu item component based on it's color. |
+
+`Menu.Label` extends [Flex](/docs/components-api/flex-api) component's CSS classes.
+
+| Rule   | Global Class                      | Description                                                    |
+| ------ | --------------------------------- | -------------------------------------------------------------- |
+| `root` | `.PrismaneMenuLabel-root`         | The container of the menu label component.                     |
+| `root` | `.PrismaneMenuLabel-root-{color}` | The container of the menu label component based on it's color. |
+
+`Menu.Icon` extends [Icon](/docs/components-api/icon-api) component's CSS classes.
+
+| Rule   | Global Class             | Description                               |
+| ------ | ------------------------ | ----------------------------------------- |
+| `root` | `.PrismaneMenuIcon-root` | The container of the menu icon component. |

@@ -1,0 +1,45 @@
+---
+title: 'useLocalStorage'
+description: 'useLocalStorage hook provides a simple way to handle saving data to the localStorage.'
+---
+
+## Overview
+The useLocalStorage hook provides a seamless way to persist state in the browser's localStorage while maintaining React's state management paradigm. It synchronizes component state with localStorage automatically, ensuring data persists between page refreshes and browser sessions. This hook is particularly useful for saving user preferences, form data, authentication tokens, and other information that should be preserved across visits to your application.
+
+## Import
+
+```js
+import { useLocalStorage } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useLocalStorage` hook accepts the following parameters:
+
+| Name           | Type     | Description                                                                              | Default Value |
+| -------------- | -------- | ---------------------------------------------------------------------------------------- | ------------- |
+| `key`          | _string_ | The key whose value in the _localStorage_ will be gotten.                                | -             |
+| `defaultValue` | _any_    | The default value, if a property with this key does not exist inside the _localStorage_. | -             |
+
+## Return Value
+
+The `useInterval` hook returns an array containing the following properties:
+
+| Name       | Type             | Description                                         |
+| ---------- | ---------------- | --------------------------------------------------- |
+| `value`    | _any_            | The value from the _localStorage_.                  |
+| `setValue` | _Dispatch\<any>_ | Function that sets the value in the _localStorage_. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [secret, setSecret] = useLocalStorage('secret', 'defaultSecret');
+  return (
+    <Stack>
+      <Text>Current secret: {secret}</Text>
+      <Button onClick={() => setSecret('supersecret')}>Update secret</Button>
+    </Stack>
+  );
+}
+```

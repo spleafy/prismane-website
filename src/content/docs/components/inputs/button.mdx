@@ -1,0 +1,185 @@
+---
+title: 'Button'
+description: 'Button displays a styled button.'
+versatile: true
+---
+
+## Import
+
+```js
+import { Button } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Button>Button</Button>
+```
+
+### Button Variants
+
+Use the _variant_ prop to change the visual appearance of the button. You can set the value to _primary_, _secondary_, _tertiary_, _text_. By default, the _primary_ variant is used.
+
+```jsx preview
+<>
+  <Button variant="primary">Primary Variant</Button>
+  <Button variant="secondary">Secondary Variant</Button>
+  <Button variant="tertiary">Tertiary Variants</Button>
+  <Button variant="text">Text Variant</Button>
+</>
+```
+
+### Button Sizes
+
+Use the _size_ prop to change the size of the button. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _base_ value is used.
+
+```jsx preview
+<>
+  <Button size="xs">xs Size</Button>
+  <Button size="sm">sm Size</Button>
+  <Button size="base">base Size</Button>
+  <Button size="md">md Size</Button>
+  <Button size="lg">lg Size</Button>
+</>
+```
+
+### Button Color
+
+Use the _color_ prop to change the color scheme of the button. You can use all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_, _base_ colors from the theme.
+
+By default, the _primary_ color is used.
+
+```jsx preview
+<>
+  <Button color="red">Red</Button>
+  <Button color="orange">Orange</Button>
+  <Button color="lime">Lime</Button>
+  <Button color="green">Green</Button>
+  <Button color="cyan">Cyan</Button>
+  <Button color="amethyst">Amethyst</Button>
+  <Button color="magenta">Magenta</Button>
+  <Button color="ruby">Ruby</Button>
+  <Button color="base">Base</Button>
+</>
+```
+
+### Button With Icon
+
+You can add an icon to the button, by using the _icon_ prop.
+
+```jsx preview
+<Button icon={<DownloadSimple />}>Download</Button>
+```
+
+### Icon Position
+
+To change the icon position of the button, you can use the _iconPosition_ prop. You can set the value to _left_ or _right_. By default, the _left_ value is used.
+
+```jsx preview
+<>
+  <Button iconPosition="left" icon={<Phone />}>
+    Call Us
+  </Button>
+  <Button
+    iconPosition="right"
+    icon={<ShareNetwork />}
+    color="teal"
+    variant="tertiary"
+  >
+    Share
+  </Button>
+</>
+```
+
+### Button With Shadow
+
+Pass the _shadow_ prop to add a shadow to the button.
+
+```jsx preview
+<Button shadow>Shadow Button</Button>
+```
+
+### Full Width Button
+
+You can easily make the button take the full width of its parent container, by passing the _full_ prop.
+
+```jsx preview
+<Flex w={fr(72)}>
+  <Button full>Full Width Button</Button>
+</Flex>
+```
+
+### Fill On Hover Button
+
+When using _secondary_ and _tertiary_ variants, you can pass the _fillOnHover_, which will make the button's background color solid when the button is hovered.
+
+```jsx preview
+<>
+  <Button variant="secondary" fillOnHover>
+    Add to cart
+  </Button>
+  <Button variant="tertiary" color="red" fillOnHover>
+    Delete Post
+  </Button>
+</>
+```
+
+### Button Loading
+
+Pass the _loading_ prop to showcase the loading state of the button. When the button is in loading state, it is also _disabled_.
+
+```jsx preview
+<>
+  <Button variant="primary" loading>
+    Loading
+  </Button>
+  <Button variant="secondary" loading>
+    Loading
+  </Button>
+  <Button variant="tertiary" loading>
+    Loading
+  </Button>
+  <Button variant="text" loading>
+    Loading
+  </Button>
+</>
+```
+
+### Customized Button
+
+Combined with all of the [Prismane's Style Props](/docs/styling/style-props) and `Button`'s props you can easily customize the button only using props.
+
+```jsx preview
+<Button icon={<GearSix />} variant="secondary" color="gray" br="full">
+  Settings
+</Button>
+```
+
+### Versatile Component
+
+`Button` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _button_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Button } from '@prismane/core';
+
+function Demo() {
+  <Button as="a">Link Button</Button>;
+}
+```
+
+You can also use components for the _as_ prop, for example NextJS's `Link` component:
+
+```jsx
+import { Button } from '@prismane/core';
+import Link from 'next/link';
+
+function Demo() {
+  <Button as={Link}>Link Button</Button>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Button`](/docs/components-api/button-api)

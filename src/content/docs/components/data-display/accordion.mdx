@@ -1,0 +1,110 @@
+---
+title: 'Accordion'
+description: 'Accordion displays a list of options that can be expanded or collapsed.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Accordion` component has 4 additional inner components:
+
+- _Accordion.Item_: A single accordion item.
+- _Accordion.Control_: The control that toggles the expansion of the given item.
+- _Accordion.Panel_: The container whose contents are revealed.
+- _Accordion.Icon_: An icon that is animated based on the expanded/collapsed state.
+
+```js
+import { Accordion } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Accordion>
+  <Accordion.Item value="first">
+    <Accordion.Control>
+      First
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>First Panel Content</Accordion.Panel>
+  </Accordion.Item>
+
+  <Accordion.Item value="second">
+    <Accordion.Control>
+      Second
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>Second Panel Content</Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+```
+
+### Default Value
+
+You can set an item that will be toggled by default, by passing the _defaultValue_ variable to the `Accordion` component. You can pass any _value_ of any `Accordion.Item` and that item will be toggled by default.
+
+```jsx preview
+<Accordion defaultValue="first">
+  <Accordion.Item value="first">
+    <Accordion.Control>
+      First
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>This panel will be expanded by default.</Accordion.Panel>
+  </Accordion.Item>
+
+  <Accordion.Item value="second">
+    <Accordion.Control>
+      Second
+      <Accordion.Icon />
+    </Accordion.Control>
+    <Accordion.Panel>This one will be closed by default.</Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+```
+
+### Custom Accordion Icon
+
+You can change the default _chevron-down_ icon, by passing a new one as a child of the `Accordion.Icon` component.
+
+To animate the icon, you can make the child a function that accepts the _active_ parameter, which indicates if the given item is toggled or not.
+
+```jsx preview
+<Accordion defaultValue="first">
+  <Accordion.Item value="first">
+    <Accordion.Control>
+      First
+      <Accordion.Icon>
+        {(active) => (
+          <Transition
+            as={Plus}
+            sx={{ transform: active ? 'rotate(135deg)' : 'rotate(0deg)' }}
+          />
+        )}
+      </Accordion.Icon>
+    </Accordion.Control>
+    <Accordion.Panel>Changed Default Icon Accordion</Accordion.Panel>
+  </Accordion.Item>
+
+  <Accordion.Item value="second">
+    <Accordion.Control>
+      Second
+      <Accordion.Icon>
+        {(active) => (
+          <Transition
+            as={Plus}
+            sx={{ transform: active ? 'rotate(135deg)' : 'rotate(0deg)' }}
+          />
+        )}
+      </Accordion.Icon>
+    </Accordion.Control>
+    <Accordion.Panel>Changed Default Icon Accordion</Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Accordion`](/docs/components-api/accordion-api)

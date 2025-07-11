@@ -1,0 +1,61 @@
+---
+title: 'useEmulatedFieldChange'
+description: 'useEmulatedFieldChange hook provides a simple way to emulate field change events.'
+---
+
+## Overview
+The useEmulatedFieldChange hook provides a bridge between programmatic updates and native input change events in React applications. It allows developers to trigger input change events as if they were initiated by user interaction, ensuring that all event handlers are properly executed. This hook is particularly valuable for scenarios requiring automated form interactions, field value synchronization, or input testing, where you need both the value change and associated event handlers to be triggered simultaneously.
+
+
+## Import
+
+```js
+import { useEmulatedFieldChange } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useEmulatedFieldChange` hook accepts the following parameters:
+
+| Name     | Type              | Description                                                               | Default Value |
+| -------- | ----------------- | ------------------------------------------------------------------------- | ------------- |
+| `ref`    | _RefObject\<any>_ | The ref of the field, whose value will be updated.                        | -             |
+| `change` | _() => void_      | The function that will be triggered on the onChange event from the field. | -             |
+
+## Return Value
+
+The `useEmulatedFieldChange` hook returns the following variable:
+
+| Name      | Type                   | Description                              |
+| --------- | ---------------------- | ---------------------------------------- |
+| `emulate` | _(value: any) => void_ | The value that will be set to the input. |
+
+## Usage
+
+The `useEmulatedFieldChange` hook is used to programmatically simulate a change event of an input element.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('');
+
+  const ref = useRef(null);
+
+  const handleChange = (e) => setValue(e.target.value);
+
+  const emulateFieldChange = useEmulatedFieldChange(ref, handleChange);
+
+  return (
+    <Stack>
+      <Field
+        value={value}
+        onChange={handleChange}
+        placeholder="Emulated Value"
+        ref={ref}
+      />
+      <Button onClick={() => emulateFieldChange('Custom Value')}>
+        Emulate Change Event
+      </Button>
+    </Stack>
+  );
+}
+```

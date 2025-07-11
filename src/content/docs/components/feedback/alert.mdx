@@ -1,0 +1,118 @@
+---
+title: 'Alert'
+description: 'Alert displays an important message for an action.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Alert` component has 2 additional inner components:
+
+- _Alert.Title_: A title of the alert.
+- _Alert.Description_: The description of the alert.
+
+```js
+import { Alert } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Alert>This is the default alert!</Alert>
+```
+
+### Alert Variants
+
+Use the _variant_ prop to change the visual appearance of the alert. You can set the value to _info_, _success_, _warning_, _error_. By default, the _info_ variant is used.
+
+```jsx preview
+<Stack>
+  <Alert variant="info">
+    This is an info alert. It provides important information or updates.
+  </Alert>
+  <Alert variant="success">
+    This is a success alert. It represents that an action has resulted in a
+    success.
+  </Alert>
+  <Alert variant="warning">
+    This is a warning alert. It represents that an action has completed with a
+    warning.
+  </Alert>
+  <Alert variant="error">
+    This is an error alert. It represents that an action couldn't complete due
+    to an error.
+  </Alert>
+</Stack>
+```
+
+### Closable Alert
+
+Use the _closable_ prop to make the alert dismissable.
+
+```jsx preview
+<Alert closable>
+  This is a closable alert. Click the close button to dismiss it.
+</Alert>
+```
+
+### Custom Alert Action
+
+You can add a custom close action element to the alert when it has the _closable_ prop, by using the _action_ prop.
+
+```jsx preview
+<Alert
+  action={
+    <Button color="red" variant="tertiary" fillOnHover>
+      See more
+    </Button>
+  }
+  variant="error"
+  closable
+>
+  Oops, an unknown error ocurred!
+</Alert>
+```
+
+### Custom Alert Icon
+
+You can overwrite the alert's icon, by using the _icon_ prop.
+
+```jsx preview
+<Alert icon={<WarningDiamond size={24} />} variant="warning">
+  This is an alert with a custom icon.
+</Alert>
+```
+
+### Alert Title
+
+You can add a title to the alert by using the `Alert.Title` component.
+
+```jsx preview
+<Alert variant="error">
+  <Alert.Title>Error 404</Alert.Title>
+  The desired file was not found on our system!
+</Alert>
+```
+
+### Alert Description
+
+The `Alert.Description` component has a limited max width of _672px_ which ensures that the alert will display correctly no matter the text length.
+
+```jsx preview
+<Alert>
+  <Alert.Description>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </Alert.Description>
+</Alert>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Alert`](/docs/components-api/alert-api)

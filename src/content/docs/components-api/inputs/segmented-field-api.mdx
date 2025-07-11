@@ -1,0 +1,28 @@
+---
+title: 'SegmentedField API'
+description: "Learn about the SegmentedField component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { SegmentedFieldProps } from '@prismane/core';
+```
+
+## Props
+
+`SegmentedField` extends [Field](/docs/components-api/field-api) component's props.
+
+| Name      | Type                                       | Description                         | Default |
+| --------- | ------------------------------------------ | ----------------------------------- | ------- |
+| `options` | `{ element: ReactNode; value: string; }[]` | The options of the segmented field. | -       |
+
+## CSS
+
+`SegmentedField` extends [Field](/docs/components-api/field-api) component's CSS classes.
+
+| Rule    | Global Class                    | Description                                     |
+| ------- | ------------------------------- | ----------------------------------------------- |
+| `root`  | `.PrismaneSegmentedField-root`  | The container of the segmented field component. |
+| `label` | `.PrismaneSegmentedField-label` | The container of the field label component.     |
+| `error` | `.PrismaneSegmentedField-error` | The container of the field error component.     |

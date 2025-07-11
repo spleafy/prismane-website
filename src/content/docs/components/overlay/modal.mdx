@@ -1,0 +1,154 @@
+---
+title: 'Modal'
+description: 'Modal displays a container that displays a notification.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Modal` component has 2 additional inner components:
+
+- _Modal.Header_: The wrapper that contains the modal's header.
+- _Modal.Footer_: The wrapper that contains the modal's footer.
+
+```js
+import { Modal } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        This is a simple modal. To close it just click the Escape key or simply
+        click the backdrop.
+      </Modal>
+    </>
+  );
+}
+```
+
+### Advanced Composition
+
+Using the before mentioned `Modal.Header` and `Modal.Footer` components we can easily create complex modals that have evenly spaced out content.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Modal.Header>
+          <Text as="h1">Create Account</Text>
+        </Modal.Header>
+        <Form w={fr(96)}>
+          <TextField
+            name="username"
+            label="Username:"
+            placeholder="Enter your username"
+          />
+          <TextField
+            name="email"
+            label="Email:"
+            placeholder="Enter your email"
+          />
+          <PasswordField
+            name="password"
+            label="Password:"
+            placeholder="Enter your password"
+          />
+        </Form>
+        <Modal.Footer direction="column" gap={fr(2)}>
+          <Button full>Create Account</Button>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="secondary"
+            color="base"
+            full
+          >
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+```
+
+### Closable Modal
+
+You can display a close button in the right corner of the `Modal.Header` component using the _closable_ prop.
+
+The modal can now also be closed by clicking the button, instead of only being able to be closed by clicking on the backdrop.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)} closable>
+        <Modal.Header>
+          <Text as="h1">Sign In</Text>
+        </Modal.Header>
+        <Form w={fr(96)}>
+          <TextField
+            name="email"
+            label="Email:"
+            placeholder="Enter your email"
+            defaultValue="martinpetrov@prismane.io"
+          />
+          <PasswordField
+            name="password"
+            label="Password:"
+            placeholder="Enter your password"
+            defaultValue="1234supersecret1234"
+          />
+        </Form>
+        <Modal.Footer>
+          <Button full>Sign In</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+```
+
+### Modal Animation
+
+The `Modal` component extends the [`Animation`](/docs/components/animation) component and its respective props.
+
+You can change the default animation using the _animation_ prop. Supported values are [PrismaneAnimations](/docs/getting-started/globals#prismaneanimations) or an animation object that follow this structure:
+
+- _in_: Style object with properties for mounted state.
+- _out_: Style object with properties for unmounted state.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal animation="fade" open={open} onClose={() => setOpen(false)}>
+        This is a simple modal with a fade animation. To close it just click the
+        Escape key or simply click the backdrop.
+      </Modal>
+    </>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Modal`](/docs/components-api/modal-api)

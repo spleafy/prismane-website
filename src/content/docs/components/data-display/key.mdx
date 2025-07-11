@@ -1,0 +1,49 @@
+---
+title: 'Key'
+description: 'Key displays a container that is used to display keyboard key combinations.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Key } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Key>ctrl</Key>
+```
+
+### Modifiers
+
+You can use the _+_ symbol to indicate that a combination of keys is will activate the shortcut.
+
+```jsx preview
+<span>
+  <Key>shift</Key> + <Key>H</Key>
+</span>
+```
+
+For a sequence of keys, where one key follows the other, you can use the _then_ word.
+
+```jsx preview
+<span>
+  <Key>shift</Key> then <Key>M</Key>
+</span>
+```
+
+If two keys can activate the shortcut or if the keys might look different on the user's keyboard, you can use the _or_ word.
+
+```jsx preview
+<span>
+  <Key>shift</Key> or <Key>T</Key>
+</span>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Key`](/docs/components-api/key-api)

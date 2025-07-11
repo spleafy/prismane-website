@@ -1,0 +1,87 @@
+---
+title: 'Avatar'
+description: 'Avatar displays a profile picture or a color background with initials.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Avatar } from '@prismane/core';
+```
+
+## Usage
+
+By default, if no initials or image are provided, `Avatar` uses a placeholder icon.
+
+```jsx preview
+<Avatar />
+```
+
+### Custom Placeholder Icon
+
+You can overwrite the default icon by providing a child to the `Avatar` component.
+
+```jsx preview
+<Avatar>
+  <User weight="bold" size={36} />
+</Avatar>
+```
+
+### Image Avatar
+
+You can set the avatar to an image by passing the image source to the _src_ prop.
+
+```jsx preview
+<Avatar src="https://i.pinimg.com/originals/a7/3b/3d/a73b3d77e2fdca58f57e568ddcfab1a5.jpg" />
+```
+
+### Avatar Color
+
+Use the _color_ prop to change the color scheme of the avatar. You can use all colors from the [Prismane Color Palette](/docs/styling/color-palette) or _primary_, _base_ colors from the theme.
+
+By default, the _base_ color is used.
+
+```jsx preview
+<>
+  <Avatar color="red">MP</Avatar>
+  <Avatar color="orange">MP</Avatar>
+  <Avatar color="lime">MP</Avatar>
+  <Avatar color="green">MP</Avatar>
+  <Avatar color="cyan">MP</Avatar>
+  <Avatar color="amethyst">MP</Avatar>
+  <Avatar color="magenta">MP</Avatar>
+  <Avatar color="ruby">MP</Avatar>
+  <Avatar color="base">MP</Avatar>
+</>
+```
+
+### Avatar Sizes
+
+Use the _size_ prop to change the size of the avatar. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _base_ value is used.
+
+```jsx preview
+<>
+  <Avatar size="xs">MP</Avatar>
+  <Avatar size="sm">MP</Avatar>
+  <Avatar size="base">MP</Avatar>
+  <Avatar size="md">MP</Avatar>
+  <Avatar size="lg">MP</Avatar>
+</>
+```
+
+### Initials Avatar
+
+A common combination is the [`Initials`](/docs/components/initials) component with the `Avatar` component.
+
+```jsx preview
+<Avatar>
+  <Initials name="John Doe" />
+</Avatar>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Avatar`](/docs/components-api/avatar-api)

@@ -1,0 +1,95 @@
+---
+title: 'email'
+description: 'This validator checks if a string is a valid email.'
+---
+
+## Import
+
+```js
+import { email } from '@prismane/core/validators';
+```
+
+## Parameters
+
+The `email` validator accepts the following parameters:
+
+| Name     | Type                  | Description                               | Default Value |
+| -------- | --------------------- | ----------------------------------------- | ------------- |
+| `value`  | _string_              | The string that will be validated.        | -             |
+| `regExp` | _RegExp_, _undefined_ | Overwrite the default regular expression. | -             |
+
+## Usage
+
+The `email` validator checks if the provided value is a valid email.
+
+```ts
+const string = 'johndoe@domain';
+
+const error = email(string);
+
+console.log(error); // This is not a valid email!
+```
+
+If there is no error, _null_ is returned.
+
+```ts
+const string = 'johndoe@domain.com';
+
+const error = email(string);
+
+console.log(error); // null
+```
+
+### Custom Regular Expression
+
+Pass the _regExp_ parameter to the validator, which is the second parameter, to change the regular expression used to test the provided value.
+
+```ts
+const string = 'johndoe@domain.com';
+
+const error = email(string, /^[a-zA-Z0-9._-]+@prismane\.io$/);
+
+console.log(error); // This is not a valid email!
+```
+
+### useForm Example
+
+The `email` validator, like all other validators of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, register } = useForm({
+    fields: {
+      email: {
+        value: "",
+        validators: {
+          email: (v: string) => email(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v, ""));
+      }}
+    >
+      <TextField
+        placeholder="Enter your email:"
+        label="Email:"
+        {...register("email")}
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```

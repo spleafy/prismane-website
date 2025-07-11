@@ -1,0 +1,119 @@
+---
+title: 'CSS Variables'
+---
+
+Prismane provides a set of global CSS variables that facilitate seamless theme integration into your applications.
+With Prismane's global CSS variables, you can achieve consistent theming across your entire application,
+making it effortless to create a cohesive and personalized user experience.
+
+## How Are The CSS Variables Generated
+
+When you provide a theme to `<PrismaneProvider/>`, it will automatically transpile the passed object and generate a set of CSS variables, which would then be applied to the root element.
+
+<Warning>
+  If no theme object is passed to the provider, the base theme will be used
+  instead.
+</Warning>
+
+For example:
+
+```tsx
+const theme = {
+  colors: {
+    primary: {
+      50: '#fafafa',
+      100: '#f7f7f7'
+    }
+  }
+};
+```
+
+Will be transpiled into this:
+
+```css
+:root {
+  ...other theme CSS variables
+  --prismane-colors-primary-50: "#fafafa";
+  --prismane-colors-primary-100: "#f7f7f7";
+}
+```
+
+# Using CSS Variables
+
+Prismane's CSS variables can be used in CSS stylesheet files, as well as in components.
+
+## Inside CSS Stylesheet
+
+If you want to use the Prismane's CSS variales inside your css file, you can use the `var` function with the name of
+the css variable.
+
+```css
+// index.css
+
+.some-component-class {
+  background-color: var(--prismane-colors-primary-500);
+}
+
+.some-other-component-class {
+  font-size: calc(var(--prismane-spacing) * 4);
+}
+```
+
+## Inside Components
+
+You can use the CSS variables inside the styling of the components as well.
+
+```tsx
+import { Box } from '@prismane/core';
+
+const Page = () => {
+  return (
+    <Box
+      style={{
+        // Use the Prismane's CSS variable
+        backgroundColor: 'var(--primane-colors-primary-500)'
+      }}
+    >
+      Hello, world
+    </Box>
+  );
+};
+
+export default Page;
+```
+
+# All CSS Variables
+
+This is a list of all CSS variables that Prismane adds to your application:
+
+| CSS Variable Name               | Theme Token               |
+| ------------------------------- | ------------------------- |
+| `--prismane-colors-primary-50`  | theme.colors.primary[50]  |
+| `--prismane-colors-primary-100` | theme.colors.primary[100] |
+| `--prismane-colors-primary-200` | theme.colors.primary[200] |
+| `--prismane-colors-primary-300` | theme.colors.primary[300] |
+| `--prismane-colors-primary-400` | theme.colors.primary[400] |
+| `--prismane-colors-primary-500` | theme.colors.primary[500] |
+| `--prismane-colors-primary-600` | theme.colors.primary[600] |
+| `--prismane-colors-primary-700` | theme.colors.primary[700] |
+| `--prismane-colors-primary-800` | theme.colors.primary[800] |
+| `--prismane-colors-primary-900` | theme.colors.primary[900] |
+| `--prismane-colors-base-50`     | theme.colors.base[50]     |
+| `--prismane-colors-base-100`    | theme.colors.base[100]    |
+| `--prismane-colors-base-200`    | theme.colors.base[200]    |
+| `--prismane-colors-base-300`    | theme.colors.base[300]    |
+| `--prismane-colors-base-400`    | theme.colors.base[400]    |
+| `--prismane-colors-base-500`    | theme.colors.base[500]    |
+| `--prismane-colors-base-600`    | theme.colors.base[600]    |
+| `--prismane-colors-base-700`    | theme.colors.base[700]    |
+| `--prismane-colors-base-800`    | theme.colors.base[800]    |
+| `--prismane-colors-base-900`    | theme.colors.base[900]    |
+| `--prismane-spacing`            | theme.spacing             |
+| `--prismane-border-radius-xs`   | theme.borderRadius.xs     |
+| `--prismane-border-radius-sm`   | theme.borderRadius.sm     |
+| `--prismane-border-radius-base` | theme.borderRadius.base   |
+| `--prismane-border-radius-md`   | theme.borderRadius.md     |
+| `--prismane-border-radius-lg`   | theme.borderRadius.lg     |
+| `--prismane-border-radius-xl`   | theme.borderRadius.xl     |
+| `--prismane-border-radius-2xl`  | theme.borderRadius["2xl"] |
+| `--prismane-font-family`        | theme.fontFamily          |

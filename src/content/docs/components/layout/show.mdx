@@ -1,0 +1,40 @@
+---
+title: 'Show'
+description: 'Show displays a container that hides under a breakpoint.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Show } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Show>
+  Shown over base (1024px) breakpoint! Resize your screen to hide if shown.
+</Show>
+```
+
+### Hide Sizes
+
+Use the _breakpoint_ prop to change the breakpoint over which the content will be shown. Values can be _xs_, _sm_, _base_, _md_, _lg_ or any other valid custom size. By default, the _base_ breakpoint is used.
+
+```jsx preview
+<Stack direction="column" gap={fr(2)}>
+  <Show breakpoint="xs">Shown over xs (640px) breakpoint!</Show>
+  <Show breakpoint="sm">Shown over sm (768px) breakpoint!</Show>
+  <Show breakpoint="base">Shown over base (1024px) breakpoint!</Show>
+  <Show breakpoint="md">Shown over md (1280px) breakpoint!</Show>
+  <Show breakpoint="lg">Shown over lg (1536px) breakpoint!</Show>
+  <Show breakpoint="2000px">Shown over 2000px!</Show>
+</Stack>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Show`](/docs/components-api/show-api)

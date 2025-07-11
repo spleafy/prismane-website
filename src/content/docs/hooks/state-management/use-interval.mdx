@@ -1,0 +1,59 @@
+---
+title: 'useInterval'
+description: 'useInterval hook provides a simple way to handle complex intervals.'
+---
+
+## Overview
+The useInterval hook simplifies the implementation of interval-based functionality in React components with a clean, declarative API. It manages the complexities of setting up and cleaning up intervals, preventing memory leaks commonly associated with setInterval in React applications. With built-in controls for starting, stopping, and toggling the interval, plus an active state indicator, this hook provides a robust solution for creating timers, animations, polling mechanisms, and other time-based operations.
+
+## Import
+
+```js
+import { useInterval } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useInterval` hook accepts the following parameters:
+
+| Name       | Type         | Description                                                          | Default Value |
+| ---------- | ------------ | -------------------------------------------------------------------- | ------------- |
+| `callback` | _() => void_ | The function that will be called on every iteration of the interval. | -             |
+| `delay`    | _number_     | The delay between interval iterations.                               | -             |
+
+## Return Value
+
+The `useInterval` hook returns an object containing the following properties:
+
+| Name     | Type         | Description                         |
+| -------- | ------------ | ----------------------------------- |
+| `start`  | _() => void_ | Function that starts the interval.  |
+| `stop`   | _() => void_ | Function that stops the interval.   |
+| `toggle` | _() => void_ | Function that toggles the interval. |
+| `active` | _boolean_    | The state of the interval.          |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const { start, stop, toggle, active } = useInterval(increment, 1000);
+
+  return (
+    <Stack>
+      <Text>Counter: {count}</Text>
+      <Flex gap={fr(2)} wrap="wrap">
+        <Button onClick={start}>Start</Button>
+        <Button onClick={stop}>Stop</Button>
+        <Button onClick={toggle}>Toggle</Button>
+      </Flex>
+      <Text>Active: {active.toString()}</Text>
+    </Stack>
+  );
+}
+```

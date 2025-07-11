@@ -1,0 +1,151 @@
+---
+title: 'Link'
+description: "Link displays an anchor and leverages it's functionality by having the ability to execute functions before redirect."
+versatile: true
+---
+
+## Import
+
+```js
+import { Link } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Link href="#">Link</Link>
+```
+
+### Link Underline
+
+Use the _underline_ prop to change when the underline is displayed. Values can be _none_, _hover_, _always_. By default, the _hover_ value is used.
+
+```jsx preview
+<>
+  <Link href="#" underline="none">
+    No Underline
+  </Link>
+  <Link href="#" underline="hover">
+    Hover for Underline
+  </Link>
+  <Link href="#" underline="always">
+    Always Underlined
+  </Link>
+</>
+```
+
+### Foreign Link
+
+Pass the _foreign_ prop to open the link in a new blank page.
+
+```jsx preview
+<Link href="https://www.google.com" foreign>
+  I will open in a blank page
+</Link>
+```
+
+### Before Function
+
+Pass a function to the _before_ prop to execute an action before redirecting. The function can also be _asynchronous_ and can _await_ a given action to complete before redirecting.
+
+```jsx preview
+<Link
+  before={async () => {
+    console.log('Redirecting...');
+  }}
+  href="https://www.google.com"
+  foreign
+>
+  I will log to console, before redirecting
+</Link>
+```
+
+### Link Color
+
+Use the _cl_ prop to change the color of the link. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette), _primary_, _base_ colors from the theme or any valid color.
+
+```jsx preview
+<>
+  <Link href="#" cl="red">
+    Red
+  </Link>
+  <Link href="#" cl="orange">
+    Orange
+  </Link>
+  <Link href="#" cl="lime">
+    Lime
+  </Link>
+  <Link href="#" cl="green">
+    Green
+  </Link>
+  <Link href="#" cl="base">
+    Base
+  </Link>
+</>
+```
+
+### Link Underline Color
+
+Use the _sx_ prop and pass a value to the _textDecorationColor_ property to change the underline color of the link.
+
+```jsx preview
+<Link
+  href="#"
+  sx={{
+    textDecorationColor: 'lime'
+  }}
+>
+  I have a different underline color
+</Link>
+```
+
+### Link Underline Thickness
+
+Use the _sx_ prop and pass a value to the _textDecorationThickness_ property to change the underline thickness of the link.
+
+```jsx preview
+<Link
+  href="#"
+  sx={{
+    textDecorationThickness: '4px'
+  }}
+>
+  I have a thicker underline
+</Link>
+```
+
+### Link Underline Style
+
+Use the _sx_ prop and pass a value to the _textDecorationStyle_ property to change the underline style of the link.
+
+```jsx preview
+<Link
+  href="#"
+  sx={{
+    textDecorationStyle: 'wavy'
+  }}
+>
+  I have a wavy underline
+</Link>
+```
+
+### Versatile Component
+
+`Link` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _a_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Link } from '@prismane/core';
+import Link from 'next/link';
+
+function Demo() {
+  <Link href="#" as={Link}>
+    NextJS Link
+  </Link>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Link`](/docs/components-api/link-api)

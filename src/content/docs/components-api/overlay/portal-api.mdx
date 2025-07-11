@@ -1,0 +1,28 @@
+---
+title: 'Portal API'
+description: "Learn about the Portal component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { PortalProps } from '@prismane/core';
+```
+
+## Props
+
+`Portal` extends [Box](/docs/components-api/box-api) component's props.
+
+| Name       | Type                                  | Description                                | Default       |
+| ---------- | ------------------------------------- | ------------------------------------------ | ------------- |
+| `target`   | `React.RefObject<HTMLElement> / null` | The target of the portal container.        | document.body |
+| `disabled` | `boolean`                             | Toggles the state of the portal container. | false         |
+
+## CSS
+
+`Portal` extends [Box](/docs/components-api/box-api) component's CSS classes.
+
+| Rule   | Global Class                      | Description                                                       |
+| ------ | --------------------------------- | ----------------------------------------------------------------- |
+| `root` | `.PrismanePortal-root`            | The container of the paper component.                             |
+| `root` | `.PrismanePortal-root-{disabled}` | The container of the paper component based on the disabled state. |

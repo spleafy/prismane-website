@@ -1,0 +1,79 @@
+---
+title: 'useKeyboardShortcut'
+description: 'useKeyboardShortcut hook provides a simple way to handle key combinations.'
+---
+
+## Overview
+The useKeyboardShortcut hook enables you to easily implement keyboard shortcuts and combinations in your React applications. It takes an array of keys that make up your desired shortcut combination and a callback function to execute when that combination is pressed. This hook handles all the complexity of detecting simultaneous key presses, proper event cleanup, and cross-browser compatibility, allowing you to enhance your application's accessibility and user experience with keyboard navigation and commands.
+
+
+## Import
+
+```js
+import { useKeyboardShortcut } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useKeyboardShortcut` hook accepts the following parameters:
+
+| Name             | Type         | Description                                                                       | Default Value |
+| ---------------- | ------------ | --------------------------------------------------------------------------------- | ------------- |
+| `keys`           | _string[]_   | The key combination that will trigger the callback.                               | -             |
+| `callback`       | _() => void_ | The callback that will be executed on a successful key combination.               | -             |
+| `shouldRegister` | _boolean_    | A boolean to handle dynamic registering and unregistering of the event listeners. | _true_        |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [registered, setRegistered] = useState(false);
+
+  useKeyboardShortcut(['shift', 'k'], () => {
+    setRegistered(true);
+  });
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+    >
+      Hold: Shift + K <br />
+      Registered: {registered.toString()}
+    </Text>
+  );
+}
+```
+
+### Conditional Registering
+
+Pass the _shouldRegister_ parameter, which is the third parameter, you can conditionally register and unregister the event listeners.
+
+```jsx preview
+function Demo() {
+  const [enabled, setEnabled] = useState(false);
+
+  const [registered, setRegistered] = useState(false);
+
+  useKeyboardShortcut(
+    ['shift', 'k'],
+    () => {
+      setRegistered(true);
+    },
+    enabled
+  );
+
+  return (
+    <Stack>
+      <Button onClick={() => setEnabled(true)}>
+        {enabled ? 'Enabled' : 'Enable Register'}
+      </Button>
+      <Text
+        cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+      >
+        Hold: Shift + K <br />
+        Registered: {registered.toString()}
+      </Text>
+    </Stack>
+  );
+}
+```

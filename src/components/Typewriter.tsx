@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, use } from "react";
+import { FC, useState, useEffect, use } from 'react';
 
 interface TypewriterProps {
   text: string;
@@ -7,16 +7,16 @@ interface TypewriterProps {
 }
 
 const Typewriter: FC<TypewriterProps> = ({ text, speed, cursor }) => {
-  const [letters, setLetters] = useState(text.split(""));
+  const [letters, setLetters] = useState(text.split(''));
 
-  const [current, setCurrent] = useState("");
+  const [current, setCurrent] = useState('');
 
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    setLetters(text.split(""));
+    setLetters(text.split(''));
     setCounter(0);
-    setCurrent("");
+    setCurrent('');
   }, [text]);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Typewriter: FC<TypewriterProps> = ({ text, speed, cursor }) => {
     <>
       {current}
       <div className="inline-block animate-blink text-inherit">
-        {cursor ? cursor : "_"}
+        {cursor ? cursor : '_'}
       </div>
     </>
   );

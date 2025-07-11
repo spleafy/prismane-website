@@ -1,0 +1,29 @@
+---
+title: 'PinField API'
+description: "Learn about the PinField component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { PinFieldProps } from '@prismane/core';
+```
+
+## Props
+
+`PinField` extends [Field](/docs/components-api/field-api) component's props.
+
+| Name     | Type      | Description                            | Default |
+| -------- | --------- | -------------------------------------- | ------- |
+| `length` | `number`  | The length of the pin field.           | 4       |
+| `masked` | `boolean` | Toggles the masked state of the input. | false   |
+
+## CSS
+
+`PinField` extends [Field](/docs/components-api/field-api) component's CSS classes.
+
+| Rule    | Global Class              | Description                                     |
+| ------- | ------------------------- | ----------------------------------------------- |
+| `root`  | `.PrismanePinField-root`  | The container of the pin field component.       |
+| `label` | `.PrismanePinField-label` | The container of the pin field label component. |
+| `error` | `.PrismanePinField-error` | The container of the pin field error component. |

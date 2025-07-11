@@ -1,0 +1,122 @@
+---
+title: 'Divider'
+description: 'Divider displays a horizontal line that visually separates the content.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Divider } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Divider />
+```
+
+### Divider Variants
+
+Use the _variant_ prop to change the visual appearance of the divider. You can set the value to _solid_, _dashed_, _dotted_. By default, the _solid_ variant is used.
+
+```jsx preview
+<>
+  <Divider variant="solid" />
+  <Divider variant="dashed" />
+  <Divider variant="dotted" />
+</>
+```
+
+### Divider Sizes
+
+Use the _size_ prop to change the size of the divider. You can set the value to _xs_, _sm_, _base_, _md_, _lg_. By default, the _xs_ value is used.
+
+```jsx preview
+<>
+  <Divider size="xs" />
+  <Divider size="sm" />
+  <Divider size="base" />
+  <Divider size="md" />
+  <Divider size="lg" />
+</>
+```
+
+### Divider Orientations
+
+Use the _orientation_ prop to change the orientation of the divider. Values can be either _horizontal_ or _vertical_. By default, the _horizontal_ orientation is used.
+
+```jsx preview
+<Divider orientation="horizontal" />
+```
+
+```jsx preview
+<Center w="100%" h={fr(20)}>
+  <Divider orientation="vertical" />
+</Center>
+```
+
+### Article Example
+
+The `Divider` component is commonly used visually separate texts.
+
+```jsx preview
+<Stack>
+  <Text as="h1">Enchanting Waterfalls</Text>
+  <Divider />
+  <Text>
+    Immerse yourself in the breathtaking beauty of nature's marvels – the
+    cascading waterfalls. Discover nature's symphony as water gracefully dances
+    down rugged cliffs, filling the air with a soothing melody. Feel the cool
+    mist on your skin and the invigorating rush of energy that these natural
+    wonders evoke. Each waterfall is a unique masterpiece, adorned with lush
+    greenery, vibrant wildlife, and hidden grottos. Witness the raw power and
+    tranquility coexisting in harmony, and let the enchanting waterfalls
+    transport you to a world of awe and wonder, where nature's magic reigns
+    supreme.
+  </Text>
+</Stack>
+```
+
+### Title Example
+
+The `Divider` is commonly used to attract the user's attention to a title on the page.
+
+```jsx preview
+<Flex align="center" w="100%" gap={fr(2)}>
+  <Divider />
+  <Text as="h1">Prismane</Text>
+  <Divider />
+</Flex>
+```
+
+### Vertical Divider Example
+
+The `Divider` component with _orientation_ of _vertical_ has is commonly used to separate images from text.
+
+```jsx preview
+<Flex gap={fr(6)} h={fr(32)} align="center" miw={fr(192)}>
+  <Square size={fr(32)} miw={fr(32)} br="md" of="hidden">
+    <Image
+      src="https://www.heinemann.com/shared/covers/9780867090192.jpg"
+      fit="cover"
+    />
+  </Square>
+  <Divider orientation="vertical" />
+  <Stack>
+    <Text as="h1">Hamlet</Text>
+    <Text maw={fr(144)}>
+      Hamlet is a tragedy play written by William Shakespeare, telling the story
+      of Prince Hamlet seeking revenge for his father's death. Fueled by his
+      inner turmoil, Hamlet grapples with existential questions, madness, and
+      the consequences of his actions.
+    </Text>
+  </Stack>
+</Flex>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Divider`](/docs/components-api/divider-api)

@@ -1,0 +1,29 @@
+---
+title: 'Progress API'
+description: "Learn about the Progress component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { ProgressProps } from '@prismane/core';
+```
+
+## Props
+
+`Progress` extends [Flex](/docs/components-api/flex-api) and [Transition](/docs/components-api/transition-api) components' props.
+
+| Name    | Type                                                                                              | Description                               | Default |
+| ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------- |
+| `value` | `number`                                                                                          | The percentage of the progress container. | -       |
+| `label` | `ReactNode`                                                                                       | The label of the progress container.      | -       |
+| `size`  | [PrismaneBreakpoints](/docs/getting-started/globals#prismanebreakpoints-type) / `string / number` | The size of the progress container.       | base    |
+
+## CSS
+
+`Progress` extends [Flex](/docs/components-api/flex-api) and [Transition](/docs/components-api/transition-api) components' CSS classes.
+
+| Rule   | Global Class                    | Description                                                 |
+| ------ | ------------------------------- | ----------------------------------------------------------- |
+| `root` | `.PrismaneProgress-root`        | The container of the progress component.                    |
+| `root` | `.PrismaneProgress-root-{size}` | The container of the progress component based on it's size. |

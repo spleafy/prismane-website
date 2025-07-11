@@ -1,0 +1,47 @@
+---
+title: 'useToggle'
+description: 'useToggle hook provides a simple way to handle toggling between a set of values.'
+---
+
+## Overview
+The useToggle hook provides an elegant solution for cycling through a sequence of values with a single function call. It simplifies state management for rotating between multiple options or states without complex conditional logic. This versatile hook is perfect for implementing toggleable components like switches, tabs, status indicators, or any UI element that needs to rotate through a predefined set of values in a predictable sequence.
+
+
+
+## Import
+
+```js
+import { useToggle } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useToggle` hook accepts the following parameters:
+
+| Name     | Type    | Description                                                  | Default Value |
+| -------- | ------- | ------------------------------------------------------------ | ------------- |
+| `values` | _any[]_ | The array of properties, which the hook will toggle between. | -             |
+
+## Return Value
+
+The `useToggle` hook returns an array containing the following properties:
+
+| Name           | Type         | Description                                     |
+| -------------- | ------------ | ----------------------------------------------- |
+| `currentValue` | _any_        | The current active value.                       |
+| `toggle`       | _() => void_ | The toggle function to toggle the next element. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [status, toggleStatus] = useToggle(['Active', 'Inactive', 'Sleep']);
+
+  return (
+    <Stack>
+      <Text>Current Status: {status}</Text>
+      <Button onClick={() => toggleStatus()}>Toggle Status</Button>
+    </Stack>
+  );
+}
+```

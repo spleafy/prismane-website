@@ -1,0 +1,62 @@
+---
+title: 'Table'
+description: 'Table displays a table container that is used to organize and display data in a convenient way.'
+versatile: false
+---
+
+## Import
+
+Prismane's `Table` component has 6 additional inner components:
+
+- _Table.Head_: The header container for the table.
+- _Table.Foot_: The footer container for the table.
+- _Table.Body_: The body container for the table.
+- _Table.Caption_: The caption container for the table.
+- _Table.Row_: The row container for the table.
+- _Table.Cell_: The cell container for the table.
+
+```js
+import { Table } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Table>
+  <Table.Caption ta="center">
+    Imperial to metric conversion factors
+  </Table.Caption>
+  <Table.Head ta="center">
+    <Table.Row>
+      <Table.Cell>To convert</Table.Cell>
+      <Table.Cell>into</Table.Cell>
+      <Table.Cell>multiply by</Table.Cell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>inches</Table.Cell>
+      <Table.Cell>millimeters</Table.Cell>
+      <Table.Cell>25.4</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>feet</Table.Cell>
+      <Table.Cell>centimeters</Table.Cell>
+      <Table.Cell>30.48</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+  <Table.Foot ta="center">
+    <Table.Row>
+      <Table.Cell>To convert</Table.Cell>
+      <Table.Cell>into</Table.Cell>
+      <Table.Cell>multiply by</Table.Cell>
+    </Table.Row>
+  </Table.Foot>
+</Table>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Table`](/docs/components-api/table-api)

@@ -1,0 +1,170 @@
+---
+title: 'Transition'
+description: "Transition display a container that can transition it's CSS properties."
+versatile: true
+---
+
+## Import
+
+```js
+import { Transition } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [toggled, setToggled] = useState(false);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Transition
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
+        ml={toggled ? fr(16) : 0}
+      />
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
+  );
+}
+```
+
+### Transition Delay
+
+Use the _delay_ prop to change the delay of the transition.
+
+```jsx preview
+function Demo() {
+  const [toggled, setToggled] = useState(false);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Transition
+        delay={500}
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
+        ml={toggled ? fr(16) : 0}
+      />
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
+  );
+}
+```
+
+### Transition Duration
+
+Use the _duration_ prop to change the duration of the transition. By default, a value of _150_ is used.
+
+```jsx preview
+function Demo() {
+  const [toggled, setToggled] = useState(false);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Transition
+        duration={1000}
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
+        ml={toggled ? fr(16) : 0}
+      />
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
+  );
+}
+```
+
+### Transition Timing
+
+Use the _timing_ prop to change the duration of the transition. By default, a value of _ease-in-out_ is used.
+
+```jsx preview
+function Demo() {
+  const [toggled, setToggled] = useState(false);
+
+  return (
+    <Stack gap={fr(4)}>
+      <Transition
+        timing="linear"
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? 'full' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
+        ml={toggled ? fr(16) : 0}
+      />
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
+  );
+}
+```
+
+### Transition Properties
+
+Use the _transition_ prop to change what CSS properties should be transitioned.
+
+Values can be:
+
+- _all_ - all CSS properties
+- _colors_ - color, background-color, border-color, text-decoration-color, fill, stroke.
+- _opacity_ - opacity
+- _shadow_ - box-shadow, filter
+- _transform_ - transform
+
+By default, a value of _all_ is used.
+
+```jsx preview
+function Demo() {
+  const [toggled, setToggled] = useState(false);
+
+  const [transition, setTransition] = useState('all');
+
+  return (
+    <Stack gap={fr(4)}>
+      <Transition
+        transition={transition}
+        duration={1000}
+        w={fr(30)}
+        h={fr(30)}
+        br={toggled ? 'base' : 'lg'}
+        bg={toggled ? 'base' : 'primary'}
+        op={toggled ? 0.5 : 1}
+        bsh={toggled ? 'sm' : 'lg'}
+      />
+      <Radio.Group
+        value={transition}
+        onChange={(e) => setTransition(e.target.value)}
+      >
+        <Radio label="All" value="all" />
+        <Radio label="Colors" value="colors" />
+        <Radio label="Opacity" value="opacity" />
+        <Radio label="Shadow" value="shadow" />
+        <Radio label="Transform" value="transform" />
+      </Radio.Group>
+      <Button onClick={() => setToggled(!toggled)}>Toggle Properties</Button>
+    </Stack>
+  );
+}
+```
+
+### Versatile Component
+
+`Transition` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Transition } from '@prismane/core';
+
+function Demo() {
+  <Transition as="button">Transition Button</Transition>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Transition`](/docs/components-api/transition-api)

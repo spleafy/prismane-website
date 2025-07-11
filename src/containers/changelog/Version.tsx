@@ -1,44 +1,45 @@
-import Image from "next/image";
-import Link from "next/link";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import Image from 'next/image';
+import Link from 'next/link';
+// MDX
+import MDX from '@/components/MDX';
 // Containers
-import Section from "@/containers/Section";
+import Section from '@/containers/Section';
 
 type VersionProps = {
   version: string;
-  content: string;
-  data: {
-    [key: string]: any;
-  };
-} & React.ComponentPropsWithoutRef<"article">;
+  source: any;
+} & React.ComponentPropsWithoutRef<'article'>;
 
-const Version = ({ version, content, data, ...props }: VersionProps) => {
+const Version = ({ version, source, ...props }: VersionProps) => {
   return (
-    <Section className="!block">
+    <Section className="!block !pt-0">
       <article
-        className="flex flex-col md:flex-row gap-6 md:gap-32 relative"
+        className="relative flex flex-col gap-6 md:flex-row md:gap-32"
         {...props}
       >
-        <div className="flex flex-col gap-2 w-48 min-w-[192px]">
+        <div className="flex w-48 min-w-[192px] flex-col gap-2">
           <Link
             href={`/changelog/${version}`}
             target="_blank"
-            className="dark:text-primary-500 text-primary-700 bg-primary-700/20 rounded-md px-3 py-0.5 text-center w-fit font-medium cursor-pointer static md:sticky top-36 left-0"
+            className="relative left-0 w-fit cursor-pointer rounded-md p-[2px] md:sticky md:top-[104px]"
           >
-            {version}
+            <div className="w-fit rounded-md bg-white px-3 py-0.5 text-center font-medium dark:bg-base-900">
+              {version}
+            </div>
+            <div className="gradient absolute left-0 top-0 -z-10 h-full w-full rounded-lg"></div>
           </Link>
-          {data.release && (
-            <span className="static md:sticky top-44 left-0">
-              {data.release}
+          {source.frontmatter.release && (
+            <span className="relative left-0 md:sticky md:top-[144px]">
+              {source.frontmatter.release}
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-2 grow">
-          <h1 className="text-base-900 dark:text-white text-3xl sm:text-4xl font-bold transition-all mb-10">
-            {data.title || `🚀 Prismane Version ${version.split("v")[1]}`}
+        <div className="flex grow flex-col gap-2">
+          <h1 className="mb-10 text-3xl font-bold text-base-900 transition-all dark:text-white sm:text-4xl">
+            {source.frontmatter.title ||
+              `🚀 Prismane Version ${version.split('v')[1]}`}
           </h1>
-          <div className="flex w-full h-72 relative rounded-lg overflow-hidden mb-10">
+          <div className="relative mb-10 flex h-72 w-full overflow-hidden rounded-lg">
             <Image
               src={`/release_banners/${version}.png`}
               className="object-cover"
@@ -47,124 +48,14 @@ const Version = ({ version, content, data, ...props }: VersionProps) => {
               fill
             />
           </div>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h1: ({ children, ...props }: any) => {
-                return (
-                  <h1
-                    className="text-base-900 dark:text-white text-2xl sm:text-3xl font-bold transition-all mt-12 mb-6"
-                    {...props}
-                  >
-                    {children}
-                  </h1>
-                );
-              },
-              h2: ({ children, ...props }: any) => {
-                return (
-                  <h2
-                    className="text-base-800 dark:text-base-100 text-xl sm:text-2xl font-bold transition-all mt-4 mb-1"
-                    {...props}
-                  >
-                    {children}
-                  </h2>
-                );
-              },
-              h3: ({ children, ...props }: any) => {
-                return (
-                  <h3
-                    className="text-base-800 dark:text-base-100 text-lg sm:text-xl font-bold transition-all mt-12 mb-6"
-                    {...props}
-                  >
-                    {children}
-                  </h3>
-                );
-              },
-              h4: ({ children, ...props }: any) => {
-                return (
-                  <h4
-                    className="text-base-800 dark:text-base-100 text-base sm:text-lg font-bold transition-all mt-12 mb-6"
-                    {...props}
-                  >
-                    {children}
-                  </h4>
-                );
-              },
-              p: ({ children, ...props }) => (
-                <p
-                  className="text-base-700 dark:text-base-400 leading-7 w-full text-lg ts:ext-xl"
-                  {...props}
-                >
-                  {children}
-                </p>
-              ),
-              code: ({ children, ...props }) => (
-                <code
-                  className="text-primary-500 bg-primary-500/10 dark:bg-primary-700/10 px-1 sm:px-2 py-0.5 rounded-md text-lg sm:text-xl"
-                  {...props}
-                >
-                  {children}
-                </code>
-              ),
-              li: ({ children, ...props }) => (
-                <li
-                  className="dark:text-white text-base-800 text-lg sm:text-xl [&>ul]:ml-8"
-                  {...props}
-                >
-                  - {children}
-                </li>
-              ),
-              hr: ({ children, ...props }) => (
-                <hr
-                  className="bg-base-700 dark:bg-base-400 border-none h-px"
-                  {...props}
-                >
-                  {children}
-                </hr>
-              ),
-              table: ({ children, ...props }) => (
-                <div className="w-full overflow-x-auto">
-                  <table
-                    className="dark:text-white text-base-800 text-lg sm:text-xl w-full"
-                    {...props}
-                  >
-                    {children}
-                  </table>
-                </div>
-              ),
-              thead: ({ children, ...props }) => (
-                <thead
-                  className="dark:!bg-base-700/10 !bg-base-500/20 text-lg sm:text-xl"
-                  {...props}
-                >
-                  {children}
-                </thead>
-              ),
-              tr: ({ children, ...props }) => (
-                <tr
-                  className="w-full border-b dark:border-base-700 border-base-300"
-                  {...props}
-                >
-                  {children}
-                </tr>
-              ),
-              td: ({ children, ...props }) => (
-                <td className="px-2 sm:px-6 md:px-8 py-2.5" {...props}>
-                  {children}
-                </td>
-              ),
-              th: ({ children, ...props }) => (
-                <th
-                  className="px-2 sm:px-6 md:px-8 py-2.5 text-left"
-                  {...props}
-                >
-                  {children}
-                </th>
-              ),
+          <MDX
+            {...source}
+            classNames={{
+              h1: 'mt-12 mb-6',
+              h2: 'mt-4 mb-1',
+              h3: 'mt-12 mb-6'
             }}
-          >
-            {content}
-          </ReactMarkdown>
+          />
         </div>
       </article>
     </Section>

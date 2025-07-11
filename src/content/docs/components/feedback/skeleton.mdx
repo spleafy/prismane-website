@@ -1,0 +1,70 @@
+---
+title: 'Skeleton'
+description: 'Skeleton displays a loading state of a container.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Skeleton } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Stack>
+  <Skeleton h={fr(6)} />
+  <Skeleton h={fr(6)} />
+  <Skeleton h={fr(6)} />
+</Stack>
+```
+
+The `Skeleton` component is useful when fetching data to provide visual feedback to the user that content is loading.
+
+```jsx
+async function Demo() {
+  const url = await fetchFakeUrl();
+
+  return (
+    <>
+      {url ? (
+        <Image src={url} w={fr(16)} h={fr(16)} />
+      ) : (
+        <Skeleton w={fr(16)} h={fr(16)} variant="circular" />
+      )}
+    </>
+  );
+}
+```
+
+### Skeleton Variants
+
+Use the _variant_ prop to change the visual appearance of the skeleton. You can set the value to _circular_, _rounded_, _rectangular_. By default, the _rounded_ variant is used.
+
+```jsx preview
+<>
+  <Skeleton w={120} h={120} variant="circular" />
+  <Skeleton w={240} h={120} variant="rounded" />
+  <Skeleton w={240} h={120} variant="rectangular" />
+</>
+```
+
+### Circle And Text Skeleton
+
+Using a combination of `Skeleton` components, you can achieve complex structures that provide the needed visual feedback to showcase that the represented data is being loaded.
+
+```jsx preview
+<Stack>
+  <Skeleton w={64} h={64} variant="circular" />
+  <Skeleton w={240} h={20} variant="rounded" />
+  <Skeleton w={240} h={20} variant="rounded" />
+  <Skeleton w={240} h={20} variant="rounded" />
+</Stack>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Skeleton`](/docs/components-api/skeleton-api)

@@ -1,0 +1,200 @@
+---
+title: 'PinField'
+description: 'PinField displays a field that handles pins, allowing for easily typing in number combinations.'
+versatile: false
+---
+
+## Import
+
+```js
+import { PinField } from '@prismane/core';
+```
+
+## Usage
+
+The `PinField` is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
+
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="Enter a pin:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+    />
+  );
+}
+```
+
+### Pin Length
+
+Use the _length_ prop to change the length of the pin. By default, a value of _4_ is used.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="Enter a 6 digit pin:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+      length={6}
+    />
+  );
+}
+```
+
+### Masked Pin
+
+Pass the _masked_ prop to mask and hide the pin.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="This pin is hidden:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+      masked
+    />
+  );
+}
+```
+
+### Keyboard Navigation
+
+The `PinField` component's digits can be navigated using the _Arrow_ keys on the keyboard and deleted using _Backspace_.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="Use the keyboard to navigate:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+    />
+  );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field will not show suggestions and won't change.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="This field is read only:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+      readOnly
+    />
+  );
+}
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+function Demo() {
+  const [pin, setPin] = useState('');
+
+  return (
+    <PinField
+      label="This field is disabled:"
+      value={pin}
+      onChange={(e) => setPin(e.target.value)}
+      disabled
+    />
+  );
+}
+```
+
+### useForm Example
+
+The `PinField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_pin: {
+        value: ''
+      }
+    }
+  });
+
+  return (
+    <PinField
+      label="Controlled PinField"
+      placeholder="Controlled Field"
+      {...register('hook_pin')}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from 'react';
+import { PinField } from '@prismane/core';
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <PinField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `PinField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { PinField } from '@prismane/core';
+
+function Demo() {
+  return <PinField aria-label="PinField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { PinField } from '@prismane/core';
+
+function Demo() {
+  return <PinField label="PinField's Input" />;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`PinField`](/docs/components-api/pin-field-api)

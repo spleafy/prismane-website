@@ -1,0 +1,72 @@
+---
+title: 'Text'
+description: 'Text displays a text container used to display text and easily style it.'
+versatile: true
+---
+
+## Import
+
+```js
+import { Text } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Text>Some text</Text>
+```
+
+### Text Sizes
+
+Use the _fs_ prop to change the font size of the text. You can set the value to _xs_, _sm_, _base_, _md_, _lg_, _xl_, _2xl_, _3xl_, _4xl_, _5xl_, _6xl_, _7xl_ and _8xl_. By default, the _base_ value is used.
+
+```jsx preview
+<Stack>
+  <Text fs="xs">(xs) In love with Prismane</Text>
+  <Text fs="sm">(sm) In love with Prismane</Text>
+  <Text fs="base">(base) In love with Prismane</Text>
+  <Text fs="md">(md) In love with Prismane</Text>
+  <Text fs="lg">(lg) In love with Prismane</Text>
+  <Text fs="xl">(xl) In love with Prismane</Text>
+  <Text fs="2xl">(2xl) In love with Prismane</Text>
+  <Text fs="3xl">(3xl) In love with Prismane</Text>
+  <Text fs="4xl">(4xl) In love with Prismane</Text>
+  <Text fs="5xl">(5xl) In love with Prismane</Text>
+  <Text fs="6xl">(6xl) In love with Prismane</Text>
+  <Text fs="7xl">(7xl) In love with Prismane</Text>
+  <Text fs="8xl">(8xl) In love with Prismane</Text>
+</Stack>
+```
+
+### Text Color
+
+Use the _cl_ prop to change the color of the text. Values can be all colors from the [Prismane Color Palette](/docs/styling/color-palette), _primary_, _base_ colors from the theme or any valid color.
+
+By default, a color of _base_ is used for both light and dark theme. For dark theme a shade of _100_ is used and for light - a shade of _900_.
+
+To use a specific shade of the theme color, you must provide an array of this kind _[color, shade]_ to the _cl_ prop.
+
+```jsx preview
+<Stack>
+  <Text cl="primary">Text with primary color.</Text>
+  <Text cl={['base', 400]}>Text with base color, shade 400.</Text>
+</Stack>
+```
+
+### Versatile Component
+
+`Text` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _span_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Text } from '@prismane/core';
+
+function Demo() {
+  <Text as="p">Paragraph Text</Text>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Text`](/docs/components-api/text-api)

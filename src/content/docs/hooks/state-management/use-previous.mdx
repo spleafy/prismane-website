@@ -1,0 +1,47 @@
+---
+title: 'usePrevious'
+description: 'usePrevious hook provides a simple way to handle saving the previous value of a variable.'
+---
+
+## Overview
+The usePrevious hook captures and preserves the previous value of a variable across component renders. It provides an elegant solution for comparing current and previous states without complex state management structures. This hook is particularly valuable for implementing comparison logic, tracking state changes for animations, determining the direction of data transitions, and detecting when specific properties have updated in your React components.
+
+## Import
+
+```js
+import { usePrevious } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `usePrevious` hook accepts the following parameters:
+
+| Name    | Type  | Description                       | Default Value |
+| ------- | ----- | --------------------------------- | ------------- |
+| `value` | _any_ | The value that should be tracked. | -             |
+
+## Return Value
+
+The `usePrevious` hook returns the following variable:
+
+| Name       | Type  | Description                                |
+| ---------- | ----- | ------------------------------------------ |
+| `previous` | _any_ | The previous value of the passed variable. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const [count, setCount] = useState(0);
+
+  const previous = usePrevious(count);
+
+  return (
+    <Stack>
+      <Text>Current: {count}</Text>
+      <Text>Previous Value: {previous}</Text>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+    </Stack>
+  );
+}
+```

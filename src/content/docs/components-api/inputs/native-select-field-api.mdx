@@ -1,0 +1,28 @@
+---
+title: 'NativeSelectField API'
+description: "Learn about the NativeSelectField component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { NativeSelectFieldProps } from '@prismane/core';
+```
+
+## Props
+
+`NativeSelectField` extends [Field](/docs/components-api/field-api) component's props.
+
+| Name      | Type                                      | Description                      | Default |
+| --------- | ----------------------------------------- | -------------------------------- | ------- |
+| `options` | `{ value: string; element: ReactNode }[]` | The options of the select field. | -       |
+
+## CSS
+
+`NativeSelectField` extends [Field](/docs/components-api/field-api) component's CSS classes.
+
+| Rule    | Global Class                       | Description                                 |
+| ------- | ---------------------------------- | ------------------------------------------- |
+| `root`  | `.PrismaneNativeSelectField-root`  | The container of the field component.       |
+| `label` | `.PrismaneNativeSelectField-label` | The label container of the field component. |
+| `error` | `.PrismaneNativeSelectField-error` | The error container of the field component. |

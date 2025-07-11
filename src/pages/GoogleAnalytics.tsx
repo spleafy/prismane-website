@@ -1,5 +1,5 @@
-"use client";
-import Script from "next/script";
+'use client';
+import Script from 'next/script';
 
 const GoogleAnalytics = () => {
   return (
@@ -18,7 +18,7 @@ const GoogleAnalytics = () => {
           gtag('js', new Date());
         
           gtag('config', 'G-21SQSKGGW8');
-          `,
+          `
         }}
       />
     </>

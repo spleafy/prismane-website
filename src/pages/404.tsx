@@ -1,67 +1,56 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ArrowLeft, House, BookBookmark } from '@phosphor-icons/react';
+import Button from '@/components/Button';
+import SecondaryButton from '@/components/SecondaryButton';
 // Containers
-import Section from "../containers/Section";
+import Section from '../containers/Section';
 
 const NotFound = () => {
+  const router = useRouter();
+
   return (
-    <>
-      <Image
-        src="/mesh_grid.png"
-        alt="Grid Mesh Background"
-        className="object-contain opacity-10 dark:opacity-20 blend-to-bottom"
-        fill
-      />
-      <Image
-        src="/mesh_gradient_8.png"
-        alt="Mesh Gradient Background"
-        className="object-cover opacity-20 blend-to-bottom"
-        fill
-      />
-      <Section className="section-hero">
-        <h1 className="hero-heading">
-          <span className="text-gradient">Ooops,</span> we lost that page.
-        </h1>
-        <h2 className="hero-subheading">
-          Sorry, the page you are looking for doesn&apos;t exist or hase been
-          moved.
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 md:mt-32">
-          <Link
-            href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
+    <Section className="section-hero !items-start !gap-4">
+      <span className="text-gradient mb-2 text-xl font-semibold">
+        Error 404
+      </span>
+      <h1 className="text-5xl text-base-900 dark:text-white">
+        Page not found.
+      </h1>
+      <span className="text-base-700 dark:text-base-300">
+        Sorry, the page you are looking for doesn&apos;t exist or has been
+        moved.
+      </span>
+      <div className="flex items-center gap-4">
+        <div className="mt-12">
+          <Button
+            onClick={() => router.back()}
+            icon={<ArrowLeft size={20} weight="bold" />}
           >
-            <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
-              Home
-            </span>
-            <span className="text-base-500">Return to the homepage.</span>
-          </Link>
-          <Link
-            href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
-          >
-            <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
-              Docs
-            </span>
-            <span className="text-base-500">
-              Read the documentation of our products.
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="flex flex-col items-center text-center gap-2 p-5 dark:bg-base-950/30 dark:hover:bg-base-950/20 bg-base-400/10 hover:bg-base-400/20 transition-colors rounded-md cursor-pointer"
-          >
-            <span className="dark:text-white text-base-900 text-xl font-bold mb-2">
-              Sponsor
-            </span>
-            <span className="text-base-500">
-              Learn about how you could support and help us.
-            </span>
-          </Link>
+            Go Back
+          </Button>
         </div>
-      </Section>
-    </>
+        <Link href="/" className="mt-12">
+          <SecondaryButton icon={<House size={20} weight="bold" />}>
+            Home
+          </SecondaryButton>
+        </Link>
+      </div>
+    </Section>
   );
 };
+
+{
+  /* <Section className="section-hero !gap-0">
+      <h1 className="hero-heading text-gradient !text-[196px]">404</h1>
+      <h2 className="hero-subheading text-4xl font-semibold mt-12">
+        Oops! Page not found!
+      </h2>
+      <span>We can&apos;t find the page you are looking for.</span>
+      <Link href="/" className="mt-12">
+        <Button icon={<ArrowLeft size={20} weight="bold" />}>Go Back</Button>
+      </Link>
+    </Section> */
+}
 
 export default NotFound;

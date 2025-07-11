@@ -1,0 +1,101 @@
+---
+title: 'useIdle'
+description: 'useIdle hook provides a simple way to handle when a client is active and idle.'
+---
+
+## Overview
+The useIdle hook monitors user activity to determine whether the application user is currently active or idle. It tracks specified user events such as mouse movements, key presses, clicks, and scrolling, automatically toggling between active and idle states based on the configured timeout duration. This hook is particularly valuable for implementing features like auto-logout for security, pausing animations or data fetching during periods of inactivity, or displaying different UI states when a user returns after being away from their device.
+
+## Import
+
+```js
+import { useIdle } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useIdle` hook accepts the following parameters:
+
+| Name      | Type       | Description                                                                    | Default Value                               |
+| --------- | ---------- | ------------------------------------------------------------------------------ | ------------------------------------------- |
+| `timeout` | _number_   | The timeout from the last user event, after which, the state will become idle. | _3000_                                      |
+| `events`  | _string[]_ | The set of events which will count as a user action and remove the idle state. | _['mousemove', 'keyup', 'click', 'scroll']_ |
+| `initial` | _boolean_  | The initial idle state of the user.                                            | _false_                                     |
+
+## Return Value
+
+The `useIdle` hook returns the following variable:
+
+| Name     | Type      | Description            |
+| -------- | --------- | ---------------------- |
+| `isIdle` | _boolean_ | The state of the user. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const isIdle = useIdle();
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+    >
+      Idle: {isIdle.toString()}
+    </Text>
+  );
+}
+```
+
+### Change Timeout
+
+Pass the _timeout_ parameter, which is the first parameter, to change the time from the last user event, which will switch the state of the user to idle. By default, the value is _3000_.
+
+```jsx preview
+function Demo() {
+  const isIdle = useIdle(1000);
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+    >
+      Idle: {isIdle.toString()}
+    </Text>
+  );
+}
+```
+
+### Change Trigger Events
+
+Pass the _events_ parameter, which is the second parameter, to change the events that will change the user state from idle. By default, the value is _['mousemove', 'keyup', 'click', 'scroll']_.
+
+```jsx preview
+function Demo() {
+  const isIdle = useIdle(1000, ['mousedown']);
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+    >
+      Idle: {isIdle.toString()}
+    </Text>
+  );
+}
+```
+
+### Initial State
+
+Pass the _initial_ parameter, which is the third parameter, to change the default state of the user. By default, the value is _false_.
+
+```jsx preview
+function Demo() {
+  const isIdle = useIdle(1000, ['mousedown']);
+
+  return (
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 200] : ['base', 700])}
+    >
+      Idle: {isIdle.toString()}
+    </Text>
+  );
+}
+```

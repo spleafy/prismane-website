@@ -1,0 +1,211 @@
+---
+release: December 7, 2023
+tag: 'Tutorial'
+version: 'v1'
+title: 'Form Building with Prismane'
+description: 'Learn how to create powerful forms using Prismane'
+authors: ['1']
+---
+
+# Introduction
+
+Greetings, everyone! Welcome to our tutorial on form building with Prismane. Throughout this guide, we'll explore the process of constructing forms using Prismane and dive into the utilization of our built-in validators. Let's embark on this journey together!
+
+All of the code in the example below can be directly accessed through the [GitHub Repository](https://github.com/spleafy/prismane-form-building).
+
+# useForm hook
+
+Prismane makes form building straightforward. By leveraging the useForm hook, you gain a seamless approach to constructing, validating, and handling forms. The upcoming section provides step-by-step guidance on creating a basic login form.
+
+## Import hook
+
+We can import the `useForm` hook from the `@prismane/core/hooks` entry.
+
+```tsx
+import { useForm } from '@prismane/core/hooks';
+```
+
+## Initialize the hook
+
+Now, we can initialize the hook and get the `handleReset` , `handleSubmit` and the `register` functions.
+
+The `handleReset` function manages form resets by clearing the hook's state upon reset.
+
+The `handleSubmit` function handles the form submit, and provides the state values of the form and the state of the form. The `handleSubmit` accepts up to three parameters. The first one is the event object, the second one is the `onSubmit` callback function and the last one is the `onError` callback function that is called, when the form fails to validate.
+
+The `register` function simplifies field registration, ensuring proper and necessary props are assigned.
+
+```tsx
+const { handleReset, handleSubmit, register } = useForm({});
+```
+
+## Add fields to the hook
+
+Great! Now, we have to tell our hook what fields we are going to have. Simply provide a `fields` property within the configuration object passed to the `useForm` hook.
+
+Within the `fields` object, include properties with names corresponding to the intended field names.
+
+For each field, set a `value` property indicating the initial value of the field.
+
+In our case we are going to have a `username` and a `password` fields.
+
+```tsx
+const { handleReset, handleSubmit, register } = useForm({
+  fields: {
+    username: {
+      value: ''
+    },
+    password: {
+      value: ''
+    }
+  }
+});
+```
+
+## Add Form
+
+Now, we need to add our `Form` and pass the `onSubmit` and `onReset` props.
+
+```tsx
+import { Center, Card, Form } from '@prismane/core';
+import { useForm } from '@prismane/core/hooks';
+
+function App() {
+  const { handleReset, handleSubmit, register } = useForm({
+    fields: {
+      username: {
+        value: ''
+      },
+      password: {
+        value: ''
+      }
+    }
+  });
+
+  return (
+    <Center w="100vw" h="100vh">
+      <Card>
+        <Form
+          onSubmit={(e: SubmitEvent) => handleSubmit(e, (v) => console.log(v))}
+          onReset={handleReset}
+        ></Form>
+      </Card>
+    </Center>
+  );
+}
+
+export default App;
+```
+
+As you can see, we've linked the `handleSubmit` function to the `onSubmit` event. We've supplied just two parameters to `handleSubmit` - the event object and the `onSubmit` callback function, responsible for logging values to the console upon successful submission.
+
+Additionally, we assigned the `handleReset` function to the `onReset` prop, ensuring a reset of our components' values and form state.
+
+## Add fields
+
+Now, let’s add our fields and a submit button. We are going to use the `TextField` for our username and the `PasswordField` for our password.
+
+```tsx
+import { ..., TextField, PasswordField, Button } from "@prismane/core";
+...
+
+...
+<Form
+  onSubmit={(e: SubmitEvent) => handleSubmit(e, (v) => console.log(v))}
+	onReset={handleReset}
+>
+  <TextField />
+  <PasswordField />
+	<Button type="submit">Submit Form</Button>
+</Form>
+...
+```
+
+## Register fields
+
+Great! Now, lets register our fields. To do that, we are going to use the `register` function that we got from the `useForm` hook.
+
+We need to pass a single parameter to the `register` function, which is the name of the field undergoing registration.
+
+<Note>
+  💡Make sure to provide the same name to the `register` function, as the one
+  that you provided in the `fields` object, otherwise the field will not
+  register correctly!
+</Note>
+
+The `register` function returns an object that contains essential field properties. Because of that, we must spread this function across the component. The `register` function returns properties such as `onChange`, `onBlur`, `onFocus`, `value`, `name`, and `id`.
+
+```tsx
+...
+  <TextField {...register("username")} placeholder="Enter username" label="Username:" />
+  <PasswordField {...register("password")} placeholder="Enter password" label="Password:" />
+...
+```
+
+Great! Now, let’s try out our form and see what is logged to the console!
+
+![Recording 2023-12-06 234518.gif](GIF_1.gif)
+
+# Prismane’s Validators
+
+Every field within the `useForm` hook has a `validators` property. Within this property's object, we list the validators assigned to the field.
+
+The validators must be added in following order, because the hook validates them one by one. If one returns an error, the hook stops validating and handles the error.
+
+Each validator is represented by a function that takes the field's value as the parameter `v`, passes this value to the validator function, and then invokes the validator function.
+
+Prismane's validator functions return `null` when there is no error. In case of an error, they provide an error message as a `string`.
+
+## Adding Validators
+
+In our example, we are going to add the `required` and `username` validators to our username field and we are going to add the `required` and the `min` validator to the password field.
+
+The `required` validator ensures that the given value is defined and not empty, confirming it has a valid and meaningful content. It can handle both numbers, strings and booleans.
+
+The `username` validators checks if the provided value is a valid username or not. It’s regex can be overwritten, if you provide a regex as the second parameter.
+
+The `min` validator checks if the provided value’s length is more than a given number. The error message can be personalized to the field, by providing a third parameter, which is the field’s name.
+
+## Import validators
+
+Firstly, we have to import our validators from the `@prismane/core/validators` entry.
+
+```tsx
+import { required, username, min } from '@prismane/core/validators';
+```
+
+## Add validators to fields in useForm hook
+
+Next, we are going to add the validators to the `validators` property of each of our fields.
+
+```tsx
+...
+username: {
+  value: "",
+  validators: {
+    required: (v) => required(v),
+    username: (v) => username(v),
+  },
+},
+password: {
+  value: "",
+  validators: {
+    required: (v) => required(v),
+    min: (v) => min(v, 4),
+  },
+},
+...
+```
+
+Great! Now, let’s see the final result
+
+![Recording-2023-12-07-170324.gif](GIF_2.gif)
+
+<Note>
+  💡 As you can see, form submission is unavailable until all of the fields are
+  error-free.
+</Note>
+
+Fantastic job! You now can successfully create forms and handle them using Prismane!
+
+## Thank you for reading!

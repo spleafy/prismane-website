@@ -1,0 +1,63 @@
+---
+title: 'Center'
+description: "Center displays a container that places it's content in the center."
+versatile: true
+---
+
+## Import
+
+```js
+import { Center } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Center h={120} w="100%" bg="primary" cl="white">
+  This content will be centered on both axis.
+</Center>
+```
+
+### As A Frame
+
+The `Center` component can be used to frame different items and automatically center them.
+
+```jsx preview
+<Center w={64} h={64} bg="primary" cl="white">
+  <Wrench size={24} />
+</Center>
+```
+
+### Page Example
+
+The `Center` component is oftenly used to center the content of a page.
+
+```jsx preview
+<Center w="100%" h="20vh" direction="column" gap={fr(4)} ta="center">
+  <Text as="h1" fs="3xl">
+    Ooops... We ran into a problem!
+  </Text>
+  <Text>Our team is working hard to fix the problems as soon as possible!</Text>
+  <Link href="#" cl="primary" mt={fr(8)}>
+    Go back to home
+  </Link>
+</Center>
+```
+
+### Versatile Component
+
+`Center` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx
+import { Center } from '@prismane/core';
+
+function Demo() {
+  <Center as="button">Center Button</Center>;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Center`](/docs/components-api/center-api)

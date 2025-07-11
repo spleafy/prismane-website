@@ -1,0 +1,56 @@
+---
+title: 'Portal'
+description: 'Portal displays a container that is displayed outside of the current DOM tree.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Portal } from '@prismane/core';
+```
+
+## Usage
+
+The `Portal` component is a wrapper around the [ReactDOM.createPortal](https://legacy.reactjs.org/docs/portals.html). It is used to transport any component or element to the end of the _document.body_ or to any other valid component/element.
+
+The `Portal` component is useful when you want to escape a given hierarchy or when you want to prevent parent styles from interfering with children, usually _position_ and _z-index_. Portals are usually used with overlay components that have to appear on top of the whole application.
+
+The [`Modal`](/docs/components/overlay/modal), [`Drawer`](/docs/components/overlay/drawer) and [`Dialog`](/docs/components/overlay/dialog) components already use the `Portal` component.
+
+```jsx preview
+<Box bg="orange" cl="white">
+  This will be rendered inside the Box component
+  <Portal bg="ruby" cl="white">
+    This will be rendered at the end of the document.body
+  </Portal>
+</Box>
+```
+
+### Portal With Custom Container
+
+Pass the _ref_ of a target container to the _target_ prop of the `Portal` component to render it's contents to a different DOM node, instead of the default _document.body_.
+
+```jsx preview
+function Demo() {
+  const ref = useRef(null);
+
+  return (
+    <Box bg="orange" cl="white">
+      This will be rendered inside the box
+      <Portal target={ref}>
+        This will be rendered inside the ruby box, instead of the orange one.
+      </Portal>
+      <Box ref={ref} bg="ruby">
+        This is the ruby box.
+      </Box>
+    </Box>
+  );
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Portal`](/docs/components-api/portal-api)

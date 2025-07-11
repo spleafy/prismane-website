@@ -1,0 +1,259 @@
+---
+title: 'useForm'
+description: 'The useForm hook provides a simple yet powerful way to handle forms.'
+---
+
+## Overview
+The useForm hook enables you to create and manage form state with minimal configuration, accepting an initialForm object with fields, validation triggers, and reset options. When implemented, it returns a comprehensive set of utilities including formState for tracking values and errors, register for connecting fields to the form, and functions for manipulation like setValue, getFormErrors, and handleSubmit. This powerful yet flexible hook simplifies complex form handling while giving you complete control over validation, submission, and the entire form lifecycle.
+
+## Import
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+
+## Parameters
+
+| Name          | Type               | Description                    | Default |
+| ------------- | ------------------ | ------------------------------ | ------- |
+| `initialForm` | `InitialFormState` | The initial state of the form. | `{}`    |
+
+```ts
+type InitialFormState = {
+  fields?: InitialFields;
+  validateOn?: 'change' | 'blur' | 'all';
+  resetOptions?: {
+    keepDirty?: boolean;
+    keepTouched?: boolean;
+    keepErrors?: boolean;
+  };
+};
+
+type InitialField = {
+  value: any;
+  error?: null | string;
+  validators?: Validators;
+};
+
+type InitialFields = {
+  [x: string]: InitialField;
+};
+
+type Validator = (v: string) => null | string;
+
+type Validators = { [x: string]: Validator };
+```
+
+## Return Value
+
+| Name            | Type                                                                                          | Description                                                                                     |
+| --------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `formState`     | `FormState`                                                                                   | The current state of the form.                                                                  |
+| `register`      | `(name: string) => void`                                                                      | Function that registers the field.                                                              |
+| `setValue`      | `(name: string, value: Value) => void`                                                        | Function that programmatically changes the value of a field.                                    |
+| `setError`      | `(name: string, error: string) => void`                                                       | Function that programmatically sets an error for the field.                                     |
+| `getFormValues` | `() => {[x in string]: Value}`                                                                | Function that returns the current values of all the fields registered.                          |
+| `getValue`      | `(name: string) => Value`                                                                     | Function that returns the current value for a given field.                                      |
+| `getFormErrors` | `() => {[x in string]: string}`                                                               | Function that returns the current errors of all the fields registered.                          |
+| `getError`      | `(name: string) => string`                                                                    | Function that returns the current error for a given field.                                      |
+| `validate`      | `(name: string, value: Value) => string`                                                      | Function that validates a field using all of it's provided validators and returns the error.    |
+| `handleChange`  | `(name: string, value: Value) => string`                                                      | Function that handles the change of the value for a given field.                                |
+| `handleBlur`    | `(name: string) => void`                                                                      | Function that handles the blur of a given field and marks it as touched.                        |
+| `validateForm`  | `() => boolean`                                                                               | Function that validates the whole form and returns a boolean which determines if it has errors. |
+| `handleReset`   | `() => void`                                                                                  | Function that resets the state of all of the fields in the registered form.                     |
+| `handleSubmit`  | `(event: any, onSubmit: (values: Values) => void, onError: (values: Values) => void) => void` | Function that handles the submit of the form.                                                   |
+
+
+
+## Usage
+
+Here we will list some of the most common usages of the useForm hook - from basic handling of the submitting and
+resetting of the form, to build-in and custom validations.
+
+### Basic
+
+Let's configure the hook to work with one field named "username" and use the handleSubmit,
+handleReset and register functions which the hook returns.
+
+```jsx preview
+function Demo() {
+
+  // Extract the handleSubmit, handleReset and the register
+  // functions from the hook
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      // Provide the fields we want to be controlled by the hook
+      // Use whatever name you want, but you have to use it later on into the register function
+      username: {
+        // provide a default value of the field
+        value: ""
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        // Use the handleSubmit function from the hook
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      // Use the handleReset function from the hook
+      onReset={() => handleReset()}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        // Use the register function to provide the needed props
+        {...register("username")}
+      />
+      <Flex align="center" gap={fr(2)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+    </Form>
+  );
+}
+```
+
+
+### Validation
+
+Let's add a simple validation to the field. Here we will use the built-in validator username from Prismane. You can
+see all the available validators [`here`](/docs/validators/).
+
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          // Add the built-in validator username
+          username: (v: string) => username(v),
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Flex align="center" gap={fr(2)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+    </Form>
+  );
+}
+```
+
+### Custom Validator
+
+You can use your own (even async) validator function for the fields. Let's build one to check if the length of the
+value is bigger than 5.
+
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          username: (v: string) => (v.length < 5) ?
+            "The length should be more than 5 characters" : null,
+        },
+      },
+    },
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Flex align="center" gap={fr(2)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+    </Form>
+  );
+}
+```
+
+### Validate On
+
+We can use the validateOn property to tell the hook to validate the fields on change, blur or all. In this example we
+will use the hook to validate on blur event of the field. You can just click into and out of the field to call the
+validation and display an error message.
+
+
+```jsx preview
+function Demo() {
+  const { handleSubmit, handleReset, register } = useForm({
+    fields: {
+      username: {
+        value: "",
+        validators: {
+          username: (v: string) => username(v),
+        },
+      },
+    },
+    // Set the validation to be executed on blur
+    validateOn: 'blur'
+  });
+
+  return (
+    <Form
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => console.log(v));
+      }}
+      onReset={() => handleReset()}
+    >
+      <TextField
+        placeholder="Enter username: "
+        label="Username:"
+        {...register("username")}
+      />
+      <Flex align="center" gap={fr(2)}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="primary" type="reset">
+          Reset
+        </Button>
+      </Flex>
+    </Form>
+  );
+}
+```

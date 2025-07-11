@@ -1,0 +1,97 @@
+---
+title: 'useFocusTrap'
+description: "useFocusTrap hook provides a simple way to trap the user's focus."
+---
+
+## Overview
+The useFocusTrap hook provides an accessible way to contain keyboard focus within a specific container element, preventing users from tabbing outside designated areas. It returns a ref that should be attached to your target container, automatically managing focus order and keyboard navigation between the focusable elements within that container. This hook is essential for creating accessible modal dialogs, dropdown menus, or any UI component that needs to temporarily isolate user focus, ensuring that keyboard and screen reader users can navigate your interface effectively.
+
+## Import
+
+```js
+import { useFocusTrap } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `useFocusTrap` hook accepts the following parameters:
+
+| Name     | Type      | Description                        | Default Value |
+| -------- | --------- | ---------------------------------- | ------------- |
+| `isOpen` | _boolean_ | The boolean that toggles the hook. | _true_        |
+
+## Return Value
+
+The `useFocusTrap` hook returns the following variable:
+
+| Name  | Type              | Description                                                                 |
+| ----- | ----------------- | --------------------------------------------------------------------------- |
+| `ref` | _RefObject\<any>_ | The ref that should be passed to the container with the focusable elements. |
+
+## Usage
+
+By default, the `useFocusTrap` hook focuses the first focusable element in the container, to which the _ref_ is passed.
+
+As you can see, in the example below, we pass the _ref_ to a `Stack` container, and the first input of the container is focused.
+
+```jsx preview
+function Demo() {
+  const ref = useFocusTrap();
+
+  return (
+    <Stack>
+      <TextField />
+      <Stack ref={ref}>
+        <TextField placeholder="I should be focused" />
+        <TextField />
+      </Stack>
+    </Stack>
+  );
+}
+```
+
+### Toggle Hook
+
+The functionality of the hook can be toggled, if we pass a _boolean_ value as the _isOpen_ parameter of the hook.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  const ref = useFocusTrap(open);
+
+  return (
+    <Stack>
+      <TextField />
+      <Stack ref={ref}>
+        <TextField placeholder="I should be focused" />
+        <TextField />
+      </Stack>
+      <Button onClick={() => setOpen(!open)}>Toggle Hook</Button>
+    </Stack>
+  );
+}
+```
+
+### Initial Focused Element
+
+You can set the initial element that will be focused, by giving it an attribute of _data-initialfocus_.
+
+```jsx preview
+function Demo() {
+  const [open, setOpen] = useState(false);
+
+  const ref = useFocusTrap(open);
+
+  return (
+    <Stack>
+      <TextField />
+      <Stack ref={ref}>
+        <TextField placeholder="I am the first, but I am not focused" />
+        <TextField placeholder="I should be focused" data-initialfocus />
+      </Stack>
+      <Button onClick={() => setOpen(!open)}>Toggle Hook</Button>
+    </Stack>
+  );
+}
+```

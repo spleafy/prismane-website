@@ -1,0 +1,108 @@
+---
+title: 'usePresence'
+description: 'usePresence hook provides a way to animate an element, before removing it from the DOM.'
+---
+
+## Overview
+The usePresence hook elegantly handles the coordination between animation state and DOM presence, solving the common problem of elements disappearing before their exit animations complete. It takes a boolean to control when an element should appear or disappear and returns a separate presence boolean that delays the actual DOM removal until after your animation has finished playing. This hook is particularly valuable for creating smooth transitions when components enter or exit the page, ensuring that users see the complete animation sequence without abrupt disappearances.
+
+## Import
+
+```js
+import { usePresence } from '@prismane/core/hooks';
+```
+
+## Parameters
+
+The `usePresence` hook accepts the following parameters:
+
+| Name       | Type         | Description                                                    | Default Value |
+| ---------- | ------------ | -------------------------------------------------------------- | ------------- |
+| `present`  | _boolean_    | The boolean that should trigger the await of the animation.    | -             |
+| `duration` | _number_     | The duration of the animation.                                 | _150_         |
+| `cb`       | _() => void_ | A callback that will be called after the animation is finished | -             |
+
+## Return Value
+
+The `usePresence` hook returns the following variable:
+
+| Name      | Type      | Description                                                   |
+| --------- | --------- | ------------------------------------------------------------- |
+| `present` | _boolean_ | The boolean that should be used to show and hide the element. |
+
+## Usage
+
+The `usePresence` hook is used to ensure that an animated element first animates out and then unmounts from the DOM.
+
+```jsx preview
+function Demo() {
+  const [shown, setShown] = useState(true);
+
+  const present = usePresence(shown);
+
+  return (
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation w={fr(30)} h={fr(30)} bg="primary" animated={shown} />
+      )}
+    </Stack>
+  );
+}
+```
+
+### Animation Duration
+
+Pass the _duration_ parameter, which is the second parameter, to change the duration that the hook awaits before toggling the _presence_ variable.
+
+```jsx preview
+function Demo() {
+  const [shown, setShown] = useState(true);
+
+  const present = usePresence(shown, 500);
+
+  return (
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation
+          w={fr(30)}
+          h={fr(30)}
+          bg="primary"
+          animated={shown}
+          duration={500}
+        />
+      )}
+    </Stack>
+  );
+}
+```
+
+### Custom Callback
+
+Pass the _cb_ parameter, which is the third parameter, to pass a callback that will be executed when the animation finishes.
+
+```jsx preview
+function Demo() {
+  const [shown, setShown] = useState(true);
+
+  const present = usePresence(shown, 500, () => {
+    console.log('Animation has finished!');
+  });
+
+  return (
+    <Stack>
+      <Button onClick={() => setShown(!shown)}>Toggle Animation</Button>
+      {present && (
+        <Animation
+          w={fr(30)}
+          h={fr(30)}
+          bg="primary"
+          animated={shown}
+          duration={500}
+        />
+      )}
+    </Stack>
+  );
+}
+```

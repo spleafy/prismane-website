@@ -1,28 +1,27 @@
-import Link, { LinkProps } from "next/link";
+import Link, { LinkProps } from 'next/link';
 
 type AnnounceProps = {
   label?: string;
   href?: string;
-} & React.ComponentPropsWithoutRef<"div">;
+} & React.ComponentPropsWithoutRef<'div'>;
 
 const Announce = ({
-  label = "New",
-  href = "#",
+  label = 'New',
+  href = '#',
   children,
-  className,
+  className
 }: AnnounceProps) => {
   return (
     <Link
       href={href}
-      className="flex justify-center items-center px-1 h-7 dark:bg-white/10 dark:hover:bg-white/20 bg-base-500/5 hover:bg-base-500/10 border dark:border-white/5 dark:hover:border-white/10 border-black/10 hover:border-black/[.15] hover:shadow-glow shadow-white/5 transition-colors rounded-full text-sm cursor-pointer"
+      className={`relative flex h-7 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-primary-400/10 to-secondary-400/10 px-4 text-sm transition-all hover:shadow-announce dark:from-primary-400/5 dark:to-secondary-400/5 ${
+        className ? className : ''
+      }`}
     >
-      <div className="flex justify-center items-center mr-4 h-5 px-2 rounded-full bg-primary-500 text-xs text-white">
-        {label}
-      </div>
-      {children}
-      <div className="flex justify-center items-center ml-2 h-5 px-2 rounded-full bg-white/10">
-        →
-      </div>
+      <span className="bg-gradient-to-br from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+        {label}: {children}
+      </span>
+      <div className="mask absolute rounded-full bg-gradient-to-br from-primary-400/30 to-secondary-400/30 p-px dark:from-primary-400/20 dark:to-secondary-400/20"></div>
     </Link>
   );
 };

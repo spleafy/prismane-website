@@ -1,0 +1,69 @@
+---
+title: 'Stack'
+description: 'Stack displays a container that groups elements together and puts space around them.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Stack } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Stack>
+  <Button color="base" full>
+    1
+  </Button>
+  <Button color="base" full>
+    2
+  </Button>
+  <Button color="base" full>
+    3
+  </Button>
+</Stack>
+```
+
+### Stack Gap
+
+Use the _gap_ prop to change the spacing between the items.
+
+```jsx preview
+<Stack gap={fr(8)}>
+  <Button color="base" full>
+    1
+  </Button>
+  <Button color="base" full>
+    2
+  </Button>
+  <Button color="base" full>
+    3
+  </Button>
+</Stack>
+```
+
+### Stack Items Horizontally
+
+Pass the _direction_ prop and set it to _row_ to make the stack horizontal.
+
+```jsx preview
+<Stack direction="row">
+  <Button color="base" full>
+    1
+  </Button>
+  <Button color="base" full>
+    2
+  </Button>
+  <Button color="base" full>
+    3
+  </Button>
+</Stack>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Stack`](/docs/components-api/stack-api)

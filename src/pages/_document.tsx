@@ -1,13 +1,6 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
-  console.log(`
-       .-.
-      (0.0)
-    '=.|m|.='
-    .=''"''=.
-   `);
-
   return (
     <Html lang="en" className="dark">
       <Head>
@@ -38,6 +31,37 @@ export default function Document() {
           content="https://i.ibb.co/gjy8wBF/opengraph-banner.png"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/annieuseyourtelescope/v19/daaLSS4tI2qYYl3Jq9s_Hu74xwktnlKxH6osGVGTkz3A_0YFZQ.woff2"
+          as="font"
+          type="font/woff2"
+        />
+        <link
+          rel="preload"
+          href="http://localhost:3000/_next/static/media/poppins-latin-700-normal.9a881e2a.woff2"
+          as="font"
+          type="font/woff2"
+        />
+        <link
+          rel="preload"
+          href="http://localhost:3000/_next/static/media/poppins-latin-400-normal.916d3686.woff2"
+          as="font"
+          type="font/woff2"
+        />
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/roboto/v47/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiAr0klQmz24.woff2"
+          as="font"
+          type="font/woff2"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Poppins&family=Roboto&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />

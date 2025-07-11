@@ -1,0 +1,30 @@
+---
+title: 'Versatile Components'
+description: "Learn about Prismane's 'Versatile Components', what they do and how to use them."
+---
+
+Some of Prismane's components are versatile, meaning that they have the ability to change the root element that is rendered with a different element or component.
+
+They have an additional `as` prop, which is used to accept the desired element or component we want them to use.
+
+In the following example, we are using the [`Flex`](/docs/components/layout/flex) component, but we want to render it as an `<a>` element.
+For that reason, we are passing _'a'_ to the `as` prop of the [`Flex`](/docs/components/layout/flex) component.
+
+This will tell the [`Flex`](/docs/components/layout/flex) component to render an anchor tag that has a display property of flex.
+
+```tsx
+import { Flex } from '@prismane/core';
+
+const Page = () => {
+  return (
+    // Passing "a" to the as property of the Flex component
+    <Flex as="a" href="#">
+      Hello, world
+    </Flex>
+  );
+};
+
+export default Page;
+```
+
+<VersatileComponents />

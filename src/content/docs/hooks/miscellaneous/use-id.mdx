@@ -1,0 +1,31 @@
+---
+title: 'useId'
+description: 'useId hook provides a simple way to create unique ids.'
+---
+
+## Overview
+The useId hook generates unique, stable identifiers for elements across component renders and instances. It solves the common challenge of creating reliable IDs for accessibility attributes like aria-labelledby or for linking form elements with their labels. By providing consistent, collision-free identifiers, this hook helps maintain proper DOM relationships and improves accessibility compliance without relying on randomly generated strings or potentially duplicated hardcoded values.
+
+## Import
+
+```js
+import { useId } from '@prismane/core/hooks';
+```
+
+## Return Value
+
+The `useId` hook returns the following variable:
+
+| Name | Type     | Description       |
+| ---- | -------- | ----------------- |
+| `id` | _string_ | The generated id. |
+
+## Usage
+
+```jsx preview
+function Demo() {
+  const id = useId();
+
+  return <Text>Refresh to regenerate id: {id}</Text>;
+}
+```

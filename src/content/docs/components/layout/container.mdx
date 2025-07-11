@@ -1,0 +1,77 @@
+---
+title: 'Container'
+description: 'Container displays a container that constrains the content, whilst still remaining fluid.'
+versatile: false
+---
+
+## Import
+
+```js
+import { Container } from '@prismane/core';
+```
+
+## Usage
+
+```jsx preview
+<Container>
+  Containing text within a well-designed container is a powerful technique to
+  captivate users' attention. By providing space around the text, the content
+  gains prominence and becomes visually appealing. This focused presentation not
+  only enhances readability but also guides users' eyes to the essential
+  message. A thoughtful container complements the overall aesthetics of the
+  interface and creates a sense of order and elegance. Whether it's a subtle
+  drop shadow or a vibrant background, the container elevates the text, making
+  it stand out amidst other elements.
+</Container>
+```
+
+### Container Sizes
+
+Use the _maxSize_ prop to change the maximum horizontal size of the container. You can set the value to _xs_, _sm_, _base_, _md_, _lg_, _xl_, _2xl_, _3xl_, _4xl_, _5xl_, _6xl_ or any other valid CSS size. By default, the _base_ value is used.
+
+```jsx preview
+<Stack cl="white">
+  <Container maxSize="xs" bg="red">
+    xs (360px)
+  </Container>
+  <Container maxSize="sm" bg="green">
+    sm (384px)
+  </Container>
+  <Container maxSize="base" bg="teal">
+    base (448px)
+  </Container>
+  <Container maxSize="md" bg="copper">
+    md (512px)
+  </Container>
+  <Container maxSize="lg" bg="ruby">
+    lg (576px)
+  </Container>
+  <Container maxSize="xl" bg="purple">
+    xl (672px)
+  </Container>
+  <Container maxSize="2xl" bg="lime">
+    2xl (768px)
+  </Container>
+  <Container maxSize="3xl" bg="orange">
+    3xl (896px)
+  </Container>
+  <Container maxSize="4xl" bg="amethyst">
+    4xl (1024px)
+  </Container>
+  <Container maxSize="5xl" bg="diamond">
+    5xl (1152px)
+  </Container>
+  <Container maxSize="6xl" bg="primary">
+    6xl (1280px)
+  </Container>
+  <Container maxSize="500px" bg="gray">
+    Custom Size (500px)
+  </Container>
+</Stack>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Container`](/docs/components-api/container-api)

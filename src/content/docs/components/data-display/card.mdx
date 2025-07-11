@@ -1,0 +1,215 @@
+---
+title: 'Card'
+description: 'Card displays a container that groups and displays content.'
+versatile: true
+---
+
+## Import
+
+Prismane's `Card` component has 2 additional inner components:
+
+- _Card.Header_: The wrapper that contains the card's header.
+- _Card.Footer_: The wrapper that contains the card's footer.
+
+```js
+import { Card } from '@prismane/core';
+```
+
+## Usage
+
+Put content inside the `Card` component to create a basic card.
+
+```jsx preview
+<Card w={420} gap={fr(2)}>
+  <Image
+    src="https://i.pinimg.com/originals/c0/1f/4c/c01f4c611c6ecaa688d25ddf1259b4aa.jpg"
+    br="base"
+    fit="cover"
+    mb={fr(2)}
+  />
+  <Flex gap={fr(2)} mt={fr(4)}>
+    <Chip icon={<Fire />}>On Sale</Chip>
+    <Chip icon={<Tag />} color="teal">
+      New
+    </Chip>
+  </Flex>
+  <Flex direction="column">
+    <Text
+      fs="2xl"
+      fw="bold"
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
+    >
+      Modern Sofa
+    </Text>
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 300] : ['base', 700])}
+    >
+      Experience the ultimate comfort and style with our luxurious sofa,
+      designed to elevate your living space.
+    </Text>
+  </Flex>
+  <Text fw="bold" fs="2xl" cl="primary">
+    $500
+  </Text>
+  <Flex gap={fr(4)} mt={fr(8)}>
+    <Button full>Buy Now</Button>
+    <Button variant="secondary" color="base" full>
+      Add To Cart
+    </Button>
+  </Flex>
+</Card>
+```
+
+### Horizontal Card
+
+The `Card` component extends the [`Flex`](/docs/components/flex) component and its respective props. We can change the _flex-direction_ of our card by using the _direction_ prop.
+
+```jsx preview
+<Card direction="row" w={fr(156)}>
+  <Image
+    src="https://i.pinimg.com/originals/30/9d/5a/309d5abcf142f2e4516f3d7f93b2753e.jpg"
+    br="base"
+    fit="cover"
+    mr={fr(4)}
+    w={fr(64)}
+    h={fr(64)}
+  />
+  <Flex direction="column">
+    <Text
+      fs="2xl"
+      fw="bold"
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
+    >
+      Ibiza Zen Hotel
+    </Text>
+    <Text
+      cl={(theme) => (theme.mode === 'dark' ? ['base', 300] : ['base', 700])}
+    >
+      Experience paradise at our Ibiza oasis, where luxury meets the vibrant
+      rhythm of the island.
+    </Text>
+    <Text fw="bold" fs="2xl" cl="primary" mt={fr(2)}>
+      $249
+    </Text>
+    <Flex gap={fr(2)} mt="auto">
+      <Button full>Rent Now</Button>
+      <ActionButton
+        icon={<Heart />}
+        variant="tertiary"
+        color="base"
+        aria-label="Add to favourites"
+      />
+    </Flex>
+  </Flex>
+</Card>
+```
+
+### Advanced Composition
+
+Using the before mentioned `Card.Header` and `Card.Footer` components we can easily create complex cards that have evenly spaced out content.
+
+Both `Card.Header` and `Card.Footer` extend the [`Flex`](/docs/components/flex) component and respectively its props.
+
+```jsx preview
+<Card w={480}>
+  <Card.Header align="center" justify="between">
+    <Flex align="center" gap={fr(4)}>
+      <Avatar color="teal">MP</Avatar>
+      <Flex direction="column">
+        <Text fw="bold" fs="md">
+          Martin Petrov
+        </Text>
+        <Text>Creator of Prismane</Text>
+      </Flex>
+    </Flex>
+    <ActionButton
+      icon={<DotsThreeVertical weight="bold" />}
+      variant="secondary"
+      color="base"
+      size="sm"
+    />
+  </Card.Header>
+  Prismane was a mixture of passion, dedication and hard work. Numerous days of
+  development led to a great product adapted by many.
+  <Card.Footer gap={fr(2)}>
+    <Button variant="secondary" color="base" full icon={<ThumbsUp />}>
+      Like
+    </Button>
+    <Button variant="secondary" color="base" full icon={<Chats />}>
+      Comment
+    </Button>
+    <Button variant="secondary" color="base" full icon={<ShareFat />}>
+      Share
+    </Button>
+  </Card.Footer>
+</Card>
+```
+
+### Multiple Card Layout
+
+You can use the [`Stack`](/docs/components/stack) component to render multiple cards to display content.
+
+```jsx preview
+<Stack>
+  <Card direction="row" align="center" cs="pointer">
+    <Stack>
+      <Text as="h2">User Management</Text>
+      <Text>Seamlessly control and oversee user accounts and permissions.</Text>
+    </Stack>
+    <CaretRight size={24} />
+  </Card>
+  <Card direction="row" align="center" cs="pointer">
+    <Stack>
+      <Text as="h2">Analytics Dashboard</Text>
+      <Text>
+        Gain insights with comprehensive analytics and data visualization.
+      </Text>
+    </Stack>
+    <CaretRight size={24} />
+  </Card>
+  <Card direction="row" align="center" cs="pointer">
+    <Stack>
+      <Text as="h2">Customization Hub</Text>
+      <Text>
+        Tailor the platform to your needs with flexible customization options.
+      </Text>
+    </Stack>
+    <CaretRight size={24} />
+  </Card>
+</Stack>
+```
+
+### Versatile Component
+
+`Card` is a [Versatile Component](/docs/getting-started/versatile-components), it's default root element is - _div_, but it can be changed to any other element or component with the _as_ prop:
+
+```jsx preview
+<Card w={420} as="a" href="https://youtu.be/dQw4w9WgXcQ?si=Ncz4aReXXWURx_oe">
+  <Image
+    src="https://wallpaperaccess.com/full/1194132.jpg"
+    br="base"
+    fit="cover"
+    mb={fr(2)}
+  />
+  <Text
+    mt={fr(4)}
+    fs="2xl"
+    fw="bold"
+    cl={(theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
+  >
+    YOU HAVE WON 1,000,000 DOLLARS
+  </Text>
+  <Text
+    mt={fr(2)}
+    cl={(theme) => (theme.mode === 'dark' ? ['base', 300] : ['base', 700])}
+  >
+    Click me to claim you reward now and gain generational wealth!
+  </Text>
+</Card>
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`Card`](/docs/components-api/card-api)

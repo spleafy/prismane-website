@@ -1,0 +1,32 @@
+---
+title: 'Badge API'
+description: "Learn about the Badge component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { BadgeProps } from '@prismane/core';
+```
+
+## Props
+
+`Badge` extends [Circle](/docs/components-api/circle-api) component's props.
+
+| Name       | Type                                                                          | Description                     | Default   |
+| ---------- | ----------------------------------------------------------------------------- | ------------------------------- | --------- |
+| `label`    | `ReactNode`                                                                   | The label element of the badge. | 0         |
+| `position` | [PrismanePositions](/docs/getting-started/globals#prismanepositions-type)     | The position of the badge.      | top-start |
+| `color`    | [PrismaneColors](/docs/getting-started/globals#prismanecolors-type)           | The color of the badge.         | -         |
+| `size`     | [PrismaneBreakpoints](/docs/getting-started/globals#prismanebreakpoints-type) | The size of the badge.          | -         |
+
+## CSS
+
+`Badge` extends [Circle](/docs/components-api/circle-api) component's CSS classes.
+
+| Rule   | Global Class                     | Description                                             |
+| ------ | -------------------------------- | ------------------------------------------------------- |
+| `root` | `.PrismaneBadge-root`            | The wrapper box of the container.                       |
+| `root` | `.PrismaneBadge-root-{position}` | The wrapper box of the container based on the position. |
+| `root` | `.PrismaneBadge-root-{color}`    | The wrapper box of the container based on the color.    |
+| `root` | `.PrismaneBadge-root-{size}`     | The wrapper box of the container based on the size.     |

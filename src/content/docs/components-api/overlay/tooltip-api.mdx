@@ -1,0 +1,32 @@
+---
+title: 'Tooltip API'
+description: "Learn about the Tooltip component's props and CSS classes."
+---
+
+## Import
+
+```js
+import { TooltipProps } from '@prismane/core';
+```
+
+## Props
+
+`Tooltip` extends [Flex](/docs/components-api/flex-api) and [Animation](/docs/components-api/animation-api) components' props.
+
+| Name       | Type                                                                          | Description                       | Default |
+| ---------- | ----------------------------------------------------------------------------- | --------------------------------- | ------- |
+| `label`    | `ReactNode`                                                                   | The label element of the tooltip. | -       |
+| `position` | [PrismanePositions](/docs/getting-started/globals#prismanepositions-type)     | The position of the tooltip.      | right   |
+| `size`     | [PrismaneBreakpoints](/docs/getting-started/globals#prismanebreakpoints-type) | The size of the tooltip.          | base    |
+| `color`    | [PrismaneColors](/docs/getting-started/globals#prismanecolors-type)           | The color of the tooltip.         | base    |
+
+## CSS
+
+`Tooltip` extends [Flex](/docs/components-api/flex-api) and [Animation](/docs/components-api/animation-api) components' CSS classes.
+
+| Rule   | Global Class                       | Description                                                     |
+| ------ | ---------------------------------- | --------------------------------------------------------------- |
+| `root` | `.PrismaneTooltip-root`            | The container of the square component.                          |
+| `root` | `.PrismaneTooltip-root-{color}`    | The container of the square component based on it's `color`.    |
+| `root` | `.PrismaneTooltip-root-{position}` | The container of the square component based on it's `position`. |
+| `root` | `.PrismaneTooltip-root-{size}`     | The container of the square component based on it's `size`.     |

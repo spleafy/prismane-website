@@ -1,17 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 // Components
-import { Button } from "@prismane/core";
+import { Button } from '@prismane/core';
 
 const NewsContainer = () => {
   return (
-    <div className="sticky top-0 left-0 flex items-center justify-center h-10 gap-5 bg-gradient-to-r from-primary-500 to-secondary-500 z-[150]">
-      <span className="text-white text-sm font-medium">
+    <div className="sticky left-0 top-0 z-[150] flex h-10 items-center justify-center gap-5 bg-gradient-to-r from-primary-500 to-secondary-500">
+      <span className="text-sm font-medium text-white">
         Develop ultra fast with Prismane 🎉
       </span>
       <Link href="/docs">
         <Button
           variant="secondary"
-          className="!px-3 !py-1 !bg-white !text-secondary-500"
+          className="!bg-white !px-3 !py-1 !text-secondary-500"
           size="sm"
           shadow
         >

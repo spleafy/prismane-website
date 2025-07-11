@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { HandCoins } from "@phosphor-icons/react";
+import Link from 'next/link';
+import { HandCoins } from '@phosphor-icons/react';
 // Components
-import Button from "@/components/Button";
+import Button from '@/components/Button';
 // Containers
-import Section from "../Section";
+import Section from '../Section';
 
 const Hero = () => {
   return (

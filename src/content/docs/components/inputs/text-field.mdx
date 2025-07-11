@@ -1,0 +1,187 @@
+---
+title: 'TextField'
+description: 'TextField displays a field that handles toggling between multiple values.'
+versatile: false
+---
+
+## Import
+
+```js
+import { TextField } from '@prismane/core';
+```
+
+## Usage
+
+The `TextField` is based on the [`Field`](/docs/components/inputs/field) component and extends it's respective props.
+
+This page does not include all of the features that are supported by the field. Visit the [`Field`](/docs/components/inputs/field) documentation page to learn about all of the features.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      label="Text:"
+      placeholder="Enter Text"
+    />
+  );
+}
+```
+
+### Prefix
+
+Use the _prefix_ prop to add a prefix section to the left side of the field.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      label="Website:"
+      placeholder="Enter A Website Address"
+      prefix="https://"
+    />
+  );
+}
+```
+
+### Suffix
+
+Use the _suffix_ prop to add a suffix section to the right side of the field.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      label="Website:"
+      placeholder="Enter A Website Address"
+      suffix=".com"
+    />
+  );
+}
+```
+
+### Read Only Field
+
+Like the [`Field`](/docs/components/field) component, you can make the field read only by passing the _readOnly_ prop. If the _readOnly_ prop is set, the field won't change.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('I am read only!');
+
+  return (
+    <TextField
+      label="Text:"
+      placeholder="Enter Text"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      readOnly
+    />
+  );
+}
+```
+
+### Disabled Field
+
+Like the [`Field`](/docs/components/field) component, you can disable the field by passing the _disabled_ prop. If the _disabled_ prop is set, the user would not be able to interact with the field.
+
+```jsx preview
+function Demo() {
+  const [value, setValue] = useState('I am disabled!');
+
+  return (
+    <TextField
+      label="Text:"
+      placeholder="Enter Text"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      disabled
+    />
+  );
+}
+```
+
+### useForm Example
+
+The `TextField` component, like all other field components of Prismane, has a great integration with our [`useForm`](/docs/hooks/use-form) hook.
+
+Firstly, import the `useForm` hook like so:
+
+```js
+import { useForm } from '@prismane/core/hooks';
+```
+
+Then do the following:
+
+```jsx preview
+function Demo() {
+  const { register } = useForm({
+    fields: {
+      hook_text: {
+        value: ''
+      }
+    }
+  });
+
+  return (
+    <TextField
+      label="Controlled TextField"
+      placeholder="Controlled Field"
+      {...register('hook_text')}
+    />
+  );
+}
+```
+
+### Field Ref
+
+Use the _ref_ prop to get the ref of the input element.
+
+```jsx
+import { useRef } from 'react';
+import { TextField } from '@prismane/core';
+
+function Demo() {
+  const ref = useRef(null);
+
+  return <TextField ref={ref} />;
+}
+```
+
+### Accessibility
+
+If you want to use the `TextField` without passing a value to the _label_ prop, you will have to add it an _area-label_ so that the input will be accessible by screen readers.
+
+```jsx
+import { TextField } from '@prismane/core';
+
+function Demo() {
+  return <TextField aria-label="TextField's Input" />;
+}
+```
+
+If you use the _label_ prop, the field will be accessible by screen readers.
+
+```jsx
+import { TextField } from '@prismane/core';
+
+function Demo() {
+  return <TextField label="TextField's Input" />;
+}
+```
+
+## API
+
+Please refer to the documentation below for a comprehensive overview of all the available props and classes for the mentioned components.
+
+- [`TextField`](/docs/components-api/text-field-api)
