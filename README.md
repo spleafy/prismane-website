@@ -35,7 +35,7 @@ To get started with this project locally, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-org/prismane-website.git
+   git clone https://github.com/spleafy/prismane-website
    cd prismane-website
    ```
 
