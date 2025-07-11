@@ -79,9 +79,6 @@ const defaultPreview = `
   <Text fw="bold" fs="2xl" cl="primary" className="prismane_preview_custom_fontFamily">
     $500
   </Text>
-  <Tooltip label="Button tooltip information" aria-label="A tooltip">
-  <Alert mt={fr(4)} mb={fr(2)} w={'full'} variant="warning" closable>Review Your Order</Alert>
-  </Tooltip>
   <Field mb={fr(2)} icon={<EnvelopeSimple />} placeholder="Enter your email" />
   <Flex gap={fr(4)}>
     <Button full>Buy Now</Button>
